@@ -51,6 +51,8 @@ fully as it should be, even in ordinary conversation. For example,
 
 for more explicit removal of lines can remove the ones that split sentences using the code below
 
+## Remove new lines in-between a split sentence
+
 ```regex
 \w$\n^\n^\w
 ```
