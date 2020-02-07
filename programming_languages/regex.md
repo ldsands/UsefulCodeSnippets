@@ -4,6 +4,13 @@
 
 1. https://regex101.com/
 1. https://ihateregex.io/
+1. https://www.regextester.com/
+
+## Get rid of trailing spaces
+
+```regex
+ $
+```
 
 ## Hyphen work breaks at the end of a line
 
@@ -60,3 +67,13 @@ for more explicit removal of lines can remove the ones that split sentences usin
 questions that clarify their meaning. Sometimes
 
 they only get corrected when expected behavior does not 
+
+## Get the beginning of a article reference
+
+<!--and incomplete but more capible version [^\s]([^\.][a-z+A-Z+,\sa-z+A-Z+.\s]+[\s][0-9]{4}[\.]) -->
+
+```regex
+[a-zA-Z]+[,\s]+[a-zA-Z]+[\.][[\s][0-9]{4}
+```
+
+Alford, Robert and Roger Friedland. 1985. Powers of Theory: Capitalism, the State and Democracy. New York: Cambridge University Press. Arendt, Hannah. 1958. The Origins of Totalitarianism. Cleveland, OH: World Publishing Company. Banfield, Edward. 1961. Political Influence. New York: Free Press. Beckfield, Jason. 2003. “Inequality in the World Polity: The Structure of International Organization.” American Sociological Review 68: 401–424. 
