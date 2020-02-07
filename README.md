@@ -1,6 +1,6 @@
-# Useful Code Snippits and Software or Configuration Instructions
+# Useful Code Snippets and Software or Configuration Instructions
 
-This is a collection of useful code snippits that I either use frequently or I thought would be useful for the future.
+This is a collection of useful code snippets that I either use frequently or I thought would be useful for the future.
 
 ## Languages included here
 
@@ -10,9 +10,9 @@ This is a collection of useful code snippits that I either use frequently or I t
 1. [Stata](programming_languages/stata.md)
 1. [RegEx](programming_languages/regex.md)
 
-## Other snippits included
+## Other snippets included
 
-There are other software based snippits that I will keep here as well
+There are other software based snippets that I will keep here as well
 
 - [Powershell](other_software/powershell.md)
 - [Bash](other_software/bash.md)
