@@ -1,5 +1,14 @@
 # Useful Regex Code
 
+- [Useful Regex Code](#useful-regex-code)
+    - [Useful sites](#useful-sites)
+    - [Get rid of trailing spaces](#get-rid-of-trailing-spaces)
+    - [Hyphen work breaks at the end of a line](#hyphen-work-breaks-at-the-end-of-a-line)
+    - [Two New Lines in a Row](#two-new-lines-in-a-row)
+    - [New line followed by wording (not two blank line breaks)](#new-line-followed-by-wording-not-two-blank-line-breaks)
+    - [Remove new lines in-between a split sentence](#remove-new-lines-in-between-a-split-sentence)
+    - [Get the beginning of a article reference](#get-the-beginning-of-a-article-reference)
+
 ## Useful sites
 
 1. https://regex101.com/
@@ -16,8 +25,6 @@
 
 ```regex
 [a-z][\-]$[\n][a-z]
-or
-[\n][^\S]
 ```
 
 in the business of asking questions. It illustrates not only the impor-
