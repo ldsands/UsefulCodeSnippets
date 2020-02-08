@@ -1,9 +1,12 @@
 # Useful Regex Code
 
+A collection of Regex code that I've used on many occasions
+
 - [Useful Regex Code](#useful-regex-code)
     - [Useful sites](#useful-sites)
     - [Get rid of trailing spaces](#get-rid-of-trailing-spaces)
     - [Hyphen work breaks at the end of a line](#hyphen-work-breaks-at-the-end-of-a-line)
+    - [Capital at beginning and end of line](#capital-at-beginning-and-end-of-line)
     - [Two New Lines in a Row](#two-new-lines-in-a-row)
     - [New line followed by wording (not two blank line breaks)](#new-line-followed-by-wording-not-two-blank-line-breaks)
     - [Remove new lines in-between a split sentence](#remove-new-lines-in-between-a-split-sentence)
@@ -32,6 +35,22 @@ tance of the golden rule for asking questions—Ask what you want
 to know, not something else—but also, more important, the ambi-
 guities of language and the powerful force of context in interpret-
 ing the meaning of questions and answers. Our colleague had
+
+## Capital at beginning and end of line
+
+```regex
+^[A-Z].+[A-Z]$
+```
+
+Hypothesis 4. The fewer companies that a
+movement has yet reached, the stronger the
+association between CEO liberalism and employee activism.
+
+METHODS
+
+Research Context
+
+The LGBT activist movement in corporate
 
 ## Two New Lines in a Row
 
@@ -67,6 +86,16 @@ for more explicit removal of lines can remove the ones that split sentences usin
 
 ## Remove new lines in-between a split sentence
 
+case sensitive
+
+```regex
+[a-z]$\n+[a-z]
+
+[a-z]$\n^\n^[a-z]
+```
+
+case doesn't matter
+
 ```regex
 \w$\n^\n^\w
 ```
@@ -77,10 +106,10 @@ they only get corrected when expected behavior does not
 
 ## Get the beginning of a article reference
 
-<!--and incomplete but more capible version [^\s]([^\.][a-z+A-Z+,\sa-z+A-Z+.\s]+[\s][0-9]{4}[\.]) -->
+<!--and incomplete but more capable version [^\s]([^\.][a-z+A-Z+,\sa-z+A-Z+.\s]+[\s][0-9]{4}[\.]) -->
 
 ```regex
 [a-zA-Z]+[,\s]+[a-zA-Z]+[\.][[\s][0-9]{4}
 ```
 
-Alford, Robert and Roger Friedland. 1985. Powers of Theory: Capitalism, the State and Democracy. New York: Cambridge University Press. Arendt, Hannah. 1958. The Origins of Totalitarianism. Cleveland, OH: World Publishing Company. Banfield, Edward. 1961. Political Influence. New York: Free Press. Beckfield, Jason. 2003. “Inequality in the World Polity: The Structure of International Organization.” American Sociological Review 68: 401–424. 
+Alford, Robert and Roger Friedland. 1985. Powers of Theory: Capitalism, the State and Democracy. New York: Cambridge University Press. Arendt, Hannah. 1958. The Origins of Totalitarianism. Cleveland, OH: World Publishing Company. Banfield, Edward. 1961. Political Influence. New York: Free Press. Beckfield, Jason. 2003. “Inequality in the World Polity: The Structure of International Organization.” American Sociological Review 68: 401–424.
