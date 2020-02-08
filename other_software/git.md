@@ -4,7 +4,7 @@
 
 ### Git global setup
 
-this allows you to avoid having issues when using vscode to manage git projects
+this allows you to avoid having issues haveing to signing every time when using vscode to manage git/github projects
 
 ```git
 git config --global user.name "Prename Name"

@@ -34,6 +34,11 @@ This a place to put the status of the various sections as well as a more specifi
 
 ## Todo list
 
+### General Todos
+
+- [ ] add latex
+- [ ] add Mplus?
+
 ### Languages included here
 
 #### Julia
@@ -54,12 +59,19 @@ This a place to put the status of the various sections as well as a more specifi
 - [ ] list of useful commands
 - [ ] filesystem tutorial
 
+#### Markdown
+
+- [ ] list of resources (partially complete)
+- [ ] list of common syntax that you have to look up often
+
 #### R
 
 - [ ] resources
 - [ ] installation instructions
     - [ ] environment configuration instructions (does r have environments?)
 - [x] list of useful packages
+    - [ ] add lavaan
+    - [ ] add stargazer
 - [ ] list of useful commands
 - [ ] filesystem tutorial
 
@@ -96,6 +108,7 @@ I don't use git alone so this may not get anything else
 - [ ] installation instructions
     - [ ] environment configuration instructions (is this a thing?)
 - [ ] list of useful commands
+- [ ] should do some repository tutorial or something
 
 #### Powershell
 

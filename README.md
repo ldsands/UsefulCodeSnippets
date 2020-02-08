@@ -7,6 +7,7 @@ Table of Contents:
 - [Useful Code Snippets and Software or Configuration Instructions](#useful-code-snippets-and-software-or-configuration-instructions)
     - [Languages included here](#languages-included-here)
         - [Julia](#julia)
+        - [Markdown](#markdown)
         - [Python](#python)
         - [R](#r)
         - [RegEx](#regex)
@@ -24,6 +25,12 @@ Table of Contents:
 ### [Julia](https://julialang.org/)
 
 Julia commands, resources and notes that I've found useful
+
+### [Markdown](https://github.github.com/gfm/)
+
+This is github flavored markdown but most of it transfers seamlessly to other flavors of markdown
+
+- [Useful resources](programming_languages/markdown/markdown_resources.md)
 
 ### [Python](https://www.python.org/)
 
@@ -58,7 +65,7 @@ There are other software based snippets or instructions that I will keep here as
 
 ### [Git](https://git-scm.com/)
 
-- (other_software/git.md)
+- [Useful Git Commands](other_software/git.md)
 
 ### [Github](https://github.com/)
 
