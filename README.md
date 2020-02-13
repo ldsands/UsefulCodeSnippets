@@ -10,26 +10,21 @@ Table of Contents:
 
 - [Useful Code Snippets and Software or Configuration Instructions](#useful-code-snippets-and-software-or-configuration-instructions)
     - [Languages included here](#languages-included-here)
-        - [Julia](#julia)
         - [Markdown](#markdown)
         - [Python](#python)
         - [R](#r)
         - [RegEx](#regex)
-        - [Stata](#stata)
     - [Other snippets and instructions](#other-snippets-and-instructions)
-        - [Bash](#bash)
         - [Git](#git)
-        - [Github](#github)
         - [Pandoc](#pandoc)
-        - [Powershell](#powershell)
         - [VSCode stuff](#vscode-stuff)
         - [Windows](#windows)
 
 ## Languages included here
 
-### [Julia](https://julialang.org/)
+<!-- ### [Julia](https://julialang.org/)
 
-Julia commands, resources and notes that I've found useful
+Julia commands, resources and notes that I've found useful -->
 
 ### [Markdown](https://github.github.com/gfm/)
 
@@ -56,31 +51,31 @@ RegEx (regular expression) commands, resources and notes that I've found useful
 
 - [Useful RegEx commands](programming_languages/regex/regex.md)
 
-### [Stata](https://www.stata.com/)
+<!-- ### [Stata](https://www.stata.com/)
 
-Stata commands, resources and notes that I've found useful
+Stata commands, resources and notes that I've found useful -->
 
 ## Other snippets and instructions
 
 There are other software based snippets or instructions that I will keep here as well
 
-### [Bash](https://www.gnu.org/software/bash/)
+<!-- ### [Bash](https://www.gnu.org/software/bash/)
 
-- [Useful bash commands](other_software/bash.md)
+- [Useful bash commands](other_software/bash.md) -->
 
 ### [Git](https://git-scm.com/)
 
 - [Useful Git Commands](other_software/git.md)
 
-### [Github](https://github.com/)
+<!-- ### [Github](https://github.com/) -->
 
 ### [Pandoc](https://pandoc.org/)
 
 - [Useful Pandoc commands](other_software/pandoc_commands.md)
 
-### [Powershell](https://docs.microsoft.com/en-us/powershell/)
+<!-- ### [Powershell](https://docs.microsoft.com/en-us/powershell/)
 
-- [Useful Powershell commands](other_software/powershell.md)
+- [Useful Powershell commands](other_software/powershell.md) -->
 
 ### [VSCode stuff](https://code.visualstudio.com/)
 
