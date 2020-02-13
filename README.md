@@ -76,11 +76,11 @@ There are other software based snippets or instructions that I will keep here as
 
 ### [Pandoc](https://pandoc.org/)
 
-- [Useful pandoc commands](other_software/pandoc_commands.md)
+- [Useful Pandoc commands](other_software/pandoc_commands.md)
 
 ### [Powershell](https://docs.microsoft.com/en-us/powershell/)
 
-- [Usefull Powershell](other_software/powershell.md)
+- [Useful Powershell commands](other_software/powershell.md)
 
 ### [VSCode stuff](https://code.visualstudio.com/)
 
