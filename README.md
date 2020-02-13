@@ -2,6 +2,10 @@
 
 This is a collection of useful code snippets that I either use frequently or I thought would be useful for the future.
 
+For a list of todo items for me to add see [this file](Progress_Todo.md)
+
+If you want me to add anything to this please create an issue or pull request if you know what you want to add
+
 Table of Contents:
 
 - [Useful Code Snippets and Software or Configuration Instructions](#useful-code-snippets-and-software-or-configuration-instructions)
