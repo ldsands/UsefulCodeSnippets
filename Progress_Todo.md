@@ -1,58 +1,16 @@
-# Status and Todo List
+# Todo List
 
-This a place to put the status of the various sections as well as a more specific todo list
+This a place for a todo list of items to add
 
-## Status
-
-### Languages included here
-
-- Julia
-    - haven't started yet
-- Python
-    - barely started
-- R
-    - packages done
-- RegEx
-    - started
-- Stata
-    - haven't started
-
-### Other snippets and instructions
-
-- Bash
-    - haven't started
-- Git
-    - barely started
-- Github
-    - haven't started
-- Pandoc
-    - barely started
-- Powershell
-    - haven't started
-- VSCode stuff
-    - pretty complete
-- Windows
-    - pretty complete
-
-## Todo list
-
-### General Todos
+## General Todos
 
 - [ ] add latex
 - [ ] add Mplus?
+- [ ] add more AutoHotKey
 
-### Languages included here
+## Languages included here
 
-#### Julia
-
-- [ ] resources
-- [ ] installation instructions
-    - [ ] environment configuration instructions
-- [ ] list of useful packages
-- [ ] list of useful commands
-- [ ] filesystem tutorial
-
-#### Python
+### Julia
 
 - [ ] resources
 - [ ] installation instructions
@@ -61,12 +19,21 @@ This a place to put the status of the various sections as well as a more specifi
 - [ ] list of useful commands
 - [ ] filesystem tutorial
 
-#### Markdown
+### Python
+
+- [ ] resources
+- [ ] installation instructions
+    - [ ] environment configuration instructions
+- [ ] list of useful packages
+- [ ] list of useful commands
+- [ ] filesystem tutorial
+
+### Markdown
 
 - [ ] list of resources (partially complete)
 - [ ] list of common syntax that you have to look up often
 
-#### R
+### R
 
 - [ ] resources
 - [ ] installation instructions
@@ -77,12 +44,12 @@ This a place to put the status of the various sections as well as a more specifi
 - [ ] list of useful commands
 - [ ] filesystem tutorial
 
-#### RegEx
+### RegEx
 
 - [x] resources
 - [ ] list of useful commands
 
-#### Stata
+### Stata
 
 - [ ] resources
 - [ ] installation instructions
@@ -90,13 +57,13 @@ This a place to put the status of the various sections as well as a more specifi
 - [ ] list of useful commands
 - [ ] filesystem tutorial
 
-### Other snippets and instructions
+## Other snippets and instructions
 
-#### Bash
+### Bash
 
 - [ ] get some basics here
 
-#### Git
+### Git
 
 I don't use git alone so this may not get anything else
 
@@ -104,7 +71,7 @@ I don't use git alone so this may not get anything else
 - [ ] installation instructions
 - [ ] list of useful commands
 
-#### Github
+### Github
 
 - [ ] resources
 - [ ] installation instructions
@@ -112,31 +79,32 @@ I don't use git alone so this may not get anything else
 - [ ] list of useful commands
 - [ ] should do some repository tutorial or something
 
-#### Pandoc
+### Pandoc
 
 - [ ] resources
 - [ ] installation instructions
 - [ ] list of useful commands
     - started this briefly
 
-#### Powershell
+### Powershell
 
 not sure if I'm going to do much with this anytime soon (or ever)
 
-#### VSCode stuff
+### VSCode stuff
 
 - [ ] explain extensions
 - [ ] add modified keyboard shortcuts
 - [ ] add settings
     - [ ] settings explanations
 
-#### Windows
+### Windows
 
 - [x] Win 32 programs explained
     - [x] Zotero installation instructions
-        - [ ] Zotero usage instructions?
+        - [ ] Zotero usage instructions and or tips?
     - [ ] Chrome shortcuts and others stuff
     - [ ] PDF XChange Editor Settings
     - [ ] double cmd settings explained
     - [ ] Enpass explained
-- [ ] explain chocolatey programs
+- [x] explain chocolatey programs
+- [ ] add more AutoHotKey examples
