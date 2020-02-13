@@ -87,3 +87,4 @@ There are other software based snippets or instructions that I will keep here as
 - [Windows Programs](other_software/windows_program_instructions/windows_programs.md)
 - [Chocolatey](other_software/windows_program_instructions/chocolatey.md)
 - [Zotero](other_software/windows_program_instructions/zotero.md)
+- [AutoHotKey](other_software/windows_program_instructions/autohotkey.md)
