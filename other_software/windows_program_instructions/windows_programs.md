@@ -12,19 +12,25 @@
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
     - [MS Office plugins](#ms-office-plugins)
 
-These are windows programs that are not able to be installed via chocolatey
+These are Windows programs that are not able to be installed via chocolatey
 
 ## Win 32
 
 - [Zotero](https://www.zotero.org/)
+    - reference manager that is free and open source very good alternative to EndNote and other alternatives (in my opinion it is better in pretty much every way)
 - [ProWritingAid](https://prowritingaid.com/)
+    - this is a program and chrome plugin (and others) that is a very comprehensive in its ability to check far more grammer issues than most other alternatives (not free serial number in Enpass)
 
 ### Utilties
 
-- [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html) (for mouse and keyboard)
-- [iCUE](https://www.corsair.com/us/en/icue) (for corsair headset)
+- [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html)
+    - for mouse and keyboard
+- [iCUE](https://www.corsair.com/us/en/icue)
+    - for corsair headset
 
 ### Gaming Stuff
+
+Gaming launcher programs that contain games I've owned (I don't use these much anymore)
 
 - [Battle.net](https://www.blizzard.com/en-us/apps/battle.net/desktop)
 - [Bethesda.net launcher](https://bethesda.net/en/game/bethesda-launcher)
@@ -67,10 +73,13 @@ These are windows programs that are not able to be installed via chocolatey
 
 Other instructions regarding Windows features to use when needed
 
+TODO: need to look through my various notes to add here
+
 ### Command-line utilties
 
 1. nodejs
-    1. I use this for programmatically looking at office documents
+    1. this is I think the main way that most people to get javascript onto Windows
+    1. I use this for programmatically looking at office documents I use this pretty rarely
     1. choco install nodejs
     1. npm install xml-formatter jszip
 
@@ -78,7 +87,7 @@ Other instructions regarding Windows features to use when needed
 
 1. Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 1. You'll need to restart after this
-1. Then download the version of linux from the windows store you want (probably Ubuntu)
+1. Then download the version of linux from the Windows store you want (probably Ubuntu)
 1. You'll be prompted to create a username and password
 1. Type in these two commands to update stuff
 
@@ -130,4 +139,6 @@ Other instructions regarding Windows features to use when needed
 I rarely use these but they're very useful
 
 1. Dictate
+    1. I haven't used this much but the dictation addon is pretty good and its free
 1. Onetastic
+    1. useful for using OneNote utilties I haven't used it in a long time but when I used OneNote a lot it was very useful
