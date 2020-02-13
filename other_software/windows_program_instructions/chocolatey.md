@@ -1,8 +1,10 @@
 # Chocolatey
 
-a package manager for windows
+a package manager for Windows, using this makes setting up a Windows computer WAY faster and easier
 
 ## Install chocolatey
+
+make sure you open powershell as an administrator otherwise chocolatey will not be able to install
 
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
@@ -12,10 +14,12 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://chocolatey.org/ins
 
 groups of programs installed through chocolatey
 
+again always run chocolatey in powershell with administrator privileges otherwise it is not likely to work for most programs
+
 ### Install on all computers
 
 ```powershell
-choco install googlechrome vscode 7zip.install git pandoc r.project nodejs sumatrapdf dotnetcore-sdk julia firacode r.studio miktex zotero firefox discord logitech-options chocolateygui teamviewer hwmonitor -y
+choco install googlechrome vscode 7zip.install git pandoc r.project nodejs sumatrapdf dotnetcore-sdk julia firacode r.studio miktex zotero firefox discord logitech-options chocolateygui teamviewer hwmonitor vlc -y
 ```
 
 ### Large installs
@@ -30,7 +34,7 @@ choco install office365proplus -y
 ### Non-productive software which I only install on my gaming computer
 
 ```powershell
-choco install steam origin goggalaxy uplay playnite leagueoflegends twitch epicgameslauncher vlc -y
+choco install steam origin goggalaxy uplay leagueoflegends twitch epicgameslauncher -y
 ```
 
 ### For computers with nvidia video cards
