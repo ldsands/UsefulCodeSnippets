@@ -8,6 +8,7 @@
     - [UWP or Windows Store apps](#uwp-or-windows-store-apps)
         - [For all computers](#for-all-computers)
     - [Other Windows features](#other-windows-features)
+        - [Command-line utilties](#command-line-utilties)
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
     - [MS Office plugins](#ms-office-plugins)
 
@@ -65,6 +66,13 @@ These are windows programs that are not able to be installed via chocolatey
 ## Other Windows features
 
 Other instructions regarding Windows features to use when needed
+
+### Command-line utilties
+
+1. nodejs
+    1. I use this for programmatically looking at office documents
+    1. choco install nodejs
+    1. npm install xml-formatter jszip
 
 ### WSL (Windows subsystem for Linux)
 

@@ -16,6 +16,7 @@ Table of Contents:
         - [Bash](#bash)
         - [Git](#git)
         - [Github](#github)
+        - [Pandoc](#pandoc)
         - [Powershell](#powershell)
         - [VSCode stuff](#vscode-stuff)
         - [Windows](#windows)
@@ -68,6 +69,10 @@ There are other software based snippets or instructions that I will keep here as
 - [Useful Git Commands](other_software/git.md)
 
 ### [Github](https://github.com/)
+
+### [Pandoc](https://pandoc.org/)
+
+- [Useful pandoc commands](other_software/pandoc_commands.md)
 
 ### [Powershell](https://docs.microsoft.com/en-us/powershell/)
 

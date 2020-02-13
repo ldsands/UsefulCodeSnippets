@@ -15,7 +15,7 @@ groups of programs installed through chocolatey
 ### Install on all computers
 
 ```powershell
-choco install googlechrome vscode 7zip.install git pandoc r.project sumatrapdf dotnetcore-sdk julia firacode r.studio miktex zotero firefox discord logitech-options chocolateygui teamviewer hwmonitor -y
+choco install googlechrome vscode 7zip.install git pandoc r.project nodejs sumatrapdf dotnetcore-sdk julia firacode r.studio miktex zotero firefox discord logitech-options chocolateygui teamviewer hwmonitor -y
 ```
 
 ### Large installs

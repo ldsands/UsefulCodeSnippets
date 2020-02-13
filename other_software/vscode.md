@@ -50,86 +50,94 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | `Ctrl`+`K`+`R`         | Reveal active file in Explorer              | N/A                                         |
 | `Ctrl`+`Shift`+`H`     | Replace in files                            | N/A                                         |
 | `Ctrl`+`K`+`V`         | Open Markdown preview to the side           | N/A                                         |
-
+| `Shift`+`Alt`+`R`      | Reveal in file explorer                     | N/A                                         |
 
 ## Installed packages
 
 These extensions are the ones that I use on my installation of VSCode
 
-- anaconda-extension-pack
-- asp-net-core-switcher
-- aspnet-helper
-- bash-beautify
-- better-comments
-- Bookmarks
-- bracket-pair-colorizer-2
-- change-case
-- code-settings-sync
-- code-spell-checker
-- code-spell-checker-medical-terms
-- csharp
-- csharpextensions
-- csharpfixformat
-- docomment
-- dotnet
-- dotnet-core-essentials
-- dotnet-test-explorer
-- github-plus-theme
-- gitignore
-- horizon-theme-vscode
-- indent-rainbow
-- insertnumbers
-- Ionide-fsharp
-- language-julia
-- latex-workshop
-- MagicPython
-- markdown-all-in-one
-- markdown-navigation
-- markdown-pdf
-- markdown-preview-github-styles
-- markdown-toc
-- material-icon-theme
-- material-theme
-- msbuild-project-tools
-- netcore-extension-pack
-- netcore-snippets
-- nord-visual-studio-code
-- one-monokai
-- path-intellisense
-- pdf
-- powershell
-- python
-- python-extension-pack
-- pythonsnippets
-- quicktype
-- r
-- r-development
-- r-lsp
-- remote-wsl
-- selectline-statusbar
-- stata-enhanced
-- supersharp
-- theme-cobalt2
-- thrift
-- todo-tree
-- vsc-community-material-theme
-- vsc-material-theme
-- vsc-material-theme-icons
-- vscode-csharp-snippets
-- vscode-data-preview
-- vscode-github
-- vscode-julia-formatter
-- vscode-jumpy
-- vscode-markdownlint
-- vscode-nuget-package-manager
-- vscode-pandoc
-- vscode-theme-onelight
-- vscode-todo-highlight
-- vscode-versionlens
-- vscode-yaml
-- vscodeintellicode
-- wordcount
-- wordcounter
+to get the list type this into powershell
+
+```powershell
+code --list-extensions | % { "code --install-extension $_" }
+```
+
+- aaron-bond.better-comments
+- adrianwilczynski.asp-net-core-switcher 
+- akamud.vscode-theme-onelight
+- AlanWalk.markdown-navigation
+- alefragnani.Bookmarks
+- arcticicestudio.nord-visual-studio-code
+- Asuka.insertnumbers
+- azemoh.one-monokai
+- bierner.markdown-preview-github-styles 
+- cduruk.thrift
+- christian-kohler.path-intellisense     
+- codezombiech.gitignore
+- CoenraadS.bracket-pair-colorizer-2     
+- craigthomas.supersharp
+- DavidAnson.vscode-markdownlint
+- doggy8088.netcore-extension-pack       
+- doggy8088.netcore-snippets
+- donjayamanne.python-extension-pack     
+- DougFinke.vscode-pandoc
+- Equinusocio.vsc-community-material-theme
+- Equinusocio.vsc-material-theme
+- equinusocio.vsc-material-theme-icons
+- formulahendry.dotnet
+- formulahendry.dotnet-test-explorer
+- frhtylcn.pythonsnippets
+- Gruntfuggly.todo-tree
+- Hridoy.r-development
+- Ikuyadeu.r
+- Ionide.Ionide-fsharp
+- James-Yu.latex-workshop
+- jchannon.csharpextensions
+- jmrog.vscode-nuget-package-manager
+- joffreykern.markdown-toc
+- jolaleye.horizon-theme-vscode
+- jorgeserrano.vscode-csharp-snippets
+- julialang.language-julia
+- k--kato.docomment
+- kirozen.wordcounter
+- KishoreIthadi.dotnet-core-essentials
+- KnisterPeter.vscode-github
+- kylebarron.stata-enhanced
+- Leopotam.csharpfixformat
+- magicstack.MagicPython
+- ms-python.anaconda-extension-pack
+- ms-python.python
+- ms-vscode-remote.remote-wsl
+- ms-vscode.csharp
+- ms-vscode.powershell
+- ms-vscode.wordcount
+- notZaki.pandocciter
+- oderwat.indent-rainbow
+- pflannery.vscode-versionlens
+- PKief.material-icon-theme
+- quicktype.quicktype
+- RandomFractalsInc.vscode-data-preview
+- redhat.vscode-yaml
+- REditorSupport.r-lsp
+- schneiderpat.aspnet-helper
+- shakram02.bash-beautify
+- Shan.code-settings-sync
+- singularitti.vscode-julia-formatter
+- streetsidesoftware.code-spell-checker
+- streetsidesoftware.code-spell-checker-medical-terms
+- thenikso.github-plus-theme
+- tintoy.msbuild-project-tools
+- tomoki1207.pdf
+- tomoki1207.selectline-statusbar
+- VisualStudioExptTeam.vscodeintellicode
+- wayou.vscode-todo-highlight
+- wesbos.theme-cobalt2
+- wmaurer.change-case
+- wmaurer.vscode-jumpy
+- yuenm18.ooxml-viewer
+- yzane.markdown-pdf
+- yzhang.markdown-all-in-one
+- zhuangtongfa.material-theme
 
 ## Resources
 

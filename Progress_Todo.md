@@ -25,6 +25,8 @@ This a place to put the status of the various sections as well as a more specifi
     - barely started
 - Github
     - haven't started
+- Pandoc
+    - barely started
 - Powershell
     - haven't started
 - VSCode stuff
@@ -109,6 +111,13 @@ I don't use git alone so this may not get anything else
     - [ ] environment configuration instructions (is this a thing?)
 - [ ] list of useful commands
 - [ ] should do some repository tutorial or something
+
+#### Pandoc
+
+- [ ] resources
+- [ ] installation instructions
+- [ ] list of useful commands
+    - started this briefly
 
 #### Powershell
 
