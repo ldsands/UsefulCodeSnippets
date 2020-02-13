@@ -10,3 +10,7 @@
 
 - [Tables Generator](http://www.tablesgenerator.com/markdown_tables)
 - [Table to Markdown](https://tabletomarkdown.com/)
+
+## Citeproc examples and resources
+
+pandoc-citeproc is a pandoc "extension" of sorts that allows you to use citations in your markdown documents see [pandoc](../../other_software/pandoc_commands.md) for more details
