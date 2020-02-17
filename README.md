@@ -37,6 +37,7 @@ This is github flavored markdown but most of it transfers seamlessly to other fl
 Python commands, resources and notes that I've found useful
 
 - [Python installation notes and links](programming_languages/python/python_install.md)
+<!-- - [Python file management](programming_languages/python/python_file_management.md) -->
 
 ### [R](https://www.r-project.org/)
 
