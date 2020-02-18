@@ -4,10 +4,16 @@ All of my VSCode information that I use
 
 - [Visual Studio Code](#visual-studio-code)
     - [Useful shortcuts (Windows)](#useful-shortcuts-windows)
-    - [Installed packages](#installed-packages)
+        - [Useful VSCode shortcuts (Windows)](#useful-vscode-shortcuts-windows)
+        - [Useful extension shortcuts (Windows)](#useful-extension-shortcuts-windows)
+    - [Installed extensions](#installed-extensions)
     - [Resources](#resources)
 
 ## Useful shortcuts (Windows)
+
+### Useful VSCode shortcuts (Windows)
+
+VSCode shortcuts that are not associated with any extensions
 
 Some of these shortcuts have been modified by me and I use them with settings sync to make them consistent across computers
 
@@ -52,7 +58,18 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | `Ctrl`+`K`+`V`         | Open Markdown preview to the side           | N/A                                         |
 | `Shift`+`Alt`+`R`      | Reveal in file explorer                     | N/A                                         |
 
-## Installed packages
+### Useful extension shortcuts (Windows)
+
+VSCode shortcuts that are not associated with any extensions
+
+Some of these shortcuts have been modified by me and I use them with settings sync to make them consistent across computers
+
+| Shortcut I Use         | Description                                 | Original Shortcut (where applicable)        | Extension Name          |
+| ---------------------- | ------------------------------------------- | ------------------------------------------- |-------------------------|
+| `Ctrl`+`1`             | Open In Default Browser                     | N/A                                         | Open In Default Browser |
+
+
+## Installed extensions
 
 These extensions are the ones that I use on my installation of VSCode
 
