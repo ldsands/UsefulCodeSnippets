@@ -66,7 +66,7 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 
 | Shortcut I Use         | Description                                 | Original Shortcut (where applicable)        | Extension Name          |
 | ---------------------- | ------------------------------------------- | ------------------------------------------- |-------------------------|
-| `Alt`+`B`              | Open In Default Browser                     | N/A                                         | Open In Default Browser |
+| `Alt`+`B`              | Open In Default Application                 | None originally assigned                    | open-in-external-app    |
 
 
 ## Installed extensions
@@ -118,7 +118,7 @@ code --list-extensions | % { "code --install-extension $_" }
 - netcore-snippets
 - nord-visual-studio-code
 - one-monokai
-- open-in-browser
+- open-in-external-app
 - pandocciter
 - path-intellisense
 - powershell
