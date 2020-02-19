@@ -7,6 +7,20 @@ All of my VSCode information that I use
         - [Useful VSCode shortcuts (Windows)](#useful-vscode-shortcuts-windows)
         - [Useful extension shortcuts (Windows)](#useful-extension-shortcuts-windows)
     - [Installed extensions](#installed-extensions)
+        - [Categories of Extensions](#categories-of-extensions)
+            - [C# and .Net Extensions](#c-and-net-extensions)
+            - [General Extensions](#general-extensions)
+                - [Editing Help Extensions](#editing-help-extensions)
+                - [Navigation Extensions](#navigation-extensions)
+                - [Utility Extensions](#utility-extensions)
+                - [Visual Help Extensions](#visual-help-extensions)
+            - [HTML Extensions](#html-extensions)
+            - [Markdown Extensions](#markdown-extensions)
+            - [Other Language Extensions](#other-language-extensions)
+            - [Python Extensions](#python-extensions)
+            - [R Extensions](#r-extensions)
+            - [Themes](#themes)
+        - [Full list](#full-list)
     - [Resources](#resources)
 
 ## Useful shortcuts (Windows)
@@ -68,16 +82,135 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | ---------------------- | ------------------------------------------- | ------------------------------------------- |-------------------------|
 | `Alt`+`B`              | Open In Default Application                 | None originally assigned                    | open-in-external-app    |
 
-
 ## Installed extensions
 
-These extensions are the ones that I use on my installation of VSCode
+### Categories of Extensions
+
+Below is my exstions that are grouped by purpose with many having a small explanation
+
+#### C# and .Net Extensions
+
+- asp-net-core-switcher
+- aspnet-helper
+- csharp
+- csharpextensions
+- csharpfixformat
+- docomment
+- dotnet
+- dotnet-core-essentials
+- dotnet-test-explorer
+- Ionide-fsharp
+- msbuild-project-tools
+- netcore-extension-pack
+- netcore-snippets
+- supersharp
+- vscode-csharp-snippets
+- vscode-nuget-package-manager
+
+#### General Extensions
+
+##### Editing Help Extensions
+
+- change-case
+- code-spell-checker
+- code-spell-checker-medical-terms
+- insertnumbers
+- lorem-ipsum
+- path-intellisense
+- quicktype
+- vscode-versionlens
+- vscodeintellicode
+
+##### Navigation Extensions
+
+- Bookmarks
+- vscode-jumpy
+- vscode-position
+
+##### Utility Extensions
+
+- code-settings-sync
+- open-in-external-app
+- remote-wsl
+- vscode-data-preview
+- vscode-github
+
+##### Visual Help Extensions
+
+- better-comments
+- bracket-pair-colorizer-2
+- indent-rainbow
+- selectline-statusbar
+- todo-tree
+- vscode-todo-highlight
+- wordcounter
+
+#### HTML Extensions
+
+- auto-rename-tag
+
+#### Markdown Extensions
+
+- markdown-all-in-one
+- markdown-navigation
+- markdown-preview-github-styles
+- markdown-toc
+- pandocciter
+- vscode-markdownlint
+- vscode-pandoc
+
+#### Other Language Extensions
+
+- bash-beautify
+- gitignore
+- language-julia
+- latex-workshop
+- powershell
+- stata-enhanced
+- thrift
+- vscode-autohotkey
+- vscode-julia-formatter
+- vscode-yaml
+
+#### Python Extensions
+
+- anaconda-extension-pack
+- MagicPython
+- python
+- python-extension-pack
+- pythonsnippets
+
+#### R Extensions
+
+- r
+- r-development
+- r-lsp
+
+#### Themes
+
+- github-plus-theme
+- horizon-theme-vscode
+- material-icon-theme
+- material-theme
+- nord-visual-studio-code
+- one-monokai
+- theme-cobalt2
+- vsc-community-material-theme
+- vsc-material-theme
+- vsc-material-theme-icons
+- vscode-theme-onelight
+
+### Full list
+
+These are all of the extensions that I use on my installation of VSCode
 
 to get the list type this into powershell
 
 ```powershell
 code --list-extensions | % { "code --install-extension $_" }
 ```
+
+or you can upload settings using settings sync extension and copy the output from that action (this is what I did)
 
 - anaconda-extension-pack
 - asp-net-core-switcher
@@ -106,6 +239,7 @@ code --list-extensions | % { "code --install-extension $_" }
 - Ionide-fsharp
 - language-julia
 - latex-workshop
+- lorem-ipsum
 - MagicPython
 - markdown-all-in-one
 - markdown-navigation
@@ -154,7 +288,6 @@ code --list-extensions | % { "code --install-extension $_" }
 - vscode-versionlens
 - vscode-yaml
 - vscodeintellicode
-- wordcount
 - wordcounter
 
 ## Resources
