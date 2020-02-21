@@ -10,7 +10,7 @@ A collection of Regex code that I've used on many occasions
     - [Two New Lines in a Row](#two-new-lines-in-a-row)
     - [New line followed by wording (not two blank line breaks)](#new-line-followed-by-wording-not-two-blank-line-breaks)
     - [Remove new lines in-between a split sentence](#remove-new-lines-in-between-a-split-sentence)
-    - [Get the beginning of a article reference](#get-the-beginning-of-a-article-reference)
+    - [Match everything in between to matches](#match-everything-in-between-to-matches)
 
 ## Useful sites
 
@@ -24,17 +24,31 @@ A collection of Regex code that I've used on many occasions
  $
 ```
 
+example text
+
+```text
+in the business of asking questions. It illustrates not only the impor- 
+tance of the golden rule for asking questions—Ask what you want 
+to know, not something else—but also, more important, the ambi- 
+guities of language and the powerful force of context in interpret- 
+ing the meaning of questions and answers. Our colleague had 
+```
+
 ## Hyphen work breaks at the end of a line
 
 ```regex
-[a-z][\-]$[\n][a-z]
+(?<=[a-z])-$\n(?=[a-z])
 ```
 
+example text
+
+```text
 in the business of asking questions. It illustrates not only the impor-
 tance of the golden rule for asking questions—Ask what you want
 to know, not something else—but also, more important, the ambi-
 guities of language and the powerful force of context in interpret-
 ing the meaning of questions and answers. Our colleague had
+```
 
 ## Capital at beginning and end of line
 
@@ -42,6 +56,9 @@ ing the meaning of questions and answers. Our colleague had
 ^[A-Z].+[A-Z]$
 ```
 
+example text
+
+```text
 Hypothesis 4. The fewer companies that a
 movement has yet reached, the stronger the
 association between CEO liberalism and employee activism.
@@ -51,6 +68,7 @@ METHODS
 Research Context
 
 The LGBT activist movement in corporate
+```
 
 ## Two New Lines in a Row
 
@@ -58,14 +76,18 @@ The LGBT activist movement in corporate
 $[\n]$[\n]
 ```
 
+example text
+
+```text
 Chapter One
 
-The Social Context 
+The Social Context
 of Question Asking
 
 The precise wording of questions plays a vital role in determining
 the answers given by respondents. This fact is not appreciated as
-fully as it should be, even in ordinary conversation. For example, 
+fully as it should be, even in ordinary conversation. For example,
+```
 
 ## New line followed by wording (not two blank line breaks)
 
@@ -73,6 +95,9 @@ fully as it should be, even in ordinary conversation. For example,
 [^\n]$[\n][^\n\n]
 ```
 
+example text
+
+```text
 Chapter One
 
 The Social Context 
@@ -83,6 +108,7 @@ the answers given by respondents. This fact is not appreciated as
 fully as it should be, even in ordinary conversation. For example,
 
 for more explicit removal of lines can remove the ones that split sentences using the code below
+```
 
 ## Remove new lines in-between a split sentence
 
@@ -100,16 +126,42 @@ case doesn't matter
 \w$\n^\n^\w
 ```
 
+example text
+
+```text
 questions that clarify their meaning. Sometimes
 
 they only get corrected when expected behavior does not 
+```
 
+<!--
 ## Get the beginning of a article reference
 
-<!--and incomplete but more capable version [^\s]([^\.][a-z+A-Z+,\sa-z+A-Z+.\s]+[\s][0-9]{4}[\.]) -->
+and incomplete but more capable version [^\s]([^\.][a-z+A-Z+,\sa-z+A-Z+.\s]+[\s][0-9]{4}[\.])
 
 ```regex
 [a-zA-Z]+[,\s]+[a-zA-Z]+[\.][[\s][0-9]{4}
 ```
 
+example text
+
+```text
 Alford, Robert and Roger Friedland. 1985. Powers of Theory: Capitalism, the State and Democracy. New York: Cambridge University Press. Arendt, Hannah. 1958. The Origins of Totalitarianism. Cleveland, OH: World Publishing Company. Banfield, Edward. 1961. Political Influence. New York: Free Press. Beckfield, Jason. 2003. “Inequality in the World Polity: The Structure of International Organization.” American Sociological Review 68: 401–424.
+```
+-->
+
+## Match everything in between to matches
+
+I don't totally understand how this works but when you put what you're looking for on either side of the "middle section" it will only select that text
+
+If you want to find something before your targeted text then replace the `study\/manual\/` with the match you want before your target text and replace the `\/` what what you want to find after your target text
+
+```{regex}
+(?<=study\/manual\/).*(?=\/)
+```
+
+example text
+
+```text
+https://www.lds.org/study/manual/general-handbook/title-page?lang=eng"
+```
