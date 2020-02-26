@@ -42,6 +42,7 @@ below are examples of the commands that you need to use to effectively use citep
 - @Thoits_2011 will do author(s) followed by year in parentheses
 - the -@Thoits_2011 will "suppresses" the author(s) and just show the year in parentheses
 - the # References creates a bibliography below that heading (must be at the end of the document)
+    - there was a recent update that allows you to move the bibliography to where ever you want when you use this code `<div id="refs"></div>` this is very useful when you need to add appendices after your bibliography
 
 ```pandoc
 Markdown text here [@citiation_header1; @citation_header2 pp. 240-320]. @Thoits_2011 Thoits -@Thoits_2011 say blah in her article.
@@ -49,6 +50,8 @@ Markdown text here [@citiation_header1; @citation_header2 pp. 240-320]. @Thoits_
 
 # References
 ```
+
+
 
 ## other formatting tricks
 
