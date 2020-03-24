@@ -8,7 +8,7 @@ All of my VSCode information that I use
         - [Useful extension shortcuts (Windows)](#useful-extension-shortcuts-windows)
     - [Installed extensions](#installed-extensions)
         - [Categories of Extensions](#categories-of-extensions)
-            - [C# and .Net Extensions](#c-and-net-extensions)
+            - [C# and dotnet Extensions](#c-and-dotnet-extensions)
             - [General Extensions](#general-extensions)
                 - [Editing Help Extensions](#editing-help-extensions)
                 - [Navigation Extensions](#navigation-extensions)
@@ -71,6 +71,8 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | `Ctrl`+`Shift`+`H`     | Replace in files                            | N/A                                         |
 | `Ctrl`+`K`+`V`         | Open Markdown preview to the side           | N/A                                         |
 | `Shift`+`Alt`+`R`      | Reveal in file explorer                     | N/A                                         |
+| `Ctrl`+`Shift`+`E`     | View Show Explorer                          | N/A                                         |
+|
 
 ### Useful extension shortcuts (Windows)
 
@@ -81,6 +83,12 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | Shortcut I Use         | Description                                 | Original Shortcut (where applicable)        | Extension Name          |
 | ---------------------- | ------------------------------------------- | ------------------------------------------- |-------------------------|
 | `Alt`+`B`              | Open In Default Application                 | None originally assigned                    | open-in-external-app    |
+| `Ctrl`+`Shift`+`T`     | TODOs Focus on TODO view                    | None originally assigned                    | todo-tree               |
+
+<!-- 
+## Snippets
+TODO: make sure you add your user snippets as they are very useful
+ -->
 
 ## Installed extensions
 
@@ -88,7 +96,7 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 
 Below is my exstions that are grouped by purpose with many having a small explanation
 
-#### C# and .Net Extensions
+#### C# and dotnet Extensions
 
 - asp-net-core-switcher
 - aspnet-helper

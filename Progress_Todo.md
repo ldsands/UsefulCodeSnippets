@@ -1,5 +1,7 @@
 # Todo List
 
+This list was last updated 13 February 2020 <!-- TODO: Update this -->
+
 This a place for a todo list of items to add
 
 ## General Todos
@@ -7,6 +9,11 @@ This a place for a todo list of items to add
 - [ ] add latex
 - [ ] add Mplus?
 - [ ] add more AutoHotKey
+- [ ] add docker information
+- [ ] add stats section
+    - [ ] factor analysis
+    - [ ] path analysis
+    - [ ] linear and logistic regression
 
 ## Languages included here
 

@@ -41,8 +41,8 @@ Below are Windows programs that are installed using chocolatey
 - [Julia](../../programming_languages/julia/julia.md)
     - Julia is a programming language that is python but rewritten for speed (there are lots of other benefits but speed is what I use it for) I have been able to get some scripts running thousands of times faster when I rewrote them Julia
     - Julia is still really new though so it is limited in the available packages but again otherwise I wish I could write only in Julia
-- Firacode
-    - my favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming
+- FiraCode NF
+    - my favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
 - R Studio
     - the defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VSCode, occasionally however I jump into R.Studio for the variable explorer and other little things
 - MikTeX
@@ -73,8 +73,12 @@ Below are Windows programs that are not able to be installed via chocolatey that
 
 non chocolatey utility programs
 
+- A small script to allow for use of the new windows terminal from any location by right clicking, [taken from a github repo](https://github.com/shanselman/WindowsTerminalHere)
+- [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
+- [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
+
 - [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html)
-    - for keyboard because apparently the "gaming" keyboard need different software the from the other logitech products
+    - for keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
 - [iCUE](https://www.corsair.com/us/en/icue)
     - for corsair headset
 

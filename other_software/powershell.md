@@ -1,34 +1,125 @@
-# Powershell and Cmd Prompt
+# PowerShell and Cmd Prompt
 
-Note that in almost every situation powershell is vastly superior to cmd prompt. Also, powershell core (or just powershell) is cross platform and can be used and linux mac or windows
+Note that in almost every situation PowerShell is vastly superior to cmd prompt. Also, PowerShell core (or just PowerShell as of version 7) is cross platform and can be used and linux mac or windows
 
-If you're planning on executing powershell scripts you will probably want to run the following (otherwise nothing will run):
+If you're planning on executing PowerShell scripts you will probably want to run the following (otherwise nothing will run):
 
-```powershell
+```PowerShell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
+## Installation
+
+### Using dotnet Sdk
+
+You can install PowerShell using the dotnet sdk (core or standard) on any platform. However you will not be able to get context menu use with this method (for more details [see this section under my dotnet instructions](../programming_languages/dotnet/dotnet_install_overview.md#dotnet-tools))
+
+## PowerShell profiles
+
+- to make functions and other settings persist across terminals, reboots and closing PowerShell run the following code
+
+    ```PowerShell
+    code $PROFILE.CurrentUserAllHosts
+    $ProfileTemplate = @"
+    # useful functions
+    ## allows you to type home and change your directory to your home folder
+    function home {Set-Location -Path `$Home}
+    ## allows you to type admin and start an administrator terminal
+    function admin {Start-Process PowerShell -Verb runAs}
+    ## allows you to pipe output into an array
+    function ToArray
+    {
+        begin
+        {
+            `$output = @();
+        }
+        process
+        {
+            `$output += `$_
+        }
+        end
+        {
+            return ,`$output
+        }
+    }
+
+    ## activate OneCore Voices
+    function GetOneCoreVoices {
+        $sourcePath = 'HKLM:\software\Microsoft\Speech_OneCore\Voices\Tokens' #Where the OneCore voices live
+        $destinationPath = 'HKLM:\SOFTWARE\Microsoft\Speech\Voices\Tokens' #For 64-bit apps
+        $destinationPath2 = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens' #For 32-bit apps
+        cd $destinationPath
+        $listVoices = Get-ChildItem $sourcePath
+        foreach($voice in $listVoices)
+        {
+        Write-Host $voice
+        $source = $voice.PSPath #Get the path of this voices key
+        copy -Path $source -Destination $destinationPath -Recurse
+        copy -Path $source -Destination $destinationPath2 -Recurse
+        }
+    }
+
+    ## get installed voices
+    function GetInstalledVoices {
+        Add-Type -AssemblyName System.speech
+        $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer
+        $speak.GetInstalledVoices() | foreach  { $_.VoiceInfo.Name }
+    }
+
+    ## navigate up easier (one level .. two levels ... three levels ....)
+    function ..  { cd ..\ }
+    function ...  { cd ..\.. }
+    function .... { cd ..\..\.. }
+
+    ## Install the normal modules that I use just type InstallAll
+    function InstallAll {
+
+        `$modules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor")
+        `$ModuleList = Get-Module -List | ToArray -Property Name
+
+        foreach (`$element in `$modules) {
+            if (`$element -notin `$ModuleList) {
+                Write-Host "Installing `$element"
+                Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -ErrorAction SilentlyContinue
+                Install-Module -Name `$element -AllowClobber -Scope AllUsers
+            }
+        }
+    }
+
+    # Import Modules
+    Import-Module posh-git
+    Import-Module oh-my-posh
+    Set-Theme Paradox
+    "@
+    Set-Content -Path $PROFILE.CurrentUserAllHosts -Value $ProfileTemplate
+    ```
+
+<!-- if (!(Test-Path -Path $PROFILE.AllUsersAllHosts)) {
+    New-Item -ItemType File -Path $PROFILE -Force
+} 
+This will create the file if it doesn't exist yet but I don't think it is needed -->
+
 ## Useful commands
 
-### Powershell functions
+### PowerShell functions
 
-Powershell functions can be very powerful and do pretty much anything you can think of a good place to start is to use them for the same type of functionality as doskey (see below for an example)
+PowerShell functions can be very powerful and do pretty much anything you can think of a good place to start is to use them for the same type of functionality as doskey (see below for an example)
 
 - Useful function of making getting to the home directory easier
 
-    ```powershell
+    ```PowerShell
     function home {Set-Location -Path $Home}
     ```
 
-- this will put powershell into admin mode by typing admin
+- this will put PowerShell into admin mode by typing admin
 
-    ```powershell
-    function admin {Start-Process Powershell -Verb runAs}
+    ```PowerShell
+    function admin {Start-Process PowerShell -Verb runAs}
     ```
 
 - this will make it easy to activate python venv environments (you have to have changed the ExecutionPolicy as shown above)
 
-    ```powershell
+    ```PowerShell
     function activate {
         param(
             [Parameter(Mandatory = $true)]
@@ -37,16 +128,52 @@ Powershell functions can be very powerful and do pretty much anything you can th
         cd "$Home\$env_name\Scripts"
         .\Activate.ps1
     }
+    ```
 
-    
+- add whatever output you have from some command into an array for later use (particularly useful for foreach loops)
+
+    ```PowerShell
+    function ToArray
+    {
+        begin
+        {
+            $output = @();
+        }
+        process
+        {
+            $output += $_;
+        }
+        end
+        {
+            return ,$output;
+        }
+    }
+
+    $ModuleList = Get-Module -List | ToArray -Property Name
+    ```
+
+### Useful random commands
+
+- for uninstalling modules just insert the name of hte module next to the $name variable and run it
+
+    ```PowerShell
+    Get-InstalledModule -Name $name -AllVersions | Uninstall-Module
+    ```
+
+- enable WSL 2 in Windows
+
+    ```PowerShell
+    dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+    wsl --set-default-version 2
     ```
 
 ### doskey macros (for cmd)
 
-doskey is a macro system for command prompt. If you enter the correct code they can also be used in powershell (show below)
+doskey is a macro system for command prompt. If you enter the correct code they can also be used in PowerShell (show below)
 
 for example, on unix systems if you press `~` and enter then it brings you to the home directory. To replicate this on Windows enter the following (i use `home` instead of `~`):
 
-    ```cmd
-    doskey home=cd %homepath%
-    ```
+```cmd
+doskey home=cd %homepath%
+```

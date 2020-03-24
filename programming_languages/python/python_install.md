@@ -41,12 +41,18 @@ Below are my instructions for setting up a conda environment for my reddit data 
 
 - below are the commands taken out of the list for easier copying
 
-    ```python
+    ```PowerShell
     conda create -n reddit python=3.7.4 -y
     conda activate reddit
     conda install notebook dask tqdm flake8 altair black -y
     pip install pyarrow zstandard requests
     conda deactivate
+    ```
+
+- if you wish to remove (or uninstall) a conda environment then do the following
+
+    ```PowerShell
+    conda remove --name myenv --all
     ```
 
 ### [venv environments](https://docs.python.org/3/tutorial/venv.html)
@@ -56,12 +62,12 @@ To use venv is both a bit more complicated. launching these environments aren't 
 1. you first have to have python installed (the below example is using python 3.8.1)
     1. python -m venv general_use this creates the new environment
     1. general_use\Scripts\activate.bat or general_use\Scripts\activate.ps1 (if you're using powershell) this "opens" or activates this environment
-    1. pip install flake8 black notebook tqdm ipykernel docx2txt this installs any modules that are listed after the install command
+    1. pip install flake8 black notebook tqdm docx2txt this installs any modules that are listed after the install command
     1. to leave the environment you can just type deactivate
 
     ```python
     python -m venv general_use
     general_use\Scripts\activate.ps1
-    pip install flake8 black notebook tqdm ipykernel docx2txt
+    pip install flake8 black notebook tqdm docx2txt
     deactivate
     ```

@@ -51,8 +51,6 @@ Markdown text here [@citiation_header1; @citation_header2 pp. 240-320]. @Thoits_
 # References
 ```
 
-
-
 ## other formatting tricks
 
 - you can include any raw language (be careful about what you can or want to process)
