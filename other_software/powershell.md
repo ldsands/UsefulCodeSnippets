@@ -18,81 +18,111 @@ You can install PowerShell using the dotnet sdk (core or standard) on any platfo
 
 - to make functions and other settings persist across terminals, reboots and closing PowerShell run the following code
 
-    ```PowerShell
-    code $PROFILE.CurrentUserAllHosts
-    $ProfileTemplate = @"
-    # useful functions
-    ## allows you to type home and change your directory to your home folder
-    function home {Set-Location -Path `$Home}
-    ## allows you to type admin and start an administrator terminal
-    function admin {Start-Process PowerShell -Verb runAs}
-    ## allows you to pipe output into an array
-    function ToArray
+```PowerShell
+code $PROFILE.CurrentUserAllHosts
+$ProfileTemplate = @"
+# useful functions
+## allows you to type home and change your directory to your home folder
+function home {Set-Location -Path `$Home}
+## allows you to type admin and start an administrator terminal
+function admin {Start-Process PowerShell -Verb runAs}
+## allows you to pipe output into an array
+function ToArray
+{
+    begin
     {
-        begin
-        {
-            `$output = @();
-        }
-        process
-        {
-            `$output += `$_
-        }
-        end
-        {
-            return ,`$output
+        `$output = @();
+    }
+    process
+    {
+        `$output += `$_
+    }
+    end
+    {
+        return ,`$output
+    }
+}
+
+## check admin status
+function checkAdmin {
+    if (!(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")))
+    {
+        Write-Host "You do not have Administrator rights to run this script"
+    }
+    else {
+        Write-Warning "You have Administrator rights enabled"
+    }
+}
+
+## add autocomplete for dotnet commands
+# PowerShell parameter completion shim for the dotnet CLI 
+# Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+    # param(`$commandName, `$wordToComplete, `$cursorPosition)
+        # dotnet complete --position `$cursorPosition "`$wordToComplete" | ForEach-Object {
+        #    [System.Management.Automation.CompletionResult]::new(`$_, `$_, 'ParameterValue', `$_)
+        # }
+# }
+
+## activate OneCore Voices
+function GetOneCoreVoices {
+    `$desiredLanguages = @("en-US", "en-GB", "en-AU", "en-CA")
+    `$languageList = Get-WinUserLanguageList
+    `$languageListTag = `$languageList.LanguageTag | ToArray
+    foreach (`$desiredLanguage in `$desiredLanguages) {
+        if (`$desiredLanguage -notin `$languageListTag) {
+            `$languageList.Add(`$desiredLanguage)
         }
     }
+    1
+    Set-WinUserLanguageList `$LanguageList
+    `$sourcePath = 'HKLM:\software\Microsoft\Speech_OneCore\Voices\Tokens' #Where the OneCore voices live
+    `$destinationPath = 'HKLM:\SOFTWARE\Microsoft\Speech\Voices\Tokens' #For 64-bit apps
+    `$destinationPath2 = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens' #For 32-bit apps
+    cd `$destinationPath
+    `$listVoices = Get-ChildItem `$sourcePath
+    foreach(`$voice in `$listVoices)
+    {
+    Write-Host "Making `$voice available to third party applications"
+    `$source = `$voice.PSPath #Get the path of this voices key
+    copy -Path `$source -Destination `$destinationPath -Recurse
+    copy -Path `$source -Destination `$destinationPath2 -Recurse
+    }
+    Write-Host "The following languages are now installed:"
+    GetInstalledVoices
+}
 
-    ## activate OneCore Voices
-    function GetOneCoreVoices {
-        $sourcePath = 'HKLM:\software\Microsoft\Speech_OneCore\Voices\Tokens' #Where the OneCore voices live
-        $destinationPath = 'HKLM:\SOFTWARE\Microsoft\Speech\Voices\Tokens' #For 64-bit apps
-        $destinationPath2 = 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\SPEECH\Voices\Tokens' #For 32-bit apps
-        cd $destinationPath
-        $listVoices = Get-ChildItem $sourcePath
-        foreach($voice in $listVoices)
-        {
-        Write-Host $voice
-        $source = $voice.PSPath #Get the path of this voices key
-        copy -Path $source -Destination $destinationPath -Recurse
-        copy -Path $source -Destination $destinationPath2 -Recurse
+## get installed voices
+function GetInstalledVoices {
+    Add-Type -AssemblyName System.speech
+    `$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer
+    `$speak.GetInstalledVoices() | foreach  { `$_.VoiceInfo.Name }
+}
+
+## navigate up easier (one level .. two levels ... three levels ....)
+function cd..  { cd ..\ }
+function cd...  { cd ..\.. }
+function cd.... { cd ..\..\.. }
+
+## Install the normal modules that I use just type InstallAll
+function InstallAll {
+    `$modules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor")
+    `$ModuleList = Get-Module -List | ToArray -Property Name
+    foreach (`$element in `$modules) {
+        if (`$element -notin `$ModuleList) {
+            Write-Host "Installing `$element"
+            Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -ErrorAction SilentlyContinue
+            Install-Module -Name `$element -AllowClobber -Scope AllUsers
         }
     }
+}
 
-    ## get installed voices
-    function GetInstalledVoices {
-        Add-Type -AssemblyName System.speech
-        $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer
-        $speak.GetInstalledVoices() | foreach  { $_.VoiceInfo.Name }
-    }
-
-    ## navigate up easier (one level .. two levels ... three levels ....)
-    function ..  { cd ..\ }
-    function ...  { cd ..\.. }
-    function .... { cd ..\..\.. }
-
-    ## Install the normal modules that I use just type InstallAll
-    function InstallAll {
-
-        `$modules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor")
-        `$ModuleList = Get-Module -List | ToArray -Property Name
-
-        foreach (`$element in `$modules) {
-            if (`$element -notin `$ModuleList) {
-                Write-Host "Installing `$element"
-                Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -ErrorAction SilentlyContinue
-                Install-Module -Name `$element -AllowClobber -Scope AllUsers
-            }
-        }
-    }
-
-    # Import Modules
-    Import-Module posh-git
-    Import-Module oh-my-posh
-    Set-Theme Paradox
-    "@
-    Set-Content -Path $PROFILE.CurrentUserAllHosts -Value $ProfileTemplate
-    ```
+# Import Modules
+Import-Module posh-git
+Import-Module oh-my-posh
+Set-Theme Paradox
+"@
+Set-Content -Path $PROFILE.CurrentUserAllHosts -Value $ProfileTemplate
+```
 
 <!-- if (!(Test-Path -Path $PROFILE.AllUsersAllHosts)) {
     New-Item -ItemType File -Path $PROFILE -Force
