@@ -21,6 +21,11 @@ You can install PowerShell using the dotnet sdk (core or standard) on any platfo
 ```PowerShell
 code $PROFILE.CurrentUserAllHosts
 $ProfileTemplate = @"
+function listProfileFunctions {
+    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules")
+    Write-Host `$profileFunctions
+}
+
 # useful functions
 ## allows you to type home and change your directory to your home folder
 function home {Set-Location -Path `$Home}
@@ -104,7 +109,7 @@ function cd...  { cd ..\.. }
 function cd.... { cd ..\..\.. }
 
 ## Install the normal modules that I use just type InstallAll
-function InstallAll {
+function InstallAllModules {
     `$modules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor")
     `$ModuleList = Get-Module -List | ToArray -Property Name
     foreach (`$element in `$modules) {
