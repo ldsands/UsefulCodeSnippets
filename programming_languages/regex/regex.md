@@ -92,7 +92,7 @@ fully as it should be, even in ordinary conversation. For example,
 ## New line followed by wording (not two blank line breaks)
 
 ```regex
-[^\n]$[\n][^\n\n]
+(?<=[a-zA-z0-9,])\n(?=[a-zA-z0-9,])
 ```
 
 example text
