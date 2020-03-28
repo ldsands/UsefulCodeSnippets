@@ -19,7 +19,7 @@ again always run chocolatey in powershell with administrator privileges otherwis
 ### Install on all computers
 
 ```PowerShell
-choco install googlechrome vscode 7zip.install git gh github-desktop pandoc powershell-core --install-arguments='"ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1"' r.project --params '"/AddToPath"' microsoft-windows-terminal oh-my-posh poshgit nodejs sumatrapdf dotnetcore-sdk paket docker-desktop julia firacodenf powertoys r.studio miktex zotero firefox discord logitech-options chocolateygui teamviewer hwmonitor vlc -y
+choco install googlechrome vscode 7zip.install git gh github-desktop pandoc powershell-core --install-arguments='"ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1"' r.project --params '"/AddToPath"' microsoft-windows-terminal oh-my-posh poshgit nodejs sumatrapdf dotnetcore-sdk paket docker-desktop julia firacodenf powertoys typescript r.studio miktex zotero firefox discord logitech-options chocolateygui teamviewer hwmonitor vlc -y
 ```
 
 ### Large installs
