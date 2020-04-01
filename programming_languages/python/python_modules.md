@@ -11,3 +11,14 @@
     ```python
     text = docx2txt.process(file)
     ```
+
+
+## PySpark
+
+This is a big data analysis packages that requires a bit of setup
+
+- you need to install the Java JDK
+
+```PowerShell
+choco install jdk8
+```

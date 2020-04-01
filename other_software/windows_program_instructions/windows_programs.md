@@ -2,6 +2,7 @@
 
 - [Windows programs](#windows-programs)
     - [Win 32](#win-32)
+        - [Nativefier](#nativefier)
         - [Utilities](#utilities)
         - [Gaming Stuff](#gaming-stuff)
         - [Programs that are rarely used or installed](#programs-that-are-rarely-used-or-installed)
@@ -68,6 +69,32 @@ Below are Windows programs that are not able to be installed via chocolatey that
 
 - [ProWritingAid](https://prowritingaid.com/)
     - this is a program and chrome plugin (and others) that is a very comprehensive in its ability to check far more grammar issues than most other alternatives (not free serial number in Enpass)
+
+### Nativefier
+
+Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
+
+The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
+
+```nodejs
+npm install nativefier -g
+```
+
+Here are a list of the nativefier apps that I install with their code following.
+
+- Outlook.com
+    - I've liked the outlook web app a long time so it is a must
+- Uiowa Outlook.com
+    - see above
+
+- some notable options
+    - `--hide-window-frame` disables window frame and controls.
+    - `--single-instance` you can only have one window of this open at a time
+
+```PowerShell
+nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-urls ".*?" --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/microsoft-outlook-2019-240.ico --maximize
+nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*?" --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
+```
 
 ### Utilities
 
