@@ -124,6 +124,10 @@ function InstallAllModules() {
 Import-Module posh-git
 Import-Module oh-my-posh
 Set-Theme Paradox
+
+# startup messages
+checkAdmin
+Write-Host "to get a list of custom functions type listProfileFunctions"
 "@
 Set-Content -Path $PROFILE.CurrentUserAllHosts -Value $ProfileTemplate
 ```
