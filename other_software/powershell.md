@@ -109,11 +109,10 @@ function cd...  { cd ..\.. }
 function cd.... { cd ..\..\.. }
 
 ## Install the normal modules that I use just type InstallAll
-function InstallAllModules {
-    `$modules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor")
-    `$ModuleList = Get-Module -List | ToArray -Property Name
-    foreach (`$element in `$modules) {
-        if (`$element -notin `$ModuleList) {
+function InstallAllModules() {
+    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor")
+    foreach (`$element in `$requiredModules) {
+        if (-not (Get-Module -ListAvailable -Name `$element)) {
             Write-Host "Installing `$element"
             Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -ErrorAction SilentlyContinue
             Install-Module -Name `$element -AllowClobber -Scope AllUsers
