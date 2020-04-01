@@ -187,6 +187,30 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     $ModuleList = Get-Module -List | ToArray -Property Name
     ```
 
+- check to see if a program is installed on your PC
+
+    ```PowerShell
+    $installed = (gp HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*).DisplayName
+    $installed
+    ```
+
+    - to extend on this you can do the following to check if a particular application is installed
+
+        ```PowerShell
+        function check_if_installed($p1) {
+            $software = $p1;
+            $installed = ((gp HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*).DisplayName -Match $p1).Length -gt 0
+            If (-Not $installed) {
+                Write-Host "'$software'  is not installed.";
+            }
+            else {
+                Write-Host "'$software' is installed."
+            }
+            return $installed
+        }
+        check_if_installed -p1 "Visual Studio Code"
+        ```
+
 ### Useful random commands
 
 - for uninstalling modules just insert the name of hte module next to the $name variable and run it
