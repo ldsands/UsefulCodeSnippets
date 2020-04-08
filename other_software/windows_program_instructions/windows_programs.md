@@ -208,4 +208,4 @@ I rarely use these but they're very useful
 1. Dictate
     1. I haven't used this much but the dictation addon is pretty good and its free
 1. Onetastic
-    1. useful for using OneNote utilties I haven't used it in a long time but when I used OneNote a lot it was very useful
+    1. useful for using OneNote utilities I haven't used it in a long time but when I used OneNote a lot it was very useful
