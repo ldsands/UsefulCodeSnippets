@@ -90,10 +90,11 @@ Here are a list of the nativefier apps that I install with their code following.
 - some notable options
     - `--hide-window-frame` disables window frame and controls.
     - `--single-instance` you can only have one window of this open at a time
+    - `--internal-urls ".*?"` if you want any domain to be able to work in the nativefier window
 
 ```PowerShell
-nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-urls ".*?" --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/microsoft-outlook-2019-240.ico --maximize
-nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*?" --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
+nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/microsoft-outlook-2019-240.ico --maximize
+nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
 ```
 
 ### Utilities
