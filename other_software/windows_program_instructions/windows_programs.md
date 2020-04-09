@@ -9,7 +9,7 @@
     - [UWP or Windows Store apps](#uwp-or-windows-store-apps)
         - [For all computers](#for-all-computers)
     - [Other Windows features](#other-windows-features)
-        - [Command-line utilties](#command-line-utilties)
+        - [Command-line utilities](#command-line-utilities)
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
     - [MS Office plugins](#ms-office-plugins)
 
@@ -49,7 +49,7 @@ Below are Windows programs that are installed using chocolatey
 - MikTeX
     - the defacto LaTeX installation for Windows I don't use LaTeX directly much anymore but pandoc uses it so I usually install it
 - [Zotero](zotero.md)
-    - my prefered reference manager that is free and open source very good alternative to EndNote and other alternatives (in my opinion it is better in pretty much every way)
+    - my preferred reference manager that is free and open source very good alternative to EndNote and other alternatives (in my opinion it is better in pretty much every way)
 - Firefox
     - sometimes chrome cannot load something so I usually use Firefox as my back up
 - Discord
@@ -129,7 +129,6 @@ Gaming launcher programs that contain games I've owned that are on chocolatey (I
 - [Twitch](https://www.twitch.tv/downloads)
 - [Epicgameslauncher](https://www.epicgames.com/store/en-US/)
 
-
 Gaming launcher programs that contain games I've owned that aren't on chocolatey (I don't use these much anymore)
 
 - [Battle.net](https://www.blizzard.com/en-us/apps/battle.net/desktop)
@@ -143,7 +142,7 @@ These are not available on chocolatey
 - [Audials](https://audials.com/en)
     - desktop audio recorder
     - licence is in Enpass
-- [MusicBrainz Picard](https://picard.musicbrainz.org/) 
+- [MusicBrainz Picard](https://picard.musicbrainz.org/)
     - mp3 information tagger
     - free
 - [Stata](https://www.stata.com/)
@@ -177,7 +176,7 @@ Other instructions regarding Windows features to use when needed
 
 TODO: need to look through my various notes to add here
 
-### Command-line utilties
+### Command-line utilities
 
 1. nodejs
     1. this is I think the main way that most people to get javascript onto Windows
@@ -200,14 +199,14 @@ TODO: need to look through my various notes to add here
 
 1. Install anaconda
     1. You need to download from the anaconda repo located here check for the latest version that says linux-x86_64.sh at the end then download it using the url with wget in front of it
-    1. Here is the url to find the latest https://repo.continuum.io/archive/
+    1. [Here is the url](https://repo.continuum.io/archive/) to find the latest
 
     ```cmd
     wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
     ```
 
     1. Put in the command bash followed by the name of the file that you downloaded to install and follow the prompts
-    
+
     ```cmd
     bash Anaconda3–2019.03-Linux-x86_64.sh
     ```
