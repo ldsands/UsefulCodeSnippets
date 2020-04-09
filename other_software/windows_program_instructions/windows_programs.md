@@ -80,12 +80,18 @@ The options are all explained [here](https://github.com/jiahaog/nativefier/blob/
 npm install nativefier -g
 ```
 
+Some Nativefier Limitations
+
+- you cannot use `ctrl` + `f` to use find in page
+
 Here are a list of the nativefier apps that I install with their code following.
 
 - Outlook.com
     - I've liked the outlook web app a long time so it is a must
 - Uiowa Outlook.com
     - see above
+- ICON
+    - for using ICON for school very useful
 
 - some notable options
     - `--hide-window-frame` disables window frame and controls.
