@@ -92,6 +92,8 @@ Here are a list of the nativefier apps that I install with their code following.
     - see above
 - ICON
     - for using ICON for school very useful
+- ProWritingAid
+    - I use this for my grammar checking. I paid for the premium lifetime package a while ago and I've been pretty happy with it.
 
 - some notable options
     - `--hide-window-frame` disables window frame and controls.
@@ -102,6 +104,7 @@ Here are a list of the nativefier apps that I install with their code following.
 nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/microsoft-outlook-2019-240.ico --maximize
 nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
 nativefier --name "ICON" "https://uiowa.instructure.com" --internal-urls ".*(uiowa|instructure)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/icon_uiowa_edu.ico --maximize
+nativefier --name "ProWritingAid" "https://prowritingaid.com/en/Analysis/Documents/Go" --internal-urls ".*prowritingaid.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\ProWritingAid.ico --maximize
 ```
 
 ### Utilities
