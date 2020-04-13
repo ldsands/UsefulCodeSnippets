@@ -37,6 +37,12 @@ dta = pd.DataFrame(
         dta = dta[dta["column_name"].isin(target_list)]
         ```
 
+- for testing you usually do not want to run whatever you're doing on all of your data (unless you don't have too much data). In my case I often have millions of rows to process at a time. To make sure my code is working it is very useful to cut down on the number of rows you process just to see if everything is working right. Below is how I accomplish that. This code takes the first to the 10th row and all of the columns from the dataframe called dta. It then writes over the old dta dataframe with the smaller one.
+
+    ```python
+    dta = dta.iloc[0:10,]
+    ```
+
 <!--
 ## Speed optimizations
 
