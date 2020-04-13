@@ -94,6 +94,8 @@ Here are a list of the nativefier apps that I install with their code following.
     - for using ICON for school very useful
 - ProWritingAid
     - I use this for my grammar checking. I paid for the premium lifetime package a while ago and I've been pretty happy with it.
+- Todoist
+    - My preferred to do list manager (for now anyway)
 
 - some notable options
     - `--hide-window-frame` disables window frame and controls.
@@ -105,6 +107,7 @@ nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-url
 nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
 nativefier --name "ICON" "https://uiowa.instructure.com" --internal-urls ".*(uiowa|instructure)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/icon_uiowa_edu.ico --maximize
 nativefier --name "ProWritingAid" "https://prowritingaid.com/en/Analysis/Documents/Go" --internal-urls ".*prowritingaid.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\ProWritingAid.ico --maximize
+nativefier --name "Todoist" "https://todoist.com/app#agenda%2F%40MyDay" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize
 ```
 
 ### Utilities
