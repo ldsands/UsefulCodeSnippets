@@ -117,11 +117,11 @@ non chocolatey utility programs
 - A small script to allow for use of the new windows terminal from any location by right clicking, [taken from a github repo](https://github.com/shanselman/WindowsTerminalHere)
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
-
 - [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html)
     - for keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
 - [iCUE](https://www.corsair.com/us/en/icue)
     - for corsair headset
+- [Kite](https://kite.com/) this is a utility to help with python autocompletion
 
 ### Gaming Stuff
 
