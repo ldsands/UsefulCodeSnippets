@@ -1,6 +1,8 @@
-# Pandas Commands
+# Useful Python Commands and Code Chunks
 
-## Getting started with pandas
+## Pandas Commands
+
+### Getting started with pandas
 
 First you have to import pandas. The convention for this is as follows:
 
@@ -19,11 +21,11 @@ dta = pd.DataFrame(
 )
 ```
 
-## Importing data
+### Importing data
 
 
 
-## Common pandas commands
+### Common pandas commands
 
 - When you need to take a data frame and extract all of the observations (rows) that match some value. Where dta is the data frame column_name is the name of the column you're filtering and x is the value you want the observations from the target column to match. Doing this for one column you can do the following:
 
@@ -57,3 +59,22 @@ dta = dta.set_index("link_id", drop=False)
 dta = dta[dta.index.isin(linkid_list)]
 ```
 -->
+
+## Useful Functions
+
+This is a collection of functions that I find to be useful in various scripts.
+
+- printing the current time - sometimes you need to know about what time something happened this can do that by printing the current time
+    - note to make this work you must include the following at the top of your document `from datetime import datetime`
+
+    ```python
+    from datetime import datetime
+
+    def print_current_time():
+        """
+        Prints the current date and time of day
+        """
+        now = datetime.now()
+        now = now.strftime("%m/%d/%Y, %H:%M:%S")
+        print("current time:", now)
+    ```
