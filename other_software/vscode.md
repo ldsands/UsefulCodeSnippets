@@ -21,6 +21,7 @@ All of my VSCode information that I use
             - [R Extensions](#r-extensions)
             - [Themes](#themes)
         - [Full list](#full-list)
+    - [Settings (with their explanations)](#settings-with-their-explanations)
     - [Resources](#resources)
 
 ## Useful shortcuts (Windows)
@@ -297,6 +298,21 @@ or you can upload settings using settings sync extension and copy the output fro
 - vscode-yaml
 - vscodeintellicode
 - wordcounter
+
+## Settings (with their explanations)
+
+Some of the settings I use in VS code with short explanations
+
+- these are the settings that i use when I use the minimap (which isn't very often to be honest). The minimap I've found to be very useful in very long documents but I don't use it terribly often in other documents or when I'm programming. There is a toggle minimap command that you can add a keyboard shortcut to if you want to turn it on and off often.
+
+    ```JSON
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.size": "fit",
+    "workbench.colorCustomizations": {
+        "minimap.background": "#ffffff33"
+    }
+    ```
 
 ## Resources
 
