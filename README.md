@@ -55,10 +55,10 @@ This is github flavored markdown but most of it transfers seamlessly to other fl
 Python is a general purpose scripting language that because of its popularity has many other frameworks with Python wrapper code to allow for use in Python.
 
 - [Python installation notes and links](programming_languages/python/python_install.md)
+- [Python useful commands](programming_languages/python/python_commands.md)
 - [Python useful modules](programming_languages/python/python_modules.md)
 - [Pandas useful commands](programming_languages/python/pandas_commands.md)
 
-<!-- - [Python file management](programming_languages/python/python_file_management.md) -->
 
 ### [R](https://www.r-project.org/)
 

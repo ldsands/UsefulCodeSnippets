@@ -20,10 +20,12 @@ dta = pd.DataFrame(
     columns=['name', 'score']
 )
 ```
-
+<!-- 
 ### Importing data
 
 
+- TODO:
+ -->
 
 ### Common pandas commands and functions
 
