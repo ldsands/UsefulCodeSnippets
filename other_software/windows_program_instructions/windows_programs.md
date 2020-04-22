@@ -184,75 +184,60 @@ TODO: need to look through my various notes to add here
 
 ### Command-line utilities
 
-1. nodejs
-    1. this is I think the main way that most people to get javascript onto Windows
-    1. I use this for programmatically looking at office documents I use this pretty rarely
-    1. choco install nodejs
-    1. npm install xml-formatter jszip
+- nodejs
+    - this is I think the main way that most people to get javascript onto Windows
+    - I use this for programmatically looking at office documents I use this pretty rarely
+    - choco install nodejs
+    - npm install xml-formatter jszip
 
 ### WSL (Windows subsystem for Linux)
 
-1. Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-1. You'll need to restart after this
-1. Then download the version of linux from the Windows store you want (probably Ubuntu)
-1. You'll be prompted to create a username and password
-1. Type in these two commands to update stuff
+- Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+- You'll need to restart after this
+- Then download the version of linux from the Windows store you want (probably Ubuntu)
+- You'll be prompted to create a username and password
+- Type in these two commands to update stuff
 
     ```cmd
     Sudo apt update
     Sudo apt upgrade
     ```
 
-1. I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are below:
+- I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../powershell.md#Using-PowerShell-on-Linux)
 
-    ```sh
-    # Download the Microsoft repository GPG keys
-    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
-    # Register the Microsoft repository GPG keys
-    sudo dpkg -i packages-microsoft-prod.deb
-    # Update the list of products
-    sudo apt-get update
-    # Enable the "universe" repositories
-    sudo add-apt-repository universe
-    # Install PowerShell
-    sudo apt-get install -y powershell
-    # Start PowerShell
-    pwsh
-    ```
-
-1. Install anaconda
-    1. You need to download from the anaconda repo located here check for the latest version that says linux-x86_64.sh at the end then download it using the url with wget in front of it
-    1. [Here is the url](https://repo.continuum.io/archive/) to find the latest
+- Install anaconda
+    - You need to download from the anaconda repo located here check for the latest version that says linux-x86_64.sh at the end then download it using the url with wget in front of it
+    - [Here is the url](https://repo.continuum.io/archive/) to find the latest
 
     ```cmd
     wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
     ```
 
-    1. Put in the command bash followed by the name of the file that you downloaded to install and follow the prompts
+    - Put in the command bash followed by the name of the file that you downloaded to install and follow the prompts
 
     ```cmd
     bash Anaconda3–2019.03-Linux-x86_64.sh
     ```
 
-    1. to uninstall if you want
+    - to uninstall if you want
 
     ```cmd
     rm Anaconda3-2019.03-Linux-x86_64.sh
     ```
 
-    1. Start up anaconda
+    - Start up anaconda
 
     ```cmd
     source /home/ldsands/anaconda3/bin/activate
     ```
 
-    1. Update conda packages
+    - Update conda packages
 
     ```cmd
     conda update --all
     ```
 
-1. To start jupyter
+- To start jupyter
 
     ```cmd
     jupyter notebook --no-browser this will provide a link that you can put into your browser
@@ -262,7 +247,7 @@ TODO: need to look through my various notes to add here
 
 I rarely use these but they're very useful
 
-1. Dictate
-    1. I haven't used this much but the dictation addon is pretty good and its free
-1. Onetastic
-    1. useful for using OneNote utilities I haven't used it in a long time but when I used OneNote a lot it was very useful
+- Dictate
+    - I haven't used this much but the dictation addon is pretty good and its free
+- Onetastic
+    - useful for using OneNote utilities I haven't used it in a long time but when I used OneNote a lot it was very useful

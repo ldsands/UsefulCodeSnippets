@@ -17,6 +17,7 @@ You can install PowerShell using the dotnet sdk (core or standard) on any platfo
 ## PowerShell profiles
 
 - to make functions and other settings persist across terminals, reboots and closing PowerShell run the following code
+    - for linux just change the $PROFILE.CurrentUserAllHosts to $profile
 
 ```PowerShell
 code $PROFILE.CurrentUserAllHosts
@@ -48,14 +49,22 @@ function ToArray
     }
 }
 
-## check admin status
 function checkAdmin {
-    if (!(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")))
-    {
-        Write-Host "You do not have Administrator rights to run this script"
+    if (`$IsWindows) {
+        if (!(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))) {
+            Write-Host "You do not have Administrator rights to run this script"
+        }
+        else {
+            Write-Warning "You have Administrator rights enabled"
+        }
     }
-    else {
-        Write-Warning "You have Administrator rights enabled"
+    elseif (`$IsLinux) {
+        if ((id -u) -eq 0) {
+            Write-Warning "You have Administrator rights enabled"
+        }
+        else {
+            Write-Host "You do not have Administrator rights to run this script"
+        }
     }
 }
 
@@ -120,10 +129,12 @@ function InstallAllModules() {
     }
 }
 
-# Import Modules
-Import-Module posh-git
-Import-Module oh-my-posh
-Set-Theme Paradox
+# Import Modules (on Windows)
+if($IsWindows) {
+    Import-Module posh-git
+    Import-Module oh-my-posh
+    Set-Theme Paradox
+}
 
 # startup messages
 checkAdmin
@@ -230,7 +241,59 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     wsl --set-default-version 2
     ```
 
-### doskey macros (for cmd)
+## Using PowerShell on Windows
+
+- There are some OS specific things you have to worry about these commands help with that:
+
+    ```PowerShell
+    $IsLinux
+    $IsMacOS
+    $IsWindows
+    ```
+
+## Using PowerShell on MacOS
+
+- I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto MacOS find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos). Below that are the instructions for installing PowerShell on MacOS:
+
+    ```sh
+    # Install PowerShell
+    brew cask install powershell
+    # Start PowerShell
+    pwsh
+    ```
+
+- a useful command for making sure that your MacOS commands only work on MacOS
+
+    ```PowerShell
+    $IsMacOS
+    ```
+
+## Using PowerShell on Linux
+
+- I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are below:
+
+    ```sh
+    # Download the Microsoft repository GPG keys
+    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+    # Register the Microsoft repository GPG keys
+    sudo dpkg -i packages-microsoft-prod.deb
+    # Update the list of products
+    sudo apt-get update
+    # Enable the "universe" repositories
+    sudo add-apt-repository universe
+    # Install PowerShell
+    sudo apt-get install -y powershell
+    # Start PowerShell
+    pwsh
+    ```
+
+- a useful command for making sure that your MacOS commands only work on MacOS
+
+    ```PowerShell
+    $IsLinux
+    ```
+
+### doskey macros (for cmd on Windows)
 
 doskey is a macro system for command prompt. If you enter the correct code they can also be used in PowerShell (show below)
 
