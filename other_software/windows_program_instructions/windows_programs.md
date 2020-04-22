@@ -203,6 +203,23 @@ TODO: need to look through my various notes to add here
     Sudo apt upgrade
     ```
 
+1. I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are below:
+
+    ```sh
+    # Download the Microsoft repository GPG keys
+    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+    # Register the Microsoft repository GPG keys
+    sudo dpkg -i packages-microsoft-prod.deb
+    # Update the list of products
+    sudo apt-get update
+    # Enable the "universe" repositories
+    sudo add-apt-repository universe
+    # Install PowerShell
+    sudo apt-get install -y powershell
+    # Start PowerShell
+    pwsh
+    ```
+
 1. Install anaconda
     1. You need to download from the anaconda repo located here check for the latest version that says linux-x86_64.sh at the end then download it using the url with wget in front of it
     1. [Here is the url](https://repo.continuum.io/archive/) to find the latest
