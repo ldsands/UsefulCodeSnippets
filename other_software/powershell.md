@@ -23,7 +23,7 @@ You can install PowerShell using the dotnet sdk (core or standard) on any platfo
 code $PROFILE.CurrentUserAllHosts
 $ProfileTemplate = @"
 function listProfileFunctions {
-    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules")
+    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "RestartWSL")
     Write-Host `$profileFunctions
 }
 
@@ -130,10 +130,16 @@ function InstallAllModules() {
 }
 
 # Import Modules (on Windows)
-if($IsWindows) {
+if(`$IsWindows) {
     Import-Module posh-git
     Import-Module oh-my-posh
     Set-Theme Paradox
+}
+
+function RestartWSL() {
+    if (`$IsWindows) {
+        Get-Service LxssManager | Restart-Service
+    }
 }
 
 # startup messages
