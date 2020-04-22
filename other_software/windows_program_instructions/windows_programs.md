@@ -205,43 +205,7 @@ TODO: need to look through my various notes to add here
 
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../powershell.md#Using-PowerShell-on-Linux)
 
-- Install anaconda
-    - You need to download from the anaconda repo located here check for the latest version that says linux-x86_64.sh at the end then download it using the url with wget in front of it
-    - [Here is the url](https://repo.continuum.io/archive/) to find the latest
-
-    ```cmd
-    wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
-    ```
-
-    - Put in the command bash followed by the name of the file that you downloaded to install and follow the prompts
-
-    ```cmd
-    bash Anaconda3–2019.03-Linux-x86_64.sh
-    ```
-
-    - to uninstall if you want
-
-    ```cmd
-    rm Anaconda3-2019.03-Linux-x86_64.sh
-    ```
-
-    - Start up anaconda
-
-    ```cmd
-    source /home/ldsands/anaconda3/bin/activate
-    ```
-
-    - Update conda packages
-
-    ```cmd
-    conda update --all
-    ```
-
-- To start jupyter
-
-    ```cmd
-    jupyter notebook --no-browser this will provide a link that you can put into your browser
-    ```
+- Install Anaconda on WSL [see this section](../../programming_languages/python/python_install.md#Install-anaconda-on-WSL)
 
 ## MS Office plugins
 
