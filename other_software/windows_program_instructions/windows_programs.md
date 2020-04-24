@@ -92,6 +92,10 @@ Here are a list of the nativefier apps that I install with their code following.
     - see above
 - ICON
     - for using ICON for school very useful
+- ProWritingAid
+    - I use this for my grammar checking. I paid for the premium lifetime package a while ago and I've been pretty happy with it.
+- Todoist
+    - My preferred to do list manager (for now anyway)
 
 - some notable options
     - `--hide-window-frame` disables window frame and controls.
@@ -101,7 +105,9 @@ Here are a list of the nativefier apps that I install with their code following.
 ```PowerShell
 nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/microsoft-outlook-2019-240.ico --maximize
 nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
-nativefier --name "ICON" "https://uiowa.instructure.com" --internal-urls ".*(uiowa|instructure)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/icon_uiowa_edu.ico --maximize
+nativefier --name "ICON" "https://uiowa.instructure.com" --internal-urls ".*(uiowa|instructure)\.(com|edu).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/icon_uiowa_edu.ico --maximize
+nativefier --name "ProWritingAid" "https://prowritingaid.com/en/Analysis/Documents/Go" --internal-urls ".*prowritingaid.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\ProWritingAid.ico --maximize
+nativefier --name "Todoist" "https://todoist.com/app#agenda%2F%40MyDay" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize
 ```
 
 ### Utilities
@@ -111,11 +117,11 @@ non chocolatey utility programs
 - A small script to allow for use of the new windows terminal from any location by right clicking, [taken from a github repo](https://github.com/shanselman/WindowsTerminalHere)
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
-
 - [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html)
     - for keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
 - [iCUE](https://www.corsair.com/us/en/icue)
     - for corsair headset
+- [Kite](https://kite.com/) this is a utility to help with python autocompletion
 
 ### Gaming Stuff
 
@@ -178,68 +184,34 @@ TODO: need to look through my various notes to add here
 
 ### Command-line utilities
 
-1. nodejs
-    1. this is I think the main way that most people to get javascript onto Windows
-    1. I use this for programmatically looking at office documents I use this pretty rarely
-    1. choco install nodejs
-    1. npm install xml-formatter jszip
+- nodejs
+    - this is I think the main way that most people to get javascript onto Windows
+    - I use this for programmatically looking at office documents I use this pretty rarely
+    - choco install nodejs
+    - npm install xml-formatter jszip
 
 ### WSL (Windows subsystem for Linux)
 
-1. Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-1. You'll need to restart after this
-1. Then download the version of linux from the Windows store you want (probably Ubuntu)
-1. You'll be prompted to create a username and password
-1. Type in these two commands to update stuff
+- Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+- You'll need to restart after this
+- Then download the version of linux from the Windows store you want (probably Ubuntu)
+- You'll be prompted to create a username and password
+- Type in these two commands to update stuff
 
     ```cmd
     Sudo apt update
     Sudo apt upgrade
     ```
 
-1. Install anaconda
-    1. You need to download from the anaconda repo located here check for the latest version that says linux-x86_64.sh at the end then download it using the url with wget in front of it
-    1. [Here is the url](https://repo.continuum.io/archive/) to find the latest
+- I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../powershell.md#Using-PowerShell-on-Linux)
 
-    ```cmd
-    wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
-    ```
-
-    1. Put in the command bash followed by the name of the file that you downloaded to install and follow the prompts
-
-    ```cmd
-    bash Anaconda3–2019.03-Linux-x86_64.sh
-    ```
-
-    1. to uninstall if you want
-
-    ```cmd
-    rm Anaconda3-2019.03-Linux-x86_64.sh
-    ```
-
-    1. Start up anaconda
-
-    ```cmd
-    source /home/ldsands/anaconda3/bin/activate
-    ```
-
-    1. Update conda packages
-
-    ```cmd
-    conda update --all
-    ```
-
-1. To start jupyter
-
-    ```cmd
-    jupyter notebook --no-browser this will provide a link that you can put into your browser
-    ```
+- Install Anaconda on WSL [see this section](../../programming_languages/python/python_install.md#Install-anaconda-on-WSL)
 
 ## MS Office plugins
 
 I rarely use these but they're very useful
 
-1. Dictate
-    1. I haven't used this much but the dictation addon is pretty good and its free
-1. Onetastic
-    1. useful for using OneNote utilities I haven't used it in a long time but when I used OneNote a lot it was very useful
+- Dictate
+    - I haven't used this much but the dictation addon is pretty good and its free
+- Onetastic
+    - useful for using OneNote utilities I haven't used it in a long time but when I used OneNote a lot it was very useful

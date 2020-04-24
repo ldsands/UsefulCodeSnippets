@@ -1,6 +1,8 @@
-# Pandas Commands
+# Useful Python Commands and Code Chunks
 
-## Getting started with pandas
+## Pandas Commands
+
+### Getting started with pandas
 
 First you have to import pandas. The convention for this is as follows:
 
@@ -18,12 +20,14 @@ dta = pd.DataFrame(
     columns=['name', 'score']
 )
 ```
+<!-- 
+### Importing data
 
-## Importing data
 
+- TODO:
+ -->
 
-
-## Common pandas commands
+### Common pandas commands and functions
 
 - When you need to take a data frame and extract all of the observations (rows) that match some value. Where dta is the data frame column_name is the name of the column you're filtering and x is the value you want the observations from the target column to match. Doing this for one column you can do the following:
 
@@ -36,6 +40,19 @@ dta = pd.DataFrame(
         ```python
         dta = dta[dta["column_name"].isin(target_list)]
         ```
+
+- for testing you usually do not want to run whatever you're doing on all of your data (unless you don't have too much data). In my case I often have millions of rows to process at a time. To make sure my code is working it is very useful to cut down on the number of rows you process just to see if everything is working right. Below is how I accomplish that. This code takes the first to the 10th row and all of the columns from the dataframe called dta. It then writes over the old dta dataframe with the smaller one.
+
+    ```python
+    dta = dta.iloc[0:10,]
+    ```
+
+- splitting a dataframe into a list can sometimes be very helpful for either breaking up processing over time or (theoretically anyway python is NOT good at parallel processing) for parallel processing. I usually use this for breaking up really long processing times so that I can restart my computer or regain all of my computer's resources for something more intensive. API calls with query limits is a great example of this. I then usually use a for loop to write these to separate files in a subfolder for keeping track of them in my processing.
+
+    ```python
+    n = 200000  #chunk row size
+    dataframe_list = [dta[i:i+n] for i in range(0,dta.shape[0],n)]
+    ```
 
 <!--
 ## Speed optimizations
@@ -51,3 +68,22 @@ dta = dta.set_index("link_id", drop=False)
 dta = dta[dta.index.isin(linkid_list)]
 ```
 -->
+
+## Useful Functions
+
+This is a collection of functions that I find to be useful in various scripts.
+
+- printing the current time - sometimes you need to know about what time something happened this can do that by printing the current time
+    - note to make this work you must include the following at the top of your document `from datetime import datetime`
+
+    ```python
+    from datetime import datetime
+
+    def print_current_time():
+        """
+        Prints the current date and time of day
+        """
+        now = datetime.now()
+        now = now.strftime("%m/%d/%Y, %H:%M:%S")
+        print("current time:", now)
+    ```

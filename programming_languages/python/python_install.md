@@ -16,6 +16,46 @@ This is for shen the add to path doesn't work for the chocolatey install
     conda list
     ```
 
+## Install anaconda on WSL
+
+- Install Anaconda on WSL
+    - Assuming you're using Windows you may want to use WSL 2 to install everything. To install WSL 2 (assuming you doing so after May 2020 it will be much easier) follow the instructions on [this site](https://docs.microsoft.com/en-us/windows/wsl/wsl2-install). Once you have that installed you can install any of the linux distributions on the Windows Store I would recommend [using Ubuntu](https://www.microsoft.com/en-us/p/ubuntu-1804-lts/9n9tngvndl3q?activetab=pivot:overviewtab).
+    - Open up the command prompt and enter Ubuntu (or whatever distro you downloaded). Be sure to [check this site](https://repo.anaconda.com/archive/) for the latest releases of anaconda (note they seem to make about 3 releases a year or so). Install anaconda using the following code:
+    - much of this code was taken from [this site](https://phoenixnap.com/kb/how-to-install-anaconda-ubuntu-18-04)
+
+    ```Bash
+    # updates the apt-get repository
+    sudo apt-get update
+    # installs curl if you don't have it installed
+    sudo apt-get install curl
+    # navigate to the tmp folder
+    cd /tmp
+    # downloads the desired file from anaconda
+    curl –O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+    # installs anaconda from the file you downloaded
+    bash Anaconda3-2020.02-Linux-x86_64.sh
+    # disables automatic activation of base when starting a terminal
+    conda config --set auto_activate_base false
+    ```
+
+    - Update conda packages
+
+        ```sh
+        conda update --all
+        ```
+
+    - to uninstall if you want
+
+        ```sh
+        rm Anaconda3-2020.02-Linux-x86_64.sh
+        ```
+
+    - To start jupyter
+
+        ```sh
+        jupyter notebook --no-browser this will provide a link that you can put into your browser
+        ```
+
 ## Virtual environments
 
 You really shouldn't use python without using virtual environments. Basically what they do is manage to keep everything contained and consistent for projects so that sharing a project with someone else becomes far easier. There are then choices to be made about dependency management along with virtual environments. It may seem like it is more trouble than it is worth but I can assure you that it is not. If you ever want to run a project again in the future or share a project virtual environments are a _**massive**_ time saver.

@@ -54,3 +54,12 @@ choco install youtube-dl
 choco install obs-studio
 choco install ccleaner -y
 ```
+
+## Upgrading using chocolatey
+
+To upgrade you first should probably check to see what packages need to be upgraded. The first two lines below do that (you do need both though I'm not really sure why). Then you can use the command `choco upgrade` and then the names of the packages you want to upgrade.
+
+```PowerShell
+cup all -whatif # checks all packages for updates
+cup all -y again # rechecks all packages for updates
+```
