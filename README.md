@@ -10,8 +10,8 @@ Table of Contents:
 
 - [Useful Code Snippets and Software or Configuration Instructions](#useful-code-snippets-and-software-or-configuration-instructions)
     - [Languages included here](#languages-included-here)
-        - [Julia](#julia)
         - [dotnet](#dotnet)
+        - [Julia](#julia)
         - [Markdown](#markdown)
         - [Python](#python)
         - [R](#r)
@@ -25,13 +25,6 @@ Table of Contents:
 
 ## Languages included here
 
-### [Julia](https://julialang.org/)
-
-Julia is a high level JIT compiled language which allows for python like syntax (i.e. easy to read and learn) but with a bit of tweaking similar speeds to complied languages such as C or C++.
-
-- [Julia installation and overview](programming_languages/julia/julia_install_overview.md)
-- [Julia useful commands and code](programming_languages/julia/julia_useful_commands.md)
-
 ### [dotnet](https://dotnetfoundation.org/)
 
 .Net Standard (I'll just use dotnet for ease of use and understanding) is the platform for the majority of Microsoft's official development languages and tools. It includes powershell, c#, f# and others. I primarily use it for powershell and c#. I use c# specifically to do anything that is slow in python since c# is a complied language.
@@ -44,11 +37,19 @@ Julia is a high level JIT compiled language which allows for python like syntax 
     - [FSharp intro](programming_languages/dotnet/fsharp/fsharp_intro.md)
     - [FSharp useful commands](programming_languages/dotnet/fsharp/fsharp_useful_snippits.md)
 
+### [Julia](https://julialang.org/)
+
+Julia is a high level JIT compiled language which allows for python like syntax (i.e. easy to read and learn) but with a bit of tweaking similar speeds to complied languages such as C or C++.
+
+- [Julia installation and overview](programming_languages/julia/julia_install_overview.md)
+- [Julia useful commands and code](programming_languages/julia/julia_useful_commands.md)
+
 ### [Markdown](https://github.github.com/gfm/)
 
-This is github flavored markdown but most of it transfers seamlessly to other flavors of markdown
+Markdown is a markup language like HTML but is incredibly simple and very powerful particularly in combination with something like Pandoc.
 
 - [Useful resources](programming_languages/markdown/markdown_resources.md)
+- [Useful commands](programming_languages/markdown/markdown_commands.md)
 
 ### [Python](https://www.python.org/)
 
@@ -59,12 +60,11 @@ Python is a general purpose scripting language that because of its popularity ha
 - [Python useful modules](programming_languages/python/python_modules.md)
 - [Pandas useful commands](programming_languages/python/pandas_commands.md)
 
-
 ### [R](https://www.r-project.org/)
 
-R commands, resources and notes that I've found useful
+R is a programming language that was written for statisticians by statisticians. This origin show as R is very easy to learn and powerful for basic stats and data manipulation. It is also really bad at doing pretty much anything else.
 
-- [Useful resources and websites](programming_languages/R/r_resources.md)
+- [Useful resources and installation](programming_languages/R/r_resources.md) Note: this has not yet been started <!-- TODO: -->
 - [Useful packages](programming_languages/R/r_useful_packages.md)
 
 ### [RegEx](https://en.wikipedia.org/wiki/Regular_expression)
@@ -85,13 +85,21 @@ There are other software based snippets or instructions that I will keep here as
 
 - [Useful bash commands](other_software/bash.md) -->
 
+<!-- ### [Docker](https://www.docker.com/)
+
+- [Docker install, resources, and commands](https://www.docker.com/) -->
+
 ### [Git](https://git-scm.com/)
+
+Git is a software management software that allows you to track changes made to files. A key benefit of this is the ability to keep all of your old versions of files without having to manage the storage and organization of those old versions.
 
 - [Useful Git Commands](other_software/git.md)
 
 <!-- ### [Github](https://github.com/) -->
 
 ### [Pandoc](https://pandoc.org/)
+
+Pandoc is software that converts many different kinds of documents into any one of another large number of document types.
 
 - [Useful Pandoc commands](other_software/pandoc_commands.md)
 
@@ -102,6 +110,8 @@ PowerShell is like bash but for Windows and now with access to all of .Net it is
 - [Useful Powershell commands](other_software/powershell.md)
 
 ### [VSCode stuff](https://code.visualstudio.com/)
+
+Visual Studio Code is technically a text editor but really is a full blown IDE (integrated development environment) for most programming languages.
 
 - [Useful VSCode shortcuts and extensions](other_software/vscode.md)
 
