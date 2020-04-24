@@ -6,6 +6,7 @@ All of my VSCode information that I use
     - [Useful shortcuts (Windows)](#useful-shortcuts-windows)
         - [Useful VSCode shortcuts (Windows)](#useful-vscode-shortcuts-windows)
         - [Useful extension shortcuts (Windows)](#useful-extension-shortcuts-windows)
+    - [Code Snippets](#code-snippets)
     - [Installed extensions](#installed-extensions)
         - [Categories of Extensions](#categories-of-extensions)
             - [C# and dotnet Extensions](#c-and-dotnet-extensions)
@@ -86,10 +87,41 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | `Alt`+`B`              | Open In Default Application                 | None originally assigned                    | open-in-external-app    |
 | `Ctrl`+`Shift`+`T`     | TODOs Focus on TODO view                    | None originally assigned                    | todo-tree               |
 
-<!-- 
-## Snippets
-TODO: make sure you add your user snippets as they are very useful
- -->
+## Code Snippets
+
+Code snippets are, "templates that make it easier to enter repeating code patterns [...]" in other words they allow you to quickly enter chunks of text that are repeated frequently. Note that snippets in VS Code are written in JavaScript.
+
+Below are some links to useful resources for understanding and making snippets:
+
+[link 01](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
+[link 02](https://code.visualstudio.com/api/language-extensions/snippet-guide)
+[link 03](https://vscode-docs.readthedocs.io/en/latest/customization/userdefinedsnippets/)
+[link 04](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
+
+- Here is a simple snippet example that I use for creating class notes (I write all of my class notes in markdown in VS Code). I just inserts the code contained in the `body` section after I type in the text contained in the `prefix` section
+
+    ```javascript
+    "Class Notes Template": {
+        "prefix": "Class_Notes",
+        "body": [
+            "# DATE HERE",
+            "",
+            "## Research Ideas",
+            "",
+            "1. ",
+            "",
+            "## Class Notes",
+            "",
+            "1. ",
+            "",
+            "## Reading Notes",
+            "",
+            "1. ",
+            ""
+        ],
+        "description": "Reading Notes and Highlight guide"
+    }
+    ```
 
 ## Installed extensions
 
