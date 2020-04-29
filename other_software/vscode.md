@@ -123,6 +123,14 @@ Below are some links to useful resources for understanding and making snippets:
     }
     ```
 
+- useful snippet patterns
+    - tab stops
+        - you can navigate the snippet by adding tab stops, they are in this format `$1` they go in order however the last tab stop is always `$0`
+    - tab stops with text that is pre highlighted (this makes it easy to remove that text if needed)
+        - to have a predefined text that is pre-highlighted allows you to easily delete a chunk of text in case it needs to be changed you can achieve this by using this code format `${1:Predefined text}`
+    - giving options to choose from at tab stop
+        - if you want options at a tab stop you must surround the options in `|` also do not use a `:` after the number like normal `${1|Class Imports,Module Declaration|}"`
+
 ## Installed extensions
 
 ### Categories of Extensions
