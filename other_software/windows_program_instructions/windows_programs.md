@@ -75,7 +75,10 @@ Below are Windows programs that are not able to be installed via chocolatey that
 Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
 
 ```nodejs
+# to install nativefier
 npm install nativefier -g
+# to update nativefier (you must have admin privileges)
+npm update -g nativefier
 ```
 
 The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
