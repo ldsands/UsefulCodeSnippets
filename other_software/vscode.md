@@ -3,6 +3,7 @@
 All of my VSCode information that I use
 
 - [Visual Studio Code](#visual-studio-code)
+    - [Resources](#resources)
     - [Useful shortcuts (Windows)](#useful-shortcuts-windows)
         - [Useful VSCode shortcuts (Windows)](#useful-vscode-shortcuts-windows)
         - [Useful extension shortcuts (Windows)](#useful-extension-shortcuts-windows)
@@ -23,7 +24,19 @@ All of my VSCode information that I use
             - [Themes](#themes)
         - [Full list](#full-list)
     - [Settings (with their explanations)](#settings-with-their-explanations)
-    - [Resources](#resources)
+    - [Extension Authoring](#extension-authoring)
+        - [Publishing Instructions](#publishing-instructions)
+
+## Resources
+
+- [Windows Cheat-Sheet](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf) [PDF]
+- [Official Documentation Site](https://code.visualstudio.com/docs)
+- [Old Documentation Site](https://vscode-docs.readthedocs.io/en/latest/)
+    - This site does have some items that are not on the official documentation site but overall the official documentation site is better
+- [Updates Page](https://code.visualstudio.com/updates/)
+- [Snippet Generator](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
+- [Extension API Documentation](https://code.visualstudio.com/api/references/vscode-api)
+- [Keybindings Page](https://code.visualstudio.com/docs/getstarted/keybindings)
 
 ## Useful shortcuts (Windows)
 
@@ -89,7 +102,7 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 
 ## Code Snippets
 
-Code snippets are, "templates that make it easier to enter repeating code patterns [...]" in other words they allow you to quickly enter chunks of text that are repeated frequently. Note that snippets in VS Code are written in JavaScript.
+Code snippets are, "templates that make it easier to enter repeating code patterns [...]" in other words they allow you to quickly enter chunks of text that are repeated frequently. Note that snippets in VSCode are written in JavaScript.
 
 Below are some links to useful resources for understanding and making snippets:
 
@@ -98,7 +111,7 @@ Below are some links to useful resources for understanding and making snippets:
 [link 03](https://vscode-docs.readthedocs.io/en/latest/customization/userdefinedsnippets/)
 [link 04](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
 
-- Here is a simple snippet example that I use for creating class notes (I write all of my class notes in markdown in VS Code). I just inserts the code contained in the `body` section after I type in the text contained in the `prefix` section
+- Here is a simple snippet example that I use for creating class notes (I write all of my class notes in markdown in VSCode). I just inserts the code contained in the `body` section after I type in the text contained in the `prefix` section
 
     ```javascript
     "Class Notes Template": {
@@ -135,7 +148,7 @@ Below are some links to useful resources for understanding and making snippets:
 
 ### Categories of Extensions
 
-Below is my exstions that are grouped by purpose with many having a small explanation
+Below is my extensions that are grouped by purpose with many having a small explanation (last updated 2020-02-19)
 
 #### C# and dotnet Extensions
 
@@ -253,9 +266,9 @@ Below is my exstions that are grouped by purpose with many having a small explan
 
 These are all of the extensions that I use on my installation of VSCode
 
-to get the list type this into powershell
+to get the list type this into PowerShell
 
-```powershell
+```PowerShell
 code --list-extensions | % { "code --install-extension $_" }
 ```
 
@@ -341,7 +354,7 @@ or you can upload settings using settings sync extension and copy the output fro
 
 ## Settings (with their explanations)
 
-Some of the settings I use in VS code with short explanations
+Some of the settings I use in VSCode with short explanations
 
 - these are the settings that i use when I use the minimap (which isn't very often to be honest). The minimap I've found to be very useful in very long documents but I don't use it terribly often in other documents or when I'm programming. There is a toggle minimap command that you can add a keyboard shortcut to if you want to turn it on and off often.
 
@@ -354,6 +367,35 @@ Some of the settings I use in VS code with short explanations
     }
     ```
 
-## Resources
+## Extension Authoring
 
-- [Windows Cheat-Sheet](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf) [PDF]
+You can create your own extensions in VSCode and put almost any functionality you can think of. To get started you should go to [this site](https://vscode-docs.readthedocs.io/en/latest/extensions/example-hello-world/). There is also a [GitHub repository](https://github.com/microsoft/vscode-extension-samples) that has several example extensions for you to look at for help. These following sites are also meant to help you get your extension started, tested, published, bundled and setup continuous integration (CI). You can also use the [API documentation](https://code.visualstudio.com/api/references/vscode-api) to find all of hte ways that you can interface with VSCode to create your extension.
+
+- [Testing instructions](https://code.visualstudio.com/api/working-with-extensions/testing-extension)
+- [Publishing instructions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+- [Bundling instructions](https://code.visualstudio.com/api/working-with-extensions/bundling-extension)
+- [CI instructions](https://code.visualstudio.com/api/working-with-extensions/continuous-integration)
+
+[I have created a simple extension myself](https://github.com/ldsands/PasteRegEx) that you can look through for more ideas.
+
+### Publishing Instructions
+
+To publish your extension you should follow the instructions posted on [this website](https://code.visualstudio.com/api/working-with-extensions/publishing-extension).
+
+- Below is pretty much all you need to do everything for publishing your extension with a few notes of mine here to explain the variables that need to be entered to use this code
+    - `$publisher_name` is the name of the publisher ID that must be created to publish an extension and is contained in the extension's `package.json` file
+    - `$token` is the token that you get from your Azure DevOps site in Power
+
+```PowerShell
+# if you have not yet setup vsce then enter the following code
+npm install -g vsce
+vsce login $publisher_name
+# to publish a patch (increment the version number automatically)
+vsce publish patch -p $token
+# to publish a minor (increment the version number automatically)
+vsce publish minor -p $token
+# to publish a major (increment the version number automatically)
+vsce publish major -p $token
+# to unpublish an extension
+vsce unpublish (publisher name).(extension name)
+```
