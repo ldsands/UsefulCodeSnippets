@@ -4,13 +4,13 @@ All of my VSCode information that I use
 
 - [Visual Studio Code](#visual-studio-code)
     - [Resources](#resources)
-    - [Useful shortcuts (Windows)](#useful-shortcuts-windows)
-        - [Useful VSCode shortcuts (Windows)](#useful-vscode-shortcuts-windows)
-        - [Other Useful (Windows)](#other-useful-windows)
+    - [Useful Shortcuts (Windows)](#useful-shortcuts-windows)
+        - [Useful Vscode Shortcuts (Windows)](#useful-vscode-shortcuts-windows)
+        - [Other Useful (windows)](#other-useful-windows)
     - [Code Snippets](#code-snippets)
-    - [Installed extensions](#installed-extensions)
-        - [Categories of Extensions](#categories-of-extensions)
-            - [C# and dotnet Extensions](#c-and-dotnet-extensions)
+    - [Installed Extensions](#installed-extensions)
+        - [Categories Of Extensions](#categories-of-extensions)
+            - [C# And Dotnet Extensions](#c-and-dotnet-extensions)
             - [General Extensions](#general-extensions)
                 - [Editing Help Extensions](#editing-help-extensions)
                 - [Navigation Extensions](#navigation-extensions)
@@ -22,8 +22,8 @@ All of my VSCode information that I use
             - [Python Extensions](#python-extensions)
             - [R Extensions](#r-extensions)
             - [Themes](#themes)
-        - [Full list](#full-list)
-    - [Settings (with their explanations)](#settings-with-their-explanations)
+        - [Full List](#full-list)
+    - [Settings (with Their Explanations)](#settings-with-their-explanations)
     - [Extension Authoring](#extension-authoring)
         - [Publishing Instructions](#publishing-instructions)
 
@@ -38,78 +38,78 @@ All of my VSCode information that I use
 - [Extension API Documentation](https://code.visualstudio.com/api/references/vscode-api)
 - [Keybindings Page](https://code.visualstudio.com/docs/getstarted/keybindings)
 
-## Useful shortcuts (Windows)
+## Useful Shortcuts (Windows)
 
-### Useful VSCode shortcuts (Windows)
+### Useful Vscode Shortcuts (Windows)
 
 VSCode shortcuts that are not associated with any extensions
 
 Some of these shortcuts have been modified by me and I use them with settings sync to make them consistent across computers
 
-| Shortcut I Use                  | Description                                 | Original Shortcut         | Command                                 |
-| ------------------------------- | ------------------------------------------- | ------------------------- | --------------------------------------- |
-| `Alt`+`Z`                       | Toggle word wrap                            | N/A                       | TODO:                                   |
-| `Ctrl`+`,`                      | User Settings                               | N/A                       | TODO:                                   |
-| `Ctrl`+`/`                      | Comment line or selection                   | N/A                       | TODO:                                   |
-| `Ctrl`+`K` `Ctrl`+`S`           | Keyboard Shortcuts                          | N/A                       | TODO:                                   |
-| `Ctrl`+`R`                      | Switch workspace                            | N/A                       | TODO:                                   |
-| `Alt`+`Z`                       | Toggle word wrap                            | N/A                       | TODO:                                   |
-| `Ctrl`+`T`                      | Show all Symbols                            | N/A                       | TODO:                                   |
-| `Ctrl`+`G`                      | Go to Line...                               | N/A                       | TODO:                                   |
-| `Ctrl`+`P`                      | Go to File...                               | N/A                       | TODO:                                   |
-| `F8`                            | Go to next error or warning                 | N/A                       | TODO:                                   |
-| `Shift`+`F8`                    | Go to previous error or warning             | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`Tab`            | Navigate editor group history               | N/A                       | TODO:                                   |
-| `Alt`+ `←`/`→`                  | Go back / forward                           | N/A                       | TODO:                                   |
-| `Shift`+`Alt`+`I`               | Insert cursor at end of each line selected  | N/A                       | TODO:                                   |
-| `Ctrl`+`I`                      | Select current line                         | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`L`              | Select all occurrences of current selection | N/A                       | TODO:                                   |
-| `Ctrl`+`F2`                     | Select all occurrences of current word      | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`Space`          | Trigger parameter hints                     | N/A                       | TODO:                                   |
-| `Shift`+`Alt`+`F`               | Format document                             | N/A                       | TODO:                                   |
-| `Ctrl`+`K` `Ctrl`+`F`           | Format selection                            | N/A                       | TODO:                                   |
-| `F12`                           | Go to Definition                            | N/A                       | TODO:                                   |
-| `Alt`+`F12`                     | Peek Definition                             | N/A                       | TODO:                                   |
-| `F2`                            | Rename Symbol                               | N/A                       | TODO:                                   |
-| `Ctrl`+`K` `Ctrl`+`X`           | Trim trailing whitespace                    | N/A                       | TODO:                                   |
-| `Ctrl`+`K` `R`                  | Reveal active file in Explorer              | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`H`              | Replace in files                            | N/A                       | TODO:                                   |
-| `Ctrl`+`K` `Z`                  | Zen Mode (`Esc` `Esc` to exit)              | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`V`              | Open Markdown preview to the side           | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`F`              | Open search sidebar                         | N/A                       | TODO:                                   |
-| `Ctrl`+`R`                      | Switch workspace                            | N/A                       | TODO:                                   |
-| `Ctrl`+`Tab`                    | Switch tabs                                 | N/A                       | TODO:                                   |
-| `Shift`+`Alt`+`I`               | Insert cursor at end of each line selected  | N/A                       | TODO:                                   |
-| `Ctrl`+`L`                      | Select current line                         | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`L`              | Select all occurrences of current selection | N/A                       | TODO:                                   |
-| `Ctrl`+`K`+`R`                  | Reveal active file in Explorer              | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`H`              | Replace in files                            | N/A                       | TODO:                                   |
-| `Ctrl`+`K`+`V`                  | Open Markdown preview to the side           | N/A                       | TODO:                                   |
-| `Shift`+`Alt`+`R`               | Reveal in file explorer                     | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`E`              | View Show Explorer                          | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`C`              | Open external terminal                      | N/A                       | TODO:                                   |
-| `Ctrl`+`Shift`+`O`              | Goes to the Outline View                    | None originally assigned  | TODO:                                   |
-| `alt`+`space` `ctrl`+`up`       | changes focus to editor located up          | `ctrl`+`k` `ctrl`+`up`    | workbench.action.focusAboveGroup        |
-| `alt`+`space` `ctrl`+`down`     | changes focus to editor located down        | `ctrl`+`k` `ctrl`+`down`  | workbench.action.focusBelowGroup        |
-| `alt`+`space` `ctrl`+`left`     | changes focus to editor located left        | `ctrl`+`k` `ctrl`+`left`  | workbench.action.focusLeftGroup         |
-| `alt`+`space` `ctrl`+`right`    | changes focus to editor located right       | `ctrl`+`k` `ctrl`+`right` | workbench.action.focusRightGroup        |
-| `shift`+`space` `shift`+`up`    | move current editor to editor group up      | None originally assigned  | workbench.action.moveEditorToAboveGroup |
-| `shift`+`space` `shift`+`down`  | move current editor to editor group down    | None originally assigned  | workbench.action.moveEditorToBelowGroup |
-| `shift`+`space` `shift`+`left`  | move current editor to editor group left    | None originally assigned  | workbench.action.moveEditorToLeftGroup  |
-| `shift`+`space` `shift`+`right` | move current editor to editor group right   | None originally assigned  | workbench.action.moveEditorToRightGroup |
-| `ctrl`+`space` `ctrl`+`down`    | split current editor up                     | None originally assigned  | workbench.action.splitEditorDown        |
-| `ctrl`+`space` `ctrl`+`left`    | split current editor down                   | None originally assigned  | workbench.action.splitEditorLeft        |
-| `ctrl`+`space` `ctrl`+`right`   | split current editor left                   | None originally assigned  | workbench.action.splitEditorRight       |
-| `ctrl`+`space` `ctrl`+`up`      | split current editor right                  | None originally assigned  | workbench.action.splitEditorUp          |
+| Shortcut I Use                  | Description                                  | Original Shortcut         | Command                                     | Further explanation                                                        |
+| ------------------------------- | -------------------------------------------- | ------------------------- | ------------------------------------------- | -------------------------------------------------------------------------- |
+| `Alt`+`Z`                       | Toggle Word Wrap                             | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`,`                      | User Settings                                | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`/`                      | Comment Line or Selection                    | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`K` `Ctrl`+`S`           | Keyboard Shortcuts                           | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`R`                      | Switch Workspace                             | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`T`                      | Show All Symbols                             | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`G`                      | Go to Line                                   | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`P`                      | Go to File                                   | N/A                       | TODO:                                       |                                                                            |
+| `F8`                            | Go to Next Error or Warning                  | N/A                       | TODO:                                       |                                                                            |
+| `Shift`+`F8`                    | Go to Previous Error or Warning              | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`Tab`            | Navigate Editor Group History                | N/A                       | TODO:                                       |                                                                            |
+| `Alt`+ `←`/`→`                  | Go Back Forward                              | N/A                       | TODO:                                       |                                                                            |
+| `Shift`+`Alt`+`I`               | Insert Cursor at End of Each Line Selected   | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`I`                      | Select Current Line                          | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`L`              | Select All Occurrences of Current Selection  | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`F2`                     | Select All Occurrences of Current Word       | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`Space`          | Trigger Parameter Hints                      | N/A                       | TODO:                                       |                                                                            |
+| `Shift`+`Alt`+`F`               | Format Document                              | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`K` `Ctrl`+`F`           | Format Selection                             | N/A                       | TODO:                                       |                                                                            |
+| `F12`                           | Go to Definition                             | N/A                       | TODO:                                       |                                                                            |
+| `Alt`+`F12`                     | Peek Definition                              | N/A                       | TODO:                                       |                                                                            |
+| `F2`                            | Rename Symbol                                | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`K` `Ctrl`+`X`           | Trim Trailing Whitespace                     | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`K` `R`                  | Reveal Active File in Explorer               | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`H`              | Replace in Files                             | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`K` `Z`                  | Zen Mode (`esc` `esc` to Exit)               | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`V`              | Open Markdown Preview to the Side            | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`F`              | Open Search Sidebar                          | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`R`                      | Switch Workspace                             | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Tab`                    | Switch Tabs                                  | N/A                       | TODO:                                       |                                                                            |
+| `Shift`+`Alt`+`I`               | Insert Cursor at End of Each Line Selected   | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`L`                      | Select Current Line                          | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`L`              | Select All Occurrences of Current Selection  | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`K`+`R`                  | Reveal Active File in Explorer               | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`H`              | Replace in Files                             | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`K`+`V`                  | Open Markdown Preview to the Side            | N/A                       | TODO:                                       |                                                                            |
+| `Shift`+`Alt`+`R`               | Reveal in File Explorer                      | N/A                       | TODO:                                       |                                                                            |
+| `Shift`+`Alt`+`I`               | Add a Cursor to End of Each Line in Selected | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`E`              | View Show Explorer                           | N/A                       | TODO:                                       |                                                                            |
+| `Ctrl`+`Shift`+`C`              | Open External Terminal                       | N/A                       | workbench.action.terminal.openNativeConsole |                                                                            |
+| `Ctrl`+`Shift`+`O`              | Goes to the Outline View                     | None Originally Assigned  | outline.focus                               |                                                                            |
+| `alt`+`space` `ctrl`+`up`       | Changes Focus to Editor Located Up           | `ctrl`+`k` `ctrl`+`up`    | workbench.action.focusAboveGroup            |                                                                            |
+| `alt`+`space` `ctrl`+`down`     | Changes Focus to Editor Located Down         | `ctrl`+`k` `ctrl`+`down`  | workbench.action.focusBelowGroup            |                                                                            |
+| `alt`+`space` `ctrl`+`left`     | Changes Focus to Editor Located Left         | `ctrl`+`k` `ctrl`+`left`  | workbench.action.focusLeftGroup             |                                                                            |
+| `alt`+`space` `ctrl`+`right`    | Changes Focus to Editor Located Right        | `ctrl`+`k` `ctrl`+`right` | workbench.action.focusRightGroup            |                                                                            |
+| `shift`+`space` `shift`+`up`    | Move Current Editor to Editor Group Up       | None Originally Assigned  | workbench.action.moveEditorToAboveGroup     |                                                                            |
+| `shift`+`space` `shift`+`down`  | Move Current Editor to Editor Group Down     | None Originally Assigned  | workbench.action.moveEditorToBelowGroup     |                                                                            |
+| `shift`+`space` `shift`+`left`  | Move Current Editor to Editor Group Left     | None Originally Assigned  | workbench.action.moveEditorToLeftGroup      |                                                                            |
+| `shift`+`space` `shift`+`right` | Move Current Editor to Editor Group Right    | None Originally Assigned  | workbench.action.moveEditorToRightGroup     |                                                                            |
+| `ctrl`+`space` `ctrl`+`down`    | Split Current Editor Up                      | None Originally Assigned  | workbench.action.splitEditorDown            |                                                                            |
+| `ctrl`+`space` `ctrl`+`left`    | Split Current Editor Down                    | None Originally Assigned  | workbench.action.splitEditorLeft            |                                                                            |
+| `ctrl`+`space` `ctrl`+`right`   | Split Current Editor Left                    | None Originally Assigned  | workbench.action.splitEditorRight           |                                                                            |
+| `ctrl`+`space` `ctrl`+`up`      | Split Current Editor Right                   | None Originally Assigned  | workbench.action.splitEditorUp              |                                                                            |
+| `ctrl`+`space` `ctrl`+`C`       | Column Select Mode                           | None Originally Assigned  | editor.action.toggleColumnSelection         | [Link](https://code.visualstudio.com/updates/v1_43#_column-selection-mode) |
 
-### Other Useful (Windows)
+### Other Useful (windows)
 
 VSCode shortcuts that are not associated with any extensions. Some of these shortcuts have been modified by me and I use them with settings sync to make them consistent across computers.
 
-| Shortcut I Use     | Description                 | Original Shortcut (where applicable) | Extension Name       |
-| ------------------ | --------------------------- | ------------------------------------ | -------------------- |
-| `Alt`+`B`          | Open In Default Application | None originally assigned             | open-in-external-app |
-| `Ctrl`+`Shift`+`T` | TODOs Focus on TODO view    | None originally assigned             | todo-tree            |
+| Shortcut I Use     | Description              | Original Shortcut        | Extension Name | Command              |
+| ------------------ | ------------------------ | ------------------------ | -------------- | -------------------- |
+| `Ctrl`+`Shift`+`T` | TODOs Focus on TODO view | None Originally Assigned | todo-tree      | todo-tree-view.focus |
 
 ## Code Snippets
 
@@ -155,13 +155,13 @@ Below are some links to useful resources for understanding and making snippets:
     - giving options to choose from at tab stop
         - if you want options at a tab stop you must surround the options in `|` also do not use a `:` after the number like normal `${1|Class Imports,Module Declaration|}"`
 
-## Installed extensions
+## Installed Extensions
 
-### Categories of Extensions
+### Categories Of Extensions
 
 Below is my extensions that are grouped by purpose with many having a small explanation (last updated 2020-02-19)
 
-#### C# and dotnet Extensions
+#### C# And Dotnet Extensions
 
 - asp-net-core-switcher
 - aspnet-helper
@@ -273,7 +273,7 @@ Below is my extensions that are grouped by purpose with many having a small expl
 - vsc-material-theme-icons
 - vscode-theme-onelight
 
-### Full list
+### Full List
 
 These are all of the extensions that I use on my installation of VSCode
 
@@ -363,7 +363,7 @@ or you can upload settings using settings sync extension and copy the output fro
 - vscodeintellicode
 - wordcounter
 
-## Settings (with their explanations)
+## Settings (with Their Explanations)
 
 Some of the settings I use in VSCode with short explanations
 

@@ -44,7 +44,10 @@ dta = pd.DataFrame(
 - for testing you usually do not want to run whatever you're doing on all of your data (unless you don't have too much data). In my case I often have millions of rows to process at a time. To make sure my code is working it is very useful to cut down on the number of rows you process just to see if everything is working right. Below is how I accomplish that. This code takes the first to the 10th row and all of the columns from the dataframe called dta. It then writes over the old dta dataframe with the smaller one.
 
     ```Python
+    # this trims a dataframe from whatever length it was before to just 10 rows
     dta = dta.iloc[0:10,]
+    # this is the same but to avoid accidentally leaving this code in my script the text afterwards helps me find it before I use a script into production
+    dta = dta.iloc[0:10,] # TESTCODE: remove for production
     ```
 
 - splitting a dataframe into a list can sometimes be very helpful for either breaking up processing over time or (theoretically anyway python is NOT good at parallel processing) for parallel processing. I usually use this for breaking up really long processing times so that I can restart my computer or regain all of my computer's resources for something more intensive. API calls with query limits is a great example of this. I then usually use a for loop to write these to separate files in a subfolder for keeping track of them in my processing.
@@ -76,8 +79,14 @@ This is a collection of functions that I find to be useful in various scripts.
 - sometimes you need to see the whole dataframe below is a way to do that in just a couple of lines
 
     ```Python
-    with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
-        print(dta)
+    def display_full_dataframe(dta):
+        """
+        displays a dataframe without cutting anything off for being too long
+        Arguments:
+            dta {dataframe} -- a dataframe you wish to display
+        """
+        with pd.option_context("display.max_rows", None, "display.max_columns", None):
+            print(dta)
     ```
 
 - I have often needed to get the unique number of values in some column, below is some code that I use to do that
@@ -90,4 +99,13 @@ This is a collection of functions that I find to be useful in various scripts.
     dta_small.groupby("month_year").nunique()
     # this gets the number of unique values from the "author" column for each unique value found in the "month_year" column
     dta_small.groupby("month_year")["author"].nunique()
+    ```
+
+- when you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
+
+    ```Python
+    if "dta" in globals(): # or locals for locally defined variables
+        print("dta is already loaded")
+    else:
+        print("you need to load the data")
     ```

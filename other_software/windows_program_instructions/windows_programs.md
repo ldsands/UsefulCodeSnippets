@@ -11,7 +11,8 @@
     - [Other Windows features](#other-windows-features)
         - [Command-line utilities](#command-line-utilities)
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
-    - [MS Office plugins](#ms-office-plugins)
+    - [Windows PowerToys](#windows-powertoys)
+    - [MS Office Plugins](#ms-office-plugins)
 
 ## Win 32
 
@@ -193,22 +194,33 @@ TODO: need to look through my various notes to add here
 
 ### WSL (Windows subsystem for Linux)
 
+WSL allows for using the linux kernel from within Windows. To install WSL follow the instructions contained on [this site](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and to enable WSL2 use [this site](https://docs.microsoft.com/en-us/windows/wsl/wsl2-install). Below is a short version all put together.
+
 - Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 - You'll need to restart after this
 - Then download the version of linux from the Windows store you want (probably Ubuntu)
+    - make sure you launch after that and then your distro will install
 - You'll be prompted to create a username and password
+    - you'll want to check that your distro is running on WSL 2 and WSL 1 you can do this by entering `wsl -l -v` into PowerShell
+    - to change a distro from WSL 1 to WSL 2 (or visa versa if you change the numbers) enter this code into PowerShell `wsl --set-version <Distro> 2`
 - Type in these two commands to update stuff
 
     ```cmd
-    Sudo apt update
-    Sudo apt upgrade
+    sudo apt update
+    sudo apt upgrade
     ```
 
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../powershell.md#Using-PowerShell-on-Linux)
 
 - Install Anaconda on WSL [see this section](../../programming_languages/python/python_install.md#Install-anaconda-on-WSL)
 
-## MS Office plugins
+## Windows PowerToys
+
+"[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](chocolatey.md/#choco-install-powertoys) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
+
+- to get to the settings for FancyZones go to this location `C:\Users\%username%\AppData\Local\Microsoft\PowerToys\FancyZones\zones-settings.json`.
+
+## MS Office Plugins
 
 I rarely use these but they're very useful
 
