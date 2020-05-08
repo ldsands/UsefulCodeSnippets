@@ -231,6 +231,12 @@ PowerShell functions can be very powerful and do pretty much anything you can th
         check_if_installed -p1 "Visual Studio Code"
         ```
 
+- run a command prompt from within powershell
+
+   ```PowerShell
+   cmd.exe /c "conda activate base"
+   ```
+
 ### Useful random commands
 
 - for uninstalling modules just insert the name of hte module next to the $name variable and run it
