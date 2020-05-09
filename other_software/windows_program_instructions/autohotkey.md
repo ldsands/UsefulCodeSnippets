@@ -31,6 +31,11 @@ you can also [download it](https://www.autohotkey.com/) from the main page and i
 
     - Parameters containing spaces should be enclosed in double quotes.
     - If the "out" file is omitted, the EXE will have the same base filename as the script itself.
+- To compile multiple scripts you have to go through all of your scripts and make sure to comment out all of the `#Include` commands and then add them to your "master script." See below for an example:
+
+    ```AutoHotKey
+    #Include C:\Users\%A_UserName%\OneDrive\Computer stuff\WindowsStuff\autohotkey\doublecmdrAHK\win_e.ahk
+    ```
 
 ## Example
 
