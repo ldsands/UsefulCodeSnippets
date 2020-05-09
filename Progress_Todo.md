@@ -1,32 +1,32 @@
 # Todo List
 
-This list was last updated 13 February 2020 <!-- TODO: Update this -->
+This list was last updated 9 May 2020 <!-- TODO: Update this -->
 
 This a place for a todo list of items to add
+
+## In Progress
+
+[Creating a Local Package](programming_languages/python/python_modules.md#creating-a-local-package)
+[PySpark](programming_languages/python/python_modules.md#PySpark)
+[Pathlib Getting File Directories](programming_languages/python/python_commands.md#pathlib-getting-file-directories)
+[Multiprocessing in Python](programming_languages/python/python_commands.md#multiprocessing-in-python)
+[Bash WSL Setup](other_software/bash.md#wsl-setup)
 
 ## General Todos
 
 - [ ] add latex
 - [ ] add Mplus?
-- [ ] add more AutoHotKey
 - [ ] add docker information
 - [ ] add stats section
     - [ ] factor analysis
     - [ ] path analysis
     - [ ] linear and logistic regression
 
-## Languages included here
+## Longer-Term Goals
 
-### Julia
+### Languages included here
 
-- [ ] resources
-- [ ] installation instructions
-    - [ ] environment configuration instructions
-- [ ] list of useful packages
-- [ ] list of useful commands
-- [ ] filesystem tutorial
-
-### Python
+#### Julia
 
 - [ ] resources
 - [ ] installation instructions
@@ -35,28 +35,35 @@ This a place for a todo list of items to add
 - [ ] list of useful commands
 - [ ] filesystem tutorial
 
-### Markdown
+#### Python
+
+- [ ] resources
+- [ ] installation instructions
+    - [ ] environment configuration instructions
+- [ ] list of useful packages that I use regularly
+- [ ] filesystem tutorial
+
+#### Markdown
 
 - [ ] list of resources (partially complete)
 - [ ] list of common syntax that you have to look up often
 
-### R
+#### R
 
 - [ ] resources
 - [ ] installation instructions
-    - [ ] environment configuration instructions (does r have environments?)
 - [x] list of useful packages
     - [ ] add lavaan
     - [ ] add stargazer
 - [ ] list of useful commands
 - [ ] filesystem tutorial
 
-### RegEx
+#### RegEx
 
 - [x] resources
 - [ ] list of useful commands
 
-### Stata
+#### Stata
 
 - [ ] resources
 - [ ] installation instructions
@@ -64,47 +71,45 @@ This a place for a todo list of items to add
 - [ ] list of useful commands
 - [ ] filesystem tutorial
 
-## Other snippets and instructions
+### Other snippets and instructions
 
-### Bash
+#### Bash
 
 - [ ] get some basics here
 
-### Git
+#### Git
 
 I don't use git alone so this may not get anything else
 
 - [ ] resources
 - [ ] installation instructions
-- [ ] list of useful commands
 
-### Github
+#### Github
 
 - [ ] resources
 - [ ] installation instructions
-    - [ ] environment configuration instructions (is this a thing?)
 - [ ] list of useful commands
 - [ ] should do some repository tutorial or something
 
-### Pandoc
+#### Pandoc
 
 - [ ] resources
 - [ ] installation instructions
 - [ ] list of useful commands
     - started this briefly
 
-### Powershell
+#### Powershell
 
-not sure if I'm going to do much with this anytime soon (or ever)
 
-### VSCode stuff
+
+#### VSCode stuff
 
 - [ ] explain extensions
 - [ ] add modified keyboard shortcuts
 - [ ] add settings
     - [ ] settings explanations
 
-### Windows
+#### Windows
 
 - [x] Win 32 programs explained
     - [x] Zotero installation instructions

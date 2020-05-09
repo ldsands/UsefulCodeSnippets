@@ -24,6 +24,7 @@ All of my VSCode information that I use
             - [Themes](#themes)
         - [Full List](#full-list)
     - [Settings (with Their Explanations)](#settings-with-their-explanations)
+    - [Keyboard Settings (with Their Explanations)](#keyboard-settings-with-their-explanations)
     - [Extension Authoring](#extension-authoring)
         - [Publishing Instructions](#publishing-instructions)
 
@@ -46,53 +47,54 @@ VSCode shortcuts that are not associated with any extensions
 
 Some of these shortcuts have been modified by me and I use them with settings sync to make them consistent across computers
 
-| Shortcut I Use                     | Description                                    | Original Shortcut              | Command                                                     | Further explanation                                                        |
-| ---------------------------------- | ---------------------------------------------- | ------------------------------ | ----------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `shift`+`alt`+`C`                  | Copy Path of Active File                       | N/A                            | copyFilePath                                                |                                                                            |
-| `Ctrl`+`/`                         | Comment Line or Selection                      | N/A                            | editor.action.commentLine                                   |                                                                            |
-| `Shift`+`Alt`+`F`                  | Format Document                                | N/A                            | editor.action.formatDocument                                |                                                                            |
-| `Ctrl`+`K` `Ctrl`+`F`              | Format Selection                               | N/A                            | editor.action.formatSelection                               |                                                                            |
-| `Shift`+`Alt`+`I`                  | Insert Cursor at End of Each Line Selected     | N/A                            | editor.action.insertCursorAtEndOfEachLineSelected           |                                                                            |
-| `Shift`+`Alt`+`I`                  | Insert Cursor at End of Each Line Selected     | N/A                            | editor.action.insertCursorAtEndOfEachLineSelected           |                                                                            |
-| `Shift`+`Alt`+`I`                  | Add a Cursor to End of Each Line in Selected   | N/A                            | editor.action.insertCursorAtEndOfEachLineSelected           |                                                                            |
-| `F8`                               | Go to Next Error or Warning                    | N/A                            | editor.action.marker.nextInFiles                            |                                                                            |
-| `Shift`+`F8`                       | Go to Previous Error or Warning                | N/A                            | editor.action.marker.prevInFiles                            |                                                                            |
-| `Alt`+`F12`                        | Peek Definition                                | N/A                            | editor.action.peekDefinition                                |                                                                            |
-| `F2`                               | Rename Symbol                                  | N/A                            | editor.action.rename                                        |                                                                            |
-| `F12`                              | Go to Definition                               | N/A                            | editor.action.revealDefinition                              |                                                                            |
-| `Ctrl`+`Shift`+`L`                 | Select All Occurrences of Current Selection    | N/A                            | editor.action.selectHighlights                              |                                                                            |
-| `ctrl`+`space` `ctrl`+`C`          | Column Select Mode                             | None Originally Assigned       | editor.action.toggleColumnSelection                         | [Link](https://code.visualstudio.com/updates/v1_43#_column-selection-mode) |
-| `Alt`+`Z`                          | Toggle Word Wrap                               | N/A                            | editor.action.toggleWordWrap                                |                                                                            |
-| `Ctrl`+`Shift`+`Space`             | Trigger Parameter Hints                        | N/A                            | editor.action.triggerParameterHints                         |                                                                            |
-| `Ctrl`+`K` `Ctrl`+`X`              | Trim Trailing Whitespace                       | N/A                            | editor.action.trimTrailingWhitespace                        |                                                                            |
-| `Ctrl`+`I`                         | Select Current Line                            | N/A                            | expandLineSelection                                         |                                                                            |
-| `Ctrl`+`Shift`+`V`                 | Open Markdown Preview                          | N/A                            | markdown.showPreview                                        |                                                                            |
-| `Ctrl`+`K`+`V`                     | Open Markdown Preview to the Side              | N/A                            | markdown.showPreviewToSide                                  |                                                                            |
-| `Ctrl`+`Shift`+`O`                 | Goes to the Outline View                       | None Originally Assigned       | outline.focus                                               |                                                                            |
-| `Ctrl`+`E` `Ctrl`+`E`              | Reveal Active File in File Explorer            | `Shift`+`Alt`+`R`              | revealFileInOS                                              |                                                                            |
-| `Ctrl`+`K` `O`                     | Open Active File in New Window                 | N/A                            | workbench.action.files.showOpenedFileInNewWindow            |                                                                            |
-| `Ctrl`+`Shift`+`F`                 | Find in Files                                  | N/A                            | workbench.action.findInFiles                                |                                                                            |
-| `Ctrl`+`Space` `Ctrl`+`UpArrow`    | Changes Focus to Editor Located Up             | `Ctrl`+`K` `ctrl`+`UpArrow`    | workbench.action.focusAboveGroup                            |                                                                            |
-| `Ctrl`+`Space` `Ctrl`+`DownArrow`  | Changes Focus to Editor Located Down           | `Ctrl`+`K` `ctrl`+`DownArrow`  | workbench.action.focusBelowGroup                            |                                                                            |
-| `Ctrl`+`Space` `Ctrl`+`LeftArrow`  | Changes Focus to Editor Located Left           | `Ctrl`+`K` `ctrl`+`LeftArrow`  | workbench.action.focusLeftGroup                             |                                                                            |
-| `Ctrl`+`Space` `Ctrl`+`RightArrow` | Changes Focus to Editor Located Right          | `Ctrl`+`K` `ctrl`+`RightArrow` | workbench.action.focusRightGroup                            |                                                                            |
-| `Ctrl`+`G`                         | Go to Line                                     | N/A                            | workbench.action.gotoLine                                   |                                                                            |
-| `Ctrl`+`Alt`+`Shift`+`UpArrow`     | Move Current Editor to Editor Group Up         | None Originally Assigned       | workbench.action.moveEditorToAboveGroup                     |                                                                            |
-| `Ctrl`+`Alt`+`Shift`+`DownArrow`   | Move Current Editor to Editor Group Down       | None Originally Assigned       | workbench.action.moveEditorToBelowGroup                     |                                                                            |
-| `Ctrl`+`Alt`+`Shift`+`LeftArrow`   | Move Current Editor to Editor Group Left       | None Originally Assigned       | workbench.action.moveEditorToLeftGroup                      |                                                                            |
-| `Ctrl`+`Alt`+`Shift`+`RightArrow`  | Move Current Editor to Editor Group Right      | None Originally Assigned       | workbench.action.moveEditorToRightGroup                     |                                                                            |
-| `Alt`+ `LeftArrow`                 | Go Back Back                                   | N/A                            | workbench.action.navigateBack                               |                                                                            |
-| `Alt`+ `RightArrow`                | Go Back Forward                                | N/A                            | workbench.action.navigateForward                            |                                                                            |
-| `Ctrl`+`K` `Ctrl`+`S`              | Keyboard Shortcuts                             | N/A                            | workbench.action.openGlobalKeybindings                      |                                                                            |
-| `Ctrl`+`,`                         | User Settings                                  | N/A                            | workbench.action.openGlobalSettings                         |                                                                            |
-| `Ctrl`+`P`                         | Go to File                                     | N/A                            | workbench.action.quickOpen                                  |                                                                            |
-| `Ctrl`+`Tab`                       | Quick Open Previous Recently Used Editor       | N/A                            | workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup |                                                                            |
-| `Ctrl`+`Shift`+`H`                 | Replace in Files                               | N/A                            | workbench.action.replaceInFiles                             |                                                                            |
-| `Ctrl`+`T`                         | Show All Symbols (markdown Heading Navigation) | N/A                            | workbench.action.showAllSymbols                             |                                                                            |
-| `Ctrl`+`R`                         | Switch Window                                  | None Originally Assigned       | workbench.action.switchWindow                               |                                                                            |
-| `Ctrl`+`Shift`+`C`                 | Open External Terminal                         | N/A                            | workbench.action.terminal.openNativeConsole                 |                                                                            |
-| `Ctrl`+`K` `Z`                     | Zen Mode (`esc` `esc` to Exit)                 | N/A                            | workbench.action.toggleZenMode                              |                                                                            |
-| `Ctrl`+`Shift`+`E`                 | View Show Explorer                             | N/A                            | workbench.view.explorer                                     |                                                                            |
+| Shortcut I Use                     | Description                                     | Original Shortcut              | Command                                                     | Further explanation                                                            |
+| ---------------------------------- | ----------------------------------------------- | ------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `shift`+`alt`+`C`                  | Copy Path of Active File                        | N/A                            | copyFilePath                                                |                                                                                |
+| `Ctrl`+`/`                         | Comment Line or Selection                       | N/A                            | editor.action.commentLine                                   |                                                                                |
+| `Shift`+`Alt`+`F`                  | Format Document                                 | N/A                            | editor.action.formatDocument                                |                                                                                |
+| `Ctrl`+`K` `Ctrl`+`F`              | Format Selection                                | N/A                            | editor.action.formatSelection                               |                                                                                |
+| `Shift`+`Alt`+`I`                  | Insert Cursor at End of Each Line Selected      | N/A                            | editor.action.insertCursorAtEndOfEachLineSelected           |                                                                                |
+| `Shift`+`Alt`+`I`                  | Insert Cursor at End of Each Line Selected      | N/A                            | editor.action.insertCursorAtEndOfEachLineSelected           |                                                                                |
+| `Shift`+`Alt`+`I`                  | Add a Cursor to End of Each Line in Selected    | N/A                            | editor.action.insertCursorAtEndOfEachLineSelected           |                                                                                |
+| `F8`                               | Go to Next Error or Warning                     | N/A                            | editor.action.marker.nextInFiles                            |                                                                                |
+| `Shift`+`F8`                       | Go to Previous Error or Warning                 | N/A                            | editor.action.marker.prevInFiles                            |                                                                                |
+| `Alt`+`F12`                        | Peek Definition                                 | N/A                            | editor.action.peekDefinition                                |                                                                                |
+| `F2`                               | Rename Symbol                                   | N/A                            | editor.action.rename                                        |                                                                                |
+| `F12`                              | Go to Definition                                | N/A                            | editor.action.revealDefinition                              |                                                                                |
+| `Ctrl`+`Shift`+`L`                 | Select All Occurrences of Current Selection     | N/A                            | editor.action.selectHighlights                              |                                                                                |
+| `ctrl`+`space` `ctrl`+`C`          | Column Select Mode                              | None Originally Assigned       | editor.action.toggleColumnSelection                         | [Link](https://code.visualstudio.com/updates/v1_43#_column-selection-mode)     |
+| `Alt`+`Z`                          | Toggle Word Wrap                                | N/A                            | editor.action.toggleWordWrap                                |                                                                                |
+| `Ctrl`+`Shift`+`Space`             | Trigger Parameter Hints                         | N/A                            | editor.action.triggerParameterHints                         |                                                                                |
+| `Ctrl`+`K` `Ctrl`+`X`              | Trim Trailing Whitespace                        | N/A                            | editor.action.trimTrailingWhitespace                        |                                                                                |
+| `Ctrl`+`I`                         | Select Current Line                             | N/A                            | expandLineSelection                                         |                                                                                |
+| `Ctrl`+`Shift`+`V`                 | Open Markdown Preview                           | N/A                            | markdown.showPreview                                        |                                                                                |
+| `Ctrl`+`K`+`V`                     | Open Markdown Preview to the Side               | N/A                            | markdown.showPreviewToSide                                  |                                                                                |
+| `Ctrl`+`Shift`+`O`                 | Goes to the Outline View                        | None Originally Assigned       | outline.focus                                               |                                                                                |
+| `Ctrl`+`E` `Ctrl`+`E`              | Reveal Active File in File Explorer             | `Shift`+`Alt`+`R`              | revealFileInOS                                              |                                                                                |
+| `Ctrl`+`K` `O`                     | Open Active File in New Window                  | N/A                            | workbench.action.files.showOpenedFileInNewWindow            |                                                                                |
+| `Ctrl`+`Shift`+`F`                 | Find in Files                                   | N/A                            | workbench.action.findInFiles                                |                                                                                |
+| `Ctrl`+`Space` `Ctrl`+`UpArrow`    | Changes Focus to Editor Located Up              | `Ctrl`+`K` `ctrl`+`UpArrow`    | workbench.action.focusAboveGroup                            |                                                                                |
+| `Ctrl`+`Space` `Ctrl`+`DownArrow`  | Changes Focus to Editor Located Down            | `Ctrl`+`K` `ctrl`+`DownArrow`  | workbench.action.focusBelowGroup                            |                                                                                |
+| `Ctrl`+`Space` `Ctrl`+`LeftArrow`  | Changes Focus to Editor Located Left            | `Ctrl`+`K` `ctrl`+`LeftArrow`  | workbench.action.focusLeftGroup                             |                                                                                |
+| `Ctrl`+`Space` `Ctrl`+`RightArrow` | Changes Focus to Editor Located Right           | `Ctrl`+`K` `ctrl`+`RightArrow` | workbench.action.focusRightGroup                            |                                                                                |
+| `Ctrl`+`G`                         | Go to Line                                      | N/A                            | workbench.action.gotoLine                                   |                                                                                |
+| `Ctrl`+`Alt`+`Shift`+`UpArrow`     | Move Current Editor to Editor Group Up          | None Originally Assigned       | workbench.action.moveEditorToAboveGroup                     |                                                                                |
+| `Ctrl`+`Alt`+`Shift`+`DownArrow`   | Move Current Editor to Editor Group Down        | None Originally Assigned       | workbench.action.moveEditorToBelowGroup                     |                                                                                |
+| `Ctrl`+`Alt`+`Shift`+`LeftArrow`   | Move Current Editor to Editor Group Left        | None Originally Assigned       | workbench.action.moveEditorToLeftGroup                      |                                                                                |
+| `Ctrl`+`Alt`+`Shift`+`RightArrow`  | Move Current Editor to Editor Group Right       | None Originally Assigned       | workbench.action.moveEditorToRightGroup                     |                                                                                |
+| `Alt`+ `LeftArrow`                 | Go Back Back                                    | N/A                            | workbench.action.navigateBack                               |                                                                                |
+| `Alt`+ `RightArrow`                | Go Back Forward                                 | N/A                            | workbench.action.navigateForward                            |                                                                                |
+| `Ctrl`+`K` `Ctrl`+`S`              | Keyboard Shortcuts                              | N/A                            | workbench.action.openGlobalKeybindings                      |                                                                                |
+| `Ctrl`+`,`                         | User Settings                                   | N/A                            | workbench.action.openGlobalSettings                         |                                                                                |
+| `Ctrl`+`P`                         | Go to File                                      | N/A                            | workbench.action.quickOpen                                  |                                                                                |
+| `Ctrl`+`Tab`                       | Quick Open Previous Recently Used Editor        | N/A                            | workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup |                                                                                |
+| `Ctrl`+`Shift`+`H`                 | Replace in Files                                | N/A                            | workbench.action.replaceInFiles                             |                                                                                |
+| `Ctrl`+`T`                         | Show All Symbols (markdown Heading Navigation)  | N/A                            | workbench.action.showAllSymbols                             |                                                                                |
+| `Ctrl`+`R`                         | Switch Window                                   | None Originally Assigned       | workbench.action.switchWindow                               |                                                                                |
+| `Ctrl`+`Shift`+`C`                 | Open External Terminal                          | N/A                            | workbench.action.terminal.openNativeConsole                 |                                                                                |
+| `Ctrl`+`K` `Z`                     | Zen Mode (`esc` `esc` to Exit)                  | N/A                            | workbench.action.toggleZenMode                              |                                                                                |
+| `Ctrl`+`Shift`+`E`                 | View Show Explorer                              | N/A                            | workbench.view.explorer                                     |                                                                                |
+| "ctrl+shift+g"                     | Opens a search editor for the current file only | None                           | search.action.openNewEditor                                 | see [this section](#keyboard-settings-with-their-explanations) for more detail |
 
 ### Other Useful (windows)
 
@@ -369,6 +371,21 @@ Some of the settings I use in VSCode with short explanations
         "minimap.background": "#ffffff33"
     }
     ```
+
+## Keyboard Settings (with Their Explanations)
+
+- this shortcut uses the search editor but only searches the local file searched. [Here](https://github.com/microsoft/vscode/issues/92298#issuecomment-625555240) is some context
+
+```JSON
+    {
+        "key": "ctrl+shift+f+g",
+        "command": "search.action.openNewEditor",
+        "args": {
+            "filesToInclude": "${relativeFile}"
+        },
+        "when": "editorTextFocus"
+    }
+```
 
 ## Extension Authoring
 

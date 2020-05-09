@@ -17,6 +17,7 @@ Table of Contents:
         - [R](#r)
         - [RegEx](#regex)
     - [Other snippets and instructions](#other-snippets-and-instructions)
+        - [Bash](#bash)
         - [Git](#git)
         - [Pandoc](#pandoc)
         - [Powershell](#powershell)
@@ -81,9 +82,11 @@ Stata commands, resources and notes that I've found useful -->
 
 There are other software based snippets or instructions that I will keep here as well
 
-<!-- ### [Bash](https://www.gnu.org/software/bash/)
+### [Bash](https://www.gnu.org/software/bash/)
 
-- [Useful bash commands](other_software/bash.md) -->
+Bash is the most widely used shell for Linux. I use it mostly in WSL.
+
+- [Useful bash commands](other_software/bash.md)
 
 <!-- ### [Docker](https://www.docker.com/)
 
