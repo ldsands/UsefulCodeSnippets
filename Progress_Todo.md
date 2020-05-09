@@ -11,6 +11,7 @@ This a place for a todo list of items to add
 [Pathlib Getting File Directories](programming_languages/python/python_commands.md#pathlib-getting-file-directories)
 [Multiprocessing in Python](programming_languages/python/python_commands.md#multiprocessing-in-python)
 [Bash WSL Setup](other_software/bash.md#wsl-setup)
+[Docker](other_software/docker.md#docker-stuff)
 
 ## General Todos
 
