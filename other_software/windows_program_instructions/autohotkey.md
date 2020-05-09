@@ -50,3 +50,26 @@ I prefer to doublecommander to Windows Explorer for file management I did get us
 ## Some Good Scripts to Look Into
 
 - [AutoHotKey script for Windows that lets a user change virtual desktops](https://github.com/pmb6tz/windows-desktop-switcher)
+    - I use this one a ton but I did change the keyboard shortcuts for two commands. Here is what I changed in the user_config.ahk script:
+
+```AutoHotKey
+CapsLock & Numpad1::MoveCurrentWindowToDesktop(1)
+CapsLock & Numpad2::MoveCurrentWindowToDesktop(2)
+CapsLock & Numpad3::MoveCurrentWindowToDesktop(3)
+CapsLock & Numpad4::MoveCurrentWindowToDesktop(4)
+CapsLock & Numpad5::MoveCurrentWindowToDesktop(5)
+CapsLock & Numpad6::MoveCurrentWindowToDesktop(6)
+CapsLock & Numpad7::MoveCurrentWindowToDesktop(7)
+CapsLock & Numpad8::MoveCurrentWindowToDesktop(8)
+CapsLock & Numpad9::MoveCurrentWindowToDesktop(9)
+
+^!Numpad1::switchDesktopByNumber(1)
+^!Numpad2::switchDesktopByNumber(2)
+^!Numpad3::switchDesktopByNumber(3)
+^!Numpad4::switchDesktopByNumber(4)
+^!Numpad5::switchDesktopByNumber(5)
+^!Numpad6::switchDesktopByNumber(6)
+^!Numpad7::switchDesktopByNumber(7)
+^!Numpad8::switchDesktopByNumber(8)
+^!Numpad9::switchDesktopByNumber(9)
+```
