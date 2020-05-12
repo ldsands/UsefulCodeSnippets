@@ -11,7 +11,8 @@
     - [Other Windows features](#other-windows-features)
         - [Command-line utilities](#command-line-utilities)
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
-    - [MS Office plugins](#ms-office-plugins)
+    - [Windows PowerToys](#windows-powertoys)
+    - [MS Office Plugins](#ms-office-plugins)
 
 ## Win 32
 
@@ -74,40 +75,41 @@ Below are Windows programs that are not able to be installed via chocolatey that
 
 Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
 
-The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
-
 ```nodejs
+# to install nativefier
 npm install nativefier -g
+# to update nativefier (you must have admin privileges)
+npm update -g nativefier
 ```
 
-Some Nativefier Limitations
-
-- you cannot use `ctrl` + `f` to use find in page
-
-Here are a list of the nativefier apps that I install with their code following.
-
-- Outlook.com
-    - I've liked the outlook web app a long time so it is a must
-- Uiowa Outlook.com
-    - see above
-- ICON
-    - for using ICON for school very useful
-- ProWritingAid
-    - I use this for my grammar checking. I paid for the premium lifetime package a while ago and I've been pretty happy with it.
-- Todoist
-    - My preferred to do list manager (for now anyway)
+The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
 
 - some notable options
     - `--hide-window-frame` disables window frame and controls.
     - `--single-instance` you can only have one window of this open at a time
     - `--internal-urls ".*?"` if you want any domain to be able to work in the nativefier window
 
+Some Nativefier Limitations
+
+- you cannot use `ctrl` + `f` to use find in page
+
+Below are a list of the nativefier apps that I install with their code.
+
 ```PowerShell
+# outlook personal
+nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/microsoft-outlook-2019-240.ico --maximize
+# outlook personal single instance with tray icon
 nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/microsoft-outlook-2019-240.ico --maximize
-nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
+# Uiowa outlook site
+nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
+# ICON site
 nativefier --name "ICON" "https://uiowa.instructure.com" --internal-urls ".*(uiowa|instructure)\.(com|edu).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/icon_uiowa_edu.ico --maximize
+# ProWritingAid editor site
 nativefier --name "ProWritingAid" "https://prowritingaid.com/en/Analysis/Documents/Go" --internal-urls ".*prowritingaid.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\ProWritingAid.ico --maximize
+# Todoist site loads to the @MyDay label
 nativefier --name "Todoist" "https://todoist.com/app#agenda%2F%40MyDay" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize
+# Microsoft Teams
+nativefier --name "MS Teams" "https://teams.microsoft.com/" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/MSTeams-icon-96x96.ico --maximize
 ```
 
 ### Utilities
@@ -192,22 +194,33 @@ TODO: need to look through my various notes to add here
 
 ### WSL (Windows subsystem for Linux)
 
+WSL allows for using the linux kernel from within Windows. To install WSL follow the instructions contained on [this site](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and to enable WSL2 use [this site](https://docs.microsoft.com/en-us/windows/wsl/wsl2-install). Below is a short version all put together.
+
 - Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 - You'll need to restart after this
 - Then download the version of linux from the Windows store you want (probably Ubuntu)
+    - make sure you launch after that and then your distro will install
 - You'll be prompted to create a username and password
+    - you'll want to check that your distro is running on WSL 2 and WSL 1 you can do this by entering `wsl -l -v` into PowerShell
+    - to change a distro from WSL 1 to WSL 2 (or visa versa if you change the numbers) enter this code into PowerShell `wsl --set-version <Distro> 2`
 - Type in these two commands to update stuff
 
     ```cmd
-    Sudo apt update
-    Sudo apt upgrade
+    sudo apt update
+    sudo apt upgrade
     ```
 
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../powershell.md#Using-PowerShell-on-Linux)
 
 - Install Anaconda on WSL [see this section](../../programming_languages/python/python_install.md#Install-anaconda-on-WSL)
 
-## MS Office plugins
+## Windows PowerToys
+
+"[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](chocolatey.md/#choco-install-powertoys) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
+
+- to get to the settings for FancyZones go to this location `C:\Users\%username%\AppData\Local\Microsoft\PowerToys\FancyZones\zones-settings.json`.
+
+## MS Office Plugins
 
 I rarely use these but they're very useful
 

@@ -112,10 +112,11 @@ function GetInstalledVoices {
     `$speak.GetInstalledVoices() | foreach  { `$_.VoiceInfo.Name }
 }
 
-## navigate up easier (one level .. two levels ... three levels ....)
-function cd..  { cd ..\ }
-function cd...  { cd ..\.. }
-function cd.... { cd ..\..\.. }
+## navigate up easier (one level `up1` two levels `up2` three levels `up3` four levels `up4`)
+function up1 { Set-Location ..\ }
+function up2 { Set-Location ..\.. }
+function up3 { Set-Location ..\..\.. }
+function up4 { Set-Location ..\..\..\.. }
 
 ## Install the normal modules that I use just type InstallAll
 function InstallAllModules() {
@@ -230,6 +231,12 @@ PowerShell functions can be very powerful and do pretty much anything you can th
         }
         check_if_installed -p1 "Visual Studio Code"
         ```
+
+- run a command prompt from within powershell
+
+   ```PowerShell
+   cmd.exe /c "conda activate base"
+   ```
 
 ### Useful random commands
 

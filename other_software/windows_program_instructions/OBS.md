@@ -32,7 +32,7 @@ Once you have this all set up you can use normal OBS settings to set up your web
 
 ## Improving audio quality
 
-I would really like to reduce the background noise (particularly from my mechanical keyboard)
+I would really like to reduce the background noise (particularly from my mechanical keyboard). I followed the sources below but in the end it was really way more trouble than it was worth.
 
 Be aware this is pretty involved. You will also need to install [Voicemeeter] (https://www.vb-audio.com/Voicemeeter/potato.htm)(get the potato version it is basically the 3.0 name they've given it).
 
