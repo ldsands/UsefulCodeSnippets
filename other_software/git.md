@@ -37,6 +37,8 @@ When you include a file in the parent directory of a project managed by git/GitH
 ```sh
 # ignore all files in any folder with the extension .ogg
 **/*.ogg
+# this one is useful to add to Python projects
+**/*.pyc
 ```
 
 ## Removing Unwanted Files From Git History

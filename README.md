@@ -1,5 +1,19 @@
 # Useful Code Snippets and Software or Configuration Instructions
 
+<p align="center">
+<a href="https://img.shields.io/github/license/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/license/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/repo-size/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/languages/count/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/languages/top/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/commit-activity/m/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/last-commit/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/issues-raw/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/issues-closed-raw/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://img.shields.io/github/issues-closed-raw/ldsands/UsefulCodeSnippets?style=flat-square"></a>
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+<p>
+
 This is a collection of useful code snippets that I either use frequently or I thought would be useful for the future.
 
 For a list of todo items for me to add see [this file](Progress_Todo.md)
@@ -19,6 +33,7 @@ Table of Contents:
     - [Other snippets and instructions](#other-snippets-and-instructions)
         - [Bash](#bash)
         - [Git](#git)
+        - [Github](#github)
         - [Pandoc](#pandoc)
         - [Powershell](#powershell)
         - [VSCode stuff](#vscode-stuff)
@@ -98,7 +113,11 @@ Git is a software management software that allows you to track changes made to f
 
 - [Useful Git Commands](other_software/git.md)
 
-<!-- ### [Github](https://github.com/) -->
+### [Github](https://github.com/)
+
+GitHub is an online site devoted to hosting files using git based track changes.
+
+- [GitHub Resources and Tips](other_software/GitHub.md)
 
 ### [Pandoc](https://pandoc.org/)
 
