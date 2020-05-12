@@ -10,11 +10,12 @@ There are really two main options for file management in python the first is usi
 
 ## Exiting a Python Program/Script
 
-Sometimes you need to exit a Python script or program. This is the best way to do it and it prints a message for you as well.
+Sometimes you need to exit a Python script or program. This is the best way to do it and it prints a message for you as well. Other options are shown below my preferred option.
 
 ```Python
 import sys
 sys.exit("You did not enter an API key please do so")
+raise SystemExit
 ```
 
 ## Time and timing your scripts
@@ -114,5 +115,4 @@ email_subject = "Subject of email"
 email_body = "Sample email body text."
 email_server, sender_email = set_up_email_vars()
 send_email(email_subject, email_body, email_server, sender_email)
-"""
-- [ ] - [ ] 
+```
