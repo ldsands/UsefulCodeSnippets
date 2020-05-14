@@ -77,42 +77,53 @@ Sometimes if I need to look at a lot of output I like to use the terminal rather
 I use this for notifications if a script that takes a long time has an error or if it has completed. This code is based mostly on [this article](https://realpython.com/python-send-email/) on real python. You do have to allow the google account to interact with "less secure apps" by clicking a toggle at [this site](https://myaccount.google.com/lesssecureapps). There is no modules needed to be installed since the `smtplib` and `ssl` modules both come with the python standard library.
 
 ```Python
-def set_up_email_vars():
-    """This function will get all of the information need to setup the email server
+def get_email_password():
+    """This function will prompt the user for the email password to use later
     Returns:
-        SMTP_SSL -- this is the server configuration
-        string -- the sender's email address
+        string -- the sender's email address password
     """
-    import smtplib
-    import ssl
-
-    # your email set up
-    sender_email = "emailAddress@gmail.com"
     # the sending email account's password
     email_password = input("Type your password and press enter: ")
-    # Create a secure SSL context
-    context = ssl.create_default_context()
-    email_server = smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=context)
-    email_server.login(sender_email, email_password)
-    return email_server, sender_email
+    return email_password
 
 
-def send_email(email_subject, email_body, email_server, sender_email):
+def send_email(email_subject, email_body, email_password):
     """This function will assemble then send the email
     Arguments:
         email_subject {str} -- the subject line you want in the email sent
         email_body {str} -- the body of the message you want sent
-        email_server {SMTP_SSL} -- the configured and connected server
-        sender_email {str} -- the email address to be sent from
+        email_password {str} -- the password for the email account
     """
+    import smtplib, ssl
+
+    # your email set up
+    sender_email = "ldsandsdev@gmail.com"
+    # Create a secure SSL context
+    context = ssl.create_default_context()
+    email_server = smtplib.SMTP_SSL("smtp.gmail.com", port=465, context=context)
+    email_server.login(sender_email, email_password)
     # who you want the email to go to
-    receiver_email = "emailAddress@email.com"
+    receiver_email = "ldsands@outlook.com"
     message = f"Subject: {email_subject}\n\n{email_body}"
     email_server.sendmail(sender_email, receiver_email, message)
 
 
+
 email_subject = "Subject of email"
 email_body = "Sample email body text."
-email_server, sender_email = set_up_email_vars()
-send_email(email_subject, email_body, email_server, sender_email)
+email_password = get_email_password()
+send_email(email_subject, email_body, email_password)
+```
+
+## Get Information
+
+Sometimes particularly for email notifications and such I like to know what script is running and what computer it is running on. These two commands below help with that.
+
+```Python
+# get computer name
+import socket
+print(socket.gethostname())
+# get the script name
+import sys
+print(sys.argv[0])
 ```

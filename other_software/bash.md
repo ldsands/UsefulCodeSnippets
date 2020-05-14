@@ -1,4 +1,4 @@
-# Bash Shell
+# Bash/Zsh Shell
 
 Bash is a command shell for unix systems and is the most popular shell used in Linux systems.
 
@@ -16,9 +16,12 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     cd /mnt/d
     ```
 
+- sed is a stream editor that you can use to edit text files quickly and easily from the command line. Here are a couple of resources to get started [short and sweet](https://www.maketecheasier.com/what-is-sed/) and a much more [comprehensive guide](https://www.grymoire.com/Unix/Sed.html#uh-53). There are several examples under the [WSL Setup section](#wsl-setup) of this document.
+
 ## Useful Bash/zsh Commands
 
 - restart your bash shell (or if you have zsh use the second line)
+    - or it seem like you can just type in the other shell and then do the other shell again and it'll restart your shell, so if you start in zsh and want to restart it you can type in `bash` then type in `zsh` and that seems to restart the `zsh` shell
 
     ```sh
     exec bash -l
@@ -36,6 +39,10 @@ Now to get bash all set up with useful features do the following steps:
 1. install Oh My Zsh
     - see detailed instructions [here](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
 
+- Other sources I used while doing this
+    - [link 1](https://www.sitepoint.com/zsh-tips-tricks/) [link 2](https://pascalnaber.wordpress.com/2019/10/05have-a-great-looking-terminal-and-a-more-effective-shell-with-oh-my-zsh-on-wsl-2-using-windows/) [link 3](https://nickymeuleman.netlify.app/blog/linux-on-windows-wsl2-zsh-docker#zsh) [link 4](https://www.sitepoint.com/zsh-tips-tricks/).
+- for a list of pre-installed plugins look [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview)
+
 ```bash
 # get into administrator mode
 sudo
@@ -47,21 +54,48 @@ git config --global core.autocrlf input
 git config --global user.name "Prename Name"
 git config --global user.email "email@example.com"
 # install zsh
-sudo apt install zsh
+sudo apt install zsh -y
 # test to see if zsh is installed
 zsh --version
-# start zsh and select the 
-
-# create settings file
-touch ~/.zshrc
+# start zsh and select the option with the default settings
+zsh
+# setup the default settings
+2
+# make it your default shell (you'll need to enter your password)
+chsh -s $(which zsh)
+# logout of the shell and restart it
+bash
+zsh
 # install Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# set the theme for Oh My Zsh
-ZSH_THEME="agnoster"
+
+# Customizing the shell
+# this allows you to open the configuration file with vs code
+code ~/.zshrc
+# set the theme for Oh My Zsh the agnoster option is already installed the powerlevel10k has to be downloaded and installed
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc
+# change the blue to be easier to read
+sed -i '0,/blue/{s/blue/39d/}' ~/.oh-my-zsh/themes/agnoster.zsh-theme
+# enable auto correction (you also need to enable the plugin which is below)
+sed -i 's/# ENABLE_CORRECTION="true"/ENABLE_CORRECTION="true"/g' ~/.zshrc
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# enable syntax highlighting (you also need to enable the plugin which is below)
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # get directory themes
 curl https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark --output ~/.dircolors
-# set the directory colors to the theme just downloaded
-eval `dircolors ~/.dircolors`
-
+# set the directory colors to the theme just downloaded you need to add it to the .zshrc file copy all 3 of the next lines and enter them
+sed -i -e '$a\
+# load dircolors\
+eval `dircolors ~/.dircolors`' ~/.zshrc
+# this stops a "Insecure completion-dependent directories detected" if you need it use the code below without the first `#`
+# sed -i '/plugins=(git)/a ZSH_DISABLE_COMPFIX=true' ~/.zshrc
+# add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
+sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
+sed -i '/^plugins=(/a \    git\n    python\n    pip\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting' ~/.zshrc
+# resart the shell
+bash
+zsh
 
 ```

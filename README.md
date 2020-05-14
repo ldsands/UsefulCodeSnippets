@@ -97,7 +97,7 @@ There are other software based snippets or instructions that I will keep here as
 
 ### [Bash](https://www.gnu.org/software/bash/)
 
-Bash is the most widely used shell for Linux. I use it mostly in WSL.
+Bash is the most widely used shell for Linux. I use it mostly in WSL. Also note that I usually use zsh not bash it has a lot of useful plugins but they're very similar.
 
 - [Useful bash commands](other_software/bash.md)
 

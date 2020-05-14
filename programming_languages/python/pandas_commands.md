@@ -101,6 +101,12 @@ This is a collection of functions that I find to be useful in various scripts.
     dta_small.groupby("month_year")["author"].nunique()
     ```
 
+- similar to the above groupby functions is the need to get the number of times each value is repeated in a column
+
+    ```Python
+    dta.body.value_counts(dropna=False)
+    ```
+
 - when you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
 
     ```Python

@@ -29,11 +29,12 @@ This is for shen the add to path doesn't work for the chocolatey install
     # installs curl if you don't have it installed
     sudo apt-get install curl
     # navigate to the tmp folder
+    ~
     cd /tmp
     # downloads the desired file from anaconda
-    curl –O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+    curl https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh --output anaconda.sh
     # installs anaconda from the file you downloaded
-    bash Anaconda3-2020.02-Linux-x86_64.sh
+    bash anaconda.sh
     # disables automatic activation of base when starting a terminal
     conda config --set auto_activate_base false
     ```
