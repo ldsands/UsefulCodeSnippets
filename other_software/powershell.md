@@ -23,7 +23,7 @@ You can install PowerShell using the dotnet sdk (core or standard) on any platfo
 code $PROFILE.CurrentUserAllHosts
 $ProfileTemplate = @"
 function listProfileFunctions {
-    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "RestartWSL")
+    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "WSLRestart")
     Write-Host `$profileFunctions
 }
 
@@ -137,9 +137,14 @@ if(`$IsWindows) {
     Set-Theme Paradox
 }
 
-function RestartWSL() {
+function WSLRestart() {
     if (`$IsWindows) {
-        Get-Service LxssManager | Restart-Service
+        if (!(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))) {
+            Write-Host "You need administrator privilages to use WSLRestart"
+        }
+        else {
+            Get-Service LxssManager | Restart-Service
+        }
     }
 }
 
