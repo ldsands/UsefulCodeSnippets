@@ -35,17 +35,17 @@ raise SystemExit
     ```
 
 - printing the current time - sometimes you need to know about what time something happened this can do that by printing the current time
-    - note to make this work you must include the following at the top of your document `from datetime import datetime`
 
     ```Python
-    from datetime import datetime
-
     def print_current_time():
         """
         Prints the current date and time of day
         """
-        now = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
-        return f"current time: {now}"
+        from datetime import datetime
+
+        now = datetime.now()
+        now = now.strftime("%m/%d/%Y, %H:%M:%S")
+        return now
     ```
 
 ### Multiprocessing in Python
