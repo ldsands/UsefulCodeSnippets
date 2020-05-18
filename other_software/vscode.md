@@ -51,6 +51,7 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | ----------------------- | ----------------------------------------------- | ------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------------ |
 | "shift+alt+c"           | Copy Path of Active File                        | N/A                      | copyFilePath                                                |                                                                                |
 | "ctrl+/"                | Comment Line or Selection                       | N/A                      | editor.action.commentLine                                   |                                                                                |
+| "ctrl+shift+k"          | Delete Current Line                             | N/A                      | editor.action.deleteLines                                   |                                                                                |
 | "shift+alt+f"           | Format Document                                 | N/A                      | editor.action.formatDocument                                |                                                                                |
 | "ctrl+k ctrl+f"         | Format Selection                                | N/A                      | editor.action.formatSelection                               |                                                                                |
 | "shift+alt+i"           | Insert Cursor at End of Each Line Selected      | N/A                      | editor.action.insertCursorAtEndOfEachLineSelected           |                                                                                |
@@ -71,6 +72,7 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | "ctrl+k+v"              | Open Markdown Preview to the Side               | N/A                      | markdown.showPreviewToSide                                  |                                                                                |
 | "ctrl+shift+o"          | Goes to the Outline View                        | None Originally Assigned | outline.focus                                               |                                                                                |
 | "ctrl+e ctrl+e"         | Reveal Active File in File Explorer             | "shift+alt+r"            | revealFileInOS                                              |                                                                                |
+| "ctrl+shift+g"          | Opens a Search Editor for the Current File Only | None                     | search.action.openNewEditor                                 | see [this section](#keyboard-settings-with-their-explanations) for more detail |
 | "ctrl+k o"              | Open Active File in New Window                  | N/A                      | workbench.action.files.showOpenedFileInNewWindow            |                                                                                |
 | "ctrl+shift+f"          | Find in Files                                   | N/A                      | workbench.action.findInFiles                                |                                                                                |
 | "ctrl+space ctrl+up"    | Changes Focus to Editor Located Up              | "ctrl+k ctrl+up"         | workbench.action.focusAboveGroup                            |                                                                                |
@@ -84,6 +86,7 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | "ctrl+alt+shift+right"  | Move Current Editor to Editor Group Right       | None Originally Assigned | workbench.action.moveEditorToRightGroup                     |                                                                                |
 | "alt+left"              | Go Back Back                                    | N/A                      | workbench.action.navigateBack                               |                                                                                |
 | "alt+right"             | Go Back Forward                                 | N/A                      | workbench.action.navigateForward                            |                                                                                |
+| "ctrl+shift+n"          | Open New Window                                 | N/A                      | workbench.action.newWindow                                  |                                                                                |
 | "ctrl+k ctrl+s"         | Keyboard Shortcuts                              | N/A                      | workbench.action.openGlobalKeybindings                      |                                                                                |
 | "ctrl+,"                | User Settings                                   | N/A                      | workbench.action.openGlobalSettings                         |                                                                                |
 | "ctrl+p"                | Go to File                                      | N/A                      | workbench.action.quickOpen                                  |                                                                                |
@@ -94,16 +97,16 @@ Some of these shortcuts have been modified by me and I use them with settings sy
 | "ctrl+shift+c"          | Open External Terminal                          | N/A                      | workbench.action.terminal.openNativeConsole                 |                                                                                |
 | "ctrl+k z"              | Zen Mode (`esc` `esc` to Exit)                  | N/A                      | workbench.action.toggleZenMode                              |                                                                                |
 | "ctrl+shift+e"          | View Show Explorer                              | N/A                      | workbench.view.explorer                                     |                                                                                |
-| "ctrl+shift+g"          | Opens a search editor for the current file only | None                     | search.action.openNewEditor                                 | see [this section](#keyboard-settings-with-their-explanations) for more detail |
 
 ### Other Useful (windows)
 
 VSCode shortcuts that are not associated with any extensions. Some of these shortcuts have been modified by me and I use them with settings sync to make them consistent across computers.
 
-| Shortcut I Use     | Description                                    | Original Shortcut        | Extension Name | Command                | Further explanation                                    |
-| ------------------ | ---------------------------------------------- | ------------------------ | -------------- | ---------------------- | ------------------------------------------------------ |
-| `Ctrl`+`Shift`+`T` | TODOs Focus on TODO view                       | None Originally Assigned | todo-tree      | todo-tree-view.focus   | [Repository](https://github.com/Gruntfuggly/todo-tree) |
-| `Ctrl`+`Shift`+`C` | Copy the selection without syntax highlighting | N/A                      | copy-text      | copy-text.copyTextOnly | [Repository](https://github.com/s-albert/copy-text)    |
+| Shortcut I Use | Description                                    | Original Shortcut        | Extension Name    | Command                                | Further explanation                                               |
+| -------------- | ---------------------------------------------- | ------------------------ | ----------------- | -------------------------------------- | ----------------------------------------------------------------- |
+| "ctrl+shift+c" | Copy the selection without syntax highlighting | N/A                      | copy-text         | copy-text.copyTextOnly                 | [Repository](https://github.com/s-albert/copy-text)               |
+| "ctrl+alt+n"   | Open Git Project in New Window                 | N/A                      | gitProjectManager | gitProjectManager.openProjectNewWindow | [Repository](https://github.com/felipecaputo/git-project-manager) |
+| "ctrl+shift+t" | TODOs Focus on TODO view                       | None Originally Assigned | todo-tree         | todo-tree-view.focus                   | [Repository](https://github.com/Gruntfuggly/todo-tree)            |
 
 ## Code Snippets
 
