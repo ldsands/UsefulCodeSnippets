@@ -151,6 +151,28 @@ Below are some links to useful resources for understanding and making snippets:
         - to have a predefined text that is pre-highlighted allows you to easily delete a chunk of text in case it needs to be changed you can achieve this by using this code format `${1:Predefined text}`
     - giving options to choose from at tab stop
         - if you want options at a tab stop you must surround the options in `|` also do not use a `:` after the number like normal `${1|Class Imports,Module Declaration|}"`
+- Snippets I use regularly that may be useful to others
+    - This next snippet replaces all spaces with underscores `_`
+        - funny sidenote on this I literally created a VS Code extension to do this kind of stuff and just a few weeks later I found [this stackoverflow answer](https://stackoverflow.com/questions/1596052/replace-text-in-a-visual-studio-code-snippet-literal)
+
+        ```javascript
+        "Replace Whitespaces With UnderScores": {
+            "prefix": "ReplaceUnderscore",
+            "body": [
+                "${TM_SELECTED_TEXT/[' ']/_/gi}",
+            ],
+            "description": "Replace All Whitespaces of Highlighted Text With Underscores"
+        }
+        // Below you can do this through a keyboard shortcut if you want to as well
+        {
+            "key": "ctrl+shift+y",
+            "command": "editor.action.insertSnippet",
+            "when": "editorTextFocus",
+            "args": {
+                "snippet": "${TM_SELECTED_TEXT/[' ']/_/gi}"
+            }
+        }
+        ```
 
 ## Installed Extensions
 
