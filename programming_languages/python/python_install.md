@@ -65,7 +65,7 @@ There are many methods of setting up and managing python environments but I woul
 
 Venv is what I recommend (for now) for "normal" python for the moment it is kind of limited (unable to handle a lot of non-python packages though this is more of a pip issue than venv) and a but more complicated to use and activate but it seems to work pretty well. I does not have the ability to dictate the version of python that is used either.
 
->Update soon VSCode will be supporting [poetry](https://python-poetry.org/) which looks a lot like conda but for "normal" python. Once they complete the VSCode support I'll probably add the details here. it kind of deal with different versions of python as well though the better solution is to use pyenv (or pyenv-win for Windows which can be installed using chocolatey `choco install pyenv-win`, I haven't experimented with these yet though).
+>Update soon VS Code will be supporting [poetry](https://python-poetry.org/) which looks a lot like conda but for "normal" python. Once they complete the VS Code support I'll probably add the details here. it kind of deal with different versions of python as well though the better solution is to use pyenv (or pyenv-win for Windows which can be installed using chocolatey `choco install pyenv-win`, I haven't experimented with these yet though).
 
 ### [conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 

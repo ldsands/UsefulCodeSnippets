@@ -2,7 +2,7 @@
 
 ## Resources
 
-- [Getting started with a fsharp project in VSCode](https://atlemann.github.io/fsharp/2018/02/28/fsharp-solutions-from-scratch.html) has several instructions about how to get a F# project started in VSCode
+- [Getting started with a fsharp project in VS Code](https://atlemann.github.io/fsharp/2018/02/28/fsharp-solutions-from-scratch.html) has several instructions about how to get a F# project started in VS Code
 - [F# for fun and profit](https://fsharpforfunandprofit.com/) is kind of the defacto staring place for most people picking up F#
 
 ## Installation

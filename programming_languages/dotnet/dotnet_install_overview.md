@@ -84,7 +84,7 @@ dotnet script main.csx
 
 ## Packages
 
-dotnet uses nuget as its package manager below is an example of downloading a nuget package. This is very easy in [Visual Studio](https://visualstudio.microsoft.com/vs/) however I have no desire to leave VSCode so it is a bit more complicated.
+dotnet uses nuget as its package manager below is an example of downloading a nuget package. This is very easy in [Visual Studio](https://visualstudio.microsoft.com/vs/) however I have no desire to leave VS Code so it is a bit more complicated.
 
 to see all of the packages that are installed
 

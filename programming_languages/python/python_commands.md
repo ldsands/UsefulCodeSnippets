@@ -66,7 +66,7 @@ with Pool(processes=4) as pool:
 
 ## IPython/Jupyter special commands
 
-Sometimes if I need to look at a lot of output I like to use the terminal rather than VSCode since it can display more output. This command below allows for running a python file from inside of the IPython/Jupyter kernel.
+Sometimes if I need to look at a lot of output I like to use the terminal rather than VS Code since it can display more output. This command below allows for running a python file from inside of the IPython/Jupyter kernel.
 
 ```Python
 %run ./monthly_activity.py

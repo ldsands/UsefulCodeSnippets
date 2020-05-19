@@ -34,7 +34,7 @@ Table of Contents:
         - [Github](#github)
         - [Pandoc](#pandoc)
         - [Powershell](#powershell)
-        - [VSCode stuff](#vscode-stuff)
+        - [VS Code stuff](#vscode-stuff)
         - [Windows](#windows)
 
 ## Languages included here
@@ -129,11 +129,14 @@ PowerShell is like bash but for Windows and now with access to all of .Net it is
 
 - [Useful Powershell commands](other_software/powershell.md)
 
-### [VSCode stuff](https://code.visualstudio.com/)
+### [VS Code stuff](https://code.visualstudio.com/)
 
-Visual Studio Code is technically a text editor but really is a full blown IDE (integrated development environment) for most programming languages.
+Visual Studio Code is technically a text editor but really is a full blown IDE (integrated development environment) for most programming languages. I use it for pretty much everything to do with programming. I also use it for note-taking and various other tasks.
 
-- [Useful VSCode shortcuts and extensions](other_software/vscode.md)
+- [Useful VS Code Resources and Notes](other_software/VS_Code/vscode.md)
+- [Useful VS Code Resources and Notes](other_software/VS_Code/vscode.md)
+- [Useful VS Code Extensions](other_software/VS_Code/vscode_extensions.md)
+- [Useful VS Code Settings](other_software/VS_Code/vscode_settings.md.md)
 
 ### [Windows](https://www.microsoft.com/en-us/windows)
 

@@ -20,10 +20,10 @@ Below are Windows programs that are installed using chocolatey
 
 - Google Chrome
     - the most popular browser I personally prefer the new version of Edge but old habits die hard
-- Visual Studio Code or VSCode
+- Visual Studio Code or VS Code
     - a truly incredible text editor that is really in IDE in capabilities for many programming languages
     - for me writing in anything else is frustrating because of other programs limitations
-    - for more information on my VSCode setup and other tips see [this other markdown sheet](../vscode.md)
+    - for more information on my VS Code setup and other tips see [this other markdown sheet](../vscode.md)
 - 7zip
     - for all of your compression and decompression needs free and open source and very capable
 - [git](../git.md)
@@ -46,7 +46,7 @@ Below are Windows programs that are installed using chocolatey
 - FiraCode NF
     - my favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
 - R Studio
-    - the defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VSCode, occasionally however I jump into R.Studio for the variable explorer and other little things
+    - the defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VS Code, occasionally however I jump into R.Studio for the variable explorer and other little things
 - MikTeX
     - the defacto LaTeX installation for Windows I don't use LaTeX directly much anymore but pandoc uses it so I usually install it
 - [Zotero](zotero.md)

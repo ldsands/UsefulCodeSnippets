@@ -25,3 +25,15 @@ choco install jdk8
 ## Creating a Local Package
 
 [A resource that was very useful to me in doing this](https://www.ictshore.com/python/create-python-modules-tutorial/)
+
+- You need to create a file structure similar to what I have below:
+    - for more instructions about namespaces and packages and how the file structure should be organized can be found [here](https://setuptools.readthedocs.io/en/latest/setuptools.html#find-namespace-packages)
+
+```plaintext
+📦RedditFunctions
+ ┣ 📂ParquetFunctions
+ ┃ ┣ 📜ParquetFunctions.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📜email_notifier.py
+ ┗ 📜setup.py
+```
