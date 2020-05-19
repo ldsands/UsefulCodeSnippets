@@ -34,6 +34,8 @@ Code snippets are, "templates that make it easier to enter repeating code patter
     - `${TM_DIRECTORY}` this will insert the name of the directory in which the file is located
     - `${BLOCK_COMMENT_START}` this will insert the start of a block comment
     - `${BLOCK_COMMENT_END}` this will insert the end of a block comment
+    - `${TM_SELECTED_TEXT}` this will do something to the text that is selected
+    - `${CLIPBOARD}` this will do something with whatever is in the clipboard
 - Here is a simple snippet example that I use for creating class notes (I write all of my class notes in markdown in VS Code). I just inserts the code contained in the `body` section after I type in the text contained in the `prefix` section
 
     ```javascript
