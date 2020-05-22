@@ -1,5 +1,18 @@
 # Useful Python Commands
 
+- [Useful Python Commands](#useful-python-commands)
+    - [Python file management](#python-file-management)
+        - [Pathlib Getting File Directories](#pathlib-getting-file-directories)
+    - [Exiting a Python Program/Script](#exiting-a-python-programscript)
+    - [Functions in Python](#functions-in-python)
+        - [Optional Arguments](#optional-arguments)
+    - [Time and timing your scripts](#time-and-timing-your-scripts)
+        - [Multiprocessing in Python](#multiprocessing-in-python)
+    - [IPython/Jupyter special commands](#ipythonjupyter-special-commands)
+    - [Sending Emails Using Python](#sending-emails-using-python)
+    - [Get Information](#get-information)
+    - [Random Useful Commands](#random-useful-commands)
+
 ## Python file management
 
 There are really two main options for file management in python the first is using os module the second is pathlib. Pathlib is superior in almost everyway and thus it is far better to use in general. It comes built into python so you don't have to use pip or conda to install it.
@@ -17,6 +30,12 @@ import sys
 sys.exit("You did not enter an API key please do so")
 raise SystemExit
 ```
+
+## Functions in Python
+
+### Optional Arguments
+
+TODO:
 
 ## Time and timing your scripts
 
@@ -127,3 +146,14 @@ print(socket.gethostname())
 import sys
 print(sys.argv[0])
 ```
+
+## Random Useful Commands
+
+- when you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
+
+    ```Python
+    if "dta" in globals(): # or locals for locally defined variables
+        print("dta is already loaded")
+    else:
+        print("you need to load the data")
+    ```

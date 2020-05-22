@@ -1,6 +1,74 @@
 # Python installation instructions and notes
 
-## Anaconda PATH Windows instructions
+## Pyenv With Poetry
+
+Pyenv is a simpler version of what anaconda does but with poetry (which uses pyenv) it is pretty much just as powerful. I used [this site](https://dev.to/writingcode/the-python-virtual-environment-with-pyenv-pipenv-3mlo) for help putting this together. Poetry is kind of like anaconda but just newer and a little less separated from the rest of the python ecosystem.
+
+- Install Pyenv on linux (with zsh) and add to the PATH
+
+    ```zsh
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+    # you also need these for using pyenv
+    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+    exec "$SHELL"
+    # now to set the new default for future projects
+    pyenv install 3.8.3
+    pyenv global 3.8.3
+    pyenv versions
+    # Install virtualenv
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
+    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+    echo 'if [[ -z "$VIRTUAL_ENV" ]]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    fi' >> ~/.zshrc
+    exec "$SHELL"
+    # example virtual environment using pyenv-virtualenv
+    pyenv virtualenv TestEnv
+    # set this environment to global and activates it
+    pyenv global TestEnv
+    pyenv deactivate
+    ```
+
+- setting up a global pyenv python base
+    - list all of the possible versions of python you can install `pyenv install --list` or to list all of them of a certain version `pyenv install 3.8`
+    - install a version of python `pyenv install 3.8.3`
+    - make it available globally so you don't have to touch your system wide version of python (that comes with your distro) `pyenv global 3.8.3`
+    - enter `pyenv versions` to see what versions are available to you
+- Now to add virtualenv. [This article](https://realpython.com/intro-to-pyenv/#virtual-environments-and-pyenv) was helpful for understanding virtualenv better. To install see above.
+    - for usage of virtualenv see [this link](https://github.com/pyenv/pyenv-virtualenv#usage) on their github repo
+- now to install poetry see more detailed instructions [here](https://github.com/pyenv/pyenv/wiki/Common-build-problems).
+    - Note that the `sudo apt-get install python-is-python3` probably won't be needed after late May of 2020 due to a fix
+
+    ```zsh
+    # install poetry for python management
+    sudo apt-get install python-is-python3
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
+    mkdir $ZSH/plugins/poetry
+    poetry completions zsh > $ZSH/plugins/poetry/_poetry
+    sudo apt-get install python3-venv -y
+    exec "$SHELL"
+    ```
+
+- once you have poetry installed you can use it with the pyenv-virtualenv environments
+    - `poetry install` will install everything that is required (and specified by the poetry pyproject.toml) it will also create a poetry.lock file which will not allow for updating manually thus avoiding a lot of incompatibility headaches. Also if you've used poetry to install the dependencies in a pyenv-virtualenv environment then you'll need to activate it by entering `poetry shell` into the command line.
+    - if you create a virtual environment just using poetry you can remove it by using this command `poetry env remove envname`
+    - if you're using a global environment you will have to do the poetry install from the location of the pyproject.toml file for it to work
+
+    ```zsh
+    # poetry used with pyenv virtualenv while having a virtual environment activated
+    poetry install
+    poetry shell
+    poetry env info
+    ```
+
+## Anaconda
+
+### Anaconda PATH Windows instructions
 
 This is for shen the add to path doesn't work for the chocolatey install
 
@@ -16,7 +84,7 @@ This is for shen the add to path doesn't work for the chocolatey install
     conda list
     ```
 
-## Install anaconda on WSL
+### Install anaconda on WSL
 
 - Install Anaconda on WSL
     - Assuming you're using Windows you may want to use WSL 2 to install everything. To install WSL 2 (assuming you doing so after May 2020 it will be much easier) follow the instructions on [this site](https://docs.microsoft.com/en-us/windows/wsl/wsl2-install). Once you have that installed you can install any of the linux distributions on the Windows Store I would recommend [using Ubuntu](https://www.microsoft.com/en-us/p/ubuntu-1804-lts/9n9tngvndl3q?activetab=pivot:overviewtab).

@@ -20,13 +20,14 @@ Bash is a command shell for unix systems and is the most popular shell used in L
 
 ## Useful Bash/zsh Commands
 
-- restart your bash shell (or if you have zsh use the second line)
+- restart your bash or zsh shell
     - or it seem like you can just type in the other shell and then do the other shell again and it'll restart your shell, so if you start in zsh and want to restart it you can type in `bash` then type in `zsh` and that seems to restart the `zsh` shell
 
     ```sh
-    exec bash -l
-    exec zsh -l
+    exec "$SHELL"
     ```
+
+- To see all of the files in a directory you can use `ls` however if you also want to see the hidden files you need to use `ls -a`
 
 ### WSL Setup
 
@@ -65,11 +66,9 @@ zsh
 # make it your default shell (you'll need to enter your password)
 chsh -s $(which zsh)
 # logout of the shell and restart it
-bash
-zsh
+exec "$SHELL"
 # install Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Customizing the shell
 # this allows you to open the configuration file with vs code
 code ~/.zshrc
@@ -92,11 +91,31 @@ sed -i -e '$a\
 eval `dircolors ~/.dircolors`' ~/.zshrc
 # this stops a "Insecure completion-dependent directories detected" if you need it use the code below without the first `#`
 # sed -i '/plugins=(git)/a ZSH_DISABLE_COMPFIX=true' ~/.zshrc
+# install pyenv and put into the PATH
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+# you also need these for using pyenv
+sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+# install poetry for python management
+sudo apt-get install python-is-python3
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
+echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.zshrc
+echo 'if [[ -z "$VIRTUAL_ENV" ]]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi' >> ~/.zshrc
+mkdir $ZSH/plugins/poetry
+poetry completions zsh > $ZSH/plugins/poetry/_poetry
+sudo apt-get install python3-venv -y
 # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
 sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
-sed -i '/^plugins=(/a \    git\n    python\n    pip\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting' ~/.zshrc
-# resart the shell
-bash
-zsh
+sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting' ~/.zshrc
+# restart the shell
+exec "$SHELL"
 
 ```
