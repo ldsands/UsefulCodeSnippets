@@ -211,8 +211,15 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
     ```
 
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../powershell.md#Using-PowerShell-on-Linux)
-
 - Install Anaconda on WSL [see this section](../../programming_languages/python/python_install.md#Install-anaconda-on-WSL)
+- Some useful PowerShell commands to use to manage the WSL distros are below [here](https://docs.microsoft.com/en-us/windows/wsl/reference) is a more comprehensive list of WSL commands
+
+    ```PowerShell
+    # list the wsl distros that are installed
+    wsl --list --verbose
+    # terminate a WSL distro from PowerShell
+    wsl --terminate <distro name>
+    ```
 
 ## Windows PowerToys
 

@@ -8,9 +8,30 @@
     - pip install docx2txt
     - [see this script](useful_scripts/docx_to_txt.py) for an implementation that takes all docx files in the local folder and converts them to txt files
 
-    ```python
+    ```Python
     text = docx2txt.process(file)
     ```
+
+- [Altair](https://altair-viz.github.io/index.html)
+    - this module is very good graphing data taken from pandas. I choose this over other options such as matplotlib or seaborne because of the vega and vega-lite backend which also have plugins/packages in both Julia and R. You can also edit them manually in a browser if needed.
+    - Be aware that to save the charts as png or svg files you'll need to install node.js and npm the instructions for installing this on Ubuntu/WSL/Debian are below:
+
+    ```zsh
+    # install node.js
+    sudo apt install nodejs
+    # check to see if it worked
+    nodejs -v
+    # install npm
+    sudo apt install npm
+    # check to see if it worked
+    npm --v
+    # install vega lite and vega cli canvas for saving charts into the png, svg etc. formats
+    npm install vega-lite vega-cli canvas
+    ````
+
+<!-- 
+- [ ] Add some simple graph code for Altair
+-->
 
 ## PySpark
 

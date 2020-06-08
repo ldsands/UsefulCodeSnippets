@@ -16,7 +16,31 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     cd /mnt/d
     ```
 
-- sed is a stream editor that you can use to edit text files quickly and easily from the command line. Here are a couple of resources to get started [short and sweet](https://www.maketecheasier.com/what-is-sed/) and a much more [comprehensive guide](https://www.grymoire.com/Unix/Sed.html#uh-53). There are several examples under the [WSL Setup section](#wsl-setup) of this document.
+- Aliases are commands that are typed and then expanded to whatever the user wants it to be. It follows this format `alias [flag] [custom-alias]="[command]"` below is an example
+    - To make an alias persistent you need to add it to your profile file, you will also have to restart the shell after that to use the alias. An example of that is on the second line of the code block below
+
+    ```sh
+    alias FrequentFolder="cd /mnt/c/user/location/directory"
+    echo 'alias FrequentFolder="cd /mnt/c/user/location/directory"' >> ~/.zshrc
+    exec "$SHELL"
+    ```
+
+- Environment variables are variables that are meant to store different pieces of information (often strings) for use elsewhere. Examples might include a token that is personal to you: you can set the environment variable on your computer and  reference it easily in code but do so without exposing your personal token. To do this in python you can see [an example](../programming_languages/python/python_commands.md#random-useful-commands).
+    - Below is an example of the directory for some file that I use often using modelFile invokes the path to that file.
+    - The second example is setting a token as an environment variable.
+
+    ```sh
+    # assign the directory below to the environment variable `modelFile`
+    export modelFile="/mnt/f/RedditData/ML_models/"
+    # this will add the same variable to the zsh profile file for use after reboots
+    echo 'export modelFile="/mnt/f/RedditData/ML_models/"' >> ~/.zshrc
+    # this adds the token for publishing from poetry to PyPI
+    export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"
+    # and again the persistent version
+    echo 'export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"' >> ~/.zshrc
+    ```
+
+- sed is a stream editor that you can use to edit text files quickly and easily from the command line. Here are a couple of resources to get started [short and sweet](https://www.maketecheasier.com/what-is-sed/) and a much more [comprehensive guide](https://www.grymoire.com/Unix/Sed.html#uh-53). There are several examples under the [WSL Setup section](#wsl-setup) of this document. This is more capable then the echo command that I often use because sed can for example find a line and replace it.
 
 ## Useful Bash/zsh Commands
 
@@ -41,9 +65,8 @@ Now to get bash all set up with useful features do the following steps:
     - see detailed instructions [here](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
 
 - Other sources I used while doing this
-    - [link 1](https://www.sitepoint.com/zsh-tips-tricks/) [link 2](https://pascalnaber.wordpress.com/2019/10/05have-a-great-looking-terminal-and-a-more-effective-shell-with-oh-my-zsh-on-wsl-2-using-windows/) [link 3](https://nickymeuleman.netlify.app/blog/linux-on-windows-wsl2-zsh-docker#zsh) [link 4](https://www.sitepoint.com/zsh-tips-tricks/).
+    - [link 1](https://www.sitepoint.com/zsh-tips-tricks/) [link 2](https://pascalnaber.wordpress.com/2019/10/05/have-a-great-looking-terminal-and-a-more-effective-shell-with-oh-my-zsh-on-wsl-2-using-windows/) [link 3](https://nickymeuleman.netlify.app/blog/linux-on-windows-wsl2-zsh-docker#zsh) [link 4](https://www.sitepoint.com/zsh-tips-tricks/).
 - for a list of pre-installed plugins look [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview)
-- the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
 
 ```bash
 # get into administrator mode
@@ -72,23 +95,20 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # Customizing the shell
 # this allows you to open the configuration file with vs code
 code ~/.zshrc
-# set the theme for Oh My Zsh the agnoster option is already installed the powerlevel10k has to be downloaded and installed
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc
-# change the blue to be easier to read
-sed -i '0,/blue/{s/blue/39d/}' ~/.oh-my-zsh/themes/agnoster.zsh-theme
+# change the blue in the prompt bar to be easier to read
+# sed -i '0,/blue/{s/blue/39d/}' ~/.oh-my-zsh/themes/agnoster.zsh-theme
 # enable auto correction (you also need to enable the plugin which is below)
 sed -i 's/# ENABLE_CORRECTION="true"/ENABLE_CORRECTION="true"/g' ~/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # enable syntax highlighting (you also need to enable the plugin which is below)
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # get directory themes
-curl https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark --output ~/.dircolors
+curl https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark --output ~/.dir_colors
+git clone --recursive git://github.com/joel-porquet/zsh-dircolors-solarized $ZSH_CUSTOM/plugins/zsh-dircolors-solarized
 # set the directory colors to the theme just downloaded you need to add it to the .zshrc file copy all 3 of the next lines and enter them
 sed -i -e '$a\
 # load dircolors\
-eval `dircolors ~/.dircolors`' ~/.zshrc
+eval `dircolors ~/.dir_colors`' ~/.zshrc
 # this stops a "Insecure completion-dependent directories detected" if you need it use the code below without the first `#`
 # sed -i '/plugins=(git)/a ZSH_DISABLE_COMPFIX=true' ~/.zshrc
 # install pyenv and put into the PATH
@@ -114,8 +134,16 @@ poetry completions zsh > $ZSH/plugins/poetry/_poetry
 sudo apt-get install python3-venv -y
 # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
 sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
-sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting' ~/.zshrc
+sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting\n    zsh-dircolors-solarized' ~/.zshrc
 # restart the shell
 exec "$SHELL"
-
 ```
+
+- the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
+```sh
+# set the theme for Oh My Zsh the agnoster option is already installed the powerlevel10k has to be downloaded and installed
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc
+```
+

@@ -2,6 +2,8 @@
 
 a package manager for Windows, using this makes setting up a Windows computer WAY faster and easier
 
+Note: in May of 2020 Microsoft released their own package manager that I will slowly be using over chocolatey
+
 ## Install chocolatey
 
 make sure you open powershell as an administrator otherwise chocolatey will not be able to install

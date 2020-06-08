@@ -27,7 +27,7 @@ Pyenv is a simpler version of what anaconda does but with poetry (which uses pye
     eval "$(pyenv virtualenv-init -)"
     fi' >> ~/.zshrc
     exec "$SHELL"
-    # example virtual environment using pyenv-virtualenv
+    # create example virtual environment using pyenv-virtualenv
     pyenv virtualenv TestEnv
     # set this environment to global and activates it
     pyenv global TestEnv

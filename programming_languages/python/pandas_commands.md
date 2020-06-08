@@ -99,12 +99,21 @@ This is a collection of functions that I find to be useful in various scripts.
     dta_small.groupby("month_year").nunique()
     # this gets the number of unique values from the "author" column for each unique value found in the "month_year" column
     dta_small.groupby("month_year")["author"].nunique()
+    # this gets count for each unique value in the"author" column and puts them into a dataframe for easy viewing result of the  print out are below
+    dta_filtered = dta.author.value_counts()
     ```
 
-- similar to the above groupby functions is the need to get the number of times each value is repeated in a column
-
-    ```Python
-    dta.body.value_counts(dropna=False)
+    ```text
+    AutoModerator   7973
+    author          7548
+    author          7423
+    author          7295
+                    ...
+    author          1
+    author          1
+    author          1
+    author          1
+    author          1
     ```
 
 - when you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
@@ -114,4 +123,10 @@ This is a collection of functions that I find to be useful in various scripts.
         print("dta is already loaded")
     else:
         print("you need to load the data")
+    ```
+
+- Sometimes you need to add a column that is all of one value you can do this by using assign method. The example below crates a new column where every value in that column is the string testing:
+
+    ```Python
+    dta = dta.assign(file="testing")
     ```

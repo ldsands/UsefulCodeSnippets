@@ -34,7 +34,7 @@ Table of Contents:
         - [Github](#github)
         - [Pandoc](#pandoc)
         - [Powershell](#powershell)
-        - [VS Code stuff](#vscode-stuff)
+        - [VS Code stuff](#vs-code-stuff)
         - [Windows](#windows)
 
 ## Languages included here
@@ -142,5 +142,6 @@ Visual Studio Code is technically a text editor but really is a full blown IDE (
 
 - [AutoHotKey - for automating small things in Windows](other_software/windows_program_instructions/autohotkey.md)
 - [Chocolatey - for installing applications and languages etc. in Windows](other_software/windows_program_instructions/chocolatey.md)
+- [winget - for installing applications and languages etc. in Windows](other_software/windows_program_instructions/winget.md)
 - [Windows Programs - notes about other Windows programs I use regularly](other_software/windows_program_instructions/windows_programs.md)
 - [Zotero - a free and open source reference manager](other_software/windows_program_instructions/zotero.md)

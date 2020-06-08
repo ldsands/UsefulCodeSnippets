@@ -118,9 +118,9 @@ function up2 { Set-Location ..\.. }
 function up3 { Set-Location ..\..\.. }
 function up4 { Set-Location ..\..\..\.. }
 
-## Install the normal modules that I use just type InstallAll
+## Install the normal modules that I use just type InstallAllModules
 function InstallAllModules() {
-    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor")
+    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor", "Microsoft.PowerShell.RemotingTools")
     foreach (`$element in `$requiredModules) {
         if (-not (Get-Module -ListAvailable -Name `$element)) {
             Write-Host "Installing `$element"
@@ -132,6 +132,7 @@ function InstallAllModules() {
 
 # Import Modules (on Windows)
 if(`$IsWindows) {
+    Import-Module Microsoft.PowerShell.RemotingTools
     Import-Module posh-git
     Import-Module oh-my-posh
     Set-Theme Paradox

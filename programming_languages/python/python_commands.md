@@ -6,7 +6,7 @@
     - [Exiting a Python Program/Script](#exiting-a-python-programscript)
     - [Functions in Python](#functions-in-python)
         - [Optional Arguments](#optional-arguments)
-    - [Time and timing your scripts](#time-and-timing-your-scripts)
+    - [Timing and Profiling Your Scripts](#timing-and-profiling-your-scripts)
         - [Multiprocessing in Python](#multiprocessing-in-python)
     - [IPython/Jupyter special commands](#ipythonjupyter-special-commands)
     - [Sending Emails Using Python](#sending-emails-using-python)
@@ -37,7 +37,7 @@ raise SystemExit
 
 TODO:
 
-## Time and timing your scripts
+## Timing and Profiling Your Scripts
 
 - below is what I usually use to time my scripts is is far easier than a lot of alternatives
 
@@ -66,6 +66,15 @@ TODO:
         now = now.strftime("%m/%d/%Y, %H:%M:%S")
         return now
     ```
+
+- For IPython you can also use "magic commands" below are two that I've used in the past.
+    - `%%time` this will give you the time it takes to run a cell
+    - `%%timit` this will run the cell several times and get and average and fastest time to run the cell
+
+- Also for IPython you can use the memory_profiler for cells to get memory information ([see more here](https://jakevdp.github.io/PythonDataScienceHandbook/01.07-timing-and-profiling.html))
+    - you must first install the package `pip install memory_profiler`
+    - You must then load it by using this code in IPython: `%load_ext memory_profiler`
+    - You can then place `%memit ` in front of a function you want to profile the output will look something like this `peak memory: 589.89 MiB, increment: 188.55 MiB`
 
 ### Multiprocessing in Python
 
@@ -156,4 +165,17 @@ print(sys.argv[0])
         print("dta is already loaded")
     else:
         print("you need to load the data")
+    ```
+
+- Interacting with the system be it through PowerShell or zsh/bash can be very useful. This is especially true when using environment variables. Below is an example of sending a command to the shell (in this case zsh). After that is an example of retrieving an environment variable.
+
+    ```python
+    # import os module
+    import os
+    # send the ls command to variable directory_contents
+    directory_contents = os.popen('ls').read()
+    print(directory_contents)
+    # sending the command GoogleNewsModel to the shell to get the directory set to that environment variable
+    print(os.environ["GoogleNewsModel"])
+    print(f"{os.environ["GoogleNewsModel"]}GoogleNews-vectors-negative300.bin.gz")
     ```
