@@ -55,6 +55,7 @@ choco install geforce-experience -y
 choco install youtube-dl
 choco install obs-studio
 choco install ccleaner -y
+choco install putty.install
 ```
 
 ## Upgrading using chocolatey

@@ -53,8 +53,12 @@ dta = pd.DataFrame(
 - splitting a dataframe into a list can sometimes be very helpful for either breaking up processing over time or (theoretically anyway python is NOT good at parallel processing) for parallel processing. I usually use this for breaking up really long processing times so that I can restart my computer or regain all of my computer's resources for something more intensive. API calls with query limits is a great example of this. I then usually use a for loop to write these to separate files in a subfolder for keeping track of them in my processing.
 
     ```Python
-    n = 200000  #chunk row size
-    dataframe_list = [dta[i:i+n] for i in range(0,dta.shape[0],n)]
+    # choose your chunk size
+    chunk_size = 200000
+    # or choose how many dataframes you want
+    chunk_size = int(len(dta) / 20)
+    # then create the list of dataframes
+    dataframe_list = [dta[i:i+chunk_size] for i in range(0,dta.shape[0],chunk_size)]
     ```
 
 <!--

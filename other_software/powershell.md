@@ -8,6 +8,18 @@ If you're planning on executing PowerShell scripts you will probably want to run
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
+- [PowerShell and Cmd Prompt](#powershell-and-cmd-prompt)
+    - [Installation](#installation)
+        - [Using dotnet Sdk](#using-dotnet-sdk)
+    - [PowerShell profiles](#powershell-profiles)
+    - [Useful commands](#useful-commands)
+        - [PowerShell functions](#powershell-functions)
+        - [Useful random commands](#useful-random-commands)
+    - [Using PowerShell on Windows](#using-powershell-on-windows)
+    - [Using PowerShell on MacOS](#using-powershell-on-macos)
+    - [Using PowerShell on Linux](#using-powershell-on-linux)
+        - [doskey macros (for cmd on Windows)](#doskey-macros-for-cmd-on-windows)
+
 ## Installation
 
 ### Using dotnet Sdk
@@ -269,6 +281,16 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     $IsMacOS
     $IsWindows
     ```
+
+- Connecting to other Linux computers using SSH.
+    - make sure you're logged into a VPN when needed (for example using Cisco AnyConnect Secure Mobility Client)
+    - There are two options that I'm aware of
+        - [PuTTy](https://putty.org/) (you can also install this using `choco install putty.install`) is a popular Windows option that after installed can be launched and used through their GUI.
+        - OpenSSH  is a newer option that comes with Windows
+            - You can install using this command in PowerShell `Install-Module Microsoft.PowerShell.RemotingTools` and then load it using this command in PowerShell `Import-Module Microsoft.PowerShell.RemotingTools`
+    - For passwordless login you must do the following:
+        - Go to the correct location for the keygen program `C:\Windows\System32\OpenSSH` then run the program `.\ssh-keygen.exe`
+        - 
 
 ## Using PowerShell on MacOS
 

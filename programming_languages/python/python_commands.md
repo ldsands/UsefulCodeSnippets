@@ -179,3 +179,12 @@ print(sys.argv[0])
     print(os.environ["GoogleNewsModel"])
     print(f"{os.environ["GoogleNewsModel"]}GoogleNews-vectors-negative300.bin.gz")
     ```
+
+- Trying to get every possible pair without duplicates from a list is complicated. Fortunately itertools has a function for this:
+
+    ```Python
+    import itertools
+    list(itertools.combinations(range(6), 2))
+    # here is the output
+    [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+    ```

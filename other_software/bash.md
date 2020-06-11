@@ -1,6 +1,12 @@
 # Bash/Zsh Shell
 
-Bash is a command shell for unix systems and is the most popular shell used in Linux systems.
+- [Bash/Zsh Shell](#bashzsh-shell)
+    - [Resources](#resources)
+    - [Useful Bash/zsh Concepts](#useful-bashzsh-concepts)
+    - [Useful Bash/zsh Commands](#useful-bashzsh-commands)
+        - [WSL Setup](#wsl-setup)
+
+Bash is a command shell for unix systems and is the most popular shell used in Linux systems. Zsh is another unix shell that has a ton of useful features not included in Bash, for a list of Zsh features see [this page](https://github.com/hmml/awesome-zsh).
 
 ## Resources
 
@@ -52,6 +58,10 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     ```
 
 - To see all of the files in a directory you can use `ls` however if you also want to see the hidden files you need to use `ls -a`
+- To enable ssh paswordless access to another linux computer you can do the following:
+    - First create the generated keys `ssh-keygen -t rsa`
+    - Then copy over the keys to the destination computer `ssh-copy-id -i ~/.ssh/id_rsa.pub username@computerdomain`
+    - More details can be found [here](https://wiki.uiowa.edu/display/hpcdocs/Setting+Up+Passwordless+Login) and [here](https://www.hanselman.com/blog/HowToSetUpATabProfileInWindowsTerminalToAutomaticallySSHIntoALinuxBox.aspx) for how to do something similar from a Windows computer
 
 ### WSL Setup
 
@@ -68,9 +78,9 @@ Now to get bash all set up with useful features do the following steps:
     - [link 1](https://www.sitepoint.com/zsh-tips-tricks/) [link 2](https://pascalnaber.wordpress.com/2019/10/05/have-a-great-looking-terminal-and-a-more-effective-shell-with-oh-my-zsh-on-wsl-2-using-windows/) [link 3](https://nickymeuleman.netlify.app/blog/linux-on-windows-wsl2-zsh-docker#zsh) [link 4](https://www.sitepoint.com/zsh-tips-tricks/).
 - for a list of pre-installed plugins look [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview)
 
-```bash
+```sh
 # get into administrator mode
-sudo
+sudo apt-get update
 # install git
 sudo apt install git
 # setup git to not auto end filenames (can cause issues when opening a repo that has been opened on Windows)
@@ -115,12 +125,12 @@ eval `dircolors ~/.dir_colors`' ~/.zshrc
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
+sudo git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
 # you also need these for using pyenv
 sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
 # install poetry for python management
 sudo apt-get install python-is-python3
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
