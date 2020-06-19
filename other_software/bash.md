@@ -5,6 +5,8 @@
     - [Useful Bash/zsh Concepts](#useful-bashzsh-concepts)
     - [Useful Bash/zsh Commands](#useful-bashzsh-commands)
         - [WSL Setup](#wsl-setup)
+    - [Ubuntu Setup](#ubuntu-setup)
+    - [Alpine Setup](#alpine-setup)
 
 Bash is a command shell for unix systems and is the most popular shell used in Linux systems. Zsh is another unix shell that has a ton of useful features not included in Bash, for a list of Zsh features see [this page](https://github.com/hmml/awesome-zsh).
 
@@ -78,82 +80,112 @@ Now to get bash all set up with useful features do the following steps:
     - [link 1](https://www.sitepoint.com/zsh-tips-tricks/) [link 2](https://pascalnaber.wordpress.com/2019/10/05/have-a-great-looking-terminal-and-a-more-effective-shell-with-oh-my-zsh-on-wsl-2-using-windows/) [link 3](https://nickymeuleman.netlify.app/blog/linux-on-windows-wsl2-zsh-docker#zsh) [link 4](https://www.sitepoint.com/zsh-tips-tricks/).
 - for a list of pre-installed plugins look [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview)
 
-```sh
-# get into administrator mode
-sudo apt-get update
-# install git
-sudo apt install git
-# setup git to not auto end filenames (can cause issues when opening a repo that has been opened on Windows)
-git config --global core.autocrlf input
-# set up git to use your account (optional)
-git config --global user.name "Prename Name"
-git config --global user.email "email@example.com"
-# install zsh
-sudo apt install zsh -y
-# test to see if zsh is installed
-zsh --version
-# start zsh and select the option with the default settings
-zsh
-# setup the default settings
-2
-# make it your default shell (you'll need to enter your password)
-chsh -s $(which zsh)
-# logout of the shell and restart it
-exec "$SHELL"
-# install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# Customizing the shell
-# this allows you to open the configuration file with vs code
-code ~/.zshrc
-# change the blue in the prompt bar to be easier to read
-# sed -i '0,/blue/{s/blue/39d/}' ~/.oh-my-zsh/themes/agnoster.zsh-theme
-# enable auto correction (you also need to enable the plugin which is below)
-sed -i 's/# ENABLE_CORRECTION="true"/ENABLE_CORRECTION="true"/g' ~/.zshrc
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# enable syntax highlighting (you also need to enable the plugin which is below)
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# get directory themes
-curl https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-dark --output ~/.dir_colors
-git clone --recursive git://github.com/joel-porquet/zsh-dircolors-solarized $ZSH_CUSTOM/plugins/zsh-dircolors-solarized
-# set the directory colors to the theme just downloaded you need to add it to the .zshrc file copy all 3 of the next lines and enter them
-sed -i -e '$a\
-# load dircolors\
-eval `dircolors ~/.dir_colors`' ~/.zshrc
-# this stops a "Insecure completion-dependent directories detected" if you need it use the code below without the first `#`
-# sed -i '/plugins=(git)/a ZSH_DISABLE_COMPFIX=true' ~/.zshrc
-# install pyenv and put into the PATH
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-sudo git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
-# you also need these for using pyenv
-sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
-# install poetry for python management
-sudo apt-get install python-is-python3
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
-echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.zshrc
-echo 'if [[ -z "$VIRTUAL_ENV" ]]; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi' >> ~/.zshrc
-mkdir $ZSH/plugins/poetry
-poetry completions zsh > $ZSH/plugins/poetry/_poetry
-sudo apt-get install python3-venv -y
-# add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
-sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
-sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting\n    zsh-dircolors-solarized' ~/.zshrc
-# restart the shell
-exec "$SHELL"
-```
+
+## Ubuntu Setup
+
+Below are the step I take to setup my linux shell the way I like it in various steps. Note that this is applicable to Ubuntu but will work on other distros with minimal changes.
+
+- install the basics: update apt-get, git, zsh, and ohmyzsh
+
+    ```sh
+    # get into administrator mode
+    sudo apt-get update
+    # install git
+    sudo apt install git
+    # setup git to not auto end filenames (can cause issues when opening a repo that has been opened on Windows)
+    git config --global core.autocrlf input
+    # set up git to use your account (optional)
+    git config --global user.name "Prename Name"
+    git config --global user.email "email@example.com"
+    # install zsh
+    sudo apt install zsh -y
+    # test to see if zsh is installed
+    zsh --version
+    # start zsh and select the option with the default settings
+    zsh
+    # setup the default settings
+    2
+    # make it your default shell (you'll need to enter your password)
+    chsh -s $(which zsh)
+    # logout of the shell and restart it
+    exec "$SHELL"
+    # install Oh My Zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    exec "$SHELL"
+    ```
+
+    ```sh
+    # this allows you to open the configuration file with vs code
+    code ~/.zshrc
+    # change the blue in the prompt bar to be easier to read
+    # sed -i '0,/blue/{s/blue/39d/}' ~/.oh-my-zsh/themes/agnoster.zsh-theme
+    # enable auto correction (you also need to enable the plugin which is below)
+    sed -i 's/# ENABLE_CORRECTION="true"/ENABLE_CORRECTION="true"/g' ~/.zshrc
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    # enable syntax highlighting (you also need to enable the plugin which is below)
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    # install pyenv and put into the PATH
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+    sudo git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
+    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+    # you also need these for using pyenv
+    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+    # install poetry for python management
+    sudo apt-get install python-is-python3
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
+    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.zshrc
+    echo 'if [[ -z "$VIRTUAL_ENV" ]]; then
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
+    fi' >> ~/.zshrc
+    mkdir $ZSH/plugins/poetry
+    poetry completions zsh > $ZSH/plugins/poetry/_poetry
+    sudo apt-get install python3-venv -y
+    # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
+    sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
+    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n        zsh-syntax-highlighting' ~/.zshrc
+    # restart the shell
+    exec "$SHELL"
+    ```
 
 - the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
-```sh
-# set the theme for Oh My Zsh the agnoster option is already installed the powerlevel10k has to be downloaded and installed
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc
-```
 
+    ```sh
+    # set the theme for Oh My Zsh the agnoster option is already installed the powerlevel10k has to be downloaded and installed
+    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+    sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc
+    # restart your shell
+    exec "$SHELL"
+    # configuration options
+    y
+    y
+    y
+    n
+    3
+    1
+    2
+    2
+    1
+    1
+    2
+    3
+    1
+    1
+    1
+    1
+    2
+    n
+    3
+    y
+    ```
+
+## Alpine Setup
+
+```sh
+apk add zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

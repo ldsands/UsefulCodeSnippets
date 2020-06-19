@@ -290,7 +290,13 @@ PowerShell functions can be very powerful and do pretty much anything you can th
             - You can install using this command in PowerShell `Install-Module Microsoft.PowerShell.RemotingTools` and then load it using this command in PowerShell `Import-Module Microsoft.PowerShell.RemotingTools`
     - For passwordless login you must do the following:
         - Go to the correct location for the keygen program `C:\Windows\System32\OpenSSH` then run the program `.\ssh-keygen.exe`
-        - 
+        - once you've done that you can then tell PowerShell to always connect to a linux or macOS machiene using these ssh keys using the following code:
+
+        ```PowerShell
+        $USER_AT_HOST="username@hostname"
+        $PUBKEYPATH="$HOME\.ssh\id_rsa.pub"
+        $pubKey=(Get-Content "$PUBKEYPATH" | Out-String); ssh "$USER_AT_HOST" "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo '${pubKey}' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+        ```
 
 ## Using PowerShell on MacOS
 

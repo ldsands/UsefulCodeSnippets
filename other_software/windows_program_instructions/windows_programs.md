@@ -221,6 +221,17 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
     wsl --terminate <distro name>
     ```
 
+- Duplicating an installed distro can be useful for various reasons here is some code to do that which I found [here](https://stackoverflow.com/questions/51584765/how-do-you-install-multiple-separate-instances-of-ubuntu-in-wsl/60428590#60428590)
+
+    ```PowerShell
+    cd C:\Users\MattSlay
+    wsl --export Ubuntu ubuntu.tar
+    wsl --import UbuntuRuby .\UbuntuRuby ubuntu.tar
+    wsl --import UbuntuPython .\UbuntuPython ubuntu.tar
+    wsl --import UbuntuDotNet .\UbuntuDotNet ubuntu.tar
+    wsl -d UbuntuRuby
+    ```
+
 ## Windows PowerToys
 
 "[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](chocolatey.md/#choco-install-powertoys) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
