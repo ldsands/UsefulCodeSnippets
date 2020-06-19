@@ -26,3 +26,11 @@
     ```
 
     - [this will be the link text](www.bing.com)
+
+- if you want to center your text you can use a html div tag shown below
+
+    ```markdown
+    <div align="center">
+    markdown can be in there
+    </div>
+    ```

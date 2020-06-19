@@ -103,7 +103,7 @@ I don't use git alone so this may not get anything else
 
 
 
-#### VSCode stuff
+#### VS Code stuff
 
 - [ ] explain extensions
 - [ ] add modified keyboard shortcuts

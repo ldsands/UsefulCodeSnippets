@@ -34,7 +34,7 @@ Table of Contents:
         - [Github](#github)
         - [Pandoc](#pandoc)
         - [Powershell](#powershell)
-        - [VSCode stuff](#vscode-stuff)
+        - [VS Code stuff](#vs-code-stuff)
         - [Windows](#windows)
 
 ## Languages included here
@@ -97,7 +97,7 @@ There are other software based snippets or instructions that I will keep here as
 
 ### [Bash](https://www.gnu.org/software/bash/)
 
-Bash is the most widely used shell for Linux. I use it mostly in WSL.
+Bash is the most widely used shell for Linux. I use it mostly in WSL. Also note that I usually use zsh not bash it has a lot of useful plugins but they're very similar.
 
 - [Useful bash commands](other_software/bash.md)
 
@@ -129,15 +129,19 @@ PowerShell is like bash but for Windows and now with access to all of .Net it is
 
 - [Useful Powershell commands](other_software/powershell.md)
 
-### [VSCode stuff](https://code.visualstudio.com/)
+### [VS Code stuff](https://code.visualstudio.com/)
 
-Visual Studio Code is technically a text editor but really is a full blown IDE (integrated development environment) for most programming languages.
+Visual Studio Code is technically a text editor but really is a full blown IDE (integrated development environment) for most programming languages. I use it for pretty much everything to do with programming. I also use it for note-taking and various other tasks.
 
-- [Useful VSCode shortcuts and extensions](other_software/vscode.md)
+- [Useful VS Code Resources and Notes](other_software/VS_Code/vscode.md)
+- [Useful VS Code Resources and Notes](other_software/VS_Code/vscode.md)
+- [Useful VS Code Extensions](other_software/VS_Code/vscode_extensions.md)
+- [Useful VS Code Settings](other_software/VS_Code/vscode_settings.md.md)
 
 ### [Windows](https://www.microsoft.com/en-us/windows)
 
 - [AutoHotKey - for automating small things in Windows](other_software/windows_program_instructions/autohotkey.md)
 - [Chocolatey - for installing applications and languages etc. in Windows](other_software/windows_program_instructions/chocolatey.md)
+- [winget - for installing applications and languages etc. in Windows](other_software/windows_program_instructions/winget.md)
 - [Windows Programs - notes about other Windows programs I use regularly](other_software/windows_program_instructions/windows_programs.md)
 - [Zotero - a free and open source reference manager](other_software/windows_program_instructions/zotero.md)

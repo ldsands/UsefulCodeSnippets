@@ -20,10 +20,10 @@ Below are Windows programs that are installed using chocolatey
 
 - Google Chrome
     - the most popular browser I personally prefer the new version of Edge but old habits die hard
-- Visual Studio Code or VSCode
+- Visual Studio Code or VS Code
     - a truly incredible text editor that is really in IDE in capabilities for many programming languages
     - for me writing in anything else is frustrating because of other programs limitations
-    - for more information on my VSCode setup and other tips see [this other markdown sheet](../vscode.md)
+    - for more information on my VS Code setup and other tips see [this other markdown sheet](../vscode.md)
 - 7zip
     - for all of your compression and decompression needs free and open source and very capable
 - [git](../git.md)
@@ -46,7 +46,7 @@ Below are Windows programs that are installed using chocolatey
 - FiraCode NF
     - my favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
 - R Studio
-    - the defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VSCode, occasionally however I jump into R.Studio for the variable explorer and other little things
+    - the defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VS Code, occasionally however I jump into R.Studio for the variable explorer and other little things
 - MikTeX
     - the defacto LaTeX installation for Windows I don't use LaTeX directly much anymore but pandoc uses it so I usually install it
 - [Zotero](zotero.md)
@@ -211,8 +211,26 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
     ```
 
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../powershell.md#Using-PowerShell-on-Linux)
-
 - Install Anaconda on WSL [see this section](../../programming_languages/python/python_install.md#Install-anaconda-on-WSL)
+- Some useful PowerShell commands to use to manage the WSL distros are below [here](https://docs.microsoft.com/en-us/windows/wsl/reference) is a more comprehensive list of WSL commands
+
+    ```PowerShell
+    # list the wsl distros that are installed
+    wsl --list --verbose
+    # terminate a WSL distro from PowerShell
+    wsl --terminate <distro name>
+    ```
+
+- Duplicating an installed distro can be useful for various reasons here is some code to do that which I found [here](https://stackoverflow.com/questions/51584765/how-do-you-install-multiple-separate-instances-of-ubuntu-in-wsl/60428590#60428590)
+
+    ```PowerShell
+    cd C:\Users\MattSlay
+    wsl --export Ubuntu ubuntu.tar
+    wsl --import UbuntuRuby .\UbuntuRuby ubuntu.tar
+    wsl --import UbuntuPython .\UbuntuPython ubuntu.tar
+    wsl --import UbuntuDotNet .\UbuntuDotNet ubuntu.tar
+    wsl -d UbuntuRuby
+    ```
 
 ## Windows PowerToys
 

@@ -53,8 +53,12 @@ dta = pd.DataFrame(
 - splitting a dataframe into a list can sometimes be very helpful for either breaking up processing over time or (theoretically anyway python is NOT good at parallel processing) for parallel processing. I usually use this for breaking up really long processing times so that I can restart my computer or regain all of my computer's resources for something more intensive. API calls with query limits is a great example of this. I then usually use a for loop to write these to separate files in a subfolder for keeping track of them in my processing.
 
     ```Python
-    n = 200000  #chunk row size
-    dataframe_list = [dta[i:i+n] for i in range(0,dta.shape[0],n)]
+    # choose your chunk size
+    chunk_size = 200000
+    # or choose how many dataframes you want
+    chunk_size = int(len(dta) / 20)
+    # then create the list of dataframes
+    dataframe_list = [dta[i:i+chunk_size] for i in range(0,dta.shape[0],chunk_size)]
     ```
 
 <!--
@@ -99,6 +103,21 @@ This is a collection of functions that I find to be useful in various scripts.
     dta_small.groupby("month_year").nunique()
     # this gets the number of unique values from the "author" column for each unique value found in the "month_year" column
     dta_small.groupby("month_year")["author"].nunique()
+    # this gets count for each unique value in the"author" column and puts them into a dataframe for easy viewing result of the  print out are below
+    dta_filtered = dta.author.value_counts()
+    ```
+
+    ```text
+    AutoModerator   7973
+    author          7548
+    author          7423
+    author          7295
+                    ...
+    author          1
+    author          1
+    author          1
+    author          1
+    author          1
     ```
 
 - when you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
@@ -108,4 +127,10 @@ This is a collection of functions that I find to be useful in various scripts.
         print("dta is already loaded")
     else:
         print("you need to load the data")
+    ```
+
+- Sometimes you need to add a column that is all of one value you can do this by using assign method. The example below crates a new column where every value in that column is the string testing:
+
+    ```Python
+    dta = dta.assign(file="testing")
     ```

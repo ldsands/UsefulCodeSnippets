@@ -8,6 +8,18 @@ If you're planning on executing PowerShell scripts you will probably want to run
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
+- [PowerShell and Cmd Prompt](#powershell-and-cmd-prompt)
+    - [Installation](#installation)
+        - [Using dotnet Sdk](#using-dotnet-sdk)
+    - [PowerShell profiles](#powershell-profiles)
+    - [Useful commands](#useful-commands)
+        - [PowerShell functions](#powershell-functions)
+        - [Useful random commands](#useful-random-commands)
+    - [Using PowerShell on Windows](#using-powershell-on-windows)
+    - [Using PowerShell on MacOS](#using-powershell-on-macos)
+    - [Using PowerShell on Linux](#using-powershell-on-linux)
+        - [doskey macros (for cmd on Windows)](#doskey-macros-for-cmd-on-windows)
+
 ## Installation
 
 ### Using dotnet Sdk
@@ -23,7 +35,7 @@ You can install PowerShell using the dotnet sdk (core or standard) on any platfo
 code $PROFILE.CurrentUserAllHosts
 $ProfileTemplate = @"
 function listProfileFunctions {
-    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "RestartWSL")
+    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "WSLRestart")
     Write-Host `$profileFunctions
 }
 
@@ -118,9 +130,9 @@ function up2 { Set-Location ..\.. }
 function up3 { Set-Location ..\..\.. }
 function up4 { Set-Location ..\..\..\.. }
 
-## Install the normal modules that I use just type InstallAll
+## Install the normal modules that I use just type InstallAllModules
 function InstallAllModules() {
-    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor")
+    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor", "Microsoft.PowerShell.RemotingTools")
     foreach (`$element in `$requiredModules) {
         if (-not (Get-Module -ListAvailable -Name `$element)) {
             Write-Host "Installing `$element"
@@ -132,14 +144,20 @@ function InstallAllModules() {
 
 # Import Modules (on Windows)
 if(`$IsWindows) {
+    Import-Module Microsoft.PowerShell.RemotingTools
     Import-Module posh-git
     Import-Module oh-my-posh
     Set-Theme Paradox
 }
 
-function RestartWSL() {
+function WSLRestart() {
     if (`$IsWindows) {
-        Get-Service LxssManager | Restart-Service
+        if (!(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))) {
+            Write-Host "You need administrator privilages to use WSLRestart"
+        }
+        else {
+            Get-Service LxssManager | Restart-Service
+        }
     }
 }
 
@@ -263,6 +281,22 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     $IsMacOS
     $IsWindows
     ```
+
+- Connecting to other Linux computers using SSH.
+    - make sure you're logged into a VPN when needed (for example using Cisco AnyConnect Secure Mobility Client)
+    - There are two options that I'm aware of
+        - [PuTTy](https://putty.org/) (you can also install this using `choco install putty.install`) is a popular Windows option that after installed can be launched and used through their GUI.
+        - OpenSSH  is a newer option that comes with Windows
+            - You can install using this command in PowerShell `Install-Module Microsoft.PowerShell.RemotingTools` and then load it using this command in PowerShell `Import-Module Microsoft.PowerShell.RemotingTools`
+    - For passwordless login you must do the following:
+        - Go to the correct location for the keygen program `C:\Windows\System32\OpenSSH` then run the program `.\ssh-keygen.exe`
+        - once you've done that you can then tell PowerShell to always connect to a linux or macOS machiene using these ssh keys using the following code:
+
+        ```PowerShell
+        $USER_AT_HOST="username@hostname"
+        $PUBKEYPATH="$HOME\.ssh\id_rsa.pub"
+        $pubKey=(Get-Content "$PUBKEYPATH" | Out-String); ssh "$USER_AT_HOST" "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo '${pubKey}' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+        ```
 
 ## Using PowerShell on MacOS
 
