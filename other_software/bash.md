@@ -105,11 +105,9 @@ Below are the step I take to setup my linux shell the way I like it in various s
     zsh
     # setup the default settings
     2
-    # make it your default shell (you'll need to enter your password)
-    chsh -s $(which zsh)
     # logout of the shell and restart it
     exec "$SHELL"
-    # install Oh My Zsh
+    # install Oh My Zsh and enter Y after to make zsh the default shell
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     exec "$SHELL"
     ```
@@ -124,16 +122,27 @@ Below are the step I take to setup my linux shell the way I like it in various s
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     # enable syntax highlighting (you also need to enable the plugin which is below)
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
+    sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
+    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n        zsh-syntax-highlighting' ~/.zshrc
+    # restart the shell
+    exec "$SHELL"
+    ```
+
+    ```sh
+    # setup python, pyenv, virtualenv, and poetry
+    # you also need these for using pyenv
+    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
     # install pyenv and put into the PATH
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
     sudo git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
     echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
-    # you also need these for using pyenv
-    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+    # install venv for environment mangagement backend
+    sudo apt-get install python3-venv -y
     # install poetry for python management
     sudo apt-get install python-is-python3
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
@@ -144,12 +153,19 @@ Below are the step I take to setup my linux shell the way I like it in various s
     fi' >> ~/.zshrc
     mkdir $ZSH/plugins/poetry
     poetry completions zsh > $ZSH/plugins/poetry/_poetry
-    sudo apt-get install python3-venv -y
-    # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
-    sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
-    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n        zsh-syntax-highlighting' ~/.zshrc
-    # restart the shell
-    exec "$SHELL"
+    # install python using pyenv
+    pyenv install 3.8.3
+    # set this version to the global version of python
+    pyenv global 3.8.3
+    # see the version that was installed
+    pyenv versions
+    # install pipx and install virtualenv using pipx
+    sudo apt install pipx
+    pipx install virtualenv
+    # create example virtual environment using pyenv-virtualenv
+    <!-- pyenv virtualenv TestEnv -->
+    # set this environment to global and activates it
+    <!-- pyenv global TestEnv -->
     ```
 
 - the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
