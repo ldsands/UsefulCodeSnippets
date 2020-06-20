@@ -60,7 +60,7 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     ```
 
 - To see all of the files in a directory you can use `ls` however if you also want to see the hidden files you need to use `ls -a`
-- To enable ssh paswordless access to another linux computer you can do the following:
+- To enable ssh passwordless access to another linux computer you can do the following:
     - First create the generated keys `ssh-keygen -t rsa`
     - Then copy over the keys to the destination computer `ssh-copy-id -i ~/.ssh/id_rsa.pub username@computerdomain`
     - More details can be found [here](https://wiki.uiowa.edu/display/hpcdocs/Setting+Up+Passwordless+Login) and [here](https://www.hanselman.com/blog/HowToSetUpATabProfileInWindowsTerminalToAutomaticallySSHIntoALinuxBox.aspx) for how to do something similar from a Windows computer
@@ -79,7 +79,6 @@ Now to get bash all set up with useful features do the following steps:
 - Other sources I used while doing this
     - [link 1](https://www.sitepoint.com/zsh-tips-tricks/) [link 2](https://pascalnaber.wordpress.com/2019/10/05/have-a-great-looking-terminal-and-a-more-effective-shell-with-oh-my-zsh-on-wsl-2-using-windows/) [link 3](https://nickymeuleman.netlify.app/blog/linux-on-windows-wsl2-zsh-docker#zsh) [link 4](https://www.sitepoint.com/zsh-tips-tricks/).
 - for a list of pre-installed plugins look [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview)
-
 
 ## Ubuntu Setup
 
@@ -124,7 +123,8 @@ Below are the step I take to setup my linux shell the way I like it in various s
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
     sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
-    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n        zsh-syntax-highlighting' ~/.zshrc
+    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting\n   ssh-agent' ~/.zshrc
+    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
     # restart the shell
     exec "$SHELL"
     ```
@@ -152,6 +152,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
         eval "$(pyenv virtualenv-init -)"
     fi' >> ~/.zshrc
     mkdir $ZSH/plugins/poetry
+    exec "$SHELL"
     poetry completions zsh > $ZSH/plugins/poetry/_poetry
     # install python using pyenv
     pyenv install 3.8.3
@@ -162,6 +163,8 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # install pipx and install virtualenv using pipx
     sudo apt install pipx
     pipx install virtualenv
+    pipx ensurepath
+    exec "$SHELL"
     # create example virtual environment using pyenv-virtualenv
     <!-- pyenv virtualenv TestEnv -->
     # set this environment to global and activates it
@@ -172,7 +175,6 @@ Below are the step I take to setup my linux shell the way I like it in various s
 
     ```sh
     # set the theme for Oh My Zsh the agnoster option is already installed the powerlevel10k has to be downloaded and installed
-    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
     sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc
     # restart your shell
@@ -198,6 +200,40 @@ Below are the step I take to setup my linux shell the way I like it in various s
     n
     3
     y
+    ```
+
+- SSH allows for you to access this computer while using another computer. I use it mostly for using VSCode from another computer. In this case from Windows that is hosting the WSL Ubuntu Distro that I use this in. There is a PowerShell command that must be run to allow the port to connect to Windows however it has to be done in Windows PowerShell not PowerShell.
+
+    ```sh
+    sudo apt remove openssh-server
+    sudo apt install openssh-server
+    sudo sed -i '/PasswordAuthentication no/c\PasswordAuthentication yes' /etc/ssh/sshd_config
+    sudo sed -i '/#Port 22/c\Port 2200' /etc/ssh/sshd_config
+    echo "# for making sure that the ssh server works" >> ~/.zshrc
+    echo 'eval "sudo service ssh --full-restart"' >> ~/.zshrc
+    sudo apt install net-tools
+    sudo service ssh --full-restart
+    ifconfig
+    # to see if the ssh server is running use the following command
+    service ssh status
+    # Windows firewall ssh port configuration which must be done in Windows PowerShell
+    New-NetFirewallRule -DisplayName 'SSH-WSL-Inbound' -Profile @('Domain', 'Private', 'Public') -Direction Inbound -Action Allow -Protocol TCP -LocalPort @('2200')
+    # config file for vscode just copy this in with the correct HostName, User, and replace the %username%
+    Host 127.0.0.1
+      HostName 127.0.0.1
+      User ldsands
+      Port 2200
+      IdentityFile C:\Users\%username%\.ssh\id_rsa
+    # add the folowing lines to your z
+    ```
+
+    ```sh
+    # to create identity keys so that passwords don't have to be entered do the following in PowerShell
+    ssh-keygen
+    type c:\users\%username%\.ssh\id_rsa.pub | ssh username@hostname 'cat >> .ssh/authorized_keys'
+    # now enter this into the Ubuntu shell
+    chmod 600 ~/.ssh/id_rsa
+    sudo service ssh --full-restart
     ```
 
 ## Alpine Setup
