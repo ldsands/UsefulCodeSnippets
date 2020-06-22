@@ -166,9 +166,9 @@ Below are the step I take to setup my linux shell the way I like it in various s
     pipx ensurepath
     exec "$SHELL"
     # create example virtual environment using pyenv-virtualenv
-    <!-- pyenv virtualenv TestEnv -->
+    pyenv virtualenv GlobalEnv
     # set this environment to global and activates it
-    <!-- pyenv global TestEnv -->
+    pyenv global GlobalEnv
     ```
 
 - the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
@@ -177,6 +177,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # set the theme for Oh My Zsh the agnoster option is already installed the powerlevel10k has to be downloaded and installed
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
     sed -i '/^ZSH_THEME=/c\ZSH_THEME="powerlevel10k/powerlevel10k"' ~/.zshrc
+    echo "typeset -g POWERLEVEL9K_INSTANT_PROMPT=off" >> ~/.zshrc
     # restart your shell
     exec "$SHELL"
     # configuration options
@@ -203,6 +204,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
     ```
 
 - SSH allows for you to access this computer while using another computer. I use it mostly for using VSCode from another computer. In this case from Windows that is hosting the WSL Ubuntu Distro that I use this in. There is a PowerShell command that must be run to allow the port to connect to Windows however it has to be done in Windows PowerShell not PowerShell.
+    - The following sites helped with putting together this code: [Site 1](https://www.illuminiastudios.com/dev-diaries/ssh-on-windows-subsystem-for-linux/), [Site 2](https://devblogs.microsoft.com/commandline/sharing-ssh-keys-between-windows-and-wsl-2/https://www.smashingmagazine.com/2019/09/moving-javascript-development-bash-windows/), [Site 3](https://www.smashingmagazine.com/2019/09/moving-javascript-development-bash-windows/) and [Site 4](https://www.hanselman.com/blog/HowToSetUpATabProfileInWindowsTerminalToAutomaticallySSHIntoALinuxBox.aspx).
 
     ```sh
     sudo apt remove openssh-server
@@ -211,8 +213,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
     sudo sed -i '/#Port 22/c\Port 2200' /etc/ssh/sshd_config
     echo "# for making sure that the ssh server works" >> ~/.zshrc
     echo 'eval "sudo service ssh --full-restart"' >> ~/.zshrc
-    sudo apt install net-tools
-    sudo service ssh --full-restart
+    echo 'alias startSSH="sudo service ssh --full-restart"' >> ~/.zshrc
     ifconfig
     # to see if the ssh server is running use the following command
     service ssh status
