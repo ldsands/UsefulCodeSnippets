@@ -1,6 +1,6 @@
 # Winget
 
-Winget is the new package manager for Windows that is created and supported by Microsoft. Due to the more official nature of the tool I will be using it over [chocolaty](chocolatey.md) where possible.
+Winget is the new package manager for Windows that is created and supported by Microsoft. Due to the more official nature of the tool I will be using it over [chocolaty](chocolatey.md) where possible. A well done gui program for looking through packages that are available can be downloaded from [here](https://github.com/handyorg/handywinget-gui). [There is also a website](https://winstall.app/) that collects all of the packages and makes it pretty easy to get the terminal commands for each package.
 
 ## Winget install
 
@@ -42,4 +42,5 @@ winget install --id=Ubisoft.Uplay -e
 winget install --id=Valve.Steam -e
 winget install --id=VideoLAN.VLC -e
 winget install --id=Zoom.Zoom -e
+winget install --id=agalwood.Motrix -e
 winget install --id=twitch.twitch -e

@@ -50,12 +50,14 @@ choco install geforce-experience -y
 - [youtube-dl](https://ytdl-org.github.io/youtube-dl/index.html) is a youtube downloader CLI that downloads youtube videos with tons of options
 - [OBS (Open Broadcaster Software)](https://obsproject.com/) is an audio and video management software suite that is open source. It is primarily used for streaming/podcasting types of applications. I'm adding this here for the coronavirus fiasco so make my video not so terrible
 - ccleaner is a program that can clean windows of files that aren't needed. Windows 10 has come a long way since the last time I used this software and it really isn't needed anymore.
+- [mortix](https://motrix.app/) is a download manager that can do several download related tasks automatically
 
 ```PowerShell
 choco install youtube-dl
 choco install obs-studio
 choco install ccleaner -y
 choco install putty.install
+choco install motrix
 ```
 
 ## Upgrading using chocolatey

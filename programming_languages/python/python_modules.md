@@ -29,6 +29,9 @@
     npm install vega-lite vega-cli canvas
     ````
 
+- Requests
+    - very useful to scraping websites
+    - some more advanced commands with requests can be found [here](https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/)
 <!-- 
 - [ ] Add some simple graph code for Altair
 -->
@@ -98,4 +101,16 @@ choco install jdk8
     poetry publish
     ```
 
-### Pytest
+### Modules to Look Into
+
+- Fil: for memory profiling a script
+    - Here are some links about this module: [Link 1](https://pythonspeed.com/products/filmemoryprofiler/), [Link 2](https://pythonspeed.com/articles/memory-profiler-data-scientists/), [Link 3](https://github.com/pythonspeed/filprofiler)
+- [MyST](https://myst-parser.readthedocs.io/en/latest/index.html): MyST allows you to write Sphinx documentation entirely in markdown.
+- [PySnooper](https://github.com/cool-RR/pysnooper):  "[Y]ou just add one decorator line to the function you're interested in. You'll get a play-by-play log of your function [...]"
+- [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI): Python GUI For Humans - Transforms tkinter, Qt, Remi, WxPython into portable people-friendly Pythonic interfaces
+    - [RealPython Article](https://realpython.com/pysimplegui-python/)
+- [Helium](https://github.com/mherrmann/selenium-python-helium): Selenium-python is great for web automation. Helium makes it easier to use.
+- [Rich](https://github.com/willmcgugan/rich): Rich is a Python library for rich text and beautiful formatting in the terminal.
+- [sidetable](https://pbpython.com/sidetable.html): Create Simple Summary Tables in Pandas
+- [tabulate](https://github.com/astanin/python-tabulate): Pretty-print tabular data in Python, a library and a command-line utility.
+- [Jupytext](https://github.com/mwouts/jupytext): Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts

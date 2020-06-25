@@ -48,6 +48,8 @@ dta = pd.DataFrame(
     dta = dta.iloc[0:10,]
     # this is the same but to avoid accidentally leaving this code in my script the text afterwards helps me find it before I use a script into production
     dta = dta.iloc[0:10,] # TESTCODE: remove for production
+    # another option is to use the head method to get the top rows
+    dta = dta.head(10)  # TESTCODE:
     ```
 
 - splitting a dataframe into a list can sometimes be very helpful for either breaking up processing over time or (theoretically anyway python is NOT good at parallel processing) for parallel processing. I usually use this for breaking up really long processing times so that I can restart my computer or regain all of my computer's resources for something more intensive. API calls with query limits is a great example of this. I then usually use a for loop to write these to separate files in a subfolder for keeping track of them in my processing.
@@ -118,6 +120,12 @@ This is a collection of functions that I find to be useful in various scripts.
     author          1
     author          1
     author          1
+    ```
+
+- I have needed to create a list from a dataframe but needed by rows rather than by columns this is how you can do that
+
+    ```Python
+    row_list = dta.values.tolist()
     ```
 
 - when you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.

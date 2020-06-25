@@ -59,7 +59,18 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     exec "$SHELL"
     ```
 
-- To see all of the files in a directory you can use `ls` however if you also want to see the hidden files you need to use `ls -a`
+- To see all of the files in a directory you can use `ls` however if you also want to see the hidden files you need to use `ls -a` to see some details you can use `lh`
+    - I frequently use these all together as shown below:
+
+    ```sh
+    # this is the command I use most
+    ls -lh -a
+    # here is an alias that I create for this (since I use it so much)
+    alias list="ls -lh -a"
+    ```
+
+- the in terminal process explorer is shown by typeing `top` to quit press `q`
+
 - To enable ssh passwordless access to another linux computer you can do the following:
     - First create the generated keys `ssh-keygen -t rsa`
     - Then copy over the keys to the destination computer `ssh-copy-id -i ~/.ssh/id_rsa.pub username@computerdomain`
@@ -235,6 +246,18 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # now enter this into the Ubuntu shell
     chmod 600 ~/.ssh/id_rsa
     sudo service ssh --full-restart
+    ```
+
+- Here are all of the aliases and environment variables I put on all of my linux distros:
+    - `alias restart="exec "$SHELL""` this restarts the shell
+    - `alias list="ls -lh -a"` this shows all files and folders in the current directory with details and shows hidden files and folders
+    - `alias start="cmd.exe /c start"` this allows for opening Windows explorer from the current location by pressing `start .`
+
+    ```sh
+    echo '# general aliases
+    alias restart="exec "$SHELL""
+    alias list="ls -lh -a"
+    alias start="cmd.exe /c start"' >> ~/.zshrc
     ```
 
 ## Alpine Setup
