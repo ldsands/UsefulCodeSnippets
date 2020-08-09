@@ -1,4 +1,15 @@
-# Python installation instructions and notes
+# Python Installation Instructions and Notes
+
+- [Python Installation Instructions and Notes](#python-installation-instructions-and-notes)
+    - [Pyenv With Poetry](#pyenv-with-poetry)
+    - [Anaconda](#anaconda)
+        - [Anaconda PATH Windows instructions](#anaconda-path-windows-instructions)
+        - [Install anaconda on WSL](#install-anaconda-on-wsl)
+    - [Virtual environments](#virtual-environments)
+        - [conda environments](#conda-environments)
+        - [venv environments](#venv-environments)
+        - [Poetry Environments](#poetry-environments)
+    - [Useful Python Install Commands](#useful-python-install-commands)
 
 ## Pyenv With Poetry
 
@@ -129,13 +140,19 @@ This is for shen the add to path doesn't work for the chocolatey install
 
 ## Virtual environments
 
-You really shouldn't use python without using virtual environments. Basically what they do is manage to keep everything contained and consistent for projects so that sharing a project with someone else becomes far easier. There are then choices to be made about dependency management along with virtual environments. It may seem like it is more trouble than it is worth but I can assure you that it is not. If you ever want to run a project again in the future or share a project virtual environments are a _**massive**_ time saver.
+- You really shouldn't use python without using virtual environments. Basically what they do is manage to keep everything contained and consistent for projects so that sharing a project with someone else becomes far easier. There are then choices to be made about dependency management along with virtual environments. It may seem like it is more trouble than it is worth but I can assure you that it is not. If you ever want to run a project again in the future or share a project virtual environments are a _**massive**_ time saver.
 
-There are many methods of setting up and managing python environments but I would recommend two of them. If you're using anaconda then use their environment manager it is very good and comprehensive it can also specify what version of python you're using which is very useful for sharing projects. However there is the drawback of not having access to PyPI which is the official repository for all python packages. To get access to these you still have to use pip which occasionally does cause issues with conda. The reason conda does this is because pip does not deal with non-python packages very well. So if there is a package that depends on say c++ or some other lower level language pip has been known to be very bad at dealing with those dependencies. Anaconda solves that issue completely.
+- There are many methods of setting up and managing python environments.
+- If you're using anaconda then use their environment manager it is very good and comprehensive it can also specify what version of python you're using which is very useful for sharing projects. However there is the drawback of not having all access to PyPI which is the official repository for all python packages. To get access to these you still have to use pip which occasionally does cause issues with conda. The reason conda does this is because pip does not deal with non-python packages very well. So if there is a package that depends on say c++ or some other lower level language pip has been known to be very bad at dealing with those dependencies. Anaconda solves that issue completely.
 
-Venv is what I recommend (for now) for "normal" python for the moment it is kind of limited (unable to handle a lot of non-python packages though this is more of a pip issue than venv) and a but more complicated to use and activate but it seems to work pretty well. I does not have the ability to dictate the version of python that is used either.
+- Venv is what I recommend (for now) for "normal" python for the moment it is kind of limited (unable to handle a lot of non-python packages though this is more of a pip issue than venv) and a but more complicated to use and activate but it seems to work pretty well. Venv does not have the ability to dictate the version of python that is used either.
 
->Update soon VS Code will be supporting [poetry](https://python-poetry.org/) which looks a lot like conda but for "normal" python. Once they complete the VS Code support I'll probably add the details here. it kind of deal with different versions of python as well though the better solution is to use pyenv (or pyenv-win for Windows which can be installed using chocolatey `choco install pyenv-win`, I haven't experimented with these yet though).
+- Another option is [Pyflow](https://github.com/David-OConnor/pyflow) which uses Rust on the backend. It is very fast and very easy to use though you do have to have either a pyproject.toml or a line in the script similar to the following: `__requirements__ = ["pandas", "numpy"]` to work with pyflow. This may be my favorite as of Summer 2020 since it is so easy to use. To install pyflow there are several options however I recommend installing rust then use this command: `cargo install pylow`. Instructions on how to install Rust can be found [here](../rust/rust_install.md). If on a debian based distro you can also use this command `cd ~/ && wget https://github.com/David-OConnor/pyflow/releases/download/0.2.7/pyflow_0.2.7_amd64.deb && sudo dpkg -i pyflow_0.2.7_amd64.deb && rm pyflow* && pyflow --version`.
+    - You can create the folder containing all of the Python and Python packages needed by entering `pyflow init` or in a new folder by entering `pyflow new ProjectName`.
+    - You can then install packages by using `pyflow install packageName`. This installs that package in the folder containing the project.
+    - If you want to run a script quickly or contain everything from within that script you can add a line like this: `__requires__ = ['packageName', 'anotherPackageName']`. Then enter `pyflow script myscript.py` and pyflow will install all of the requirements contained in that script.
+
+- [Poetry](https://python-poetry.org/) is another option that looks a lot like conda but for "normal" python. It can deal with different versions of python as well though I liked using pyenv or pyflow for that better than Poetry (or pyenv-win for Windows which can be installed using chocolatey `choco install pyenv-win`, I haven't experimented with these yet though).
 
 ### [conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
@@ -170,15 +187,68 @@ Below are my instructions for setting up a conda environment for my reddit data 
 
 To use venv is both a bit more complicated. launching these environments aren't as straight forward (at least on Windows) but it works pretty much the same way. Be aware that you cannot specify the version of python you use when using venv it just creates an environment for the version that you're using to load venv.
 
-1. you first have to have python installed (the below example is using python 3.8.1)
-    1. python -m venv general_use this creates the new environment
-    1. general_use\Scripts\activate.bat or general_use\Scripts\activate.ps1 (if you're using powershell) this "opens" or activates this environment
-    1. pip install flake8 black notebook tqdm docx2txt this installs any modules that are listed after the install command
-    1. to leave the environment you can just type deactivate
+- you first have to have python installed (the below example is using python 3.8.1)
+    - python -m venv general_use this creates the new environment
+    - general_use\Scripts\activate.bat or general_use\Scripts\activate.ps1 (if you're using powershell) this "opens" or activates this environment
+    - pip install flake8 black notebook tqdm docx2txt this installs any modules that are listed after the install command
+    - to leave the environment you can just type deactivate
 
     ```python
     python -m venv general_use
     general_use\Scripts\activate.ps1
     pip install flake8 black notebook tqdm docx2txt
     deactivate
+    ```
+
+### [Poetry Environments](https://python-poetry.org/docs/managing-environments/#:~:text=Poetry%20makes%20project%20environment%20isolation%20one%20of%20its,use%20it%20directly%20without%20creating%20a%20new%20one.)
+
+Poetry will use whatever virtual environment is activated to build the project that you're working on. It will create a pyproject.toml file and if you follow the instructions [here](#pyenv-with-poetry) you can setup the project with relative ease.
+
+## Useful Python Install Commands
+
+- Once you have Python running you can easily find the location of the python installation by running `Python` in your shell and then entering the following commands:
+
+    ```Python
+    import os, sys
+    os.path.dirname(sys.executable)
+    ```
+
+- To automatically install packages from a list you can use the following script
+
+    ```Python
+    # This will load the modules and if it is not installed it will install it using pip
+    modules = ["pathlib", "docx2txt", "pprint", "pikepdf"]
+    def install_and_import(modules):
+        import importlib
+        import os
+        for module in modules:
+            try:
+                importlib.import_module(module)
+                print(module, "imported")
+            except ImportError:
+                print(f"installing {module}")
+                os.system(f"pip install {module}")
+                print(module, "installed")
+                try:
+                    globals()[module] = importlib.import_module(module)
+                    print(module, "imported")
+                except ImportError:
+                    print(f"There was an error while trying to install {module}")
+    install_and_import(modules)
+    ```
+
+- When installing python on Windows you can usually just install it from the store but there are some packages cannot "see" that python installation. To deal with this you can do the following after installing python fro mthe python.org website or when installed using chocolatey or winget.
+
+    ```PowerShell
+    # set a new path that will be added to the path environment
+    $NewPath = "C:\Users\%username%\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\%username%\AppData\Local\Programs\Python\Python38-32"
+    # save the old path to a variable
+    $OldPath = (Get-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" -Name PATH).path
+    # concatenate the paths
+    $NewCombinedPath = "$($NewPath);$($OldPath)"
+    # add the new path to the path
+    Set-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" -Name PATH -Value $NewCombinedPath
+    # check the path to make sure it worked correctly
+    (Get-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" -Name PATH).Path -split ";"
+    # delete the Windows aliases that send you to the Windows store every time you type python
     ```

@@ -1,14 +1,53 @@
 # dotnet Installation and Overview
 
-Note that I will only be using dotnet standard and I will never be using dotnet framework
+Note that I will only be using dotnet standard or dotnet core and I will never be using dotnet framework
 
 ## Installation
 
-For now just see the [chocolatey](../../other_software/windows_program_instructions/chocolatey.md) page for more details.
+- For now just see the [chocolatey](../../other_software/windows_program_instructions/chocolatey.md) page for more details for installation on Windows.
+- For Ubuntu installation you can enter the following code:
+
+    ```sh
+    # option 1: this worked for me (be aware that the 20.04 below may have to be changed for your version of ubuntu)
+    wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+    sudo dpkg -i packages-microsoft-prod.deb
+    sudo apt-get update
+    apt search dotnet-sdk
+    sudo apt-get install -y dotnet-sdk-3.1
+    # option 1 using snap and snaped (the first two lines install snapd if required)
+    sudo apt update
+    sudo apt install snapd
+    sudo snap install dotnet-sdk --classic --channel=3.1
+    sudo snap alias dotnet-sdk.dotnet dotnet
+    # option 2 using apt-get
+    sudo apt-get update; \
+        sudo apt-get install -y apt-transport-https && \
+        sudo apt-get update && \
+        sudo apt-get install -y dotnet-sdk-3.1
+    # if you have an unable to locate error then also enter the following:
+    sudo dpkg --purge packages-microsoft-prod && sudo dpkg -i packages-microsoft-prod.deb
+    sudo apt-get update
+    sudo apt-get install {dotnet-package}
+    # if that still doesn't work enter the following:
+    sudo apt-get install -y gpg
+    wget -O - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o microsoft.asc.gpg
+    sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+    # be aware that the 20.04 below may have to be changed for your version of ubuntu
+    wget https://packages.microsoft.com/config/ubuntu/20.04/prod.list
+    sudo mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+    sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+    sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+    sudo apt-get update; \
+        sudo apt-get install -y apt-transport-https && \
+        sudo apt-get update && \
+        sudo apt-get install -y {dotnet-package}
+    ```
+
+- you may also need to add `export PATH="$PATH:/home/user/.dotnet/tools"` to your script profile file so that you can access the tool in the command line.
 
 ## Use Cases
 
-c# on dotnet can do pretty much anything you can imagine. I is usually a bit slower than c or c++ but not by much at all. I use it at the moment for doing things that I would do in python but they take too long there.
+C# on dotnet can do pretty much anything you can imagine. I is usually a bit slower than c or c++ but not by much at all. I use it at the moment for doing things that I would do in python but they take too long.
 
 ## Docker installation
 
@@ -57,9 +96,9 @@ dotnet interactive jupyter install # for working with dotnet interactive which i
 dotnet tool install -g dotnet-grab # allows for getting packages without setting up a project file
 ```
 
-## Creating a simple console application
+<!-- ## Creating a simple console application
 
-Creating a console app is very simple but it gets pretty complicated thereafter. First you navigate to the folder you want to 
+Creating a console app is very simple but it gets pretty complicated thereafter. First you navigate to the folder you want to  -->
 
 ## [Using c# as a script](https://github.com/filipw/dotnet-script/blob/master/README.md)
 

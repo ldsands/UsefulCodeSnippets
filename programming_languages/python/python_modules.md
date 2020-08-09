@@ -1,12 +1,19 @@
 # Useful Python Modules and Packages
 
+- [Useful Python Modules and Packages](#useful-python-modules-and-packages)
+    - [Random Modules and Packages](#random-modules-and-packages)
+        - [pywin32](#pywin32)
+        - [PySpark](#pyspark)
+    - [Creating a Local Package](#creating-a-local-package)
+        - [Modules to Look Into](#modules-to-look-into)
+
 ## Random Modules and Packages
 
 - docx2txt
     - this module converts docx files into plain text then you can print it out or write it to a txt file etc
         - sometimes very handy for student papers to all be in the same format
     - pip install docx2txt
-    - [see this script](useful_scripts/docx_to_txt.py) for an implementation that takes all docx files in the local folder and converts them to txt files
+    - [see this script](useful_scripts/doc_docx_pdf_txt_converter.py) for an implementation that takes all docx files in the local folder and converts them to txt files
 
     ```Python
     text = docx2txt.process(file)
@@ -29,11 +36,20 @@
     npm install vega-lite vega-cli canvas
     ````
 
+- Requests
+    - very useful to scraping websites
+    - some more advanced commands with requests can be found [here](https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/)
 <!-- 
 - [ ] Add some simple graph code for Altair
 -->
 
-## PySpark
+### pywin32
+
+This package allows for accessing the Windows API. The installation is a bit complicated so I've included the steps here.
+
+- 
+
+### PySpark
 
 This is a big data analysis packages that requires a bit of setup
 
@@ -98,4 +114,16 @@ choco install jdk8
     poetry publish
     ```
 
-### Pytest
+### Modules to Look Into
+
+- [Fil](https://github.com/pythonspeed/filprofiler): for memory profiling a script
+- [Helium](https://github.com/mherrmann/selenium-python-helium): Selenium-python is great for web automation. Helium makes it easier to use.
+- [Jupytext](https://github.com/mwouts/jupytext): Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts
+- [MyST](https://myst-parser.readthedocs.io/en/latest/index.html): MyST allows you to write Sphinx documentation entirely in markdown.
+- [PySnooper](https://github.com/cool-RR/pysnooper):  "[Y]ou just add one decorator line to the function you're interested in. You'll get a play-by-play log of your function [...]"
+- [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI): Python GUI For Humans - Transforms tkinter, Qt, Remi, WxPython into portable people-friendly Pythonic interfaces - [RealPython Article](https://realpython.com/pysimplegui-python/)
+- [Rich](https://github.com/willmcgugan/rich): Rich is a Python library for rich text and beautiful formatting in the terminal.
+- [Sidetable](https://pbpython.com/sidetable.html): Create Simple Summary Tables in Pandas
+- [Tabulate](https://github.com/astanin/python-tabulate): Pretty-print tabular data in Python, a library and a command-line utility.
+- [Typer](https://github.com/tiangolo/typer): Typer, build great CLIs. Easy to code. Based on Python type hints.
+- [PyFlow](https://github.com/David-OConnor/pyflow): An installation and dependency system for Python (it looks way easier than environments)

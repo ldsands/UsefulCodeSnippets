@@ -21,6 +21,34 @@ Path management can be a pain to figure out so I'm adding everything I've learne
     end
     ```
 
+- I find it very common to put a script in a folder and want to have the program "search" for a folder in parent folders until that folder is found. This is how I do that in a function.
+
+    ```Julia
+    using FilePathsBase
+    using Glob
+
+    function find_edgelist_files(target_folder)
+        """finds the directory with all of the edgelist files"""
+        path = Path(dirname(@__FILE__))
+        n = 0
+        while true
+            listDirs = [path_1 for path_1 in readdir(path) if isdir(path)]
+            listDirsStem = [string(basename(path_1)) for path_1 in readdir(path) if isdir(path)]
+            if target_folder in listDirsStem
+                path = path / target_folder
+                files = glob("*.csv", string(path))
+                # break
+                return files, path
+            else
+                path = parent(path)
+            end
+        end
+    end
+
+    target_folder = "author_subreddit_edgelists"
+    find_edgelist_files(target_folder)
+    ```
+
 ## Dataframe related code
 
 - similar to the isin function in pandas where you filter a dataframe based on what is in another array or list of items
@@ -32,24 +60,6 @@ Path management can be a pain to figure out so I'm adding everything I've learne
 ## Random bits of useful code
 
 - an easy way to time some function is to use the `@elapsed` macro, this will print the output in seconds that it took to run whatever you're evaluating
-- this is a function that that installs all scripts in a list. If the package is already installed it will move on.
-
-    ```Julia
-    # this script installs all required packages to run this script
-    package_list = ["DataFrames", "Gadfly", "JuliaFormatter", "Glob", "CodecZstd", "FileIO", "Arrow", "Feather", "ParquetFiles", "CSV"]
-    using Pkg
-
-    function installPackages!(package_list)
-        println("Installation of required packages to run this script")
-        Pkg.update()
-        for package in package_list
-            if ! in(package, keys(Pkg.installed())) Pkg.add(package) end
-        end
-        @warn("Packages installed!")
-    end
-
-    installPackages(package_list)
-    ```
 
 <!-- 
 ```Julia

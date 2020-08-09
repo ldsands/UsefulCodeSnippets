@@ -28,6 +28,7 @@ Table of Contents:
         - [Python](#python)
         - [R](#r)
         - [RegEx](#regex)
+        - [Rust](#rust)
     - [Other snippets and instructions](#other-snippets-and-instructions)
         - [Bash](#bash)
         - [Git](#git)
@@ -90,6 +91,14 @@ RegEx (regular expression) is used to match text once you learn a little bit of 
 <!-- ### [Stata](https://www.stata.com/)
 
 Stata commands, resources and notes that I've found useful -->
+
+### [Rust](https://rustlang.org/)
+
+Rust is a programming language that is pretty much a C/C++ replacement that is by virtue of being so much newer avoids many of the pitfalls and annoyances that those languages have to deal with. I use it occasionally when I need to process data that is large enough that doing so in Python becomes impractical.
+
+- [Rust installation notes and links](programminglanguages/rust/rust_install.md)
+- [Rust useful commands](programminglanguages/rust/rust_commands.md)
+- [Rust useful modules](programming_languages/rust/rust_modules.md)
 
 ## Other snippets and instructions
 

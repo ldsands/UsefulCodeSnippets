@@ -100,6 +100,15 @@ Sometimes if I need to look at a lot of output I like to use the terminal rather
 %run ./monthly_activity.py
 ```
 
+- I can be useful to check to see if code is running in IPython/Jupyter kernal. This is how you can do that:
+
+    ```Python
+    try:
+        __IPYTHON__
+    except NameError:
+        print("Not in IPython")
+    ```
+
 ## Sending Emails Using Python
 
 I use this for notifications if a script that takes a long time has an error or if it has completed. This code is based mostly on [this article](https://realpython.com/python-send-email/) on real python. You do have to allow the google account to interact with "less secure apps" by clicking a toggle at [this site](https://myaccount.google.com/lesssecureapps). There is no modules needed to be installed since the `smtplib` and `ssl` modules both come with the python standard library.
@@ -158,7 +167,7 @@ print(sys.argv[0])
 
 ## Random Useful Commands
 
-- when you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
+- When you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
 
     ```Python
     if "dta" in globals(): # or locals for locally defined variables
@@ -187,4 +196,12 @@ print(sys.argv[0])
     list(itertools.combinations(range(6), 2))
     # here is the output
     [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+    ```
+
+- Chunking lists can be useful when you need to make sure that you're not using too much memory
+
+    ```Python
+    def get_chunked_list(target_list, chunk_size):
+        """Yield successive n-sized chunks from target_list. Where chunk_size is an int and the target_list is a list that will be split"""
+        return [target_list[counter : counter + chunk_size] for counter in range(0, len(target_list), chunk_size)]
     ```
