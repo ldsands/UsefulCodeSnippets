@@ -6,7 +6,6 @@
     - [Useful Bash/zsh Commands](#useful-bashzsh-commands)
         - [WSL Setup](#wsl-setup)
     - [Ubuntu Setup](#ubuntu-setup)
-    - [Alpine Setup](#alpine-setup)
 
 Bash is a command shell for unix systems and is the most popular shell used in Linux systems. Zsh is another unix shell that has a ton of useful features not included in Bash, for a list of Zsh features see [this page](https://github.com/hmml/awesome-zsh).
 
@@ -31,6 +30,13 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     alias FrequentFolder="cd /mnt/c/user/location/directory"
     echo 'alias FrequentFolder="cd /mnt/c/user/location/directory"' >> ~/.zshrc
     exec "$SHELL"
+    ```
+
+- The screen command allows you to have multiple shells open through one SSH connection. This is very useful for the HPC on campus that I use frequently. More instructions can be found [here](https://wiki.uiowa.edu/display/hpcdocs/Tips+for+Reducing+the+Number+of+Duo+Two-Factor+Logins#TipsforReducingtheNumberofDuoTwoFactorLogins-ProgramstoReduceSSHLogins:~:text=application.)-,Programs%20to%20Reduce%20SSH%20Logins). A few handy commands are shown below:
+
+    ```sh
+    # list the screens being used
+    screen -ls
     ```
 
 - Environment variables are variables that are meant to store different pieces of information (often strings) for use elsewhere. Examples might include a token that is personal to you: you can set the environment variable on your computer and  reference it easily in code but do so without exposing your personal token. To do this in python you can see [an example](../programming_languages/python/python_commands.md#random-useful-commands).
@@ -69,6 +75,15 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     alias list="ls -lh -a"
     ```
 
+- Sometimes zsh history file gets corrupted. You can solve this with the following code.
+
+    ```sh
+    cd ~
+    mv .zsh_history .zsh_history_bad
+    strings .zsh_history_bad > .zsh_history
+    fc -R .zsh_history
+    ```
+
 - the in terminal process explorer is shown by typeing `top` to quit press `q`
 
 - To enable ssh passwordless access to another linux computer you can do the following:
@@ -90,6 +105,8 @@ Now to get bash all set up with useful features do the following steps:
 - Other sources I used while doing this
     - [link 1](https://www.sitepoint.com/zsh-tips-tricks/) [link 2](https://pascalnaber.wordpress.com/2019/10/05/have-a-great-looking-terminal-and-a-more-effective-shell-with-oh-my-zsh-on-wsl-2-using-windows/) [link 3](https://nickymeuleman.netlify.app/blog/linux-on-windows-wsl2-zsh-docker#zsh) [link 4](https://www.sitepoint.com/zsh-tips-tricks/).
 - for a list of pre-installed plugins look [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview)
+
+- If you want to limit the WSL2 system in any way you can create the file `.wslconfig` here: `C:\Users\%username%\.wslconfig`. I use it to limit the amount of memory that WSL can use on my system. You can learn more [here](https://www.bleepingcomputer.com/news/microsoft/windows-10-wsl2-now-allows-you-to-configure-global-options/)
 
 ## Ubuntu Setup
 
@@ -134,7 +151,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
     sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
-    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting\n   ssh-agent' ~/.zshrc
+    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting\n    ssh-agent' ~/.zshrc
     sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
     # restart the shell
     exec "$SHELL"
@@ -249,7 +266,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
     ```
 
 - Here are all of the aliases and environment variables I put on all of my linux distros:
-    - `alias restart="exec "$SHELL""` this restarts the shell
+    - `alias restart="exec "$SHELL" && source ~/.zshrc"` this restarts the shell
     - `alias list="ls -lh -a"` this shows all files and folders in the current directory with details and shows hidden files and folders
     - `alias start="cmd.exe /c start"` this allows for opening Windows explorer from the current location by pressing `start .`
 
@@ -260,8 +277,3 @@ Below are the step I take to setup my linux shell the way I like it in various s
     alias start="cmd.exe /c start"' >> ~/.zshrc
     ```
 
-## Alpine Setup
-
-```sh
-apk add zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

@@ -8,11 +8,70 @@ Julia is a newer programming language that is meant to be dynamically typed like
 - good documentation and tutorials
     - [official documentation](https://docs.julialang.org/en/latest/) the manual in particular is very good
     - [a wikibook](https://en.wikibooks.org/wiki/Introducing_Julia) that is for introductory Julia concepts also very well done
+    - [the Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/index.html#Style-Guide-1)
+        - Note: generally variables use `_` for variable name word separating whereas methods use camel case.
 
 ## Installation
 
-Julia can be downloaded from [this site](https://julialang.org/downloads/). Or if you're on Windows you can install Julia using chocolatey (see below).
+Julia can be downloaded from [this site](https://julialang.org/downloads/). Instructions for installation on each major OS are located [here](https://julialang.org/downloads/platform/).
 
-    ```powershell
+- For Windows you can install Julia using chocolatey (see below).
+
+    ```PowerShell
+    # Chocolatey Command
     choco install julia
+    # Chocolatey upgrade command
+    choco upgrade julia
+    # WinGet command
+    winget install --id=Julialang.Julia -e
+    ```
+
+- For Linux Julia can be installed with the following commands:
+
+    ```sh
+    # create required folders
+    cd ~ && mkdir .julia && cd .julia
+    # download julia from julialang.org (make sure you check the version and change it accordingly)
+    curl https://julialang-s3.julialang.org/bin/linux/x64/1.5/julia-1.5.0-linux-x86_64.tar.gz -o julia-1.5.0.tar.gz && tar -xvzf julia-1.5.0.tar.gz
+    # create the environment variable needed to run Julia Note: sure you change the <user name> to your <user name>
+    echo 'export PATH="$PATH:/home/<user name>/.julia/julia-1.5.0/bin/"' >> ~/.zshrc
+    # create a variable to allow Julia to use more threads at startup
+    export JULIA_NUM_THREADS=16
+    ```
+
+## Installing and Loading Packages
+
+Once you've installed Julia on your system you'll want to update your package repository and install some packages. These instructions are duplicated [here](julia_useful_packages.md#)
+
+- You can do this in the REPL or through a script here is the commands need to update through the REPL:
+
+    ```sh
+    # enter the Julia REPL
+    julia
+    # load and update the package repository
+    using Pkg
+    Pkg.update()
+    # install a package
+    Pkg.add("package")
+    # load the package
+    using package
+    # exit the REPL
+    exit()
+    ```
+
+- To update and install packages through a script you can enter the following to your script and then run it. Note: the `Pkg.installed` method has been deprecated and will not be available in the future so this function will no longer work as well.
+
+    ```Julia
+    # this script installs all required packages to run this script
+    package_list = ["DataFrames", "Gadfly", "JuliaFormatter", "Glob", "CodecZstd", "FileIO", "Arrow", "Feather", "ParquetFiles", "CSV"]
+    using Pkg
+    function InstallPackages!(package_list)
+        println("Installation of required packages to run this script")
+        Pkg.update()
+        for package in package_list
+            if ! in(package, keys(Pkg.installed())) Pkg.add(package) end
+        end
+        @warn("Packages installed!")
+    end
+    InstallPackages(package_list)
     ```

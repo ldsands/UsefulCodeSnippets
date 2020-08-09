@@ -11,6 +11,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 - [PowerShell and Cmd Prompt](#powershell-and-cmd-prompt)
     - [Installation](#installation)
         - [Using dotnet Sdk](#using-dotnet-sdk)
+    - [Adding to Windows Path](#adding-to-windows-path)
     - [PowerShell profiles](#powershell-profiles)
     - [Useful commands](#useful-commands)
         - [PowerShell functions](#powershell-functions)
@@ -25,6 +26,24 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### Using dotnet Sdk
 
 You can install PowerShell using the dotnet sdk (core or standard) on any platform. However you will not be able to get context menu use with this method (for more details [see this section under my dotnet instructions](../programming_languages/dotnet/dotnet_install_overview.md#dotnet-tools))
+
+## Adding to Windows Path
+
+Adding items to path in PowerShell is kind of annoying becuase the commands are so verbose. Below is an example of adding python downloaded and installed from chocolatey to the Windows path.
+
+```PowerShell
+# set a new path that will be added to the path environment
+$newPath = "C:\Users\%username%\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\%username%\AppData\Local\Programs\Python\Python38"
+# save the old path to a variable
+C:\ProgramData\Boxstarter;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\PowerShell\7\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Amazon\AWSCLI\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\
+$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+# add the new path to the path
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newPath
+# check the path to make sure it worked correctly
+Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
+# an alternative way to check the path
+$env:Path -split ';'
+```
 
 ## PowerShell profiles
 
