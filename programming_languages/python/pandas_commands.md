@@ -152,3 +152,10 @@ This is a collection of functions that I find to be useful in various scripts.
     dta["pd_created_time"] = pd.to_datetime(dta["pd_created_time"])
     dta["month_year"] = pd.to_datetime(dta["pd_created_time"]).dt.strftime("%Y-%m")
     ```
+
+- For network analysis it is useful to be able to convert between an adjacency matrix and an edgelist. The code below ([taken from here](https://stackoverflow.com/a/48219579)) can convert an adjacency matrix in a pandas dataframe into an edgelist:
+
+    ```Python
+    dta.values[[np.arange(len(dta))]*2] = np.nan
+    edgelist = dta.stack().reset_index()
+    ```
