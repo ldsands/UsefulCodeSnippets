@@ -39,9 +39,9 @@
 - Requests
     - very useful to scraping websites
     - some more advanced commands with requests can be found [here](https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/)
-<!-- 
-- [ ] Add some simple graph code for Altair
--->
+- graph-tools
+    - this is a network visualization package that must cannot be installed using pip the instructions for installation can be found [here](https://git.skewed.de/count0/graph-tool/-/wikis/installation-instructions)
+    - I use this over networkx for any networks that are very large, otherwise networkx takes a very long time to deal with large networks
 
 ### pywin32
 

@@ -113,7 +113,7 @@ This is for shen the add to path doesn't work for the chocolatey install
     ~
     cd /tmp
     # downloads the desired file from anaconda
-    curl https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh --output anaconda.sh
+    curl https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh --output anaconda.sh
     # installs anaconda from the file you downloaded
     bash anaconda.sh
     # disables automatic activation of base when starting a terminal
@@ -158,28 +158,23 @@ This is for shen the add to path doesn't work for the chocolatey install
 
 Below are my instructions for setting up a conda environment for my reddit data project
 
-1. first you need to install anaconda (on windows make sure to check the add to path option)
-1. using command prompt (on windows) or in the bash shell (on linux) I entered the following commands
-    1. conda create -n reddit python=3.7.4 -y (this command can also be used to reset the environment by deleting the old one and reinstalling it)
-    1. conda activate reddit
-    1. conda install notebook dask tqdm flake8 altair black -y
-    1. pip install pyarrow zstandard requests
-    1. then you use this version of python to execute everything using something like atom or vscode will be able to see all of the environments
-    1. to deactivate you have type conda deactivate
+- first you need to install anaconda (on windows make sure to check the add to path option)
+    - using command prompt (on windows) or in the bash shell (on linux) you can use the code below to create a conda environment
 
-- below are the commands taken out of the list for easier copying
-
-    ```PowerShell
-    conda create -n reddit python=3.7.4 -y
-    conda activate reddit
+    ```sh
+    # display all versions of python available to conda
+    conda search python
+    # create environment with the specified python version
+    conda create -n myenv python=3.7.4 -y
+    # activate the newly created environment
+    conda activate myenv
+    # install some packages using conda
     conda install notebook dask tqdm flake8 altair black -y
+    # install some packages to the conda environment using pip
     pip install pyarrow zstandard requests
+    # deactivate the currently activated conda environment
     conda deactivate
-    ```
-
-- if you wish to remove (or uninstall) a conda environment then do the following
-
-    ```PowerShell
+    # remove the conda environment
     conda remove --name myenv --all
     ```
 
