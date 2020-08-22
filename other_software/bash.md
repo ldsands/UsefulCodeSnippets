@@ -91,6 +91,15 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     - Then copy over the keys to the destination computer `ssh-copy-id -i ~/.ssh/id_rsa.pub username@computerdomain`
     - More details can be found [here](https://wiki.uiowa.edu/display/hpcdocs/Setting+Up+Passwordless+Login) and [here](https://www.hanselman.com/blog/HowToSetUpATabProfileInWindowsTerminalToAutomaticallySSHIntoALinuxBox.aspx) for how to do something similar from a Windows computer
 
+- Pretty much all major linux distros come with a package manager. For Ubuntu and other debian based distros this package manager is called apt. A few useful commands for apt are below:
+
+    ```sh
+    # update the apt library
+    sudo apt-get update
+    # list the installed packages
+    apt list --installed
+    ```
+
 ### WSL Setup
 
 To set up WSL follow the instructions I've set [up here](windows_program_instructions/windows_programs.md/#wsl-windows-subsystem-for-linux).

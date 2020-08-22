@@ -178,6 +178,8 @@ Below are my instructions for setting up a conda environment for my reddit data 
     conda remove --name myenv --all
     ```
 
+    - sometimes you need to add packages from conda forge you may need to do this by using `conda install -c conda-forge` then the name of the package that is available on conda forge.
+
 ### [venv environments](https://docs.python.org/3/tutorial/venv.html)
 
 To use venv is both a bit more complicated. launching these environments aren't as straight forward (at least on Windows) but it works pretty much the same way. Be aware that you cannot specify the version of python you use when using venv it just creates an environment for the version that you're using to load venv.
