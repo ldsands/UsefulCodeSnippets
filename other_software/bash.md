@@ -84,7 +84,8 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     fc -R .zsh_history
     ```
 
-- the in terminal process explorer is shown by typeing `top` to quit press `q`
+- the in terminal process explorer is shown by typing `top` to quit press `q`.
+    - You can also use htop which is quite a bit more capable than top. You can install it on a debian based disto using `sudo apt-get install htop`. Then enter `htop`.
 
 - To enable ssh passwordless access to another linux computer you can do the following:
     - First create the generated keys `ssh-keygen -t rsa`
