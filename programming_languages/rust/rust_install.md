@@ -2,7 +2,7 @@
 
 ## Installation of Rust, Cargo and Rustup
 
-To install Rust on Windows go to [this link](https://www.rust-lang.org/tools/install) and download [this version of rustup](https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe). You can also install this using chocolatey with `choco install rust` or winget with `winget install --id=Rust.rustup -e`.
+To install Rust on Windows go to [this link](https://www.rust-lang.org/tools/install) and download [this version of rustup](https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe). You will need a copy of [Visual C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) to compile rust. You can also install this using chocolatey with `choco install rust` or winget with `winget install --id=Rust.rustup -e`.
 
 For WSL use the command shown below to install Rust in your chosen distro and then follow the installation instructions. Afterwards you can check to see if it installed correctly by using: `rustc --version`. Note: using the ` exec "$SHELL"` will not work to see if the Rust components were added until you do a more complete restart of the shell. Any Linux distro installation should work the same commands shown below.
 

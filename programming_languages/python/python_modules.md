@@ -5,7 +5,7 @@
         - [pywin32](#pywin32)
         - [PySpark](#pyspark)
     - [Creating a Local Package](#creating-a-local-package)
-        - [Modules to Look Into](#modules-to-look-into)
+    - [Modules to Look Into](#modules-to-look-into)
 
 ## Random Modules and Packages
 
@@ -114,16 +114,17 @@ choco install jdk8
     poetry publish
     ```
 
-### Modules to Look Into
+## Modules to Look Into
 
+- [AutoScraper](https://github.com/alirezamika/autoscraper): A Smart, Automatic, Fast and Lightweight Web Scraper for Python
 - [Fil](https://github.com/pythonspeed/filprofiler): for memory profiling a script
 - [Helium](https://github.com/mherrmann/selenium-python-helium): Selenium-python is great for web automation. Helium makes it easier to use.
 - [Jupytext](https://github.com/mwouts/jupytext): Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts
 - [MyST](https://myst-parser.readthedocs.io/en/latest/index.html): MyST allows you to write Sphinx documentation entirely in markdown.
-- [PySnooper](https://github.com/cool-RR/pysnooper):  "[Y]ou just add one decorator line to the function you're interested in. You'll get a play-by-play log of your function [...]"
+- [PyFlow](https://github.com/David-OConnor/pyflow): An installation and dependency system for Python (it looks way easier than environments)
 - [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI): Python GUI For Humans - Transforms tkinter, Qt, Remi, WxPython into portable people-friendly Pythonic interfaces - [RealPython Article](https://realpython.com/pysimplegui-python/)
+- [PySnooper](https://github.com/cool-RR/pysnooper):  "[Y]ou just add one decorator line to the function you're interested in. You'll get a play-by-play log of your function [...]"
 - [Rich](https://github.com/willmcgugan/rich): Rich is a Python library for rich text and beautiful formatting in the terminal.
 - [Sidetable](https://pbpython.com/sidetable.html): Create Simple Summary Tables in Pandas
 - [Tabulate](https://github.com/astanin/python-tabulate): Pretty-print tabular data in Python, a library and a command-line utility.
 - [Typer](https://github.com/tiangolo/typer): Typer, build great CLIs. Easy to code. Based on Python type hints.
-- [PyFlow](https://github.com/David-OConnor/pyflow): An installation and dependency system for Python (it looks way easier than environments)
