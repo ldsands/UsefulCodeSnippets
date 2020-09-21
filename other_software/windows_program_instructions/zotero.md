@@ -13,7 +13,7 @@ To complete the instructions to install Zotero and setup the WebDAV file syncing
 1. Create a pCloud account [here](https://www.pcloud.com/)
     - Alternatives to pCloud can be found [here](https://www.zotero.org/support/kb/webdav_services)
 
-## Setup WebDAV syncing instructions
+## Setup WebDAV Syncing Instructions
 
 1. Download and install Zotero
 1. Select the edit menu and then select preferences
