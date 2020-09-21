@@ -1,32 +1,50 @@
 # Zotero Windows Setup
 
-Many of these instructions should work for Mac too.
+Zotero is a reference manager for Windows, MacOS and Linux.
 
-## Setup webdav syncing instructions
+Note: These instructions should work for Mac too.
 
-1. After Zotero is downloaded and installed click on edit and then preferences
-1. Click on the sync tab then after signing into your Zotero account under the file syncing section click on the dropdown and select WebDAV
-1. Make sure Https is selected then in the text box add webdav.pcloud.com:443
-1. Sign into your pcloud.com account and press OK at the bottom
-1. Click on the Green sync arrow in the upper right hand part of the Zotero window.
-1. For Windows: It will fail once on the first try that is normal (probably a bug) go back to the sync area again and sign into your box.com account again and press OK
-1. Click again on the green sync arrow and it should sync correctly
-1. Under preferences in the general tab uncheck the "automatically take snapshots when creating items from web pages in order to save on space
-1. Under the preferences in the general tab uncheck the child notes and tags so that they don't get shared when sharing to a group
-1. To use ASA style you need to look for a CSL file [can be downloaded from here](https://github.com/citation-style-language/styles/blob/master/american-sociological-association.csl)
+## Links and Account Information
 
-## Setting up Pcloud account for Zotero
+To complete the instructions to install Zotero and setup the WebDAV file syncing, you will have to follow the instructions listed below:
 
-This tutorial taken from [UC Berkeley](http://guides.lib.berkeley.edu/c.php?g=4472&p=15932) (and modified a bit by me)
+1. Download Zotero from [the Zotero website](https://www.zotero.org/download/)
+1. Create a Zotero account [here](https://www.zotero.org/user/register/)
+1. Create a pCloud account [here](https://www.pcloud.com/)
+    - Alternatives to pCloud can be found [here](https://www.zotero.org/support/kb/webdav_services)
 
-pCloud is one WebDAV option listed by Zotero that provides 10GB free storage.
+## Setup WebDAV syncing instructions
 
-1. Go to pcloud.com and create an account. It is not necessary to download the pCloud client, although you get additional free storage for doing so.
-1. In Zotero, change the WebDAV url to: webdav.pcloud.com:443
-1. Enter the username and password for the pCloud account you created
-1. Verify the server. A pop-up window will say the folder does not exist. Click "Create."
-1. Verify the server again.
-1. If you have been using a different WebDAV server, go to Edit > Preferences > Sync > Reset and choose the "Reset File Sync History" option. Then click on Reset. Go to your Zotero application and click on the sync command and the files will be uploaded to pCloud.
+1. Download and install Zotero
+1. Select the edit menu and then select preferences
+1. Select the sync tab
+1. Sign into into your Zotero account
+1. In the file syncing section, select WebDAV in the dropdown menu
+1. Make sure https is selected
+1. In the text box add webdav.pcloud.com:443
+1. Enter your pCloud username and password
+1. Press OK at the bottom of the settings dialogue box
+1. Click on the Green sync arrow in the upper right hand part of the Zotero window
+    - Note for Windows: Syncing will fail on the first try that is normal (probably a bug) to fix this do the following:
+        1. Select the edit menu and then the sync tab
+        1. Reenter your pCloud password
+        1. Press OK at the bottom of the dialogue box
+        1. Click again on the green sync arrow
+        1. Zotero should now sync correctly
+
+## Default Zotero Preferences I Change
+
+- Don't download website snapshots to save a lot space
+    1. Under edit, then preferences select the general tab
+    1. In the "file handling" section uncheck the "automatically take snapshots when creating items from web pages"
+- Don't share the child notes with shared libraries
+    1. Under edit, then preferences select the general tab
+    1. In the "Groups" section uncheck the "child notes" and "child links" options
+- Under the preferences in the general tab uncheck the child notes and tags so that they don't get shared when sharing to a group
+- Change the default citation style to ASA 6th edition
+    1. Under edit, then preferences select the cite tab
+    1. In the styles section find the "American Sociological Association 6th Edition"
+    1. If this option is missing you can download the CSL file from [here](https://github.com/citation-style-language/styles/blob/master/american-sociological-association.csl)
 
 ## Zotero plug-ins
 
