@@ -1,6 +1,7 @@
 # Windows programs
 
 - [Windows programs](#windows-programs)
+    - [Package Managers](#package-managers)
     - [Win 32](#win-32)
         - [Nativefier](#nativefier)
         - [Utilities](#utilities)
@@ -13,6 +14,17 @@
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
     - [Windows PowerToys](#windows-powertoys)
     - [MS Office Plugins](#ms-office-plugins)
+
+## Package Managers
+
+There are three main package managers for Windows. Chocolaty, Scoop and Winget.
+
+- [Chocolatey](https://chocolatey.org/packages) has by far the largest number of packages but it does require administrator rights for many of its packages. As such it can install pretty much anything that can be installed on Windows.
+- [Scoop](https://scoop.sh/) is a lot like chocolatey but does not require any administrator rights. Because of this it can be vary useful to use on a machine at work or somewhere similar. A side effect of this benefit is that it installs all of the programs that you install with scoop in the `~\scoop` folder. This means that these programs will not be added to path and will not show up in your start folder and other similar benefits. [Here](https://github.com/lukesampson/scoop/wiki/Chocolatey-Comparison) is a good write of of a comparison between chocolatey and scoop.
+- Finally [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/) is a new (released first alpha in Spring 2020) package manager that is officially supported by Microsoft. It will have all of the capabilities of both Chocolatey and Scoop once it is feature complete as well as some that the other two will not have. The major benefit of using Winget is that all of the packages accessible through Winget will be vetted by Microsoft. Also because of it's "official" nature it already has a very large repository of programs and is growing much faster than Chocolatey or Scoop.
+
+- Useful package manager links:
+    - [Simple tutorial for Chocolatey and Scoop](https://dev.to/bowmanjd/chocolatey-vs-scoop-package-managers-for-windows-2kik)
 
 ## Win 32
 

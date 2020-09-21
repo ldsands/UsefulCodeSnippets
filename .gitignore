@@ -1,0 +1,3 @@
+# to ignore all of the files created through the markdown language extension activation
+**/.tmp-projections
+debug.log

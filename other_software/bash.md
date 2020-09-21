@@ -84,12 +84,22 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     fc -R .zsh_history
     ```
 
-- the in terminal process explorer is shown by typeing `top` to quit press `q`
+- the in terminal process explorer is shown by typing `top` to quit press `q`.
+    - You can also use htop which is quite a bit more capable than top. You can install it on a debian based disto using `sudo apt-get install htop`. Then enter `htop`.
 
 - To enable ssh passwordless access to another linux computer you can do the following:
     - First create the generated keys `ssh-keygen -t rsa`
     - Then copy over the keys to the destination computer `ssh-copy-id -i ~/.ssh/id_rsa.pub username@computerdomain`
     - More details can be found [here](https://wiki.uiowa.edu/display/hpcdocs/Setting+Up+Passwordless+Login) and [here](https://www.hanselman.com/blog/HowToSetUpATabProfileInWindowsTerminalToAutomaticallySSHIntoALinuxBox.aspx) for how to do something similar from a Windows computer
+
+- Pretty much all major linux distros come with a package manager. For Ubuntu and other debian based distros this package manager is called apt. A few useful commands for apt are below:
+
+    ```sh
+    # update the apt library
+    sudo apt-get update
+    # list the installed packages
+    apt list --installed
+    ```
 
 ### WSL Setup
 
