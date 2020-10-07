@@ -4,6 +4,8 @@ Zotero is a reference manager for Windows, MacOS and Linux.
 
 Note: These instructions should work for Mac too.
 
+I have also created a tutorial on how to use some aspects of Zotero that can be accessed [here](https://ldsands.github.io/Slides/main_slides/one_offs/2020_09_Levi_Sands_Ref_Man_Zotero.html#/).
+
 ## Links and Account Information
 
 To complete the instructions to install Zotero and setup the WebDAV file syncing, you will have to follow the instructions listed below:

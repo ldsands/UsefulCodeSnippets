@@ -118,8 +118,10 @@ nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --i
 nativefier --name "ICON" "https://uiowa.instructure.com" --internal-urls ".*(uiowa|instructure)\.(com|edu).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/icon_uiowa_edu.ico --maximize
 # ProWritingAid editor site
 nativefier --name "ProWritingAid" "https://prowritingaid.com/en/Analysis/Documents/Go" --internal-urls ".*prowritingaid.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\ProWritingAid.ico --maximize
-# Todoist site loads to the @MyDay label
-nativefier --name "Todoist" "https://todoist.com/app#agenda%2F%40MyDay" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize
+# Todoist site loads to the upcoming view
+nativefier --name "Todoist" "https://todoist.com/app/#upcoming" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize
+# Todoist site loads to the upcoming view
+nativefier --name "Todoist Beta" "https://beta.todoist.com/app/#upcoming" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize
 # Microsoft Teams
 nativefier --name "MS Teams" "https://teams.microsoft.com/" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/MSTeams-icon-96x96.ico --maximize
 ```
@@ -129,6 +131,7 @@ nativefier --name "MS Teams" "https://teams.microsoft.com/" --internal-urls ".*(
 non chocolatey utility programs
 
 - A small script to allow for use of the new windows terminal from any location by right clicking, [taken from a github repo](https://github.com/shanselman/WindowsTerminalHere)
+- [Focus To-Do](https://www.focustodo.cn/) This is a to-do focused Pomodoro timer. I don't really use the to-do aspect of it but I like the timer aspect quite a bit
 - [Gephi](https://gephi.org/) this is network visualization software that is open source.
     - This can be installed using winget: `winget install --id=Gephi.Gephi -e`
     - to install it you must download it along with the java 8 sdk and apache maven. The code to install those two are as follows: `jdk8` and `choco install maven`
@@ -137,11 +140,10 @@ non chocolatey utility programs
 - [Kite](https://kite.com/) this is a utility to help with python autocompletion
 - [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html)
     - for keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
-- [Pomotroid](https://splode.github.io/pomotroid/) this is a simple but customizable Pomodoro timer I use it pretty regularly
-    - Update I now use Stretchly which is shown below
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
-- [Stretchly](https://hovancik.net/stretchly/) A relativly simple but customization work/break timer can be installed using Winget
+<!-- - [Pomotroid](https://splode.github.io/pomotroid/) this is a simple but customizable Pomodoro timer I use it pretty regularly -->
+<!-- - [Stretchly](https://hovancik.net/stretchly/) A relatively simple but customization work/break timer can be installed using Winget -->
 
 ### Gaming Stuff
 

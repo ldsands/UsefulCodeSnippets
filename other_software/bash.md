@@ -209,6 +209,17 @@ Below are the step I take to setup my linux shell the way I like it in various s
     pyenv global GlobalEnv
     ```
 
+    ```sh
+    # setup of various other utilities I use
+    # install rust for installation of many of the following utilities
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    rustup update
+    # installation of bottom which is a system resource manager (required rust) to use type bottom <!-- TODO: -->
+    rustup update stable
+    cargo install bottom
+
+    ```
+
 - the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
 
     ```sh
