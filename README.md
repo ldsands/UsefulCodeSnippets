@@ -96,8 +96,8 @@ Stata commands, resources and notes that I've found useful -->
 
 Rust is a programming language that is pretty much a C/C++ replacement that is by virtue of being so much newer avoids many of the pitfalls and annoyances that those languages have to deal with. I use it occasionally when I need to process data that is large enough that doing so in Python becomes impractical.
 
-- [Rust installation notes and links](programminglanguages/rust/rust_install.md)
-- [Rust useful commands](programminglanguages/rust/rust_commands.md)
+- [Rust installation notes and links](programming_languages/rust/rust_install.md)
+- [Rust useful commands](programming_languages/rust/rust_commands.md)
 - [Rust useful modules](programming_languages/rust/rust_modules.md)
 
 ## Other snippets and instructions
