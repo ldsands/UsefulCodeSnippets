@@ -86,6 +86,7 @@ Bash is a command shell for unix systems and is the most popular shell used in L
 
 - the in terminal process explorer is shown by typing `top` to quit press `q`.
     - You can also use htop which is quite a bit more capable than top. You can install it on a debian based disto using `sudo apt-get install htop`. Then enter `htop`.
+    - An alternative is [bottom](https://github.com/clementtsang/bottom#bottom) which is much more robust and easier to use as well.
 
 - To enable ssh passwordless access to another linux computer you can do the following:
     - First create the generated keys `ssh-keygen -t rsa`
@@ -217,7 +218,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # installation of bottom which is a system resource manager (required rust) to use type bottom <!-- TODO: -->
     rustup update stable
     cargo install bottom
-
+    # use bottom by typing in `btm`
     ```
 
 - the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
