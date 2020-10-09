@@ -142,6 +142,7 @@ non chocolatey utility programs
     - for keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
+- [Process Hacker](https://processhacker.sourceforge.io/) Is a process manager and viewer that is far more informational than the built in task manager. I use the [nightly builds](https://processhacker.sourceforge.io/nightly.php) since they have not updated the main release in years.
 <!-- - [Pomotroid](https://splode.github.io/pomotroid/) this is a simple but customizable Pomodoro timer I use it pretty regularly -->
 <!-- - [Stretchly](https://hovancik.net/stretchly/) A relatively simple but customization work/break timer can be installed using Winget -->
 
