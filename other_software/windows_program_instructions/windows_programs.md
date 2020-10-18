@@ -77,6 +77,8 @@ Below are Windows programs that are installed using chocolatey
     - I don't use this much either but it is very good and showing hardware resource usage, its useful for tracking down hardware problems or if you happen to be using a ton of CPU on something it can help you track down whats using it
 - VLC
     - a video (and audio) player that plays pretty much anything you throw at it
+- [Krita](https://krita.org/en/) - [Krita documentation](https://docs.krita.org/en/)
+    - This is kind of like a PhotoShop but quite a bit simpler (or so I'm told). I use it primarily for modifying svg type images since doing so in Krita is pretty simple but also able to do everything I want to do with it.
 
 Below are Windows programs that are not able to be installed via chocolatey that I always install
 
@@ -87,7 +89,14 @@ Below are Windows programs that are not able to be installed via chocolatey that
 
 Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
 
-```nodejs
+```sh
+# install node.js using chocolatey
+choco install nodejs
+# test install
+node -v
+# if the above doesn't work you need to enter these two paths into your path environment variable
+C:\Users\%username%\AppData\Roaming\npm
+C:\Program Files\nodejs
 # to install nativefier
 npm install nativefier -g
 # to update nativefier (you must have admin privileges)

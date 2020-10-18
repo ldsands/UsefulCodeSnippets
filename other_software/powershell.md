@@ -347,6 +347,8 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     sudo apt-get update
     # Enable the "universe" repositories
     sudo add-apt-repository universe
+    # Install other packages that are required for PowerShell
+    sudo apt-get install libunwind8 libicu55
     # Install PowerShell
     sudo apt-get install -y powershell
     # Start PowerShell
