@@ -26,15 +26,26 @@ Some of the settings I use in VS Code with short explanations
 - these are the settings that i use when I use the minimap (which isn't very often to be honest). I do enable it for markdown documents however. I've found the minimap to be very useful in very long documents but I don't use it terribly often in other documents or when I'm programming. There is a toggle minimap command that you can add a keyboard shortcut to if you want to turn it on and off often. also contained here are the rest of my markdown language settings.
 
     ```JSON
-    "[markdown]": {
-        "editor.defaultFormatter": "yzhang.markdown-all-in-one",
-        "editor.formatOnSave": false,
-        "editor.minimap.enabled": true,
-        "editor.quickSuggestions": {
-            "comments": true,
-            "other": true,
-            "strings": true
+    {
+        "[markdown]": {
+            "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+            "editor.formatOnSave": false,
+            "editor.minimap.enabled": true,
+            "editor.quickSuggestions": {
+                "comments": true,
+                "other": true,
+                "strings": true
+            },
+            "editor.wordWrap": "on"
         },
-        "editor.wordWrap": "on"
-    },
+    }
+    ```
+
+- Font settings: I use these two fonts. I usually use Fira code but occasionally I like to mix it up so I switch to Cascadia Code. I install both of these using Chocolatey the command to install both is as follows: `choco install firacodenf cascadia-code-nerd-font -y`
+
+    ```JSON
+    {
+        "editor.fontFamily": "FiraCode NF",
+        "editor.fontFamily": "CaskaydiaCove NF",
+    }
     ```
