@@ -355,6 +355,18 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     pwsh
     ```
 
+    - Note: the snap store doesn't work out the box in Ubuntu when using WSL, there is a work around which is below along with the installation command for PowerShell using the snap store. (The snap store commands can also be found in the first code block of [this section](../other_software/bash.md#ubuntu-setup))
+
+        ```sh
+        # install the snap store and then check to see if it installed correctly
+        sudo apt-get update && sudo apt-get install -yqq daemonize dbus-user-session fontconfig
+        sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+        exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
+        snap version
+        # install PowerShell from the snap store
+        sudo snap install powershell --classic
+        ```
+
 - a useful command for making sure that your MacOS commands only work on MacOS
 
     ```PowerShell

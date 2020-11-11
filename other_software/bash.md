@@ -123,7 +123,7 @@ Now to get bash all set up with useful features do the following steps:
 
 Below are the step I take to setup my linux shell the way I like it in various steps. Note that this is applicable to Ubuntu but will work on other distros with minimal changes.
 
-- install the basics: update apt-get, git, zsh, and ohmyzsh
+- install the basics: update apt-get, git, zsh, snap and ohmyzsh
 
     ```sh
     # get into administrator mode
@@ -148,6 +148,11 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # install Oh My Zsh and enter Y after to make zsh the default shell
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     exec "$SHELL"
+    # install the snap store and then check to see if it installed correctly
+    sudo apt-get update && sudo apt-get install -yqq daemonize dbus-user-session fontconfig
+    sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+    exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
+    snap version
     ```
 
     ```sh
