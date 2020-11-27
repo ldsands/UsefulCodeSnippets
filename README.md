@@ -30,7 +30,7 @@ Table of Contents:
         - [RegEx](#regex)
         - [Rust](#rust)
     - [Other snippets and instructions](#other-snippets-and-instructions)
-        - [Bash](#bash)
+        - [Bash/ZSH](#bashzsh)
         - [Git](#git)
         - [Github](#github)
         - [Pandoc](#pandoc)
@@ -96,19 +96,19 @@ Stata commands, resources and notes that I've found useful -->
 
 Rust is a programming language that is pretty much a C/C++ replacement that is by virtue of being so much newer avoids many of the pitfalls and annoyances that those languages have to deal with. I use it occasionally when I need to process data that is large enough that doing so in Python becomes impractical.
 
-- [Rust installation notes and links](programminglanguages/rust/rust_install.md)
-- [Rust useful commands](programminglanguages/rust/rust_commands.md)
+- [Rust installation notes and links](programming_languages/rust/rust_install.md)
+- [Rust useful commands](programming_languages/rust/rust_commands.md)
 - [Rust useful modules](programming_languages/rust/rust_modules.md)
 
 ## Other snippets and instructions
 
 There are other software based snippets or instructions that I will keep here as well
 
-### [Bash](https://www.gnu.org/software/bash/)
+### [Bash/ZSH](https://www.gnu.org/software/bash/)
 
-Bash is the most widely used shell for Linux. I use it mostly in WSL. Also note that I usually use zsh not bash it has a lot of useful plugins but they're very similar.
+Bash is the most widely used default shell for Linux. ZSH is an alternative that has a lot of quality of life improvements over bash. I use them mostly in WSL.
 
-- [Useful bash commands](other_software/bash.md)
+- [Useful bash commands](other_software/Linux/bash.md)
 
 <!-- ### [Docker](https://www.docker.com/)
 
@@ -136,7 +136,7 @@ Pandoc is software that converts many different kinds of documents into any one 
 
 PowerShell is like bash but for Windows and now with access to all of .Net it is pretty much a full fledged programming language.
 
-- [Useful Powershell commands](other_software/powershell.md)
+- [Useful Powershell commands](programming_languages/PowerShell/powershell.md)
 
 ### [VS Code stuff](https://code.visualstudio.com/)
 

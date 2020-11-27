@@ -1,6 +1,6 @@
 # dotnet Installation and Overview
 
-Note that I will only be using dotnet standard or dotnet core and I will never be using dotnet framework
+Note: I will only be using dotnet standard or dotnet core and I will never be using dotnet framework.
 
 ## Installation
 
@@ -139,7 +139,7 @@ Once you have created a console application and you're happy with it you can pub
 
 First you have to have the following code in the .csproj file
 
-```PowerShell
+```xml
 <Project Sdk="Microsoftdotnet.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>

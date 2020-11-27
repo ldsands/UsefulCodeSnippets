@@ -54,7 +54,7 @@ $env:Path -split ';'
 code $PROFILE.CurrentUserAllHosts
 $ProfileTemplate = @"
 function listProfileFunctions {
-    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "WSLRestart")
+    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "WSLRestart", "UpdatePowerShell")
     Write-Host `$profileFunctions
 }
 
@@ -97,6 +97,25 @@ function checkAdmin {
             Write-Host "You do not have Administrator rights to run this script"
         }
     }
+}
+
+function UpdatePowerShell {
+    if (`$IsWindows) {
+        if (!(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))) {
+            Write-Host "PowerShell will now be updated"
+            iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
+        }
+        else {
+            Write-Host "You do not have Administrator rights to run this script"
+        }
+    elseif (`$IsLinux) {
+        if ((id -u) -eq 0) {
+            Write-Warning "PowerShell will now run apt update and apt upgrade"
+            sudo apt-get update && sudo apt-get upgrade -y
+        }
+        else {
+            Write-Host "You do not have Administrator rights to run this script"
+        }
 }
 
 ## add autocomplete for dotnet commands
@@ -179,6 +198,9 @@ function WSLRestart() {
         }
     }
 }
+
+# Start Starship as the prompt
+Invoke-Expression (&starship init powershell)
 
 # startup messages
 checkAdmin
@@ -277,7 +299,7 @@ PowerShell functions can be very powerful and do pretty much anything you can th
 
 ### Useful random commands
 
-- for uninstalling modules just insert the name of hte module next to the $name variable and run it
+- for uninstalling modules just insert the name of the module next to the $name variable and run it
 
     ```PowerShell
     Get-InstalledModule -Name $name -AllVersions | Uninstall-Module
@@ -317,6 +339,8 @@ PowerShell functions can be very powerful and do pretty much anything you can th
         $pubKey=(Get-Content "$PUBKEYPATH" | Out-String); ssh "$USER_AT_HOST" "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo '${pubKey}' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
         ```
 
+- Refreshing an environment after something has been installed is a very useful command. Simply enter `refreshenv` and all new settings and path variables will now be available in the current shell session.
+
 ## Using PowerShell on MacOS
 
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto MacOS find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-macos). Below that are the instructions for installing PowerShell on MacOS:
@@ -347,11 +371,25 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     sudo apt-get update
     # Enable the "universe" repositories
     sudo add-apt-repository universe
+    # Install other packages that are required for PowerShell
+    sudo apt-get install libunwind8 libicu55
     # Install PowerShell
     sudo apt-get install -y powershell
     # Start PowerShell
     pwsh
     ```
+
+    - Note: the snap store doesn't work out the box in Ubuntu when using WSL, there is a work around which is below along with the installation command for PowerShell using the snap store. (The snap store commands can also be found in the first code block of [this section](../other_software/bash.md#ubuntu-setup))
+
+        ```sh
+        # install the snap store and then check to see if it installed correctly
+        sudo apt-get update && sudo apt-get install -yqq daemonize dbus-user-session fontconfig
+        sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+        exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
+        snap version
+        # install PowerShell from the snap store
+        sudo snap install powershell --classic
+        ```
 
 - a useful command for making sure that your MacOS commands only work on MacOS
 

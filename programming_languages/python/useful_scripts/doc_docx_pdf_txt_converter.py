@@ -1,3 +1,6 @@
+# pip install pdfminer.six docx2txt
+# to install win32com use the pywin32install.py script
+
 import shutil
 import sys
 from pathlib import Path
@@ -33,13 +36,17 @@ def convert_doc_to_docx(file, text_directory):
 
 
 def convert_docx_to_txt(file, text_directory):
-    text = docx2txt.process(file)
-    text = text.replace("\t", "")
-    file_txt = text_directory / f"{file.stem}.txt"
-    file_txt.touch()
-    file = open(file_txt, "w", encoding="utf-8")
-    file.write(text)
-    file.close()
+    try:
+        text = docx2txt.process(file)
+        text = text.replace("\t", "")
+        file_txt = text_directory / f"{file.stem}.txt"
+        file_txt.touch()
+        with open(file_txt, "w", encoding="utf-8") as file:
+            file.write(text)
+    except KeyError:
+        print(
+            f"The file {file.name} could not be converted. \n    Option 1: Open this in word and save again. \n    Option 2: Copy everything from the document having issues and paste it into a new word document. Save that document as a new file."
+        )
 
 
 def convert_to_txt(parent_path):
@@ -57,8 +64,11 @@ def convert_to_txt(parent_path):
                     convert_docx_to_txt(docx_path, text_directory)
                 except AttributeError:
                     import win32com
-                    print(f"""There was an issue while converting a .doc document. To help with this issue do the following:
-navigate to this location {win32com.__gen_path__} and delete any folders that are contained inside then run the script again""")
+
+                    print(
+                        f"""There was an issue while converting a .doc document. To help with this issue do the following:
+navigate to this location {win32com.__gen_path__} and delete any folders that are contained inside then run the script again"""
+                    )
                 except:
                     print(
                         f"{file.name} encountered an error while trying to convert the file to docx. You can try and open this file manually in Microsoft Word and then save as a .docx file then you can run the script again to convert this file to a text document."
@@ -74,9 +84,8 @@ navigate to this location {win32com.__gen_path__} and delete any folders that ar
             else:
                 file_txt = text_directory / f"{file.stem}.txt"
                 file_txt.touch()
-                file = open(file_txt, "w", encoding="utf-8")
-                file.write(text)
-                file.close()
+                with open(file_txt, "w", encoding="utf-8") as file:
+                    file.write(text)
         # else:  # TESTCODE:
         #     print(f"{file.name} is not a .doc, .docx, or .pdf file. It will not be converted.")
 

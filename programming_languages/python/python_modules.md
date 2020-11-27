@@ -9,15 +9,20 @@
 
 ## Random Modules and Packages
 
-- docx2txt
-    - this module converts docx files into plain text then you can print it out or write it to a txt file etc
+- [docx2txt](https://github.com/ankushshah89/python-docx2txt)
+    - This module converts docx files into plain text then you can print it out or write it to a txt file etc
         - sometimes very handy for student papers to all be in the same format
-    - pip install docx2txt
+    - `pip install docx2txt`
     - [see this script](useful_scripts/doc_docx_pdf_txt_converter.py) for an implementation that takes all docx files in the local folder and converts them to txt files
+    - Be aware that if a document was created using office online this package cannot yet convert it. This will hopefully addressed soon (as of Nov 2020) the issue already has a temporary fix that can be used if needed. Progress on this issue can be tracked [here](https://github.com/ankushshah89/python-docx2txt/issues/16).
+    - An alternative (docx2python) can be found [here](https://docx2python.readthedocs.io/en/latest/#). Another alternative (pypandoc) can be found [here](https://github.com/bebraw/pypandoc)
 
     ```Python
     text = docx2txt.process(file)
     ```
+
+- [pdfminer.six](https://github.com/pdfminer/pdfminer.six)
+    - "extracting information from PDF documents. It focuses on getting and analyzing text data."
 
 - [Altair](https://altair-viz.github.io/index.html)
     - this module is very good graphing data taken from pandas. I choose this over other options such as matplotlib or seaborne because of the vega and vega-lite backend which also have plugins/packages in both Julia and R. You can also edit them manually in a browser if needed.
@@ -45,9 +50,7 @@
 
 ### pywin32
 
-This package allows for accessing the Windows API. The installation is a bit complicated so I've included the steps here.
-
-- 
+This package allows for accessing the Windows API. The installation is a bit complicated so I've included a script that does most of the installation automatically. The file is called `pywin32install`. Run that and follow the instructions it should finish the installation correctly.
 
 ### PySpark
 

@@ -86,6 +86,7 @@ Bash is a command shell for unix systems and is the most popular shell used in L
 
 - the in terminal process explorer is shown by typing `top` to quit press `q`.
     - You can also use htop which is quite a bit more capable than top. You can install it on a debian based disto using `sudo apt-get install htop`. Then enter `htop`.
+    - An alternative is [bottom](https://github.com/clementtsang/bottom#bottom) which is much more robust and easier to use as well.
 
 - To enable ssh passwordless access to another linux computer you can do the following:
     - First create the generated keys `ssh-keygen -t rsa`
@@ -122,7 +123,7 @@ Now to get bash all set up with useful features do the following steps:
 
 Below are the step I take to setup my linux shell the way I like it in various steps. Note that this is applicable to Ubuntu but will work on other distros with minimal changes.
 
-- install the basics: update apt-get, git, zsh, and ohmyzsh
+- install the basics: update apt-get, git, zsh, snap and ohmyzsh
 
     ```sh
     # get into administrator mode
@@ -147,6 +148,11 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # install Oh My Zsh and enter Y after to make zsh the default shell
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     exec "$SHELL"
+    # install the snap store and then check to see if it installed correctly
+    sudo apt-get update && sudo apt-get install -yqq daemonize dbus-user-session fontconfig
+    sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+    exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME
+    snap version
     ```
 
     ```sh
@@ -217,7 +223,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # installation of bottom which is a system resource manager (required rust) to use type bottom <!-- TODO: -->
     rustup update stable
     cargo install bottom
-
+    # use bottom by typing in `btm`
     ```
 
 - the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.

@@ -57,8 +57,12 @@ Below are Windows programs that are installed using chocolatey
     - Julia is still really new though so it is limited in the available packages but again otherwise I wish I could write only in Julia
 - FiraCode NF
     - my favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
+- CascadiaCode Nerd Font
+    - Another excellent font for coding that included ligatures and glyphs it can be found on GitHub [here](https://github.com/ryanoasis/nerd-fonts/tree/606db3752d4e6d31a2f47258ce86f7bb07511521/patched-fonts/CascadiaCode)
 - R Studio
     - the defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VS Code, occasionally however I jump into R.Studio for the variable explorer and other little things
+- [Texlive](https://tug.org/texlive/)
+    - another LaTeX installer, this one is a bit more comprehensive than MikTeX is
 - MikTeX
     - the defacto LaTeX installation for Windows I don't use LaTeX directly much anymore but pandoc uses it so I usually install it
 - [Zotero](zotero.md)
@@ -77,6 +81,8 @@ Below are Windows programs that are installed using chocolatey
     - I don't use this much either but it is very good and showing hardware resource usage, its useful for tracking down hardware problems or if you happen to be using a ton of CPU on something it can help you track down whats using it
 - VLC
     - a video (and audio) player that plays pretty much anything you throw at it
+- [Krita](https://krita.org/en/) - [Krita documentation](https://docs.krita.org/en/)
+    - This is kind of like a PhotoShop but quite a bit simpler (or so I'm told). I use it primarily for modifying svg type images since doing so in Krita is pretty simple but also able to do everything I want to do with it.
 
 Below are Windows programs that are not able to be installed via chocolatey that I always install
 
@@ -87,7 +93,14 @@ Below are Windows programs that are not able to be installed via chocolatey that
 
 Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
 
-```nodejs
+```sh
+# install node.js using chocolatey
+choco install nodejs
+# test install
+node -v
+# if the above doesn't work you need to enter these two paths into your path environment variable
+C:\Users\%username%\AppData\Roaming\npm
+C:\Program Files\nodejs
 # to install nativefier
 npm install nativefier -g
 # to update nativefier (you must have admin privileges)
@@ -142,6 +155,7 @@ non chocolatey utility programs
     - for keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
+- [Process Hacker](https://processhacker.sourceforge.io/) Is a process manager and viewer that is far more informational than the built in task manager. I use the [nightly builds](https://processhacker.sourceforge.io/nightly.php) since they have not updated the main release in years.
 <!-- - [Pomotroid](https://splode.github.io/pomotroid/) this is a simple but customizable Pomodoro timer I use it pretty regularly -->
 <!-- - [Stretchly](https://hovancik.net/stretchly/) A relatively simple but customization work/break timer can be installed using Winget -->
 
