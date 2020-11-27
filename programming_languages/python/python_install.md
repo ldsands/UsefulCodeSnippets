@@ -191,8 +191,7 @@ To use venv is both a bit more complicated. launching these environments aren't 
     - to leave the environment you can just type deactivate
 
     ```python
-    python -m venv general_use
-    general_use\Scripts\activate.ps1
+    python -m venv general_u
     pip install flake8 black notebook tqdm docx2txt
     deactivate
     ```

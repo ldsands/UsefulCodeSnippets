@@ -54,7 +54,7 @@ $env:Path -split ';'
 code $PROFILE.CurrentUserAllHosts
 $ProfileTemplate = @"
 function listProfileFunctions {
-    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "WSLRestart")
+    `$profileFunctions = @("home", "admin", "ToArray", "checkAdmin", "GetOneCoreVoices", "GetInstalledVoices", "InstallAllModules", "WSLRestart", "UpdatePowerShell")
     Write-Host `$profileFunctions
 }
 
@@ -97,6 +97,25 @@ function checkAdmin {
             Write-Host "You do not have Administrator rights to run this script"
         }
     }
+}
+
+function UpdatePowerShell {
+    if (`$IsWindows) {
+        if (!(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))) {
+            Write-Host "PowerShell will now be updated"
+            iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
+        }
+        else {
+            Write-Host "You do not have Administrator rights to run this script"
+        }
+    elseif (`$IsLinux) {
+        if ((id -u) -eq 0) {
+            Write-Warning "PowerShell will now run apt update and apt upgrade"
+            sudo apt-get update && sudo apt-get upgrade -y
+        }
+        else {
+            Write-Host "You do not have Administrator rights to run this script"
+        }
 }
 
 ## add autocomplete for dotnet commands
@@ -179,6 +198,9 @@ function WSLRestart() {
         }
     }
 }
+
+# Start Starship as the prompt
+Invoke-Expression (&starship init powershell)
 
 # startup messages
 checkAdmin
@@ -277,7 +299,7 @@ PowerShell functions can be very powerful and do pretty much anything you can th
 
 ### Useful random commands
 
-- for uninstalling modules just insert the name of hte module next to the $name variable and run it
+- for uninstalling modules just insert the name of the module next to the $name variable and run it
 
     ```PowerShell
     Get-InstalledModule -Name $name -AllVersions | Uninstall-Module
@@ -316,6 +338,8 @@ PowerShell functions can be very powerful and do pretty much anything you can th
         $PUBKEYPATH="$HOME\.ssh\id_rsa.pub"
         $pubKey=(Get-Content "$PUBKEYPATH" | Out-String); ssh "$USER_AT_HOST" "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo '${pubKey}' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
         ```
+
+- Refreshing an environment after something has been installed is a very useful command. Simply enter `refreshenv` and all new settings and path variables will now be available in the current shell session.
 
 ## Using PowerShell on MacOS
 
