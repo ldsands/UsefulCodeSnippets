@@ -6,7 +6,7 @@ I will document some of these settings here.
 
 ## Keyboard Settings (with Their Explanations)
 
-- this shortcut uses the search editor but only searches the local file searched. [Here](https://github.com/microsoft/vscode/issues/92298#issuecomment-625555240) is some context
+- This shortcut uses the search editor but only searches the local file searched. [Here](https://github.com/microsoft/vscode/issues/92298#issuecomment-625555240) is some context
 
 ```JSON
     {
@@ -23,7 +23,7 @@ I will document some of these settings here.
 
 Some of the settings I use in VS Code with short explanations
 
-- these are the settings that i use when I use the minimap (which isn't very often to be honest). I do enable it for markdown documents however. I've found the minimap to be very useful in very long documents but I don't use it terribly often in other documents or when I'm programming. There is a toggle minimap command that you can add a keyboard shortcut to if you want to turn it on and off often. also contained here are the rest of my markdown language settings.
+- These are the settings that i use when I use the minimap (which isn't very often to be honest). I do enable it for markdown documents however. I've found the minimap to be very useful in very long documents but I don't use it terribly often in other documents or when I'm programming. There is a toggle minimap command that you can add a keyboard shortcut to if you want to turn it on and off often. also contained here are the rest of my markdown language settings.
 
     ```JSON
     {

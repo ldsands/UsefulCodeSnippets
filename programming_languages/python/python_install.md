@@ -47,14 +47,14 @@ Pyenv is a simpler version of what anaconda does but with poetry (which uses pye
     pyenv deactivate
     ```
 
-- setting up a global pyenv python base
-    - list all of the possible versions of python you can install `pyenv install --list` or to list all of them of a certain version `pyenv install 3.8`
-    - install a version of python `pyenv install 3.8.3`
-    - make it available globally so you don't have to touch your system wide version of python (that comes with your distro) `pyenv global 3.8.3`
-    - enter `pyenv versions` to see what versions are available to you
+- Setting up a global pyenv python base
+    - List all of the possible versions of python you can install `pyenv install --list` or to list all of them of a certain version `pyenv install 3.8`
+    - Install a version of python `pyenv install 3.8.3`
+    - Make it available globally so you don't have to touch your system wide version of python (that comes with your distro) `pyenv global 3.8.3`
+    - Enter `pyenv versions` to see what versions are available to you
 - Now to add virtualenv. [This article](https://realpython.com/intro-to-pyenv/#virtual-environments-and-pyenv) was helpful for understanding virtualenv better. To install see above.
-    - for usage of virtualenv see [this link](https://github.com/pyenv/pyenv-virtualenv#usage) on their github repo
-- now to install poetry see more detailed instructions [here](https://github.com/pyenv/pyenv/wiki/Common-build-problems).
+    - For usage of virtualenv see [this link](https://github.com/pyenv/pyenv-virtualenv#usage) on their github repo
+- Now to install poetry see more detailed instructions [here](https://github.com/pyenv/pyenv/wiki/Common-build-problems).
     - Note that the `sudo apt-get install python-is-python3` probably won't be needed after late May of 2020 due to a fix
 
     ```zsh
@@ -67,10 +67,10 @@ Pyenv is a simpler version of what anaconda does but with poetry (which uses pye
     exec "$SHELL"
     ```
 
-- once you have poetry installed you can use it with the pyenv-virtualenv environments
+- Once you have poetry installed you can use it with the pyenv-virtualenv environments
     - `poetry install` will install everything that is required (and specified by the poetry pyproject.toml) it will also create a poetry.lock file which will not allow for updating manually thus avoiding a lot of incompatibility headaches. Also if you've used poetry to install the dependencies in a pyenv-virtualenv environment then you'll need to activate it by entering `poetry shell` into the command line.
-    - if you create a virtual environment just using poetry you can remove it by using this command `poetry env remove envname`
-    - if you're using a global environment you will have to do the poetry install from the location of the pyproject.toml file for it to work
+    - If you create a virtual environment just using poetry you can remove it by using this command `poetry env remove envname`
+    - If you're using a global environment you will have to do the poetry install from the location of the pyproject.toml file for it to work
 
     ```zsh
     # poetry used with pyenv virtualenv while having a virtual environment activated
@@ -102,7 +102,7 @@ This is for shen the add to path doesn't work for the chocolatey install
 - Install Anaconda on WSL
     - Assuming you're using Windows you may want to use WSL 2 to install everything. To install WSL 2 (assuming you doing so after May 2020 it will be much easier) follow the instructions on [this site](https://docs.microsoft.com/en-us/windows/wsl/wsl2-install). Once you have that installed you can install any of the linux distributions on the Windows Store I would recommend [using Ubuntu](https://www.microsoft.com/en-us/p/ubuntu-1804-lts/9n9tngvndl3q?activetab=pivot:overviewtab).
     - Open up the command prompt and enter Ubuntu (or whatever distro you downloaded). Be sure to [check this site](https://repo.anaconda.com/archive/) for the latest releases of anaconda (note they seem to make about 3 releases a year or so). Install anaconda using the following code:
-    - much of this code was taken from [this site](https://phoenixnap.com/kb/how-to-install-anaconda-ubuntu-18-04)
+    - Much of this code was taken from [this site](https://phoenixnap.com/kb/how-to-install-anaconda-ubuntu-18-04)
 
     ```Bash
     # updates the apt-get repository
@@ -126,7 +126,7 @@ This is for shen the add to path doesn't work for the chocolatey install
         conda update --all
         ```
 
-    - to uninstall if you want
+    - To uninstall if you want
 
         ```sh
         rm Anaconda3-2020.02-Linux-x86_64.sh
@@ -158,8 +158,8 @@ This is for shen the add to path doesn't work for the chocolatey install
 
 Below are my instructions for setting up a conda environment for my reddit data project
 
-- first you need to install anaconda (on windows make sure to check the add to path option)
-    - using command prompt (on windows) or in the bash shell (on linux) you can use the code below to create a conda environment
+- First you need to install anaconda (on windows make sure to check the add to path option)
+    - Using command prompt (on windows) or in the bash shell (on linux) you can use the code below to create a conda environment
 
     ```sh
     # display all versions of python available to conda
@@ -178,17 +178,17 @@ Below are my instructions for setting up a conda environment for my reddit data 
     conda remove --name myenv --all
     ```
 
-    - sometimes you need to add packages from conda forge you may need to do this by using `conda install -c conda-forge` then the name of the package that is available on conda forge.
+    - Sometimes you need to add packages from conda forge you may need to do this by using `conda install -c conda-forge` then the name of the package that is available on conda forge.
 
 ### [venv environments](https://docs.python.org/3/tutorial/venv.html)
 
 To use venv is both a bit more complicated. launching these environments aren't as straight forward (at least on Windows) but it works pretty much the same way. Be aware that you cannot specify the version of python you use when using venv it just creates an environment for the version that you're using to load venv.
 
-- you first have to have python installed (the below example is using python 3.8.1)
-    - python -m venv general_use this creates the new environment
-    - general_use\Scripts\activate.bat or general_use\Scripts\activate.ps1 (if you're using powershell) this "opens" or activates this environment
-    - pip install flake8 black notebook tqdm docx2txt this installs any modules that are listed after the install command
-    - to leave the environment you can just type deactivate
+- You first have to have python installed (the below example is using python 3.8.1)
+    - Python -m venv general_use this creates the new environment
+    - General_use\Scripts\activate.bat or general_use\Scripts\activate.ps1 (if you're using powershell) this "opens" or activates this environment
+    - Pip install flake8 black notebook tqdm docx2txt this installs any modules that are listed after the install command
+    - To leave the environment you can just type deactivate
 
     ```python
     python -m venv general_u

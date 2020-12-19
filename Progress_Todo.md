@@ -97,7 +97,7 @@ I don't use git alone so this may not get anything else
 - [ ] resources
 - [ ] installation instructions
 - [ ] list of useful commands
-    - started this briefly
+    - Started this briefly
 
 #### Powershell
 

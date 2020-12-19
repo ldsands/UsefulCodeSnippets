@@ -15,13 +15,13 @@ you can also [download it](https://www.autohotkey.com/) from the main page and i
 ## Use your scripts
 
 - First you have to [compile your script](#compile-your-script)
-- put your compiled scripts into the startup folder
-    - you can get to the startup folder by pressing `Windows Key` + `R` then type in the following "shell:common startup"
+- Put your compiled scripts into the startup folder
+    - You can get to the startup folder by pressing `Windows Key` + `R` then type in the following "shell:common startup"
 
 ### Compile your script
 
 - To compile your script you need to use the command line. These instructions were taken from [this site](https://www.autohotkey.com/docs/Scripts.htm#ahk2exe)
-    - if you installed AutoHotKey using chocolatey then you should be able to right click on the script and an option in the context menu should say "compile script"
+    - If you installed AutoHotKey using chocolatey then you should be able to right click on the script and an option in the context menu should say "compile script"
     - Command Line: The compiler can be run from the command line with the following parameters:
 
     ```AutoHotKey
@@ -41,9 +41,9 @@ you can also [download it](https://www.autohotkey.com/) from the main page and i
 
 I prefer to doublecommander to Windows Explorer for file management I did get used to the shortcut of `Windows Key` + `E` to bring up Explorer below is the code from AutoHotKey that intercepts this hotkey and launches doublecommander instead, I then assign `Windows Key` + `Alt` + `E` to the normal Windows Explorer because I still need to access it on occasion
 
-- the #e means `Windows Key` + `E`
-- the :: means do this
-- in this case the `run` command is after the do this marker
+- The #e means `Windows Key` + `E`
+- The :: means do this
+- In this case the `run` command is after the do this marker
 - I put the location of the program I want it to run
 - I put the compiled version of this program into the startup folder and it now works perfectly
 
@@ -55,7 +55,7 @@ I prefer to doublecommander to Windows Explorer for file management I did get us
 ## Some Good Scripts to Look Into
 
 - [AutoHotKey script for Windows that lets a user change virtual desktops](https://github.com/pmb6tz/windows-desktop-switcher)
-    - don't forget to put the dll that comes with this repo into the startup folder if you want to the use move window command
+    - Don't forget to put the dll that comes with this repo into the startup folder if you want to the use move window command
     - I use this one a ton but I did change the keyboard shortcuts for two commands. Here is what I changed/enabled in the user_config.ahk script everything else was not used:
 
 ```AutoHotKey

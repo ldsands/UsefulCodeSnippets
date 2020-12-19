@@ -39,7 +39,7 @@ TODO:
 
 ## Timing and Profiling Your Scripts
 
-- below is what I usually use to time my scripts is is far easier than a lot of alternatives
+- Below is what I usually use to time my scripts is is far easier than a lot of alternatives
 
     ```Python
     # import time module
@@ -53,7 +53,7 @@ TODO:
     print(f"Completed function in {round(elapsed_time, 3)} minutes")
     ```
 
-- printing the current time - sometimes you need to know about what time something happened this can do that by printing the current time
+- Printing the current time - sometimes you need to know about what time something happened this can do that by printing the current time
 
     ```Python
     def print_current_time():
@@ -72,7 +72,7 @@ TODO:
     - `%%timit` this will run the cell several times and get and average and fastest time to run the cell
 
 - Also for IPython you can use the memory_profiler for cells to get memory information ([see more here](https://jakevdp.github.io/PythonDataScienceHandbook/01.07-timing-and-profiling.html))
-    - you must first install the package `pip install memory_profiler`
+    - You must first install the package `pip install memory_profiler`
     - You must then load it by using this code in IPython: `%load_ext memory_profiler`
     - You can then place `%memit ` in front of a function you want to profile the output will look something like this `peak memory: 589.89 MiB, increment: 188.55 MiB`
 
@@ -80,7 +80,7 @@ TODO:
 
 Multiprocessing in Python is a major pain because of the way it was written which is a product of when it was written. It has what is called the Global Interpreter Lock which prevents multiple instances of python from running at any given time. This GIL can be sidestepped by using the Multiprocessing package which is built into the base python distribution. Below is some code that I have gathered and worked with to get it working with some scripts where I needed to speed stuff up.
 
-- to be able to use a function that uses multiple arguments was difficult to figure out but this has worked for me pretty well and I am sharing it here. Most of this comes from these posts: [link 01](https://stackoverflow.com/questions/36587211/easiest-way-to-read-csv-files-with-multiprocessing-in-pandas) [link 02](https://stackoverflow.com/questions/54043682/how-to-use-multiprocessing-with-multiple-arguments-in-python-3) [link 03](https://stackoverflow.com/questions/5442910/python-multiprocessing-pool-map-for-multiple-arguments) [link 04](https://stackoverflow.com/questions/53924018/python-multiprocessing-on-windows) [link 05](https://stackoverflow.com/questions/53924018/python-multiprocessing-on-windows) [link 06 - threading](https://stackoverflow.com/questions/49875889/run-two-python-files-at-the-same-time). These links are all from Stackoverflow.
+- To be able to use a function that uses multiple arguments was difficult to figure out but this has worked for me pretty well and I am sharing it here. Most of this comes from these posts: [link 01](https://stackoverflow.com/questions/36587211/easiest-way-to-read-csv-files-with-multiprocessing-in-pandas) [link 02](https://stackoverflow.com/questions/54043682/how-to-use-multiprocessing-with-multiple-arguments-in-python-3) [link 03](https://stackoverflow.com/questions/5442910/python-multiprocessing-pool-map-for-multiple-arguments) [link 04](https://stackoverflow.com/questions/53924018/python-multiprocessing-on-windows) [link 05](https://stackoverflow.com/questions/53924018/python-multiprocessing-on-windows) [link 06 - threading](https://stackoverflow.com/questions/49875889/run-two-python-files-at-the-same-time). These links are all from Stackoverflow.
 
 ```Python
 import itertools

@@ -61,16 +61,16 @@ Code snippets are, "templates that make it easier to enter repeating code patter
     }
     ```
 
-- useful snippet patterns
-    - tab stops
-        - you can navigate the snippet by adding tab stops, they are in this format `$1` they go in order however the last tab stop is always `$0`
-    - tab stops with text that is pre highlighted (this makes it easy to remove that text if needed)
-        - to have a predefined text that is pre-highlighted allows you to easily delete a chunk of text in case it needs to be changed you can achieve this by using this code format `${1:Predefined text}`
-    - giving options to choose from at tab stop
-        - if you want options at a tab stop you must surround the options in `|` also do not use a `:` after the number like normal `${1|Class Imports,Module Declaration|}"`
+- Useful snippet patterns
+    - Tab stops
+        - You can navigate the snippet by adding tab stops, they are in this format `$1` they go in order however the last tab stop is always `$0`
+    - Tab stops with text that is pre highlighted (this makes it easy to remove that text if needed)
+        - To have a predefined text that is pre-highlighted allows you to easily delete a chunk of text in case it needs to be changed you can achieve this by using this code format `${1:Predefined text}`
+    - Giving options to choose from at tab stop
+        - If you want options at a tab stop you must surround the options in `|` also do not use a `:` after the number like normal `${1|Class Imports,Module Declaration|}"`
 - Snippets I use regularly that may be useful to others
     - This next snippet replaces all spaces with underscores `_`
-        - funny sidenote on this I literally created a VS Code extension to do this kind of stuff and just a few weeks later I found [this stackoverflow answer](https://stackoverflow.com/questions/1596052/replace-text-in-a-visual-studio-code-snippet-literal)
+        - Funny sidenote on this I literally created a VS Code extension to do this kind of stuff and just a few weeks later I found [this stackoverflow answer](https://stackoverflow.com/questions/1596052/replace-text-in-a-visual-studio-code-snippet-literal)
 
         ```javascript
         "Replace Whitespaces With UnderScores": {

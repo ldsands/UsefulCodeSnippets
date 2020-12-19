@@ -15,7 +15,7 @@ Bash is a command shell for unix systems and is the most popular shell used in L
 
 ## Useful Bash/zsh Concepts
 
-- to get to different drives that are mounted you can use the code below. Just replace driveLetter with the drive letter you want to use.
+- To get to different drives that are mounted you can use the code below. Just replace driveLetter with the drive letter you want to use.
     - Note that WSL automatically mounts external drives
 
     ```sh
@@ -54,12 +54,37 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     echo 'export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"' >> ~/.zshrc
     ```
 
-- sed is a stream editor that you can use to edit text files quickly and easily from the command line. Here are a couple of resources to get started [short and sweet](https://www.maketecheasier.com/what-is-sed/) and a much more [comprehensive guide](https://www.grymoire.com/Unix/Sed.html#uh-53). There are several examples under the [WSL Setup section](#wsl-setup) of this document. This is more capable then the echo command that I often use because sed can for example find a line and replace it.
+- Sed is a stream editor that you can use to edit text files quickly and easily from the command line. Here are a couple of resources to get started [short and sweet](https://www.maketecheasier.com/what-is-sed/) and a much more [comprehensive guide](https://www.grymoire.com/Unix/Sed.html#uh-53). There are several examples under the [WSL Setup section](#wsl-setup) of this document. This is more capable then the echo command that I often use because sed can for example find a line and replace it.
+
+- When using bash scripts it is useful to be able to give options to a user. Here is some gernalized code to use as a template for that.
+
+    ```sh
+    # General prompting code
+    PS3="Text Prompt"
+    ResponseOptions=("Yes" "No" "Quit")
+    select SelectedOption in "${ResponseOptions[@]}"; do
+        case $SelectedOption in
+            "Yes")
+                echo "Installing ..."
+                break
+                ;;
+            "No")
+                echo "Did not install ..."
+                break
+                ;;
+            "Quit")
+                echo "User requested exit"
+                exit
+                ;;
+            *) echo "invalid option $REPLY";;
+        esac
+    done
+    ```
 
 ## Useful Bash/zsh Commands
 
-- restart your bash or zsh shell
-    - or it seem like you can just type in the other shell and then do the other shell again and it'll restart your shell, so if you start in zsh and want to restart it you can type in `bash` then type in `zsh` and that seems to restart the `zsh` shell
+- Restart your bash or zsh shell
+    - Or it seem like you can just type in the other shell and then do the other shell again and it'll restart your shell, so if you start in zsh and want to restart it you can type in `bash` then type in `zsh` and that seems to restart the `zsh` shell
 
     ```sh
     exec "$SHELL"
@@ -84,7 +109,7 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     fc -R .zsh_history
     ```
 
-- the in terminal process explorer is shown by typing `top` to quit press `q`.
+- The in terminal process explorer is shown by typing `top` to quit press `q`.
     - You can also use htop which is quite a bit more capable than top. You can install it on a debian based disto using `sudo apt-get install htop`. Then enter `htop`.
     - An alternative is [bottom](https://github.com/clementtsang/bottom#bottom) which is much more robust and easier to use as well.
 
@@ -109,13 +134,13 @@ To set up WSL follow the instructions I've set [up here](windows_program_instruc
 Now to get bash all set up with useful features do the following steps:
 
 1. install zsh
-    - see detailed instructions [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#install-and-set-up-zsh-as-default) or [here for WSL specifically](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#ubuntu-debian--derivatives-windows-10-wsl--native-linux-kernel-with-windows-10-build-1903)
+    - See detailed instructions [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#install-and-set-up-zsh-as-default) or [here for WSL specifically](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#ubuntu-debian--derivatives-windows-10-wsl--native-linux-kernel-with-windows-10-build-1903)
 1. install Oh My Zsh
-    - see detailed instructions [here](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
+    - See detailed instructions [here](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
 
 - Other sources I used while doing this
     - [link 1](https://www.sitepoint.com/zsh-tips-tricks/) [link 2](https://pascalnaber.wordpress.com/2019/10/05/have-a-great-looking-terminal-and-a-more-effective-shell-with-oh-my-zsh-on-wsl-2-using-windows/) [link 3](https://nickymeuleman.netlify.app/blog/linux-on-windows-wsl2-zsh-docker#zsh) [link 4](https://www.sitepoint.com/zsh-tips-tricks/).
-- for a list of pre-installed plugins look [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview)
+- For a list of pre-installed plugins look [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins-Overview)
 
 - If you want to limit the WSL2 system in any way you can create the file `.wslconfig` here: `C:\Users\%username%\.wslconfig`. I use it to limit the amount of memory that WSL can use on my system. You can learn more [here](https://www.bleepingcomputer.com/news/microsoft/windows-10-wsl2-now-allows-you-to-configure-global-options/)
 
@@ -123,7 +148,7 @@ Now to get bash all set up with useful features do the following steps:
 
 Below are the step I take to setup my linux shell the way I like it in various steps. Note that this is applicable to Ubuntu but will work on other distros with minimal changes.
 
-- install the basics: update apt-get, git, zsh, snap and ohmyzsh
+- Install the basics: update apt-get, git, zsh, snap and ohmyzsh
 
     ```sh
     # get into administrator mode
@@ -220,13 +245,19 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # install rust for installation of many of the following utilities
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     rustup update
-    # installation of bottom which is a system resource manager (required rust) to use type bottom <!-- TODO: -->
+    # installation of bottom which is a system resource manager (required rust)
     rustup update stable
     cargo install bottom
     # use bottom by typing in `btm`
+    # installation of exa which is a replacement for ls (required rust)
+    rustup update stable
+    cargo install exa
+    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F`
+    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -R -T -F -L=2` to see files in folders
+
     ```
 
-- the theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
+- The theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
 
     ```sh
     # set the theme for Oh My Zsh the agnoster option is already installed the powerlevel10k has to be downloaded and installed
@@ -301,6 +332,9 @@ Below are the step I take to setup my linux shell the way I like it in various s
     echo '# general aliases
     alias restart="exec "$SHELL""
     alias list="ls -lh -a"
-    alias start="cmd.exe /c start"' >> ~/.zshrc
+    alias start="cmd.exe /c start"
+    alias exaf="exa --long --header --group-directories-first -F"
+    alias exar="exa --long --header --group-directories-first -R -T -F -L=2"
+    ' >> ~/.zshrc
     ```
 

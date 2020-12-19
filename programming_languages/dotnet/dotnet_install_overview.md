@@ -43,7 +43,7 @@ Note: I will only be using dotnet standard or dotnet core and I will never be us
         sudo apt-get install -y {dotnet-package}
     ```
 
-- you may also need to add `export PATH="$PATH:/home/user/.dotnet/tools"` to your script profile file so that you can access the tool in the command line.
+- You may also need to add `export PATH="$PATH:/home/user/.dotnet/tools"` to your script profile file so that you can access the tool in the command line.
 
 ## Use Cases
 
@@ -105,16 +105,16 @@ Creating a console app is very simple but it gets pretty complicated thereafter.
 ### Installation and running first script
 
 -To allow for use of a simple c# file as a script run the following command in the dotnet CLI (this is needed because without it c# projects have to be compiled).
-    - you can also install through chocolatey for windows
+    - You can also install through chocolatey for windows
 
 ```PowerShell
 dotnet tool install -g dotnet-script
 ```
 
 -Then you have to navigate to whatever folder in which you want to contain your project and enter the following lines code
-    - the first line of code create a script project which is very barebones
-        - if you want to change the name of the script to something else use this code instead `dotnet script init custom.csx` this will make the script name custom.csx not main .csx
-    - the second line will run the script
+    - The first line of code create a script project which is very barebones
+        - If you want to change the name of the script to something else use this code instead `dotnet script init custom.csx` this will make the script name custom.csx not main .csx
+    - The second line will run the script
 
 ```PowerShell
 dotnet script init

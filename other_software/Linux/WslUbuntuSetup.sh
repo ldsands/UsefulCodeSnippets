@@ -35,7 +35,6 @@ select SelectedOption in "${ResponseOptions[@]}"; do
     case $SelectedOption in
         "Yes")
             echo "Installing Git"
-            echo "COMMAND could not be found"
             sudo apt-get update && sudo apt install git && git config --global core.autocrlf input
             echo "To finish configureing Git your git user name and email are needed"
             echo "please enter your git user name e.g. Prename Name"
@@ -145,7 +144,7 @@ select SelectedOption in "${ResponseOptions[@]}"; do
     esac
 done
 
-PS3="Do you want to install Python management packages?"
+PS3="Do you want to install Python management packages?" # TODO:
 ResponseOptions=("Yes" "No" "Quit")
 select SelectedOption in "${ResponseOptions[@]}"; do
     case $SelectedOption in
@@ -166,5 +165,72 @@ select SelectedOption in "${ResponseOptions[@]}"; do
         *) echo "invalid option $REPLY";;
     esac
 done
+
+PS3="Do you want to install Rust and Rust based utilities and corresponding aliases" # General prompting code
+ResponseOptions=("Just Install" "Install and Aliases" "No" "Quit")
+select SelectedOption in "${ResponseOptions[@]}"; do
+    case $SelectedOption in
+        "Yes")
+            echo "Installing Rust and Rust utilities exa and bottom"
+            # install rust for installation of many of the following utilities
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+            rustup update
+            # installation of bottom which is a system resource manager (required rust)
+            rustup update stable
+            cargo install bottom
+            # installation of exa which is a replacement for ls (required rust)
+            rustup update stable
+            cargo install exa
+            break
+            ;;
+        "Install and Aliases")
+            echo "Installing Rust and Rust utilities exa and bottom along with adding aliases"
+            # install rust for installation of many of the following utilities
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+            rustup update
+            # installation of bottom which is a system resource manager (required rust)
+            rustup update stable
+            cargo install bottom
+            # installation of exa which is a replacement for ls (required rust)
+            rustup update stable
+            cargo install exa
+            echo '
+            # general rust installed utility aliases
+            alias exaf="exa --long --header --group-directories-first -F"
+            alias exar="exa --long --header --group-directories-first -R -T -F -L=2"
+            ' >> ~/.zshrc
+            break
+            ;;
+        "No")
+            echo "Did not install Rust exa or bottom"
+            break
+            ;;
+        "Quit")
+            echo "User requested exit"
+            exit
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
+
+# PS3="Text Prompt" # General prompting code
+# ResponseOptions=("Yes" "No" "Quit")
+# select SelectedOption in "${ResponseOptions[@]}"; do
+#     case $SelectedOption in
+#         "Yes")
+#             echo "Installing ..."
+#             break
+#             ;;
+#         "No")
+#             echo "Did not install ..."
+#             break
+#             ;;
+#         "Quit")
+#             echo "User requested exit"
+#             exit
+#             ;;
+#         *) echo "invalid option $REPLY";;
+#     esac
+# done
 
 exit
