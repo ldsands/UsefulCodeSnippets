@@ -317,7 +317,9 @@ PowerShell functions can be very powerful and do pretty much anything you can th
 ### Random Useful Commands
 
 - To get the help information for any command or cmdlet use `help cmdlet` where cmdlet is the command about which you want more information. An example is `help Get-ChildItem`.
+- To get the full list of keyboard shortcuts use these keyboard keys: `ctrl+alt+shift+.`
 - To see the commands you've used you can see them all using `Get-History` or the alias `history`.
+- To see the environment variables you can do this: `Get-ChildItem Env:` or for path: `$Env:Path -split ";"`
 - For uninstalling modules just insert the name of the module next to the $name variable and run it
 
     ```PowerShell
