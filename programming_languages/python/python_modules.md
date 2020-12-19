@@ -41,10 +41,12 @@
     npm install vega-lite vega-cli canvas
     ````
 
-- Requests
+- [Pyinstaller](https://github.com/pyinstaller/pyinstaller)
+    - This module allows you to create an executable file which can then be used easily in a terminal or if you have added GUI components you can use that too. I have used it to convert the script included [here](./useful_scripts/docx_pdf_txt_converter.py) into an exe that I use frequently with just calling one command.
+- [Requests](https://requests.readthedocs.io/en/master/)
     - Very useful to scraping websites
     - Some more advanced commands with requests can be found [here](https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/)
-- Graph-tools
+- [Graph-tool](https://graph-tool.skewed.de/)
     - This is a network visualization package that must cannot be installed using pip the instructions for installation can be found [here](https://git.skewed.de/count0/graph-tool/-/wikis/installation-instructions)
     - I use this over networkx for any networks that are very large, otherwise networkx takes a very long time to deal with large networks
 

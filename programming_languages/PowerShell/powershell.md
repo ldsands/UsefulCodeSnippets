@@ -180,7 +180,7 @@ function up4 { Set-Location ..\..\..\.. }
 
 ## Install the normal modules that I use just type InstallAllModules
 function InstallAllModules() {
-    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor", "Microsoft.PowerShell.RemotingTools")
+    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor", "Microsoft.PowerShell.RemotingTools", "PSFolderSize")
     foreach (`$element in `$requiredModules) {
         if (-not (Get-Module -ListAvailable -Name `$element)) {
             Write-Host "Installing `$element"
