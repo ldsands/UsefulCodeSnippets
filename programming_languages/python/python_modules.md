@@ -4,6 +4,7 @@
     - [Random Modules and Packages](#random-modules-and-packages)
         - [pywin32](#pywin32)
         - [PySpark](#pyspark)
+    - [Install Python Modules Within a Script](#install-python-modules-within-a-script)
     - [Creating a Local Package](#creating-a-local-package)
     - [Modules to Look Into](#modules-to-look-into)
 
@@ -21,8 +22,8 @@
     text = docx2txt.process(file)
     ```
 
-- [pdfminer.six](https://github.com/pdfminer/pdfminer.six)
-    - "extracting information from PDF documents. It focuses on getting and analyzing text data."
+- [PrettyErrors](https://github.com/onelivesleft/PrettyErrors/) - "Prettify Python exception output to make it legible." Just add `import pretty_errors` to the file and errors will be much more readable.
+- [pdfminer.six](https://github.com/pdfminer/pdfminer.six) - "extracting information from PDF documents. It focuses on getting and analyzing text data."
 
 - [Altair](https://altair-viz.github.io/index.html)
     - This module is very good graphing data taken from pandas. I choose this over other options such as matplotlib or seaborne because of the vega and vega-lite backend which also have plugins/packages in both Julia and R. You can also edit them manually in a browser if needed.
@@ -63,6 +64,45 @@ This is a big data analysis packages that requires a bit of setup
 ```PowerShell
 choco install jdk8
 ```
+
+## Install Python Modules Within a Script
+
+- To automatically install packages from a list you can use the either of the two example code options below
+
+    ```Python
+    # This will load the modules and if it is not installed it will install it using pip
+    modules = ["pathlib", "docx2txt", "pprint", "pikepdf"]
+    def install_and_import(modules):
+        import importlib
+        import os
+        for module in modules:
+            try:
+                importlib.import_module(module)
+                print(module, "imported")
+            except ImportError:
+                print(f"installing {module}")
+                os.system(f"pip install {module}")
+                print(module, "installed")
+                try:
+                    globals()[module] = importlib.import_module(module)
+                    print(module, "imported")
+                except ImportError:
+                    print(f"There was an error while trying to install {module}")
+    install_and_import(modules)
+    ```
+
+    ```Python
+    import sys
+    import subprocess
+    import pkg_resources
+
+    required = {'numpy','pandas','<etc>'} 
+    installed = {pkg.key for pkg in pkg_resources.working_set}
+    missing = required - installed
+    if missing:
+        # implement pip as a subprocess:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install',*missing])
+    ```
 
 ## Creating a Local Package
 
@@ -122,6 +162,7 @@ choco install jdk8
 ## Modules to Look Into
 
 - [AutoScraper](https://github.com/alirezamika/autoscraper): A Smart, Automatic, Fast and Lightweight Web Scraper for Python
+- [DearPyGui](https://github.com/hoffstadt/DearPyGui): "Dear PyGui: A fast and powerful Graphical User Interface for Python with minimal dependencies" Has MIT licence
 - [Fil](https://github.com/pythonspeed/filprofiler): for memory profiling a script
 - [Helium](https://github.com/mherrmann/selenium-python-helium): Selenium-python is great for web automation. Helium makes it easier to use.
 - [Jupytext](https://github.com/mwouts/jupytext): Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts

@@ -209,29 +209,7 @@ Poetry will use whatever virtual environment is activated to build the project t
     os.path.dirname(sys.executable)
     ```
 
-- To automatically install packages from a list you can use the following script
-
-    ```Python
-    # This will load the modules and if it is not installed it will install it using pip
-    modules = ["pathlib", "docx2txt", "pprint", "pikepdf"]
-    def install_and_import(modules):
-        import importlib
-        import os
-        for module in modules:
-            try:
-                importlib.import_module(module)
-                print(module, "imported")
-            except ImportError:
-                print(f"installing {module}")
-                os.system(f"pip install {module}")
-                print(module, "installed")
-                try:
-                    globals()[module] = importlib.import_module(module)
-                    print(module, "imported")
-                except ImportError:
-                    print(f"There was an error while trying to install {module}")
-    install_and_import(modules)
-    ```
+- To automatically install packages from a list you can read more [here](python_modules.md#Install-Python-Modules-Within-a-Script).
 
 - When installing python on Windows you can usually just install it from the store but there are some packages cannot "see" that python installation. To deal with this you can do the following after installing python fro mthe python.org website or when installed using chocolatey or winget.
 
