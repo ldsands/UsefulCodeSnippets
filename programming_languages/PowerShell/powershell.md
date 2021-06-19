@@ -31,20 +31,29 @@ You can install PowerShell using the dotnet sdk (core or standard) on any platfo
 
 ## Adding to Windows Path
 
-Adding items to path in PowerShell is kind of annoying becuase the commands are so verbose. Below is an example of adding python downloaded and installed from chocolatey to the Windows path.
+Adding items to path in PowerShell is kind of annoying because the commands are so verbose. Below is an example of adding python downloaded and installed from chocolatey to the Windows path.
 
 ```PowerShell
 # set a new path that will be added to the path environment
-$newPath = "C:\Users\%username%\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\%username%\AppData\Local\Programs\Python\Python38"
+$newPath = "C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python38"
 # save the old path to a variable
-C:\ProgramData\Boxstarter;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\PowerShell\7\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Amazon\AWSCLI\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\
-$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH)
+# add the old path to the new path
+$combinedpath = "$oldpath;$newPath"
 # add the new path to the path
-Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newPath
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $combinedPath
 # check the path to make sure it worked correctly
 Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
 # an alternative way to check the path
 $env:Path -split ';'
+
+# Or you can do this using `User` for the user environment variable or `Machine` for the whole machine
+$PATH = [Environment]::GetEnvironmentVariable("PATH", "User")
+$newPath = "C:\Users\$env:USERNAME\OneDrive\utilities"
+if ( $PATH -notlike "*" + $newPath + "*" ) {
+    [Environment]::SetEnvironmentVariable("PATH", "$PATH;$newPath", "User")
+}
+refreshenv | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 ```
 
 ## PowerShell profiles

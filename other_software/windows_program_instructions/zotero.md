@@ -39,14 +39,24 @@ To complete the instructions to install Zotero and setup the WebDAV file syncing
 - Don't download website snapshots to save a lot space
     1. Under edit, then preferences select the general tab
     1. In the "file handling" section uncheck the "automatically take snapshots when creating items from web pages"
-- Don't share the child notes with shared libraries
+- Don't share the child notes, links and tags with shared libraries
     1. Under edit, then preferences select the general tab
-    1. In the "Groups" section uncheck the "child notes" and "child links" options
-- Under the preferences in the general tab uncheck the child notes and tags so that they don't get shared when sharing to a group
+    1. In the "Groups" section uncheck the "child notes", "tags" and "child links" options
 - Change the default citation style to ASA 6th edition
     1. Under edit, then preferences select the cite tab
     1. In the styles section find the "American Sociological Association 6th Edition"
     1. If this option is missing you can download the CSL file from [here](https://github.com/citation-style-language/styles/blob/master/american-sociological-association.csl)
+- Sometimes I like to see all of the citations within a folder and all subfolders, the show items from subcollections setting allows for this.
+    - Under View select "Show Items from Subcollections"
+
+## Main Screen Columns
+
+- I prefer to have the columns organized in the following order:
+    - Creator
+    - Year
+    - Attachments
+    - Title
+    - Extra
 
 ## Zotero plug-ins
 

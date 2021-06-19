@@ -93,7 +93,7 @@ Below are Windows programs that are not able to be installed via chocolatey that
 
 Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
 
-```sh
+```PowerShell
 # install node.js using chocolatey
 choco install nodejs
 # test install
@@ -105,6 +105,10 @@ C:\Program Files\nodejs
 npm install nativefier -g
 # to update nativefier (you must have admin privileges)
 npm update -g nativefier
+# it is also a good idea to create a folder just for nativefier below is where I put it
+New-Item -Path 'C:\tools\nativefier' -ItemType Directory
+# now navigate to the folder to create the nativefier program there
+cd C:\tools\nativefier
 ```
 
 The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
@@ -143,19 +147,19 @@ nativefier --name "MS Teams" "https://teams.microsoft.com/" --internal-urls ".*(
 
 non chocolatey utility programs
 
-- A small script to allow for use of the new windows terminal from any location by right clicking, [taken from a github repo](https://github.com/shanselman/WindowsTerminalHere)
 - [Focus To-Do](https://www.focustodo.cn/) This is a to-do focused Pomodoro timer. I don't really use the to-do aspect of it but I like the timer aspect quite a bit
-- [Gephi](https://gephi.org/) this is network visualization software that is open source.
-    - This can be installed using winget: `winget install --id=Gephi.Gephi -e`
-    - To install it you must download it along with the java 8 sdk and apache maven. The code to install those two are as follows: `jdk8` and `choco install maven`
-- [iCUE](https://www.corsair.com/us/en/icue)
-    - For corsair headset
+- [Gephi](https://gephi.org/) this is network visualization software that is open source. This can be installed using winget: `winget install --id=Gephi.Gephi -e`. To install it you must download it along with the java 8 sdk and apache maven. The code to install those two are as follows: `jdk8` and `choco install maven`
+- [Glances]
 - [Kite](https://kite.com/) this is a utility to help with python autocompletion
-- [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html)
-    - For keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
+- [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html) For my old keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
+- [Pipx](https://pipxproject.github.io/pipx/) This allows you to use python scripts as though they were programs this does get installed via pip (`pip -m install pipx`) after installing python then add pipx to path by using this command: `python -m pipx ensurepath`. You will have to restart the PowerShell to use pipx.
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
 - [Process Hacker](https://processhacker.sourceforge.io/) Is a process manager and viewer that is far more informational than the built in task manager. I use the [nightly builds](https://processhacker.sourceforge.io/nightly.php) since they have not updated the main release in years.
+- [SylphyHornEx](https://github.com/ViRb3/SylphyHornEx/releases) The best Windows virtual desktop manager I've found very capable and customizable
+- [WindowsTerminalHere](https://github.com/shanselman/WindowsTerminalHere) A small script to allow for use of the new windows terminal from any location by right clicking
+- [iCUE](https://www.corsair.com/us/en/icue) For corsair headset
+- [Glances](https://nicolargo.github.io/glances/) Since sometimes process hacker is targeted by Windows Defender I use bottom or glances. Glances can be installed via python pip (`pip install glances`) or even better via pipx (`pipx install glances`) so that it can remain isolated.
 <!-- - [Pomotroid](https://splode.github.io/pomotroid/) this is a simple but customizable Pomodoro timer I use it pretty regularly -->
 <!-- - [Stretchly](https://hovancik.net/stretchly/) A relatively simple but customization work/break timer can be installed using Winget -->
 
