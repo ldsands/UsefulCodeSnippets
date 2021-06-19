@@ -48,4 +48,5 @@ winget install --id=VideoLAN.VLC -e
 winget install --id=Zoom.Zoom -e
 winget install --id=agalwood.Motrix -e
 winget install --id=twitch.twitch -e
+winget install --id=voidtools.Everything -e
 winget install bottom

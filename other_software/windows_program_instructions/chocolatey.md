@@ -21,7 +21,67 @@ again always run chocolatey in powershell with administrator privileges otherwis
 ### Install on all computers
 
 ```PowerShell
-choco install googlechrome vscode 7zip.install git gh github-desktop pandoc powershell-core --install-arguments='"ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1"' r.project --params '"/AddToPath"' microsoft-windows-terminal oh-my-posh poshgit nodejs sumatrapdf dotnetcore-sdk paket docker-desktop boxstarter julia firacodenf cascadia-code-nerd-font fira powertoys typescript r.studio texlive miktex zotero firefox discord logitech-options chocolateygui teamviewer hwmonitor vlc speedcrunch -y
+# I use some code that can only be run on modern PowerShell so install that first
+choco install  powershell-core --install-arguments='"ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1"'
+
+# each of these loops install chocolatey packages that are organized by type of program
+$Packages = "firefox", "googlechrome", "microsoft-edge-insider"
+Write-Host "Installing Browsers"
+ForEach ($PackageName in $Packages) {
+    Write-Host "    Installing $PackageName"
+    choco install $PackageName -y | out-null
+}
+
+$Packages = "git", "microsoft-windows-terminal", "nodejs", "pandoc", "texlive"
+Write-Host "Installing Dev tools"
+ForEach ($PackageName in $Packages) {
+    Write-Host "    Installing $PackageName"
+    choco install $PackageName -y | out-null
+}
+
+$Packages = "cascadia-code-nerd-font", "fira", "firacodenf"
+Write-Host "Installing Fonts"
+ForEach ($PackageName in $Packages) {
+    Write-Host "    Installing $PackageName"
+    choco install $PackageName -y | out-null
+}
+
+$Packages = "vlc"
+Write-Host "Installing Media Programs"
+ForEach ($PackageName in $Packages) {
+    Write-Host "    Installing $PackageName"
+    choco install $PackageName -y | out-null
+}
+
+$Packages = "dotnet-sdk", "julia", "powershell-core", "python", "r.project --params `'`"/AddToPath`"`'", "typescript"
+Write-Host "Installing Programming Languages"
+ForEach ($PackageName in $Packages) {
+    Write-Host "    Installing $PackageName"
+    choco install $PackageName -y | out-null
+}
+
+$Packages = "vscode", "r.studio"
+Write-Host "Installing Text editors / IDEs"
+ForEach ($PackageName in $Packages) {
+    Write-Host "    Installing $PackageName"
+    choco install $PackageName -y | out-null
+}
+$Packages = "7zip", "bottom", "everything", "hwmonitor", "powertoys", "starship"
+Write-Host "Installing Utilities + other"
+ForEach ($PackageName in $Packages) {
+    Write-Host "    Installing $PackageName"
+    choco install $PackageName -y | out-null
+}
+
+$Packages = "discord", "imageglass", "logitech-options", "speedcrunch", "sumatrapdf", "zotero"
+Write-Host "Installing Windows Applications"
+ForEach ($PackageName in $Packages) {
+    Write-Host "    Installing $PackageName"
+    choco install $PackageName -y | out-null
+}
+
+# Others that I sometimes install but not usually
+choco install paket docker-desktop boxstarter miktex chocolateygui teamviewer -y
 ```
 
 ### Large installs
@@ -49,7 +109,7 @@ choco install geforce-experience -y
 
 - [youtube-dl](https://ytdl-org.github.io/youtube-dl/index.html) is a youtube downloader CLI that downloads youtube videos with tons of options
 - [OBS (Open Broadcaster Software)](https://obsproject.com/) is an audio and video management software suite that is open source. It is primarily used for streaming/podcasting types of applications. I'm adding this here for the coronavirus fiasco so make my video not so terrible
-- ccleaner is a program that can clean windows of files that aren't needed. Windows 10 has come a long way since the last time I used this software and it really isn't needed anymore.
+- CCleaner is a program that can clean windows of files that aren't needed. Windows 10 has come a long way since the last time I used this software and it really isn't needed anymore.
 - [Motrix](https://motrix.app/) is a download manager that can do several download related tasks automatically
 - [PyIDM](https://github.com/pyIDM/PyIDM) is another download manager that I prefer to Mortix as it seems to work better. The Windows protable release can be downloaded from [here](https://github.com/pyIDM/PyIDM/releases)
 - [windirstat](https://windirstat.net/) shows visually what files are taking up how much space on any drives that are connected to the computer

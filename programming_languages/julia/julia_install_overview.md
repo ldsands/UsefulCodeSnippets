@@ -4,11 +4,11 @@ Julia is a newer programming language that is meant to be dynamically typed like
 
 ## Useful resources
 
-- [for parallel programming](https://nbviewer.jupyter.org/github/sylvaticus/juliatutorial/blob/master/assets/Parallel%20computing.ipynb)
-- good documentation and tutorials
-    - [official documentation](https://docs.julialang.org/en/latest/) the manual in particular is very good
-    - [a wikibook](https://en.wikibooks.org/wiki/Introducing_Julia) that is for introductory Julia concepts also very well done
-    - [the Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/index.html#Style-Guide-1)
+- [For parallel programming](https://nbviewer.jupyter.org/github/sylvaticus/juliatutorial/blob/master/assets/Parallel%20computing.ipynb)
+- Food documentation and tutorials
+    - [Official documentation](https://docs.julialang.org/en/latest/) the manual in particular is very good
+    - [A wikibook](https://en.wikibooks.org/wiki/Introducing_Julia) that is for introductory Julia concepts also very well done
+    - [The Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/index.html#Style-Guide-1)
         - Note: generally variables use `_` for variable name word separating whereas methods use camel case.
 
 ## Installation

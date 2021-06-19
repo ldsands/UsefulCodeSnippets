@@ -31,69 +31,69 @@ There are three main package managers for Windows. Chocolaty, Scoop and Winget.
 Below are Windows programs that are installed using chocolatey
 
 - Google Chrome
-    - the most popular browser I personally prefer the new version of Edge but old habits die hard
+    - The most popular browser I personally prefer the new version of Edge but old habits die hard
 - Visual Studio Code or VS Code
-    - a truly incredible text editor that is really in IDE in capabilities for many programming languages
-    - for me writing in anything else is frustrating because of other programs limitations
-    - for more information on my VS Code setup and other tips see [this other markdown sheet](../vscode.md)
+    - A truly incredible text editor that is really in IDE in capabilities for many programming languages
+    - For me writing in anything else is frustrating because of other programs limitations
+    - For more information on my VS Code setup and other tips see [this other markdown sheet](../vscode.md)
 - 7zip
-    - for all of your compression and decompression needs free and open source and very capable
+    - For all of your compression and decompression needs free and open source and very capable
 - [git](../git.md)
-    - this is required for using github it is the source control software on which github is based
+    - This is required for using github it is the source control software on which github is based
     - I don't know much about how to use git without either github and/or vscode
 - [pandoc](../pandoc_commands.md)
-    - this can convert just about any document format into any other
+    - This can convert just about any document format into any other
     - I use it primarily to write in markdown and then convert to either docx or pdf depending on my need at the time
 - [R](../../programming_languages/R/r_resources.md)
     - R is a statistically focused programming language it is really quirky but very powerful from a statistical point of view
 - Nodejs
-    - this is for installing javascript it has occasionally been useful to me in the past for electron apps and other applications
+    - This is for installing javascript it has occasionally been useful to me in the past for electron apps and other applications
 - SumatraPDF
-    - this is a super lightweight pdf reader I use it when working LaTeX since it doesn't have a file lock
-- dotnetcore-sdk
-    - used for my C# programming (I wish I could use it more but alas time never seems to allow me to experiment)
+    - This is a super lightweight pdf reader I use it when working LaTeX since it doesn't have a file lock
+- Dotnetcore-sdk
+    - Used for my C# programming (I wish I could use it more but alas time never seems to allow me to experiment)
 - [Julia](../../programming_languages/julia/julia.md)
     - Julia is a programming language that is python but rewritten for speed (there are lots of other benefits but speed is what I use it for) I have been able to get some scripts running thousands of times faster when I rewrote them Julia
     - Julia is still really new though so it is limited in the available packages but again otherwise I wish I could write only in Julia
 - FiraCode NF
-    - my favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
+    - My favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
 - CascadiaCode Nerd Font
     - Another excellent font for coding that included ligatures and glyphs it can be found on GitHub [here](https://github.com/ryanoasis/nerd-fonts/tree/606db3752d4e6d31a2f47258ce86f7bb07511521/patched-fonts/CascadiaCode)
 - R Studio
-    - the defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VS Code, occasionally however I jump into R.Studio for the variable explorer and other little things
+    - The defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VS Code, occasionally however I jump into R.Studio for the variable explorer and other little things
 - [Texlive](https://tug.org/texlive/)
-    - another LaTeX installer, this one is a bit more comprehensive than MikTeX is
+    - Another LaTeX installer, this one is a bit more comprehensive than MikTeX is
 - MikTeX
-    - the defacto LaTeX installation for Windows I don't use LaTeX directly much anymore but pandoc uses it so I usually install it
+    - The defacto LaTeX installation for Windows I don't use LaTeX directly much anymore but pandoc uses it so I usually install it
 - [Zotero](zotero.md)
-    - my preferred reference manager that is free and open source very good alternative to EndNote and other alternatives (in my opinion it is better in pretty much every way)
+    - My preferred reference manager that is free and open source very good alternative to EndNote and other alternatives (in my opinion it is better in pretty much every way)
 - Firefox
-    - sometimes chrome cannot load something so I usually use Firefox as my back up
+    - Sometimes chrome cannot load something so I usually use Firefox as my back up
 - Discord
-    - although primarily used for gaming it is the best video and phone over IP program that I've ever used
-- logitech-options
+    - Although primarily used for gaming it is the best video and phone over IP program that I've ever used
+- Logitech-options
     - I love my logitech mice so I always install this to take advantage of customizing my mouse buttons
-- chocolateygui
+- Chocolateygui
     - I've almost never used this but it gives a GUI interface to chocolatey which has been useful once or twice in the past
 - TeamViewer
-    - when I can get it to work its very useful to be able to access my home computer from school or on my laptop
-- hwmonitor
+    - When I can get it to work its very useful to be able to access my home computer from school or on my laptop
+- Hwmonitor
     - I don't use this much either but it is very good and showing hardware resource usage, its useful for tracking down hardware problems or if you happen to be using a ton of CPU on something it can help you track down whats using it
 - VLC
-    - a video (and audio) player that plays pretty much anything you throw at it
+    - A video (and audio) player that plays pretty much anything you throw at it
 - [Krita](https://krita.org/en/) - [Krita documentation](https://docs.krita.org/en/)
     - This is kind of like a PhotoShop but quite a bit simpler (or so I'm told). I use it primarily for modifying svg type images since doing so in Krita is pretty simple but also able to do everything I want to do with it.
 
 Below are Windows programs that are not able to be installed via chocolatey that I always install
 
 - [ProWritingAid](https://prowritingaid.com/)
-    - this is a program and chrome plugin (and others) that is a very comprehensive in its ability to check far more grammar issues than most other alternatives (not free serial number in Enpass)
+    - This is a program and chrome plugin (and others) that is a very comprehensive in its ability to check far more grammar issues than most other alternatives (not free serial number in Enpass)
 
 ### Nativefier
 
 Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
 
-```sh
+```PowerShell
 # install node.js using chocolatey
 choco install nodejs
 # test install
@@ -105,18 +105,22 @@ C:\Program Files\nodejs
 npm install nativefier -g
 # to update nativefier (you must have admin privileges)
 npm update -g nativefier
+# it is also a good idea to create a folder just for nativefier below is where I put it
+New-Item -Path 'C:\tools\nativefier' -ItemType Directory
+# now navigate to the folder to create the nativefier program there
+cd C:\tools\nativefier
 ```
 
 The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
 
-- some notable options
+- Some notable options
     - `--hide-window-frame` disables window frame and controls.
     - `--single-instance` you can only have one window of this open at a time
     - `--internal-urls ".*?"` if you want any domain to be able to work in the nativefier window
 
 Some Nativefier Limitations
 
-- you cannot use `ctrl` + `f` to use find in page
+- You cannot use `ctrl` + `f` to use find in page
 
 Below are a list of the nativefier apps that I install with their code.
 
@@ -143,19 +147,19 @@ nativefier --name "MS Teams" "https://teams.microsoft.com/" --internal-urls ".*(
 
 non chocolatey utility programs
 
-- A small script to allow for use of the new windows terminal from any location by right clicking, [taken from a github repo](https://github.com/shanselman/WindowsTerminalHere)
 - [Focus To-Do](https://www.focustodo.cn/) This is a to-do focused Pomodoro timer. I don't really use the to-do aspect of it but I like the timer aspect quite a bit
-- [Gephi](https://gephi.org/) this is network visualization software that is open source.
-    - This can be installed using winget: `winget install --id=Gephi.Gephi -e`
-    - to install it you must download it along with the java 8 sdk and apache maven. The code to install those two are as follows: `jdk8` and `choco install maven`
-- [iCUE](https://www.corsair.com/us/en/icue)
-    - for corsair headset
+- [Gephi](https://gephi.org/) this is network visualization software that is open source. This can be installed using winget: `winget install --id=Gephi.Gephi -e`. To install it you must download it along with the java 8 sdk and apache maven. The code to install those two are as follows: `jdk8` and `choco install maven`
+- [Glances]
 - [Kite](https://kite.com/) this is a utility to help with python autocompletion
-- [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html)
-    - for keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
+- [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html) For my old keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
+- [Pipx](https://pipxproject.github.io/pipx/) This allows you to use python scripts as though they were programs this does get installed via pip (`pip -m install pipx`) after installing python then add pipx to path by using this command: `python -m pipx ensurepath`. You will have to restart the PowerShell to use pipx.
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
 - [Process Hacker](https://processhacker.sourceforge.io/) Is a process manager and viewer that is far more informational than the built in task manager. I use the [nightly builds](https://processhacker.sourceforge.io/nightly.php) since they have not updated the main release in years.
+- [SylphyHornEx](https://github.com/ViRb3/SylphyHornEx/releases) The best Windows virtual desktop manager I've found very capable and customizable
+- [WindowsTerminalHere](https://github.com/shanselman/WindowsTerminalHere) A small script to allow for use of the new windows terminal from any location by right clicking
+- [iCUE](https://www.corsair.com/us/en/icue) For corsair headset
+- [Glances](https://nicolargo.github.io/glances/) Since sometimes process hacker is targeted by Windows Defender I use bottom or glances. Glances can be installed via python pip (`pip install glances`) or even better via pipx (`pipx install glances`) so that it can remain isolated.
 <!-- - [Pomotroid](https://splode.github.io/pomotroid/) this is a simple but customizable Pomodoro timer I use it pretty regularly -->
 <!-- - [Stretchly](https://hovancik.net/stretchly/) A relatively simple but customization work/break timer can be installed using Winget -->
 
@@ -182,23 +186,23 @@ Gaming launcher programs that contain games I've owned that aren't on chocolatey
 These are not available on chocolatey
 
 - [Audials](https://audials.com/en)
-    - desktop audio recorder
-    - licence is in Enpass
+    - Desktop audio recorder
+    - Licence is in Enpass
 - [MusicBrainz Picard](https://picard.musicbrainz.org/)
-    - mp3 information tagger
-    - free
+    - Mp3 information tagger
+    - Free
 - [Stata](https://www.stata.com/)
-    - statistical software
-    - you need to sign in to download
-        - they also give you a download limit so I put my copy of the installer into OneDrive
-        - licence is in Enpass
+    - Statistical software
+    - You need to sign in to download
+        - They also give you a download limit so I put my copy of the installer into OneDrive
+        - Licence is in Enpass
 - [aTube Catcher](https://www.atube.me/)
-    - youtube downloader
-    - free
-    - be very careful installed they have a bunch of shareware (not harmful but really annoying) they install if you're not reading carefully
+    - Youtube downloader
+    - Free
+    - Be very careful installed they have a bunch of shareware (not harmful but really annoying) they install if you're not reading carefully
 - [Stamp](https://freeyourmusic.com/)
-    - this allows you to move playlists and liked songs from one service to another
-    - licence is in Enpass
+    - This allows you to move playlists and liked songs from one service to another
+    - Licence is in Enpass
 
 ## UWP or Windows Store apps
 
@@ -220,11 +224,11 @@ TODO: need to look through my various notes to add here
 
 ### Command-line utilities
 
-- nodejs
-    - this is I think the main way that most people to get javascript onto Windows
+- Nodejs
+    - This is I think the main way that most people to get javascript onto Windows
     - I use this for programmatically looking at office documents I use this pretty rarely
-    - choco install nodejs
-    - npm install xml-formatter jszip
+    - Choco install nodejs
+    - Npm install xml-formatter jszip
 
 ### WSL (Windows subsystem for Linux)
 
@@ -233,10 +237,10 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
 - Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 - You'll need to restart after this
 - Then download the version of linux from the Windows store you want (probably Ubuntu)
-    - make sure you launch after that and then your distro will install
+    - Make sure you launch after that and then your distro will install
 - You'll be prompted to create a username and password
-    - you'll want to check that your distro is running on WSL 2 and WSL 1 you can do this by entering `wsl -l -v` into PowerShell
-    - to change a distro from WSL 1 to WSL 2 (or visa versa if you change the numbers) enter this code into PowerShell `wsl --set-version <Distro> 2`
+    - You'll want to check that your distro is running on WSL 2 and WSL 1 you can do this by entering `wsl -l -v` into PowerShell
+    - To change a distro from WSL 1 to WSL 2 (or visa versa if you change the numbers) enter this code into PowerShell `wsl --set-version <Distro> 2`
 - Type in these two commands to update stuff
 
     ```cmd
@@ -270,7 +274,7 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
 
 "[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](chocolatey.md/#choco-install-powertoys) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
 
-- to get to the settings for FancyZones go to this location `C:\Users\%username%\AppData\Local\Microsoft\PowerToys\FancyZones\zones-settings.json`.
+- To get to the settings for FancyZones go to this location `C:\Users\%username%\AppData\Local\Microsoft\PowerToys\FancyZones\zones-settings.json`.
 
 ## MS Office Plugins
 
@@ -279,4 +283,4 @@ I rarely use these but they're very useful
 - Dictate
     - I haven't used this much but the dictation addon is pretty good and its free
 - Onetastic
-    - useful for using OneNote utilities I haven't used it in a long time but when I used OneNote a lot it was very useful
+    - Useful for using OneNote utilities I haven't used it in a long time but when I used OneNote a lot it was very useful

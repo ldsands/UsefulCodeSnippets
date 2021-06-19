@@ -35,13 +35,13 @@ dta = pd.DataFrame(
     dta = dta[dta["column_name"] == x]
     ```
 
-    - filtering from a list of values is a bit more complicated but the code to do this is pretty easy:
+    - Filtering from a list of values is a bit more complicated but the code to do this is pretty easy:
 
         ```Python
         dta = dta[dta["column_name"].isin(target_list)]
         ```
 
-- for testing you usually do not want to run whatever you're doing on all of your data (unless you don't have too much data). In my case I often have millions of rows to process at a time. To make sure my code is working it is very useful to cut down on the number of rows you process just to see if everything is working right. Below is how I accomplish that. This code takes the first to the 10th row and all of the columns from the dataframe called dta. It then writes over the old dta dataframe with the smaller one.
+- For testing you usually do not want to run whatever you're doing on all of your data (unless you don't have too much data). In my case I often have millions of rows to process at a time. To make sure my code is working it is very useful to cut down on the number of rows you process just to see if everything is working right. Below is how I accomplish that. This code takes the first to the 10th row and all of the columns from the dataframe called dta. It then writes over the old dta dataframe with the smaller one.
 
     ```Python
     # this trims a dataframe from whatever length it was before to just 10 rows
@@ -52,7 +52,7 @@ dta = pd.DataFrame(
     dta = dta.head(10)  # TESTCODE:
     ```
 
-- splitting a dataframe into a list can sometimes be very helpful for either breaking up processing over time or (theoretically anyway python is NOT good at parallel processing) for parallel processing. I usually use this for breaking up really long processing times so that I can restart my computer or regain all of my computer's resources for something more intensive. API calls with query limits is a great example of this. I then usually use a for loop to write these to separate files in a subfolder for keeping track of them in my processing.
+- Splitting a dataframe into a list can sometimes be very helpful for either breaking up processing over time or (theoretically anyway python is NOT good at parallel processing) for parallel processing. I usually use this for breaking up really long processing times so that I can restart my computer or regain all of my computer's resources for something more intensive. API calls with query limits is a great example of this. I then usually use a for loop to write these to separate files in a subfolder for keeping track of them in my processing.
 
     ```Python
     # choose your chunk size
@@ -85,7 +85,7 @@ dta = dta[dta.index.isin(linkid_list)]
 
 This is a collection of functions that I find to be useful in various scripts.
 
-- sometimes you need to see the whole dataframe below is a way to do that in just a couple of lines
+- Sometimes you need to see the whole dataframe below is a way to do that in just a couple of lines
 
     ```Python
     def display_full_dataframe(dta):
@@ -99,7 +99,7 @@ This is a collection of functions that I find to be useful in various scripts.
     ```
 
 - I have often needed to get the unique number of values in some column, below is some code that I use to do that
-    - if you want the unique values as a list (or dataframe) then just replace the `nunique` with `unique`
+    - If you want the unique values as a list (or dataframe) then just replace the `nunique` with `unique`
 
     ```Python
     # this will give you the number of unique values in the "month_year" column
@@ -131,7 +131,7 @@ This is a collection of functions that I find to be useful in various scripts.
     row_list = dta.values.tolist()
     ```
 
-- when you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
+- When you playing with data you don't want to have to reload the data over and over again so you can check to see if whatever you're working on works. Rather than load that data you can check to see if it is already loaded.
 
     ```Python
     if "dta" in globals(): # or locals for locally defined variables

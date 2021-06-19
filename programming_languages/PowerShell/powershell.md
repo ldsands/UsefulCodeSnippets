@@ -15,11 +15,13 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     - [PowerShell profiles](#powershell-profiles)
     - [Useful commands](#useful-commands)
         - [PowerShell functions](#powershell-functions)
-        - [Useful random commands](#useful-random-commands)
+        - [Aliases](#aliases)
+        - [Random Useful Commands](#random-useful-commands)
     - [Using PowerShell on Windows](#using-powershell-on-windows)
     - [Using PowerShell on MacOS](#using-powershell-on-macos)
     - [Using PowerShell on Linux](#using-powershell-on-linux)
-        - [doskey macros (for cmd on Windows)](#doskey-macros-for-cmd-on-windows)
+    - [CMD](#cmd)
+        - [doskey macros](#doskey-macros)
 
 ## Installation
 
@@ -29,26 +31,35 @@ You can install PowerShell using the dotnet sdk (core or standard) on any platfo
 
 ## Adding to Windows Path
 
-Adding items to path in PowerShell is kind of annoying becuase the commands are so verbose. Below is an example of adding python downloaded and installed from chocolatey to the Windows path.
+Adding items to path in PowerShell is kind of annoying because the commands are so verbose. Below is an example of adding python downloaded and installed from chocolatey to the Windows path.
 
 ```PowerShell
 # set a new path that will be added to the path environment
-$newPath = "C:\Users\%username%\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\%username%\AppData\Local\Programs\Python\Python38"
+$newPath = "C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python38"
 # save the old path to a variable
-C:\ProgramData\Boxstarter;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\PowerShell\7\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Amazon\AWSCLI\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\
-$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH)
+# add the old path to the new path
+$combinedpath = "$oldpath;$newPath"
 # add the new path to the path
-Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newPath
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $combinedPath
 # check the path to make sure it worked correctly
 Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
 # an alternative way to check the path
 $env:Path -split ';'
+
+# Or you can do this using `User` for the user environment variable or `Machine` for the whole machine
+$PATH = [Environment]::GetEnvironmentVariable("PATH", "User")
+$newPath = "C:\Users\$env:USERNAME\OneDrive\utilities"
+if ( $PATH -notlike "*" + $newPath + "*" ) {
+    [Environment]::SetEnvironmentVariable("PATH", "$PATH;$newPath", "User")
+}
+refreshenv | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 ```
 
 ## PowerShell profiles
 
-- to make functions and other settings persist across terminals, reboots and closing PowerShell run the following code
-    - for linux just change the $PROFILE.CurrentUserAllHosts to $profile
+- To make functions and other settings persist across terminals, reboots and closing PowerShell run the following code
+    - For linux just change the $PROFILE.CurrentUserAllHosts to $profile
 
 ```PowerShell
 code $PROFILE.CurrentUserAllHosts
@@ -162,6 +173,14 @@ function GetInstalledVoices {
     `$speak.GetInstalledVoices() | foreach  { `$_.VoiceInfo.Name }
 }
 
+## set PSReadLine Options
+# Install-Module -Name PSReadLine -AllowPrerelease -Force # for installing PSReadLine 2.2 beta the following won't work without it
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin  # allow for predictions from history to show
+Set-PSReadLineOption -Colors @{ InlinePrediction = "$([char]0x1b)[35;7;238m"} # 35 means purple
+
+## starship config
+`$ENV:STARSHIP_CONFIG = "`$HOME\.starship"
+
 ## navigate up easier (one level `up1` two levels `up2` three levels `up3` four levels `up4`)
 function up1 { Set-Location ..\ }
 function up2 { Set-Location ..\.. }
@@ -170,7 +189,7 @@ function up4 { Set-Location ..\..\..\.. }
 
 ## Install the normal modules that I use just type InstallAllModules
 function InstallAllModules() {
-    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor", "Microsoft.PowerShell.RemotingTools")
+    `$requiredModules = @("PSReadLine", "posh-git","oh-my-posh", "Get-ChildItemColor", "Microsoft.PowerShell.RemotingTools", "PSFolderSize")
     foreach (`$element in `$requiredModules) {
         if (-not (Get-Module -ListAvailable -Name `$element)) {
             Write-Host "Installing `$element"
@@ -184,8 +203,8 @@ function InstallAllModules() {
 if(`$IsWindows) {
     Import-Module Microsoft.PowerShell.RemotingTools
     Import-Module posh-git
-    Import-Module oh-my-posh
-    Set-Theme Paradox
+    # Import-Module oh-my-posh
+    # Set-Theme Paradox
 }
 
 function WSLRestart() {
@@ -226,13 +245,13 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     function home {Set-Location -Path $Home}
     ```
 
-- this will put PowerShell into admin mode by typing admin
+- This will put PowerShell into admin mode by typing admin
 
     ```PowerShell
     function admin {Start-Process PowerShell -Verb runAs}
     ```
 
-- this will make it easy to activate python venv environments (you have to have changed the ExecutionPolicy as shown above)
+- This will make it easy to activate python venv environments (you have to have changed the ExecutionPolicy as shown above)
 
     ```PowerShell
     function activate {
@@ -245,7 +264,7 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     }
     ```
 
-- add whatever output you have from some command into an array for later use (particularly useful for foreach loops)
+- Add whatever output you have from some command into an array for later use (particularly useful for foreach loops)
 
     ```PowerShell
     function ToArray
@@ -267,14 +286,14 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     $ModuleList = Get-Module -List | ToArray -Property Name
     ```
 
-- check to see if a program is installed on your PC
+- Check to see if a program is installed on your PC
 
     ```PowerShell
     $installed = (gp HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*).DisplayName
     $installed
     ```
 
-    - to extend on this you can do the following to check if a particular application is installed
+    - To extend on this you can do the following to check if a particular application is installed
 
         ```PowerShell
         function check_if_installed($p1) {
@@ -291,21 +310,32 @@ PowerShell functions can be very powerful and do pretty much anything you can th
         check_if_installed -p1 "Visual Studio Code"
         ```
 
-- run a command prompt from within powershell
+- Run a command prompt from within powershell
 
    ```PowerShell
    cmd.exe /c "conda activate base"
    ```
 
-### Useful random commands
+### Aliases
 
-- for uninstalling modules just insert the name of the module next to the $name variable and run it
+- Aliases are basically shorcuts that are specified to mean some other larger command. For example if you want to create a file you can use the command `New-Item test.txt` which will create a file called `text.txt` or you can use the alias `ni text.txt` which will do the same thing. To see all available aliases use the command `Alias`.
+
+- More information about setting aliases can be found [here](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/set-alias) or you can use the following example as a guide: `Set-Alias -Name list -Value Get-ChildItem -Force` this creates an alias `list` that will show all of the items in a folder but also show the hidden items
+
+
+### Random Useful Commands
+
+- To get the help information for any command or cmdlet use `help cmdlet` where cmdlet is the command about which you want more information. An example is `help Get-ChildItem`.
+- To get the full list of keyboard shortcuts use these keyboard keys: `ctrl+alt+shift+.`
+- To see the commands you've used you can see them all using `Get-History` or the alias `history`.
+- To see the environment variables you can do this: `Get-ChildItem Env:` or for path: `$Env:Path -split ";"`
+- For uninstalling modules just insert the name of the module next to the $name variable and run it
 
     ```PowerShell
     Get-InstalledModule -Name $name -AllVersions | Uninstall-Module
     ```
 
-- enable WSL 2 in Windows
+- Enable WSL 2 in Windows
 
     ```PowerShell
     dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -324,14 +354,14 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     ```
 
 - Connecting to other Linux computers using SSH.
-    - make sure you're logged into a VPN when needed (for example using Cisco AnyConnect Secure Mobility Client)
+    - Make sure you're logged into a VPN when needed (for example using Cisco AnyConnect Secure Mobility Client)
     - There are two options that I'm aware of
         - [PuTTy](https://putty.org/) (you can also install this using `choco install putty.install`) is a popular Windows option that after installed can be launched and used through their GUI.
         - OpenSSH  is a newer option that comes with Windows
             - You can install using this command in PowerShell `Install-Module Microsoft.PowerShell.RemotingTools` and then load it using this command in PowerShell `Import-Module Microsoft.PowerShell.RemotingTools`
     - For passwordless login you must do the following:
         - Go to the correct location for the keygen program `C:\Windows\System32\OpenSSH` then run the program `.\ssh-keygen.exe`
-        - once you've done that you can then tell PowerShell to always connect to a linux or macOS machiene using these ssh keys using the following code:
+        - Once you've done that you can then tell PowerShell to always connect to a linux or macOS machiene using these ssh keys using the following code:
 
         ```PowerShell
         $USER_AT_HOST="username@hostname"
@@ -352,7 +382,7 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     pwsh
     ```
 
-- a useful command for making sure that your MacOS commands only work on MacOS
+- A useful command for making sure that your MacOS commands only work on MacOS
 
     ```PowerShell
     $IsMacOS
@@ -363,20 +393,22 @@ PowerShell functions can be very powerful and do pretty much anything you can th
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are below:
 
     ```sh
+    # get the version of ubuntu
+    Version=$(lsb_release -r -s)
+    # Update the list of packages
+    sudo apt-get update
+    # Install pre-requisite packages.
+    sudo apt-get install -y wget apt-transport-https
     # Download the Microsoft repository GPG keys
-    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/$Version/packages-microsoft-prod.deb
     # Register the Microsoft repository GPG keys
     sudo dpkg -i packages-microsoft-prod.deb
     # Update the list of products
     sudo apt-get update
     # Enable the "universe" repositories
     sudo add-apt-repository universe
-    # Install other packages that are required for PowerShell
-    sudo apt-get install libunwind8 libicu55
     # Install PowerShell
     sudo apt-get install -y powershell
-    # Start PowerShell
-    pwsh
     ```
 
     - Note: the snap store doesn't work out the box in Ubuntu when using WSL, there is a work around which is below along with the installation command for PowerShell using the snap store. (The snap store commands can also be found in the first code block of [this section](../other_software/bash.md#ubuntu-setup))
@@ -391,13 +423,15 @@ PowerShell functions can be very powerful and do pretty much anything you can th
         sudo snap install powershell --classic
         ```
 
-- a useful command for making sure that your MacOS commands only work on MacOS
+- A useful command for making sure that your MacOS commands only work on MacOS
 
     ```PowerShell
     $IsLinux
     ```
 
-### doskey macros (for cmd on Windows)
+## CMD
+
+### doskey macros
 
 doskey is a macro system for command prompt. If you enter the correct code they can also be used in PowerShell (show below)
 
