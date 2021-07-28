@@ -58,6 +58,33 @@ To complete the instructions to install Zotero and setup the WebDAV file syncing
     - Title
     - Extra
 
-## Zotero plug-ins
+## Zotero Add-ons
 
-- [for getting google scholar counts in Zotero](https://github.com/beloglazov/zotero-scholar-citations/tree/master/builds)
+- To install a plugin do the following:
+    1. Select "Tools"
+    1. Select "Add-ons", then click on the gear in the upper right
+    1. Select "Install Add-on From File"
+    1. Browse to the downloaded `.xpi` file
+    1. Select "Open"
+    1. Restart Zotero
+- [Zotero Citation Counts](https://github.com/eschnett/zotero-citationcounts)
+    - To configure I do the following:
+        1. Select "Tools"
+        1. Select "Citation Counts Manager Preferences..."
+        1. Under the "Get citation counts for the new items"
+            1. Select "Semantic Scholar citation counts"
+        1. Select "Tools"
+        1. Mouse over "Get citation counts for the new items"
+            1. Select "Semantic Scholar citation counts"
+    - To use:
+        1. Right click on any item in the main window
+        1. Mouse over "Manage Citation Counts"
+            1. Select "Get Semantic Scholar citation counts"
+- [Better BibTeX](https://github.com/retorquere/zotero-better-bibtex)
+    - I use this because I write mostly in markdown with pandoc and citeproc, Zotero's default exporting format sometimes causes issues with cite keys. Better BibTeX solves that issue. It can also auto update citation files. Below are the instructions for installation and configuration:
+        1. After the restart I selected these options in the dialogue box: "Use the BBT default citekey format"
+        1. I then deselect the "Enable drag-and-drop citations"
+        1. I don't change anything on the next screen
+        1. You will need to restart Zotero again
+        1. Better BibTeX will then create a new key for all of the citations in your library
+        1. When exporting select better BibTeX and that should help with citations using BibTeX or BibLaTeX

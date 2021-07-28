@@ -48,8 +48,28 @@
     - Very useful to scraping websites
     - Some more advanced commands with requests can be found [here](https://findwork.dev/blog/advanced-usage-python-requests-timeouts-retries-hooks/)
 - [Graph-tool](https://graph-tool.skewed.de/)
-    - This is a network visualization package that must cannot be installed using pip the instructions for installation can be found [here](https://git.skewed.de/count0/graph-tool/-/wikis/installation-instructions)
     - I use this over networkx for any networks that are very large, otherwise networkx takes a very long time to deal with large networks
+    - This is a network visualization package that must cannot be installed using pip the instructions for installation can be found [here](https://git.skewed.de/count0/graph-tool/-/wikis/installation-instructions)
+    - for Ubuntu 20.04 you can use this command: `sudo sh -c "echo 'deb [ arch=amd64 ] https://downloads.skewed.de/apt focal main' >> /etc/apt/sources.list"` then `sudo apt-key adv --keyserver keys.openpgp.org --recv-key 612DEFB798507F25` then `sudo apt-get update && sudo apt-get upgrade -y` and then `sudo apt-get install python3-graph-tool`
+    - It seems that the better way to go about installing and using graph-tool is to use anaconda, graph-tool has spicifically been designed for installation and use on anaconda, steps to install and use anaconda on Ubuntu is included below
+
+    ```sh
+    # use pyenv to install anaconda and then activate it globally to create the virtual environment for graph-tools
+    pyenv install anaconda3-2020.11
+    pyenv global anaconda3-2020.11
+    # create environment
+    conda create -n graphtool python=3.8.5 -y
+    # activate the environment
+    conda activate graphtool
+    # install required packages
+    conda install numpy pandas tqdm flake8 black isort -y
+    pip install pyarrow zstandard sandspythonfunctions
+    # install graph-tool
+    conda install -c conda-forge graph-tool
+
+    For using igraph add the following
+    conda install -y -c conda-forge python-igraph
+    ```
 
 ### pywin32
 
@@ -59,11 +79,14 @@ This package allows for accessing the Windows API. The installation is a bit com
 
 This is a big data analysis packages that requires a bit of setup
 
-- You need to install the Java JDK
+- You need to install the Java JDK, then you can used pip to install pyspark
 
-```PowerShell
-choco install jdk8
-```
+    ```sh
+    # for Windows
+    choco install jdk8
+    # for Ubuntu
+    sudo apt update && sudo apt -y upgrade && sudo apt install default-jdk && java -version
+    ```
 
 ## Install Python Modules Within a Script
 
@@ -167,6 +190,7 @@ choco install jdk8
 - [Helium](https://github.com/mherrmann/selenium-python-helium): Selenium-python is great for web automation. Helium makes it easier to use.
 - [Jupytext](https://github.com/mwouts/jupytext): Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts
 - [MyST](https://myst-parser.readthedocs.io/en/latest/index.html): MyST allows you to write Sphinx documentation entirely in markdown.
+- [PandasGUI](https://github.com/adamerose/PandasGUI): A GUI for Pandas DataFrames
 - [PyFlow](https://github.com/David-OConnor/pyflow): An installation and dependency system for Python (it looks way easier than environments)
 - [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI): Python GUI For Humans - Transforms tkinter, Qt, Remi, WxPython into portable people-friendly Pythonic interfaces - [RealPython Article](https://realpython.com/pysimplegui-python/)
 - [PySnooper](https://github.com/cool-RR/pysnooper):  "[Y]ou just add one decorator line to the function you're interested in. You'll get a play-by-play log of your function [...]"

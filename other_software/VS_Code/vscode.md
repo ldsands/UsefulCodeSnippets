@@ -35,6 +35,7 @@ Code snippets are, "templates that make it easier to enter repeating code patter
     - `${BLOCK_COMMENT_START}` this will insert the start of a block comment
     - `${BLOCK_COMMENT_END}` this will insert the end of a block comment
     - `${TM_SELECTED_TEXT}` this will do something to the text that is selected
+    - `${RELATIVE_FILEPATH }` this will get the relative filepath from the parent workspace until the location of the file targeted
     - `${CLIPBOARD}` this will do something with whatever is in the clipboard
 - Here is a simple snippet example that I use for creating class notes (I write all of my class notes in markdown in VS Code). I just inserts the code contained in the `body` section after I type in the text contained in the `prefix` section
 
@@ -93,7 +94,7 @@ Code snippets are, "templates that make it easier to enter repeating code patter
 
 ## Extension Authoring
 
-You can create your own extensions in VS Code and put almost any functionality you can think of. To get started you should go to [this site](https://vscode-docs.readthedocs.io/en/latest/extensions/example-hello-world/). There is also a [GitHub repository](https://github.com/microsoft/vscode-extension-samples) that has several example extensions for you to look at for help. These following sites are also meant to help you get your extension started, tested, published, bundled and setup continuous integration (CI). You can also use the [API documentation](https://code.visualstudio.com/api/references/vscode-api) to find all of hte ways that you can interface with VS Code to create your extension.
+You can create your own extensions in VS Code and put almost any functionality you can think of. To get started you should go to [this site](https://vscode-docs.readthedocs.io/en/latest/extensions/example-hello-world/). There is also a [GitHub repository](https://github.com/microsoft/vscode-extension-samples) that has several example extensions for you to look at for help. These following sites are also meant to help you get your extension started, tested, published, bundled and setup continuous integration (CI). You can also use the [API documentation](https://code.visualstudio.com/api/references/vscode-api) to find all of the ways that you can interface with VS Code to create your extension.
 
 - [Testing instructions](https://code.visualstudio.com/api/working-with-extensions/testing-extension)
 - [Publishing instructions](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)

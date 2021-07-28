@@ -6,6 +6,7 @@
     - [Useful Bash/zsh Commands](#useful-bashzsh-commands)
         - [WSL Setup](#wsl-setup)
     - [Ubuntu Setup](#ubuntu-setup)
+        - [Ubuntu Maintenance](#ubuntu-maintenance)
 
 Bash is a command shell for unix systems and is the most popular shell used in Linux systems. Zsh is another unix shell that has a ton of useful features not included in Bash, for a list of Zsh features see [this page](https://github.com/hmml/awesome-zsh).
 
@@ -133,9 +134,9 @@ To set up WSL follow the instructions I've set [up here](windows_program_instruc
 
 Now to get bash all set up with useful features do the following steps:
 
-1. install zsh
+1. Install zsh
     - See detailed instructions [here](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#install-and-set-up-zsh-as-default) or [here for WSL specifically](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH#ubuntu-debian--derivatives-windows-10-wsl--native-linux-kernel-with-windows-10-build-1903)
-1. install Oh My Zsh
+1. Install Oh My Zsh
     - See detailed instructions [here](https://github.com/ohmyzsh/ohmyzsh#basic-installation)
 
 - Other sources I used while doing this
@@ -338,3 +339,23 @@ Below are the step I take to setup my linux shell the way I like it in various s
     ' >> ~/.zshrc
     ```
 
+### Ubuntu Maintenance
+
+- Disk size issues
+    - This command `du -a --block-size=1G / | sort -n -r | head -n 25` identifies the top 25 folders by size in Linux
+    - Most of the size issues will come from files stored in the `~/../../tmp` folder, this should be cleaned each time Ubuntu restarts but this sometimes won't happen
+        - To clean this folder you can use this command `sudo find /tmp -type f -atime +10 -delete` [(found here)](https://askubuntu.com/a/609396) this deletes all files and folders that have not been used in 10 days
+        - For WSL a couple of useful tools to reclaim disk space after you've cleaned out you linux files, you need to do this because although Windows will expand the size of the drive as needed it will not shrink the drive after deleting files in Linux [(more details can be found here)](https://hakanu.net/wsl/2021/03/26/reclaim-wsl-disk-space-back-wsl-ubuntu-windows/)
+            - First you need to shutdown WSL `wsl --shutdown`
+            - Then start MSDiskPart `diskpart`
+            - Navigate to `C:\Users\ldsan\AppData\Local\Packages` and find the folder with your WSL image (e.g. CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc)
+            - Open that folder and then open the `LocalState` folder, copy the path of the file contained in this folder (see the next command for an example path)
+            - Use the command here but change the filepath as needed `select vdisk file=C:\Users\ldsan\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState\ext4.vhdx`
+            - Then enter these commands:
+
+            ```sh
+            attach vdisk readonly
+            compact vdisk
+            detach vdisk
+            exit
+            ```
