@@ -28,61 +28,86 @@ There are three main package managers for Windows. Chocolaty, Scoop and Winget.
 
 ## Win 32
 
-Below are Windows programs that are installed using chocolatey
+Below are Windows programs that are installed using chocolatey or winget
 
-- Google Chrome
+- [Google Chrome](https://www.google.com/chrome/) I install this using Chocolatey
     - The most popular browser I personally prefer the new version of Edge but old habits die hard
-- Visual Studio Code or VS Code
+- [Visual Studio Code or VS Code](https://code.visualstudio.com/) I install this using Chocolatey
     - A truly incredible text editor that is really in IDE in capabilities for many programming languages
     - For me writing in anything else is frustrating because of other programs limitations
     - For more information on my VS Code setup and other tips see [this other markdown sheet](../vscode.md)
-- 7zip
+- [7+ Taskbar Tweaker](https://tweaker.rammichael.com/) This can be installed using Winget
+    - A taskbar settings application that allows for a lot of customization of Windows taskbar.
+    - My settings that I usually use are as follows:
+        - Taskbar items: Dropping: select "Open with"
+        - Taskbar items: Pinned items: select "Remove extra gap between items"
+        - Grouping and combining: Grouping: select "Don't group" and "When not grouping, place new items next to the existing ones"
+        - Grouping and combining: Combining: select "Don't combine grouped buttons"
+        - Other taskbar options: Other: select "Hide the "Show desktop" button"
+- [7-Zip](https://www.7-zip.org/) I install this using Chocolatey
     - For all of your compression and decompression needs free and open source and very capable
-- [git](../git.md)
+- [Calibre](https://calibre-ebook.com/) I install this using Chocolatey
+- [Bottom](https://github.com/ClementTsang/bottom) I install this using Chocolatey
+    - This is a process explorer that is both very capable but also lightweight and runs in a terminal. I usually use this command to launch it `btm --group --battery --dot_marker --hide_table_gap --mem_as_value`
+    - I use this for converting pdfs to epubs and for reading epubs
+- [Ditto](https://github.com/sabrogden/ditto) I install this using Chocolatey
+    - This is a great clipboard manager for Windows. You can now also use `win` + `v` for a similar built in program
+- [Git](../git.md) I install this using Chocolatey
     - This is required for using github it is the source control software on which github is based
     - I don't know much about how to use git without either github and/or vscode
-- [pandoc](../pandoc_commands.md)
+- [Pandoc](../pandoc_commands.md) I install this using Chocolatey
     - This can convert just about any document format into any other
     - I use it primarily to write in markdown and then convert to either docx or pdf depending on my need at the time
-- [R](../../programming_languages/R/r_resources.md)
+- [R](../../programming_languages/R/r_resources.md) I install this using Chocolatey
     - R is a statistically focused programming language it is really quirky but very powerful from a statistical point of view
-- Nodejs
+- [Nodejs](https://nodejs.org/en/) I install this using Chocolatey
     - This is for installing javascript it has occasionally been useful to me in the past for electron apps and other applications
-- SumatraPDF
+- [SumatraPDF](https://github.com/sumatrapdfreader/sumatrapdf) I install this using Chocolatey
     - This is a super lightweight pdf reader I use it when working LaTeX since it doesn't have a file lock
-- Dotnetcore-sdk
+- [Dotnetcore-sdk](https://dotnet.microsoft.com/download/dotnet-core) I install this using Chocolatey
     - Used for my C# programming (I wish I could use it more but alas time never seems to allow me to experiment)
-- [Julia](../../programming_languages/julia/julia.md)
+- [Julia](../../programming_languages/julia/julia.md) I install this using Chocolatey
     - Julia is a programming language that is python but rewritten for speed (there are lots of other benefits but speed is what I use it for) I have been able to get some scripts running thousands of times faster when I rewrote them Julia
     - Julia is still really new though so it is limited in the available packages but again otherwise I wish I could write only in Julia
-- FiraCode NF
+- [ImageMagick](https://imagemagick.org/) I install this using Chocolatey
+    - This is an image utility that is used by the command line. For example you can copy and convert files to the `avif` format (very new very good for saving space) to save space `magick .\image.jpg image.avif`
+- [FiraCode NF](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode) I install this using Chocolatey
     - My favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
-- CascadiaCode Nerd Font
+- CascadiaCode Nerd Font I install this using Chocolatey
     - Another excellent font for coding that included ligatures and glyphs it can be found on GitHub [here](https://github.com/ryanoasis/nerd-fonts/tree/606db3752d4e6d31a2f47258ce86f7bb07511521/patched-fonts/CascadiaCode)
-- R Studio
+- R Studio I install this using Chocolatey
     - The defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VS Code, occasionally however I jump into R.Studio for the variable explorer and other little things
-- [Texlive](https://tug.org/texlive/)
+- [Texlive](https://tug.org/texlive/) I install this using Chocolatey
     - Another LaTeX installer, this one is a bit more comprehensive than MikTeX is
-- MikTeX
-    - The defacto LaTeX installation for Windows I don't use LaTeX directly much anymore but pandoc uses it so I usually install it
-- [Zotero](zotero.md)
+- [Textify](https://rammichael.com/textify) I install this using winget
+    - A simple program that allows for copying text from pretty much any program
+- [Zotero](zotero.md) I install this using Chocolatey
     - My preferred reference manager that is free and open source very good alternative to EndNote and other alternatives (in my opinion it is better in pretty much every way)
-- Firefox
+- [Firefox](https://www.mozilla.org/en-US/firefox/new/) I install this using Chocolatey
     - Sometimes chrome cannot load something so I usually use Firefox as my back up
-- Discord
-    - Although primarily used for gaming it is the best video and phone over IP program that I've ever used
-- Logitech-options
+- [Discord](https://discord.com/) I install this using Chocolatey
+    - Although primarily used for gaming it is among the best video and phone over IP programs that I've ever used
+- [Logitech-options](https://support.logi.com/hc/en-us/articles/360025297893-Logitech-Options) I install this using Chocolatey
     - I love my logitech mice so I always install this to take advantage of customizing my mouse buttons
-- Chocolateygui
-    - I've almost never used this but it gives a GUI interface to chocolatey which has been useful once or twice in the past
-- TeamViewer
+- [TeamViewer](https://www.teamviewer.com/en/) I install this using Chocolatey
     - When I can get it to work its very useful to be able to access my home computer from school or on my laptop
-- Hwmonitor
+- [Telegram](https://telegram.org/) I install this using Chocolatey
+    - This is my main messenger for personal chats (I would probably use Microsoft Teams but notifications are inconsistent on mobile)
+- [QuickLook](https://github.com/QL-Win/QuickLook) I install this using Chocolatey
+    - This is used to easily and quickly preview files in windows explorer using the `spacebar` when having a file selected
+    - I also install the epub and MS office previewers found on [this page](https://github.com/QL-Win/QuickLook/wiki/Available-Plugins)
+- [Hwmonitor](https://www.cpuid.com/softwares/hwmonitor.html) I install this using Chocolatey
     - I don't use this much either but it is very good and showing hardware resource usage, its useful for tracking down hardware problems or if you happen to be using a ton of CPU on something it can help you track down whats using it
-- VLC
+- [VLC](https://www.videolan.org/vlc/) I install this using Chocolatey
     - A video (and audio) player that plays pretty much anything you throw at it
 - [Krita](https://krita.org/en/) - [Krita documentation](https://docs.krita.org/en/)
     - This is kind of like a PhotoShop but quite a bit simpler (or so I'm told). I use it primarily for modifying svg type images since doing so in Krita is pretty simple but also able to do everything I want to do with it.
+- [PDF-XChange Editor Plus](https://www.tracker-software.com/product/pdf-xchange-editor) I use a portable version of this application
+    - There is a free version that includes most of the features of the program
+    - [I have a separate file that details how I setup and use this program](PDFXChangeEditor.md)
+- [PotPlayer](https://potplayer.daum.net/) I install this using Chocolatey
+    - An audio player that allows for variable speed playback
+    - It also allows me to pause using bluetooth controls (VLC doesn't do this)
 
 Below are Windows programs that are not able to be installed via chocolatey that I always install
 
@@ -103,8 +128,8 @@ C:\Users\%username%\AppData\Roaming\npm
 C:\Program Files\nodejs
 # to install nativefier
 npm install nativefier -g
-# to update nativefier (you must have admin privileges)
-npm update -g nativefier
+# to update nativefier (you must have admin privileges) you should update npm first then update nativefier (the command below updates npm and then nativefier)
+npm update -g npm && npm update -g nativefier
 # it is also a good idea to create a folder just for nativefier below is where I put it
 New-Item -Path 'C:\tools\nativefier' -ItemType Directory
 # now navigate to the folder to create the nativefier program there
@@ -117,6 +142,7 @@ The options are all explained [here](https://github.com/jiahaog/nativefier/blob/
     - `--hide-window-frame` disables window frame and controls.
     - `--single-instance` you can only have one window of this open at a time
     - `--internal-urls ".*?"` if you want any domain to be able to work in the nativefier window
+    - `--portable` "Make your app store its user data (cookies, cache, etc) inside the app folder"
 
 Some Nativefier Limitations
 
@@ -130,7 +156,9 @@ nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-url
 # outlook personal single instance with tray icon
 nativefier https://outlook.live.com/mail/0/inbox --name "Outlook" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/microsoft-outlook-2019-240.ico --maximize
 # Uiowa outlook site
-nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
+nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|officeonline|microsoftonline|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --single-instance --tray --counter --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
+# Uiowa outlook site single instance with trey icon
+nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|officeonline|microsoftonline|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.ico --maximize
 # ICON site
 nativefier --name "ICON" "https://uiowa.instructure.com" --internal-urls ".*(uiowa|instructure)\.(com|edu).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/icon_uiowa_edu.ico --maximize
 # ProWritingAid editor site
@@ -138,7 +166,7 @@ nativefier --name "ProWritingAid" "https://prowritingaid.com/en/Analysis/Documen
 # Todoist site loads to the upcoming view
 nativefier --name "Todoist" "https://todoist.com/app/#upcoming" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize
 # Todoist site loads to the upcoming view
-nativefier --name "Todoist Beta" "https://beta.todoist.com/app/#upcoming" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize
+nativefier --name "Todoist Beta" "https://beta.todoist.com/app/#upcoming" --internal-urls ".*todoist.com.*" --icon C:\Users\ldsan\OneDrive\Pictures\NativefierIcons\todoist.ico --maximize --portable
 # Microsoft Teams
 nativefier --name "MS Teams" "https://teams.microsoft.com/" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon C:/Users/ldsan/OneDrive/Pictures/NativefierIcons/MSTeams-icon-96x96.ico --maximize
 ```

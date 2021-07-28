@@ -15,7 +15,7 @@ winget install --id=GOG.Galaxy -e
 winget install --id=Gephi.Gephi -e
 winget install --id=Julialang.Julia -e
 winget install --id=KDE.KDEConnect -e
-winget install --id=LINQPad.LINQPad -e
+
 winget install --id=Lexikos.AutoHotkey -e
 winget install --id=LibreOffice.LibreOffice -e
 winget install --id=Microsoft.EdgeBeta -e
@@ -48,5 +48,12 @@ winget install --id=VideoLAN.VLC -e
 winget install --id=Zoom.Zoom -e
 winget install --id=agalwood.Motrix -e
 winget install --id=twitch.twitch -e
+
+winget install --id=LINQPad.LINQPad -e
 winget install --id=voidtools.Everything -e
+winget install --id QL-Win.QuickLook -e
+winget install -e --id rammichael.7+TaskbarTweaker
+winget install -e --id rammichael.Textify
+
 winget install bottom
+

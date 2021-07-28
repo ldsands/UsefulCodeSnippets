@@ -54,7 +54,7 @@ ForEach ($PackageName in $Packages) {
     Write-Host "    Installing $PackageName"
     choco install $PackageName -y | out-null
 }
-$Packages = "dotnet-sdk", "julia", "powershell-core", "r.project --params `'`"/AddToPath`"`'", "typescript"
+$Packages = "dotnet-sdk", "julia", "powershell-core", "pyenv-win", "r.project --params `'`"/AddToPath`"`'", "typescript"
 Write-Host "Installing Programming Languages"
 ForEach ($PackageName in $Packages) {
     Write-Host "    Installing $PackageName"
@@ -66,13 +66,13 @@ ForEach ($PackageName in $Packages) {
     Write-Host "    Installing $PackageName"
     choco install $PackageName -y | out-null
 }
-$Packages = "7zip", "bottom", "everything", "hwmonitor", "powertoys", "starship"
+$Packages = "7zip", "bottom", "ditto", "everything", "hwmonitor", "imagemagick", "powertoys", "quicklook", "starship", "WinDirStat"
 Write-Host "Installing Utilities + other"
 ForEach ($PackageName in $Packages) {
     Write-Host "    Installing $PackageName"
     choco install $PackageName -y | out-null
 }
-$Packages = "discord", "imageglass", "logitech-options", "speedcrunch", "sumatrapdf", "zotero"
+$Packages = "calibre", "discord", "imageglass", "logitech-options", "potplayer", "speedcrunch", "sumatrapdf", "telegram", "zotero"
 Write-Host "Installing Windows Applications"
 ForEach ($PackageName in $Packages) {
     Write-Host "    Installing $PackageName"
@@ -80,14 +80,14 @@ ForEach ($PackageName in $Packages) {
 }
 Update-Path | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 
-# Configuring Powershell Profile
-Write-Host "Configuring Powershell Profile"
-$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/bf965c404487488b86fa30dcf22cf261/raw/3d2a63514ed17f4eff5084b20a8f972157366dd7/profile.ps1
+# Configuring PowerShell Profile
+Write-Host "Configuring PowerShell Profile"
+$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/bf965c404487488b86fa30dcf22cf261/raw/958098c0711bfd26474f700eab8e23562c1121e4/profile.ps1
 New-Item $PROFILE.CurrentUserAllHosts -ItemType File -Value $ConfigContent.Content -Force | out-null
 Update-Path | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 
-# Configuring Powershell Prompt Using Starship 
-Write-Host "Configuring Powershell Prompt Using Starship"
+# Configuring PowerShell Prompt Using Starship 
+Write-Host "Configuring PowerShell Prompt Using Starship"
 # $ENV:STARSHIP_CONFIG = "$HOME\.starship" # add this to powershell profile
 if (!(Test-Path -Path "~/.config")) {
     mkdir -p ~/.config | out-null
@@ -106,7 +106,30 @@ if ( $PATH -notlike "*" + $newPath + "*" ) {
 }
 Update-Path | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 
+# Setting Bottom Config File
+Write-Host "Setting Bottom Config File"
+if (!(Test-Path -Path "C:\Users\$env:USERNAME\AppData\Roaming\bottom\bottom.toml")) {
+    mkdir -p C:\Users\$env:USERNAME\AppData\Roaming\bottom\bottom.toml | out-null
+}
+$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
+New-Item "C:\Users\$env:USERNAME\AppData\Roaming\bottom\bottom.toml" -ItemType File -Value $ConfigContent.Content -Force | out-null
+Update-Path | out-null && & $PROFILE.CurrentUserAllHosts | out-null
+
+# # Installing Chocolatey Packages by Domain of Package
+# Write-Host "Installing Chocolatey Packages by Domain of Package"
+
+# $Packages = "7+ Taskbar Tweaker"
+# Write-Host "Installing Utilities + other"
+# ForEach ($PackageName in $Packages) {
+#     Write-Host "    Installing $PackageName"
+#     choco install $PackageName -y | out-null
+# }
+
+
 # TODO: add rust as an optional package
 # TODO: add automatic downloading of powershell core to the .bat file then load the chocolateyinstall.ps1 script to make it all automatic
 # TODO: add git configuration
+#       git config --global user.name "Prename Name"
+#       git config --global user.email "email@example.com"
+#       git config --global core.autocrlf true
 # TODO: install WSL

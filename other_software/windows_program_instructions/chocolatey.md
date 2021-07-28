@@ -66,14 +66,14 @@ ForEach ($PackageName in $Packages) {
     Write-Host "    Installing $PackageName"
     choco install $PackageName -y | out-null
 }
-$Packages = "7zip", "bottom", "everything", "hwmonitor", "powertoys", "starship"
+$Packages = "7zip", "bottom", "ditto", "everything", "hwmonitor", "powertoys", "starship"
 Write-Host "Installing Utilities + other"
 ForEach ($PackageName in $Packages) {
     Write-Host "    Installing $PackageName"
     choco install $PackageName -y | out-null
 }
 
-$Packages = "discord", "imageglass", "logitech-options", "speedcrunch", "sumatrapdf", "zotero"
+$Packages = "discord", "imageglass", "logitech-options", "potplayer", "speedcrunch", "sumatrapdf", "zotero"
 Write-Host "Installing Windows Applications"
 ForEach ($PackageName in $Packages) {
     Write-Host "    Installing $PackageName"
@@ -113,7 +113,6 @@ choco install geforce-experience -y
 - [Motrix](https://motrix.app/) is a download manager that can do several download related tasks automatically
 - [PyIDM](https://github.com/pyIDM/PyIDM) is another download manager that I prefer to Mortix as it seems to work better. The Windows protable release can be downloaded from [here](https://github.com/pyIDM/PyIDM/releases)
 - [windirstat](https://windirstat.net/) shows visually what files are taking up how much space on any drives that are connected to the computer
-- [gpodder]
 
 ```PowerShell
 choco install youtube-dl
@@ -122,7 +121,6 @@ choco install ccleaner -y
 choco install putty.install
 choco install motrix
 choco install windirstat
-choco install gpodder
 ```
 
 ## Upgrading using chocolatey
@@ -130,6 +128,7 @@ choco install gpodder
 To upgrade you first should probably check to see what packages need to be upgraded. The first two lines below do that (you do need both though I'm not really sure why). Then you can use the command `choco upgrade` and then the names of the packages you want to upgrade.
 
 ```PowerShell
+choco outdated # checks all packages for updates
 cup all -whatif # checks all packages for updates
-cup all -y again # rechecks all packages for updates
+choco upgrade chocolatey # updates chocolatey
 ```

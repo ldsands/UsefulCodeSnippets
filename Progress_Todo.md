@@ -116,7 +116,7 @@ I don't use git alone so this may not get anything else
     - [x] Zotero installation instructions
         - [ ] Zotero usage instructions and or tips?
     - [ ] Chrome shortcuts and others stuff
-    - [ ] PDF XChange Editor Settings
+    - [x] PDF XChange Editor Settings
     - [ ] double cmd settings explained
     - [ ] Enpass explained
 - [x] explain chocolatey programs

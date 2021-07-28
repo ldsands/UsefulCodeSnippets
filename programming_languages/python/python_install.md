@@ -1,7 +1,8 @@
 # Python Installation Instructions and Notes
 
 - [Python Installation Instructions and Notes](#python-installation-instructions-and-notes)
-    - [Pyenv With Poetry](#pyenv-with-poetry)
+    - [Pyenv on Windows](#pyenv-on-windows)
+    - [Pyenv With Poetry (on WSL)](#pyenv-with-poetry-on-wsl)
     - [Anaconda](#anaconda)
         - [Anaconda PATH Windows instructions](#anaconda-path-windows-instructions)
         - [Install anaconda on WSL](#install-anaconda-on-wsl)
@@ -11,7 +12,22 @@
         - [Poetry Environments](#poetry-environments)
     - [Useful Python Install Commands](#useful-python-install-commands)
 
-## Pyenv With Poetry
+## Pyenv on Windows
+
+```PowerShell
+# install using chocolatey
+choco install pyenv-win
+# update the list of available versions of python for installation
+pyenv update
+# list all available versions of python for installation
+pyenv install --list
+# install python version 3.9.4
+pyenv install 3.9.4
+# set version 3.9.4 as the global version of python
+pyenv global 3.9.4
+```
+
+## Pyenv With Poetry (on WSL)
 
 Pyenv is a simpler version of what anaconda does but with poetry (which uses pyenv) it is pretty much just as powerful. I used [this site](https://dev.to/writingcode/the-python-virtual-environment-with-pyenv-pipenv-3mlo) for help putting this together. Poetry is kind of like anaconda but just newer and a little less separated from the rest of the python ecosystem.
 
@@ -21,6 +37,10 @@ Pyenv is a simpler version of what anaconda does but with poetry (which uses pye
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+    echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+    source ~/.zshrc
     # you also need these for using pyenv
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
@@ -52,6 +72,7 @@ Pyenv is a simpler version of what anaconda does but with poetry (which uses pye
     - Install a version of python `pyenv install 3.8.3`
     - Make it available globally so you don't have to touch your system wide version of python (that comes with your distro) `pyenv global 3.8.3`
     - Enter `pyenv versions` to see what versions are available to you
+    - You can install an extension that allows for updating pyenv using this command `pyenv update` you can install it on Ubuntu using this command: `git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update`
 - Now to add virtualenv. [This article](https://realpython.com/intro-to-pyenv/#virtual-environments-and-pyenv) was helpful for understanding virtualenv better. To install see above.
     - For usage of virtualenv see [this link](https://github.com/pyenv/pyenv-virtualenv#usage) on their github repo
 - Now to install poetry see more detailed instructions [here](https://github.com/pyenv/pyenv/wiki/Common-build-problems).
@@ -146,6 +167,8 @@ This is for shen the add to path doesn't work for the chocolatey install
 - If you're using anaconda then use their environment manager it is very good and comprehensive it can also specify what version of python you're using which is very useful for sharing projects. However there is the drawback of not having all access to PyPI which is the official repository for all python packages. To get access to these you still have to use pip which occasionally does cause issues with conda. The reason conda does this is because pip does not deal with non-python packages very well. So if there is a package that depends on say c++ or some other lower level language pip has been known to be very bad at dealing with those dependencies. Anaconda solves that issue completely.
 
 - Venv is what I recommend (for now) for "normal" python for the moment it is kind of limited (unable to handle a lot of non-python packages though this is more of a pip issue than venv) and a but more complicated to use and activate but it seems to work pretty well. Venv does not have the ability to dictate the version of python that is used either.
+    - To create a local version of python `python -m venv venv`
+    - You must then activate this new instance of python, for Linux `source venvUbu/bin/activate` for Windows `.\venv\Scripts\activate.ps1`
 
 - Another option is [Pyflow](https://github.com/David-OConnor/pyflow) which uses Rust on the backend. It is very fast and very easy to use though you do have to have either a pyproject.toml or a line in the script similar to the following: `__requirements__ = ["pandas", "numpy"]` to work with pyflow. This may be my favorite as of Summer 2020 since it is so easy to use. To install pyflow there are several options however I recommend installing rust then use this command: `cargo install pylow`. Instructions on how to install Rust can be found [here](../rust/rust_install.md). If on a debian based distro you can also use this command `cd ~/ && wget https://github.com/David-OConnor/pyflow/releases/download/0.2.7/pyflow_0.2.7_amd64.deb && sudo dpkg -i pyflow_0.2.7_amd64.deb && rm pyflow* && pyflow --version`.
     - You can create the folder containing all of the Python and Python packages needed by entering `pyflow init` or in a new folder by entering `pyflow new ProjectName`.
