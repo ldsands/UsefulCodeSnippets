@@ -54,6 +54,8 @@ Below are Windows programs that are installed using chocolatey or winget
     - This is a very capable disk partition manager, I need this for any use of setting GPT or MBR of a drive which with stock Windows can only be done using a cmd utility
 - [Ditto](https://github.com/sabrogden/ditto) I install this using Chocolatey
     - This is a great clipboard manager for Windows. You can now also use `win` + `v` for a similar built in program
+- [Files](https://files-community.github.io/) I install this via the Microsoft Store
+    - This is a replacement for file explorer with more useful features
 - [Git](../git.md) I install this using Chocolatey
     - This is required for using github it is the source control software on which github is based
     - I don't know much about how to use git without either github and/or vscode
