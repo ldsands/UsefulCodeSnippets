@@ -50,6 +50,8 @@ Below are Windows programs that are installed using chocolatey or winget
 - [Bottom](https://github.com/ClementTsang/bottom) I install this using Chocolatey
     - This is a process explorer that is both very capable but also lightweight and runs in a terminal. I usually use this command to launch it `btm --group --battery --dot_marker --hide_table_gap --mem_as_value`
     - I use this for converting pdfs to epubs and for reading epubs
+- [DiskGenius](https://www.diskgenius.com/download.php) I install this using the 64 bit portable version available at the link here
+    - This is a very capable disk partition manager, I need this for any use of setting GPT or MBR of a drive which with stock Windows can only be done using a cmd utility
 - [Ditto](https://github.com/sabrogden/ditto) I install this using Chocolatey
     - This is a great clipboard manager for Windows. You can now also use `win` + `v` for a similar built in program
 - [Git](../git.md) I install this using Chocolatey
