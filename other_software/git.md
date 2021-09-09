@@ -41,6 +41,21 @@ When you include a file in the parent directory of a project managed by git/GitH
 **/*.pyc
 ```
 
+## Clean the git folder
+
+- You can clean the git folder to reduce the size of the repository
+- The old way of cleaning the git folder -  more information can be found [here](https://stackoverflow.com/a/2116892/8396684)
+- The new way uses a command that is supposed to depreciate the `git gc` command more can be found [here](https://git-scm.com/docs/git-maintenance)
+
+```sh
+# old way of cleaning a repo
+git reflog expire --all --expire=now
+git gc --prune=now --aggressive
+# the new way of doing it
+git reflog expire --all --expire=now
+git maintenance run --task=gc
+```
+
 ## Removing Unwanted Files From Git History
 
 You may need or want to remove files from a repo that has accidentally been committed. The cases usually cited are for large files or files that contain private/sensitive information. I had accidentally committed a bunch of audio files one time in a repo I had made. I wanted to remove these from the git history because they were taking up a ton of space. I found out about [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) which removes files based on some criteria. The instructions on the BFG Repo-Cleaner website are pretty good you should really follow them. Below are the steps I took to do this (more just to remember please use the instructions on [this site](https://rtyley.github.io/bfg-repo-cleaner/)).
