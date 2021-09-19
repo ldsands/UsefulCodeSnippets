@@ -79,7 +79,9 @@ Below are Windows programs that are installed using chocolatey or winget
     - My favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
 - CascadiaCode Nerd Font I install this using Chocolatey
     - Another excellent font for coding that included ligatures and glyphs it can be found on GitHub [here](https://github.com/ryanoasis/nerd-fonts/tree/606db3752d4e6d31a2f47258ce86f7bb07511521/patched-fonts/CascadiaCode)
-- R Studio I install this using Chocolatey
+- [PeaZip](https://peazip.github.io/) I install this using Chocolatey
+    - a good alternative to 7-zip that includes the zstandard codec
+- [R Studio] I install this using Chocolatey
     - The defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VS Code, occasionally however I jump into R.Studio for the variable explorer and other little things
 - [Texlive](https://tug.org/texlive/) I install this using Chocolatey
     - Another LaTeX installer, this one is a bit more comprehensive than MikTeX is
