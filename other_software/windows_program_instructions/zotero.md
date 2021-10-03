@@ -88,3 +88,9 @@ To complete the instructions to install Zotero and setup the WebDAV file syncing
         1. You will need to restart Zotero again
         1. Better BibTeX will then create a new key for all of the citations in your library
         1. When exporting select better BibTeX and that should help with citations using BibTeX or BibLaTeX
+- [Citation Picker for Zotero (for VSCode)](https://marketplace.visualstudio.com/items?itemName=mblode.zotero)
+    - You must have Better BibTeX installed to use this
+    - This allows you to use the same citation selector that you can use in MS Word or LibreOffice Word
+- [Mdnotes](https://github.com/argenos/zotero-mdnotes)
+    - You must have Better BibTeX and Zotfile installed to use this
+    - A Zotero plugin to export item metadata and notes as markdown files
