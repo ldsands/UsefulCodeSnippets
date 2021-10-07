@@ -6,10 +6,12 @@ Note: in May of 2020 Microsoft released their own package manager that I will sl
 
 ## Install chocolatey
 
-make sure you open powershell as an administrator otherwise chocolatey will not be able to install
+- Make sure you open powershell as an administrator otherwise chocolatey will not be able to install
+    - You also need to make sure that you have the `ExecutionPolicy` set to `AllSigned`, `Bypass` or `Unrestricted` you can check this by using the command `Get-ExecutionPolicy -List`
 
 ```PowerShell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+Set-ExecutionPolicy Bypass -Scope Process
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
 ## Install programs

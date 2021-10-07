@@ -250,12 +250,22 @@ Below are the step I take to setup my linux shell the way I like it in various s
     rustup update stable
     cargo install bottom
     # use bottom by typing in `btm`
+    # this will create a config file for bottom which is taken from a personal gist
+    https://gist.github.com/ldsands/93f985822143f9f5f58567803e5787ef
     # installation of exa which is a replacement for ls (required rust)
     rustup update stable
     cargo install exa
     # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F`
     # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -R -T -F -L=2` to see files in folders
-
+    # this installs starship which is a cross platform/shell prompt
+    sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+    # create bottom and starship config files
+    mkdir -p ~/.config && mkdir -p ~/.config/bottom/
+    # copy my configuration from my gists to the bottom.toml and starship.toml files
+    cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
+    cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a975bad49c61e290801ff663ef7df279fe0a96a9/starship.toml
+    # this adds the starship initialize command to the end of the zsh config file
+    echo 'eval "$(starship init zsh)"' >> ~/.zshrc
     ```
 
 - The theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.
