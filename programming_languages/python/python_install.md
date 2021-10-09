@@ -62,31 +62,21 @@
     - Make it available globally so you don't have to touch your system wide version of python (that comes with your distro) `pyenv global 3.9.7`
     - Enter `pyenv versions` to see what versions are available to you
     - You can install an extension that allows for updating pyenv using this command `pyenv update` you can install it on Ubuntu using this command: `git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update`
-- Now to add virtualenv. [This article](https://realpython.com/intro-to-pyenv/#virtual-environments-and-pyenv) was helpful for understanding virtualenv better. To install see above.
-    - For usage of virtualenv see [this link](https://github.com/pyenv/pyenv-virtualenv#usage) on their github repo
-- Now to install poetry see more detailed instructions [here](https://github.com/pyenv/pyenv/wiki/Common-build-problems).
-    - Note that the `sudo apt-get install python-is-python3` probably won't be needed after late May of 2020 due to a fix
+- Now you can install poetry see more detailed instructions [here](https://python-poetry.org/docs/master/#installation).
+    - To publish the package to PyPI you will need to use an environment variable with your PyPI token.
+    - More instructions on how to use poetry can be found [here](python_modules.md#creating-a-local-package).
 
     ```zsh
     # install poetry for python management
-    sudo apt-get install python-is-python3
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
-    mkdir $ZSH/plugins/poetry
-    poetry completions zsh > $ZSH/plugins/poetry/_poetry
-    sudo apt-get install python3-venv -y
-    exec "$SHELL"
-    ```
-
-- Once you have poetry installed you can use it with the pyenv-virtualenv environments
-    - `poetry install` will install everything that is required (and specified by the poetry pyproject.toml) it will also create a poetry.lock file which will not allow for updating manually thus avoiding a lot of incompatibility headaches. Also if you've used poetry to install the dependencies in a pyenv-virtualenv environment then you'll need to activate it by entering `poetry shell` into the command line.
-    - If you create a virtual environment just using poetry you can remove it by using this command `poetry env remove envname`
-    - If you're using a global environment you will have to do the poetry install from the location of the pyproject.toml file for it to work
-
-    ```zsh
-    # poetry used with pyenv virtualenv while having a virtual environment activated
-    poetry install
-    poetry shell
-    poetry env info
+    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+    echo '# poetry path
+    export PATH="$HOME/.local/bin:$PATH"\n' >> ~/.zshrc
+    mkdir $ZSH_CUSTOM/plugins/poetry
+    poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+    # this adds the token for publishing from poetry to PyPI
+    export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"
+    # and again the persistent version
+    echo 'export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"' >> ~/.zshrc
     ```
 
 ## Anaconda
