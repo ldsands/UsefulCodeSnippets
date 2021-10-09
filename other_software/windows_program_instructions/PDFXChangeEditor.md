@@ -10,8 +10,40 @@ The changelog is located [here](https://www.tracker-software.com/product/pdf-xch
     - Documents tab:
         - Enable: "Restore Last Session when application starts"
         - Disable: "Back/Forward commands navigate through all opened documents"
+    - Page Display:
+        - Select: Default View - "Bookmarks Pane and Page"
+        - Select: Default Page Layout - "Single Page"
+        - Enable: Default Page Zoom - "Fit Page"
+        - Enable: Page Display - "Use logical page numbers"
+        - Enable: Page Display - "Forbid the change of current Zoom factor, during execution of [...]"
+    - Registration:
+        - Select: "Add New License Key..." paste in the serial key which can be found [here](https://www.tracker-software.com/myaccount) (after logging in)
+    - Speech:
+        - Disable: "Use Default Voice"
+        - Select: "Vocalizer Expressive serena [...]" (if installed I prchased this from [this location](https://sites.fastspring.com/nextup/product/nuance?store=parameters))
+        - Disable: "Use Default Speech Attributes"
+        - Select 10: "Rate"
     - Tools tab:
         - Default Tool: "Select Tool"
+- Customize Toolbars
+    - Remove the commands already on the "Document Options" toolbar (in the lower left corner)
+    - Open the "Commands" tab in the Customize Toolbars dialogue box
+    - For all of the following commands search for the cammand, then drag the command down to the "Document Options" toolbar, then right click on that command and deselect "Show Text"
+        - cmd.tool.selectText (Select Text)
+        - cmd.tool.annot.highlight (Highlight Text Tool)
+        - cmd.tool.cropPage (Crop Page Tool)
+        - cmd.document.cropPages (Crop Pages)
+        - cmd.document.removeCroppedContent (Remove Cropped Content)
+        - cmd.document.deletePages (Delete Pages)
+        - cmd.bp.generate (Generate Bookmarks From Page Text)
+        - cmd.tool.editContent (Edit Content)
+        - cmd.tool.editContent.text (Text)
+    - In the Commands tab:
+        - Search for cmd.openSrcFolder (Open Containing Folder)
+            - Select the command and Select the "Properties..." button
+            - Click in the text box under "Keys:" and then use the keyboard keys `ctrl+E` twice
+            - Select the green check mark to assign the shortcut
+- Once all of this is done you should copy the "Settings.dat" file just in case something happens.
 
 ## Usage Tips and Tricks
 
