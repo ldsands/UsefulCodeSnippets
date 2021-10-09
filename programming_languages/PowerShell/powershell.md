@@ -322,7 +322,6 @@ PowerShell functions can be very powerful and do pretty much anything you can th
 
 - More information about setting aliases can be found [here](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/set-alias) or you can use the following example as a guide: `Set-Alias -Name list -Value Get-ChildItem -Force` this creates an alias `list` that will show all of the items in a folder but also show the hidden items
 
-
 ### Random Useful Commands
 
 - To get the help information for any command or cmdlet use `help cmdlet` where cmdlet is the command about which you want more information. An example is `help Get-ChildItem`.
@@ -342,6 +341,10 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
     wsl --set-default-version 2
     ```
+
+- For getting guid identifier numbers (which I use in Windows Terminal) you can use this command to get the PowerShell IDs `get-wmiobject Win32_Product | Sort-Object -Property Name |Format-Table IdentifyingNumber, Name, LocalPackage -AutoSize`
+    - to get the WSL distro IDs you can use need to launch the registry editor and add this string to the navigation bar `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModel\StateRepository\Cache\PackageFamily\Data\` you will have to go through the entries labeled as `PachageFamily` to find starting with `CanonicalGroupLimited` (or something similar to that) then the `Publisher` item will have the guid. More information can be found [here](https://community.spiceworks.com/how_to/164487-windows-terminal-how-to-find-the-guids-for-the-profiles-json-file-in-the-registry).
+    - You can find more about dynamic profiles in Windows Terminal [here](https://docs.microsoft.com/en-us/windows/terminal/dynamic-profiles#prevent-a-profile-from-being-generated)
 
 ## Using PowerShell on Windows
 

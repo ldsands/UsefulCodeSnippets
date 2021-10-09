@@ -2,7 +2,7 @@
 
 - [Python Installation Instructions and Notes](#python-installation-instructions-and-notes)
     - [Pyenv on Windows](#pyenv-on-windows)
-    - [Pyenv With Poetry (on WSL)](#pyenv-with-poetry-on-wsl)
+    - [Pyenv (on WSL)](#pyenv-on-wsl)
     - [Anaconda](#anaconda)
         - [Anaconda PATH Windows instructions](#anaconda-path-windows-instructions)
         - [Install anaconda on WSL](#install-anaconda-on-wsl)
@@ -14,63 +14,52 @@
 
 ## Pyenv on Windows
 
-```PowerShell
-# install using chocolatey
-choco install pyenv-win
-# update the list of available versions of python for installation
-pyenv update
-# list all available versions of python for installation
-pyenv install --list
-# install python version 3.9.4
-pyenv install 3.9.4
-# set version 3.9.4 as the global version of python
-pyenv global 3.9.4
-```
+- Pyenv is a simpler version of what anaconda does but it is pretty much just as powerful. You can find the installation instructions [here](https://github.com/pyenv-win/pyenv-win#installation) on the github page for the project.
 
-## Pyenv With Poetry (on WSL)
+    ```PowerShell
+    # install using chocolatey
+    choco install pyenv-win
+    # update the list of available versions of python for installation
+    pyenv update
+    # list all available versions of python for installation
+    pyenv install --list
+    # install python version 3.9.7
+    pyenv install 3.9.7
+    # set version 3.9.7 as the global version of python
+    pyenv global 3.9.7
+    ```
 
-Pyenv is a simpler version of what anaconda does but with poetry (which uses pyenv) it is pretty much just as powerful. I used [this site](https://dev.to/writingcode/the-python-virtual-environment-with-pyenv-pipenv-3mlo) for help putting this together. Poetry is kind of like anaconda but just newer and a little less separated from the rest of the python ecosystem.
+## Pyenv (on WSL)
 
-- Install Pyenv on linux (with zsh) and add to the PATH
+- Pyenv is a simpler version of what anaconda does but it is pretty much just as powerful. I used [this site](https://dev.to/writingcode/the-python-virtual-environment-with-pyenv-pipenv-3mlo) for help putting this together. Below are the instructions to install pyenv and add it to path.
 
-    ```zsh
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-    echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc
-    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
-    source ~/.zshrc
-    # you also need these for using pyenv
+    ```sh
+    # setup pyenv
+    # upgrade everything
+    sudo apt-get update && sudo apt-get upgrade -y
+    # install dependencies
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
-    exec "$SHELL"
-    # now to set the new default for future projects
-    pyenv install 3.8.3
-    pyenv global 3.8.3
+    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+    # install pyenv and put into the PATH
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    echo '# pyenv stuff
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"\n' >> ~/.zshrc
+    # install python using pyenv
+    pyenv install 3.9.7
+    # set this version to the global version of python
+    pyenv global 3.9.7
+    # see the version that was installed
     pyenv versions
-    # Install virtualenv
-    git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
-    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
-    echo 'if [[ -z "$VIRTUAL_ENV" ]]; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-    fi' >> ~/.zshrc
-    exec "$SHELL"
-    # install virtualenv using pip
-    pip install virtualenv
-    # create example virtual environment using pyenv-virtualenv
-    pyenv virtualenv TestEnv
-    # set this environment to global and activates it
-    pyenv global TestEnv
-    pyenv deactivate
     ```
 
 - Setting up a global pyenv python base
-    - List all of the possible versions of python you can install `pyenv install --list` or to list all of them of a certain version `pyenv install 3.8`
-    - Install a version of python `pyenv install 3.8.3`
-    - Make it available globally so you don't have to touch your system wide version of python (that comes with your distro) `pyenv global 3.8.3`
+    - List all of the possible versions of python you can install `pyenv install --list` or to list all of them of a certain version `pyenv install 3.9`
+    - Install a version of python `pyenv install 3.9.7`
+    - Make it available globally so you don't have to touch your system wide version of python (that comes with your distro) `pyenv global 3.9.7`
     - Enter `pyenv versions` to see what versions are available to you
     - You can install an extension that allows for updating pyenv using this command `pyenv update` you can install it on Ubuntu using this command: `git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update`
 - Now to add virtualenv. [This article](https://realpython.com/intro-to-pyenv/#virtual-environments-and-pyenv) was helpful for understanding virtualenv better. To install see above.

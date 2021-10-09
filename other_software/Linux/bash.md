@@ -193,52 +193,33 @@ Below are the step I take to setup my linux shell the way I like it in various s
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
     sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
-    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    poetry\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting\n    ssh-agent' ~/.zshrc
+    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    z\n    command-not-found\n    zsh_reload\n    zsh-autosuggestions\n    zsh-syntax-highlighting' ~/.zshrc
     sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
     # restart the shell
     exec "$SHELL"
     ```
 
     ```sh
-    # setup python, pyenv, virtualenv, and poetry
-    # you also need these for using pyenv
+    # setup pyenv
+    # upgrade everything
+    sudo apt-get update && sudo apt-get upgrade -y
+    # install dependencies
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
     # install pyenv and put into the PATH
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-    sudo git clone https://github.com/pyenv/pyenv-virtualenv.git $PYENV_ROOT/plugins/pyenv-virtualenv
-    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
-    # install venv for environment mangagement backend
-    sudo apt-get install python3-venv -y
-    # install poetry for python management
-    sudo apt-get install python-is-python3
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
-    echo 'export PATH="$HOME/.poetry/bin:$PATH"' >> ~/.zshrc
-    echo 'if [[ -z "$VIRTUAL_ENV" ]]; then
-        eval "$(pyenv init -)"
-        eval "$(pyenv virtualenv-init -)"
-    fi' >> ~/.zshrc
-    mkdir $ZSH/plugins/poetry
-    exec "$SHELL"
-    poetry completions zsh > $ZSH/plugins/poetry/_poetry
+    echo '# pyenv stuff
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"\n' >> ~/.zshrc
     # install python using pyenv
-    pyenv install 3.8.3
+    pyenv install 3.9.7
     # set this version to the global version of python
-    pyenv global 3.8.3
+    pyenv global 3.9.7
     # see the version that was installed
     pyenv versions
-    # install pipx and install virtualenv using pipx
-    sudo apt install pipx
-    pipx install virtualenv
-    pipx ensurepath
-    exec "$SHELL"
-    # create example virtual environment using pyenv-virtualenv
-    pyenv virtualenv GlobalEnv
-    # set this environment to global and activates it
-    pyenv global GlobalEnv
     ```
 
     ```sh
@@ -369,3 +350,5 @@ Below are the step I take to setup my linux shell the way I like it in various s
             detach vdisk
             exit
             ```
+
+- to update everything in Ubuntu use this multi-command: `sudo apt-get update && sudo apt-get upgrade -y`
