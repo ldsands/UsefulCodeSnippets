@@ -2,6 +2,10 @@
 
 Winget is the new package manager for Windows that is created and supported by Microsoft. Due to the more official nature of the tool I will be using it over [chocolaty](chocolatey.md) where possible. A well done gui program for looking through packages that are available can be downloaded from [here](https://github.com/handyorg/handywinget-gui). There are also a couple websites that collects all of the packages and makes it pretty easy to get the terminal commands for each package. I prefer [this website](https://winget.run/) at the moment (July 2020) [this one](https://winstall.app/) has some other useful features too though.
 
+## Winget Commands
+
+
+
 ## Winget install
 
 winget install --id=Amazon.Kindle -e

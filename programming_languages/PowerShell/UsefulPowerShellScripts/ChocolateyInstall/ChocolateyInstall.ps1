@@ -82,7 +82,7 @@ Update-Path | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 
 # Configuring PowerShell Profile
 Write-Host "Configuring PowerShell Profile"
-$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/bf965c404487488b86fa30dcf22cf261/raw/958098c0711bfd26474f700eab8e23562c1121e4/profile.ps1
+$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/bf965c404487488b86fa30dcf22cf261/raw/49b998c1b62123ab4499a822eae08d5e302ef5c2/profile.ps1
 New-Item $PROFILE.CurrentUserAllHosts -ItemType File -Value $ConfigContent.Content -Force | out-null
 Update-Path | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 
