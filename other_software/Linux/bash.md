@@ -214,6 +214,8 @@ Below are the step I take to setup my linux shell the way I like it in various s
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"\n' >> ~/.zshrc
+    # install the pyenv-update plugin so that pyenv can be easily updated using `pyenv update`
+    git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update
     # install python using pyenv
     pyenv install 3.9.7
     # set this version to the global version of python
