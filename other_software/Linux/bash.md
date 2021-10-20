@@ -33,6 +33,9 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     exec "$SHELL"
     ```
 
+- To update everything that is outdated you can use this command `sudo apt-get update && sudo apt-get upgrade -y`
+    - Here is the alias that I add to my zsh config file for easier access `echo 'alias UpdateAll="sudo apt-get update && sudo apt-get upgrade -y"' >> ~/.zshrc`
+
 - The screen command allows you to have multiple shells open through one SSH connection. This is very useful for the HPC on campus that I use frequently. More instructions can be found [here](https://wiki.uiowa.edu/display/hpcdocs/Tips+for+Reducing+the+Number+of+Duo+Two-Factor+Logins#TipsforReducingtheNumberofDuoTwoFactorLogins-ProgramstoReduceSSHLogins:~:text=application.)-,Programs%20to%20Reduce%20SSH%20Logins). A few handy commands are shown below:
 
     ```sh
