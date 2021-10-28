@@ -7,7 +7,7 @@
         - [Anaconda PATH Windows instructions](#anaconda-path-windows-instructions)
         - [Install anaconda on WSL](#install-anaconda-on-wsl)
     - [Virtual environments](#virtual-environments)
-        - [conda environments](#conda-environments)
+        - [Conda Environments](#conda-environments)
         - [venv environments](#venv-environments)
         - [Poetry Environments](#poetry-environments)
     - [Useful Python Install Commands](#useful-python-install-commands)
@@ -156,7 +156,7 @@ This is for shen the add to path doesn't work for the chocolatey install
 
 - [Poetry](https://python-poetry.org/) is another option that looks a lot like conda but for "normal" python. It can deal with different versions of python as well though I liked using pyenv or pyflow for that better than Poetry (or pyenv-win for Windows which can be installed using chocolatey `choco install pyenv-win`, I haven't experimented with these yet though).
 
-### [conda environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+### [Conda Environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
 Below are my instructions for setting up a conda environment for my reddit data project
 
@@ -166,6 +166,8 @@ Below are my instructions for setting up a conda environment for my reddit data 
     ```sh
     # display all versions of python available to conda
     conda search python
+    # you also often need to use this command to be able to use anaconda commands in your shell
+    conda init zsh # or powershell (there are more as well)
     # create environment with the specified python version
     conda create -n myenv python=3.7.4 -y
     # activate the newly created environment
@@ -180,11 +182,13 @@ Below are my instructions for setting up a conda environment for my reddit data 
     conda remove --name myenv --all
     ```
 
+    - Another way to create a conda environment is to [create an `environment.yml` file](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
+        - To activate 
     - Sometimes you need to add packages from conda forge you may need to do this by using `conda install -c conda-forge` then the name of the package that is available on conda forge.
 
 ### [venv environments](https://docs.python.org/3/tutorial/venv.html)
 
-To use venv is both a bit more complicated. launching these environments aren't as straight forward (at least on Windows) but it works pretty much the same way. Be aware that you cannot specify the version of python you use when using venv it just creates an environment for the version that you're using to load venv.
+To use venv is a bit more complicated. Launching these environments aren't as straight forward (at least on Windows) but it works pretty much the same way. Be aware that you cannot specify the version of python you use when using venv it just creates an environment for the version that you're using to load venv.
 
 - You first have to have python installed (the below example is using python 3.8.1)
     - Python -m venv general_use this creates the new environment
