@@ -8,6 +8,7 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
     - [KDE Plasma Setup](#kde-plasma-setup)
     - [KDE Plasma Notes](#kde-plasma-notes)
     - [App Configurations](#app-configurations)
+    - [Apps that I'm experimenting with](#apps-that-im-experimenting-with)
 
 ## Kubunbu Installation
 
@@ -44,6 +45,11 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     exec "$SHELL"
     ```
+
+- Install [Hyper](https://tabby.sh/)
+    - download the `.deb` file from [the github releases page](https://github.com/vercel/hyper/releases) then you can double click on file to install it.
+    - to edit the configurations I open the config file in VSCode with this command: `code ~/.hyper.js`
+    - I then replace the default configuration file with the contents from [this file](https://gist.githubusercontent.com/ldsands/8f29321220601ae2274fd769487f5713/raw/d08f18f811f7fc12de74ad4d30fa1fb560de761c/.hyper.js)
 
 - [Install Microsoft Edge Beta](https://www.microsoftedgeinsider.com/en-us/download/) which is my browser of choice.
 
@@ -108,6 +114,8 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
             ```sh
             # Telegram Desktop messenger
             flatpak install flathub org.telegram.desktop -y
+            # PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
+            flatpak install flathub io.github.peazip.PeaZip -y
             # Spotify - Online music streaming service
             flatpak install flathub com.spotify.Client -y
             # Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
@@ -144,7 +152,8 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"\n' >> ~/.zshrc
+    eval "$(pyenv init -)"
+    ' >> ~/.zshrc
     # restart shell so new path variables can be used
     exec zsh
     # install the pyenv-update plugin so that pyenv and its plugins can be easily updated using `pyenv update`
@@ -191,9 +200,10 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
 - Microsoft Edge (Beta)
     - Sign in using Microsoft Account
     - Create PWA from my Outlook Accounts:
-        - Open the "Applicaion Launcher" (like the start button from Windows); search for "Outlook (PWA)"; right click on the result; Select "Applicaion" tab; 
+        - Open the "Applicaion Launcher" (like the start button from Windows); search for "Outlook (PWA)"; right click on the result; Select "Applicaion" tab;
         - Select the ellipsis menu in the upper right; select permissions; next to "Notifications" Select "Allow"
-- Apps that I'm experimenting with
+
+## Apps that I'm experimenting with
 
     ```sh
     # gThumb Image Viewer - View and organize your images
@@ -201,3 +211,6 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
     # Evolution - Manage your email, contacts and schedule
     flatpak install flathub org.gnome.Evolution -y
     ```
+
+    - Install [Tabby](https://tabby.sh/)
+        - download the `.deb` file from [the github releases page](https://github.com/Eugeny/tabby/releases)
