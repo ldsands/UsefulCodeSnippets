@@ -205,12 +205,14 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
 
 ## Apps that I'm experimenting with
 
-    ```sh
-    # gThumb Image Viewer - View and organize your images
-    flatpak install flathub org.gnome.gThumb -y
-    # Evolution - Manage your email, contacts and schedule
-    flatpak install flathub org.gnome.Evolution -y
-    ```
+```sh
+# gThumb Image Viewer - View and organize your images
+flatpak install flathub org.gnome.gThumb -y
+# Evolution - Manage your email, contacts and schedule
+flatpak install flathub org.gnome.Evolution -y
+# Disk Usage Analyzer - Check folder sizes and available disk space
+flatpak install flathub org.gnome.baobab -y
+```
 
-    - Install [Tabby](https://tabby.sh/)
-        - download the `.deb` file from [the github releases page](https://github.com/Eugeny/tabby/releases)
+- Install [Tabby](https://tabby.sh/)
+    - download the `.deb` file from [the github releases page](https://github.com/Eugeny/tabby/releases)
