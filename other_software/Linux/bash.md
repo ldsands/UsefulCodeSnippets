@@ -231,13 +231,13 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # setup of various other utilities I use
     # install rust for installation of many of the following utilities
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    # restart shell to access rust
+    exec zsh
     rustup update
     # installation of bottom which is a system resource manager (required rust)
     rustup update stable
     cargo install bottom
     # use bottom by typing in `btm`
-    # this will create a config file for bottom which is taken from a personal gist
-    https://gist.github.com/ldsands/93f985822143f9f5f58567803e5787ef
     # installation of exa which is a replacement for ls (required rust)
     rustup update stable
     cargo install exa
@@ -251,7 +251,8 @@ Below are the step I take to setup my linux shell the way I like it in various s
     cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
     cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a975bad49c61e290801ff663ef7df279fe0a96a9/starship.toml
     # this adds the starship initialize command to the end of the zsh config file
-    echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+    echo 'eval "$(starship init zsh)"
+    ' >> ~/.zshrc
     ```
 
 - The theme I like to use is called [Powerlevel10k](https://github.com/romkatv/powerlevel10k#powerlevel10k) it is very powerful and customizable. Instructions for my set up are included below.

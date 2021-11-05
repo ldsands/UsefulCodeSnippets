@@ -1,21 +1,21 @@
-# Kubunbu
+# KDE Neon
 
-Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the desktop environment. This file will cover options and setup of Kubunbu.
+KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the desktop environment. It is officially supported by the KDE team and is not an "official" flavor of Ubuntu. This file will cover options and setup of KDE Neon.
 
-- [Kubunbu](#kubunbu)
-    - [Kubunbu Installation](#kubunbu-installation)
-    - [General Linux (Ubunbu flavors) Setup](#general-linux-ubunbu-flavors-setup)
+- [KDE Neon](#kde-neon)
+    - [KDE Neon Installation](#kde-neon-installation)
+    - [General Setup](#general-setup)
     - [KDE Plasma Setup](#kde-plasma-setup)
     - [KDE Plasma Notes](#kde-plasma-notes)
     - [App Configurations](#app-configurations)
     - [Apps that I'm experimenting with](#apps-that-im-experimenting-with)
 
-## Kubunbu Installation
+## KDE Neon Installation
 
 - For installing on a USB drive you have to follow additional steps. There is a great article about this on [It's Foss](https://itsfoss.com/intsall-ubuntu-on-usb/).
 - If you're dual booting Linux can cause issues with the time setting on Windows. The easiest way to deal with this is by using this command in Linux: `timedatectl set-local-rtc 1 --adjust-system-clock` this tells Linux that the motherboard time is in local time. To check if it worked enter `timedatectl` into ther terminal and if "RTC in local TZ:" is yes then there won't be an issue with the time settings on Windows.
 
-## General Linux (Ubunbu flavors) Setup
+## General Setup
 
 - Install the basics: update apt-get, git, zsh, ohmyzsh
 
@@ -38,13 +38,15 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
     # setup the default settings
     2
     # logout of the shell and restart it
-    exec "$SHELL"
+    exec zsh
     # install curl for downloading files
     sudo apt install curl -y
     # install Oh My Zsh and enter Y after to make zsh the default shell
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    exec "$SHELL"
+    exec zsh
     ```
+
+- I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies. I move this file into `Documents/StartupPrograms` then I select it and allow the file to execute. It should start on system startup as well.
 
 - Install [Hyper](https://tabby.sh/)
     - download the `.deb` file from [the github releases page](https://github.com/vercel/hyper/releases) then you can double click on file to install it.
@@ -66,7 +68,7 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
 
 - Stuff needed for VSCode
     - Go to the [VSCode website](https://code.visualstudio.com/) and download and then select ther `.deb` file to download. Then you can double click on the file to install VSCode
-    - If there is an issue with signing into settings sync then VSCode needs "gnome-keyring" from GNOME that Kubuntu doesn't include by default`sudo apt install -y gnome-keyring`
+    - If there is an issue with signing into settings sync then VSCode needs "gnome-keyring" from GNOME that KDE doesn't include by default`sudo apt install -y gnome-keyring`
     - To install some of the nerd fonts (for VSCode and Terminals) you can use the following options:
         - To install FiraCode NF Regular use these commands: `mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts && curl -fLo "Fira Code Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete%20Mono.ttf?raw=true && sudo fc-cache -f -v`
         - To install Caskaydia Cove Regular use these commands: `mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts && curl -fLo "Caskaydia Cove Regular Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/CascadiaCode/Regular/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete.otf?raw=true && sudo fc-cache -f -v`
@@ -94,10 +96,10 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
     sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
     echo '\n' >> ~/.zshrc
     # restart the shell
-    exec "$SHELL"
+    exec zsh
     ```
 
-- Install Flatpak (which is a app focused package manager for Linux) [these instructions are for Kubunbu only](https://flatpak.org/setup/Kubuntu/) it is slightly different for Ubuntu. To find apps to install you can go to [Flathub](https://flathub.org/home) which is where Flatpak apps are hosted for easy access and browsing.
+- Install Flatpak (which is a app focused package manager for Linux) [these instructions are for Kubunbu](https://flatpak.org/setup/Kubuntu/) however KDE Neon is also a Ubunbu based distro with KDE. To find apps to install you can go to [Flathub](https://flathub.org/home) which is where Flatpak apps are hosted for easy access and browsing.
 
     ```sh
     # Install Flatpak
@@ -170,6 +172,35 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
     pyenv versions
     ```
 
+- Setup of various other command line utilities I use
+
+    ```sh
+    # install rust for installation of many of the following utilities
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    # restart shell to access rust
+    exec zsh
+    rustup update
+    # installation of bottom which is a system resource manager (required rust)
+    rustup update stable
+    cargo install bottom
+    # use bottom by typing in `btm`
+    # installation of exa which is a replacement for ls (required rust)
+    rustup update stable
+    cargo install exa
+    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F`
+    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -R -T -F -L=2` to see files in folders
+    # this installs starship which is a cross platform/shell prompt
+    sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+    # create bottom and starship config files
+    mkdir -p ~/.config && mkdir -p ~/.config/bottom/
+    # copy my configuration from my gists to the bottom.toml and starship.toml files
+    cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
+    cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a975bad49c61e290801ff663ef7df279fe0a96a9/starship.toml
+    # this adds the starship initialize command to the end of the zsh config file
+    echo 'eval "$(starship init zsh)"
+    ' >> ~/.zshrc
+    ```
+
 ## KDE Plasma Setup
 
 - Settings to change
@@ -200,7 +231,7 @@ Kubunbu is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the de
 - Microsoft Edge (Beta)
     - Sign in using Microsoft Account
     - Create PWA from my Outlook Accounts:
-        - Open the "Applicaion Launcher" (like the start button from Windows); search for "Outlook (PWA)"; right click on the result; Select "Applicaion" tab;
+        - Open the "Applicaion Launcher" (like the start button from Windows); search for "Outlook (PWA)"; right click on the result; Select "Application" tab;
         - Select the ellipsis menu in the upper right; select permissions; next to "Notifications" Select "Allow"
 
 ## Apps that I'm experimenting with
@@ -212,6 +243,10 @@ flatpak install flathub org.gnome.gThumb -y
 flatpak install flathub org.gnome.Evolution -y
 # Disk Usage Analyzer - Check folder sizes and available disk space
 flatpak install flathub org.gnome.baobab -y
+# XnView MP - View and organize your images
+flatpak install flathub com.xnview.XnViewMP -y
+# NewsFlash - Follow your favorite blogs and news sites.
+flatpak install flathub com.gitlab.newsflash -y
 ```
 
 - Install [Tabby](https://tabby.sh/)
