@@ -96,12 +96,8 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
         - To install FiraCode NF Regular use these commands: `mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts && curl -fLo "Fira Code Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete%20Mono.ttf?raw=true && sudo fc-cache -f -v`
         - To install Caskaydia Cove Regular use these commands: `mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts && curl -fLo "Caskaydia Cove Regular Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/CascadiaCode/Regular/complete/Caskaydia%20Cove%20Regular%20Nerd%20Font%20Complete.otf?raw=true && sudo fc-cache -f -v`
     - Install the [VSCodeProjectsRunner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it.
-
-        ```sh
-        sudo apt-get update
-        sudo apt install cmake extra-cmake-modules build-essential libkf5runner-dev libkf5textwidgets-dev qtdeclarative5-dev gettext -y 
-        curl https://raw.githubusercontent.com/alex1701c/krunner-vscodeprojects/master/install.sh | bash
-        ```
+        - First the dependencies need to be installed with this command: `sudo apt install cmake extra-cmake-modules build-essential libkf5runner-dev libkf5textwidgets-dev qtdeclarative5-dev gettext -y`
+        - After you've done that open "System Settings" and go to "KRunner." Click on the "Get New Plugins..." button in the lower right. Search for "VSCodeProjectsRunner" and click install in the upper right of the box. If Hyper is already set as the default terminal you will need to change it back to Konsole to install this.
 
     ```sh
     # this allows you to open the configuration file with vs code
