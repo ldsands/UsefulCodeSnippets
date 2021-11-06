@@ -252,7 +252,7 @@ System Settings to change. Open "System Settings" then you can search or find th
         - I create two new Activities
             - The first is called "Python" and I use for the icon `/home/ldsands/Documents/pCloudLocal/Pictures/LogoCollections/Python/python-logo-generic_cropped.svg`
             - The second is called "School" and I use for the icon `/home/ldsands/Documents/pCloudLocal/Pictures/LogoCollections/Uiowa/Uiowa-Dome-favicon-96x96.png`
-        - Switching between the activities can be done using `meta+tab` 
+        - Switching between the activities can be done using `meta+tab`
 - Panel
     - Right click on the panel (called taskbar on Windows) and select "Edit Panel..."
     - Mouse over the "Icons-Only Task Manager"; Mouse over "Configure"; Then select "Behavior"; for "Groups" select "Do not group" and for "Show Only Tasks" select "From Current Screen"
