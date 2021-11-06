@@ -153,6 +153,8 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
             flatpak install flathub com.obsproject.Studio -y
             # Inkscape - Vector Graphics Editor
             flatpak install flathub org.inkscape.Inkscape -y
+            # LibreOffice - The LibreOffice productivity suite
+            flatpak install flathub org.libreoffice.LibreOffice -y
             ```
 
     - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
