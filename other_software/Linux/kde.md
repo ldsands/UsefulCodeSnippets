@@ -153,8 +153,6 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
             flatpak install flathub com.obsproject.Studio -y
             # Inkscape - Vector Graphics Editor
             flatpak install flathub org.inkscape.Inkscape -y
-            # LibreOffice - The LibreOffice productivity suite
-            flatpak install flathub org.libreoffice.LibreOffice -y
             ```
 
     - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
@@ -223,6 +221,10 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
     echo 'eval "$(starship init zsh)"
     ' >> ~/.zshrc
     ```
+
+- Install [LibreOffice](https://www.libreoffice.org/)
+    - Go to [the download site](https://www.libreoffice.org/download/download/) and download the .deb file. Once it has been downloaded unzip the file.
+    - Now enter the "DEBS" directory and run this command: `sudo dpkg -i *.deb`
 
 ## KDE Plasma Setup
 
