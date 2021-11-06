@@ -131,6 +131,8 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     apt list --installed
     ```
 
+- Sometimes the default shell changes back to bash from zsh. To change this back you can use this command: `chsh -s $(which zsh)`
+
 ### WSL Setup
 
 To set up WSL follow the instructions I've set [up here](windows_program_instructions/windows_programs.md/#wsl-windows-subsystem-for-linux).

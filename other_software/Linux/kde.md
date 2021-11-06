@@ -13,9 +13,52 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
 ## KDE Neon Installation
 
 - For installing on a USB drive you have to follow additional steps. There is a great article about this on [It's Foss](https://itsfoss.com/intsall-ubuntu-on-usb/).
-- If you're dual booting Linux can cause issues with the time setting on Windows. The easiest way to deal with this is by using this command in Linux: `timedatectl set-local-rtc 1 --adjust-system-clock` this tells Linux that the motherboard time is in local time. To check if it worked enter `timedatectl` into ther terminal and if "RTC in local TZ:" is yes then there won't be an issue with the time settings on Windows.
+- If you're dual booting Linux can cause issues with the time setting on Windows. The easiest way to deal with this is by using this command in Linux: `timedatectl set-local-rtc 1 --adjust-system-clock` this tells Linux that the motherboard time is in local time. To check if it worked enter `timedatectl` into the terminal and if "RTC in local TZ:" is yes then there won't be an issue with the time settings on Windows.
 
 ## General Setup
+
+- [Install Microsoft Edge Beta](https://www.microsoftedgeinsider.com/en-us/download/) which is my browser of choice. I install this pretty much so quickly because it allows me to access my email quickly so that I can then sign into and activate other software.
+
+    ```sh
+    ## Setup
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-beta.list'
+    sudo rm microsoft.gpg
+    ## Install
+    sudo apt update
+    sudo apt install microsoft-edge-beta
+    ```
+
+    - After Edge is installed I go to ["Settings" and then "Appearance"](edge://settings/appearance). Under "Customize Appearance" I select "Dark" mode. I then select "Downloads Button" under "Select which buttons to show on toolbar" to show the download button on the toolbar.
+    - I also hide all of the visible extensions by selecting the "Extensions Button" and clicking on the "eye" icon for all of the extensions except the Zotero Connector and Enpass Extension
+    - I then also "Pin" several tabs so that they load automatically on launching Edge. Mostly email tabs and other typing practice tabs (I'm trying to get faster).
+
+- Install [Hyper](https://hyper.is/)
+    - download the `.deb` file from [the github releases page](https://github.com/vercel/hyper/releases) then you can double click on file to install it.
+    - to edit the configurations I open the config file in VSCode with this command: `code ~/.hyper.js`
+    - I then replace the default configuration file with the contents from [this file](https://gist.githubusercontent.com/ldsands/8f29321220601ae2274fd769487f5713/raw/d08f18f811f7fc12de74ad4d30fa1fb560de761c/.hyper.js)
+
+- Install [Enpass](https://www.enpass.io/support/kb/general/how-to-install-enpass-on-linux/) which is my password manager.
+
+    ```sh
+    # To install Enpass, add a new repository to /etc/apt/sources.list:
+    sudo -i
+    echo "deb https://apt.enpass.io/ stable main" > \
+    /etc/apt/sources.list.d/enpass.list
+    # And import key that is used to sign the release:
+    wget -O - https://apt.enpass.io/keys/enpass-linux.key | tee /etc/apt/trusted.gpg.d/enpass.asc
+    # After that, you can install Enpass as any other software package:
+    apt-get update
+    apt-get install enpass
+    exit
+    ```
+
+- I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies.
+    - I move this file into `Documents/StartupPrograms` then I select it and allow the file to execute. It should start on system startup as well.
+    - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/ldsands/Documents/pCloudLocal` and for the pCloud Drive folder `/pCloudLocal`.
+
+- Change "Default Applications" in "System Settings." I change "Web browser" to "Microsoft Edge (Beta)" and I change "Terminal emulator" to "Hyper."
 
 - Install the basics: update apt-get, git, zsh, ohmyzsh
 
@@ -46,28 +89,8 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
     exec zsh
     ```
 
-- I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies. I move this file into `Documents/StartupPrograms` then I select it and allow the file to execute. It should start on system startup as well.
-
-- Install [Hyper](https://tabby.sh/)
-    - download the `.deb` file from [the github releases page](https://github.com/vercel/hyper/releases) then you can double click on file to install it.
-    - to edit the configurations I open the config file in VSCode with this command: `code ~/.hyper.js`
-    - I then replace the default configuration file with the contents from [this file](https://gist.githubusercontent.com/ldsands/8f29321220601ae2274fd769487f5713/raw/d08f18f811f7fc12de74ad4d30fa1fb560de761c/.hyper.js)
-
-- [Install Microsoft Edge Beta](https://www.microsoftedgeinsider.com/en-us/download/) which is my browser of choice.
-
-    ```sh
-    ## Setup
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-beta.list'
-    sudo rm microsoft.gpg
-    ## Install
-    sudo apt update
-    sudo apt install microsoft-edge-beta
-    ```
-
 - Stuff needed for VSCode
-    - Go to the [VSCode website](https://code.visualstudio.com/) and download and then select ther `.deb` file to download. Then you can double click on the file to install VSCode
+    - Go to the [VSCode website](https://code.visualstudio.com/) and download and then select the `.deb` file to download. Then you can double click on the file to install VSCode
     - If there is an issue with signing into settings sync then VSCode needs "gnome-keyring" from GNOME that KDE doesn't include by default`sudo apt install -y gnome-keyring`
     - To install some of the nerd fonts (for VSCode and Terminals) you can use the following options:
         - To install FiraCode NF Regular use these commands: `mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts && curl -fLo "Fira Code Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete%20Mono.ttf?raw=true && sudo fc-cache -f -v`
@@ -180,6 +203,8 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
     # restart shell to access rust
     exec zsh
     rustup update
+    # A cc compiler is needed to compile these rust applications
+    sudo apt install build-essential
     # installation of bottom which is a system resource manager (required rust)
     rustup update stable
     cargo install bottom
@@ -203,24 +228,40 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
 
 ## KDE Plasma Setup
 
-- Settings to change
-    - Appearance; Global Theme; select "Breeze Dark"
-    - Applications; Default Applications; Web Browser: select Microsoft Edge (beta)
-    - Custom Shortcuts; Maximize Window: `meta+home`
-    - Custom Shortcuts; KRunner: `meta+space`
-    - KRunner:
-        - Unselect "Browser History"
-        - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
+System Settings to change. Open "System Settings" then you can search or find the categories listed below to edit settings.
+
+- Appearance; Global Theme; select "Breeze Dark"
+- Applications; Default Applications;
+    - Web Browser: select Microsoft Edge (beta)
+    - Terminal emulator: Hyper
+- Shortcuts;
+    - Maximize Window: `meta+home`
+    - KRunner: `meta+space`
+    - Switch One Desktop to the Left `meta+ctrl+left`
+    - Switch One Desktop to the Right `meta+ctrl+right`
+- KRunner:
+    - Unselect "Browser History"
+    - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
+- Workspace Behavior; General Behavior
+    - Clicking files or folders; change to "Selects them"
 - Virtual Desktops and Activities
-    <!-- - Workspace Behavior; Virtual Desktops TODO: -->
-    <!-- - Workspace Behavior; Activities TODO: -->
+    - Workspace Behavior; Virtual Desktops
+        - I create two additional Virtual Desktops named `Num 01`, `Num 02` and `Num 03`
+        - I also Unselect the "Navigation wraps around" option
+    - Workspace Behavior; Activities
+        - I create two new Activities
+            - The first is called "Python" and I use for the icon `/home/ldsands/Documents/pCloudLocal/Pictures/LogoCollections/Python/python-logo-generic_cropped.svg`
+            - The second is called "School" and I use for the icon `/home/ldsands/Documents/pCloudLocal/Pictures/LogoCollections/Uiowa/Uiowa-Dome-favicon-96x96.png`
+        - Switching between the activities can be done using `meta+tab` 
 - Panel
-    - Right click on ther panel (called taskbar on Windows) and select "Edit Panel..."
+    - Right click on the panel (called taskbar on Windows) and select "Edit Panel..."
     - Mouse over the "Icons-Only Task Manager"; Mouse over "Configure"; Then select "Behavior"; for "Groups" select "Do not group" and for "Show Only Tasks" select "From Current Screen"
     - On the right screen I add the widget "Pager" just to the left of the "System Tray"
         - Also I configure the widget "Text Display"; "Desktop Name"
     - On the left screen I add the widget "Activity Pager" just to the left of the "System Tray"
         - Also I configure the widget "Text Display"; "Activity Name"
+- Screen Locking
+    - Lock screen automatically: uncheck
 
 ## KDE Plasma Notes
 
@@ -233,6 +274,10 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
     - Create PWA from my Outlook Accounts:
         - Open the "Applicaion Launcher" (like the start button from Windows); search for "Outlook (PWA)"; right click on the result; Select "Application" tab;
         - Select the ellipsis menu in the upper right; select permissions; next to "Notifications" Select "Allow"
+- Dolphin
+    - I hide the following directories from the "Places" panel: `Music`, `Pictures` and `Videos`
+    - I add these directories to the "Places" panel: `pCloudDrive`, `pCloudLocal`, `ComputerStuff`, `ResearchProjects` and `Uiowa`. I also add any current project and class directories for easy access.
+    - In "Configure Toolbars" I search for "Up" in "Available actions" and add it to "Current Actions" and then move it to the top.
 
 ## Apps that I'm experimenting with
 
