@@ -141,6 +141,8 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
             ```sh
             # Telegram Desktop messenger
             flatpak install flathub org.telegram.desktop -y
+            # Zotero - Collect, organize, cite, and share research
+            flatpak install flathub org.zotero.Zotero -y
             # PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
             flatpak install flathub io.github.peazip.PeaZip -y
             # Spotify - Online music streaming service
