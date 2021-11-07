@@ -273,6 +273,23 @@ System Settings to change. Open "System Settings" then you can search or find th
 ## KDE Plasma Notes
 
 - Sometimes Plasma needs to be restarted. Use these commands to kill and then restart Plasma: `killall plasmashell && kstart5 plasmashell`
+- I've had issues connecting my bluetooth mouse these commands found [here](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/) helped:
+
+    ```sh
+    # allows to see the status of bluetooth
+    sudo systemctl status bluetooth
+    # make the computer bluetooth discoverable (I'm not sure if this is needed or not)
+    bluetoothctl discoverable on
+    # turn on bluetooth scanning this will show available bluetooth devices
+    bluetoothctl scan on
+    # now pair using the mac adderss (in this format: XX:XX:XX:XX:XX:XX) of the device you want to pair
+    bluetoothctl pair XX:XX:XX:XX:XX:XX
+    # now connect to the device using the mac address
+    bluetoothctl connect XX:XX:XX:XX:XX:XX
+    # interuppt the process using either `ctrl+shift+c` or `ctrl+c`
+    # not turn off bluetooth discoverable (I'm not sure if this is needed)
+    bluetoothctl discoverable off
+    ```
 
 ## App Configurations
 
