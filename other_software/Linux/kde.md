@@ -250,6 +250,8 @@ System Settings to change. Open "System Settings" then you can search or find th
 - KRunner:
     - Unselect "Browser History"
     - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
+- Removable Storage; Removable Devices
+    - Check "Enable automatic mounting of removable media" and "Only automatically mount removable media that has been manually mounted before"
 - Workspace Behavior; General Behavior
     - Clicking files or folders; change to "Selects them"
 - Virtual Desktops and Activities
