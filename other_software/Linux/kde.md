@@ -57,6 +57,12 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
 - I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies.
     - I move this file into `Documents/StartupPrograms` then I select it and allow the file to execute. It should start on system startup as well.
     - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/ldsands/Documents/pCloudLocal` and for the pCloud Drive folder `/pCloudLocal`.
+    - The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). To stop this use the command below:
+
+        ```sh
+        echo 'exclude folders[$e]=$HOME/pCloudDrive/
+        ' >> ~/.config/baloofilerc
+        ```
 
 - Change "Default Applications" in "System Settings." I change "Web browser" to "Microsoft Edge (Beta)" and I change "Terminal emulator" to "Hyper."
 
@@ -254,12 +260,13 @@ System Settings to change. Open "System Settings" then you can search or find th
             - The second is called "School" and I use for the icon `/home/ldsands/Documents/pCloudLocal/Pictures/LogoCollections/Uiowa/Uiowa-Dome-favicon-96x96.png`
         - Switching between the activities can be done using `meta+tab`
 - Panel
+    - Right click on the battery icon and select "Show Battery Percentage on Icon"
     - Right click on the panel (called taskbar on Windows) and select "Edit Panel..."
-    - Mouse over the "Icons-Only Task Manager"; Mouse over "Configure"; Then select "Behavior"; for "Groups" select "Do not group" and for "Show Only Tasks" select "From Current Screen"
-    - On the right screen I add the widget "Pager" just to the left of the "System Tray"
-        - Also I configure the widget "Text Display"; "Desktop Name"
-    - On the left screen I add the widget "Activity Pager" just to the left of the "System Tray"
-        - Also I configure the widget "Text Display"; "Activity Name"
+        - Mouse over the "Icons-Only Task Manager"; Mouse over "Configure"; Then select "Behavior"; for "Groups" select "Do not group" and for "Show Only Tasks" select "From Current Screen"
+        - On the right screen I add the widget "Pager" just to the left of the "System Tray"
+            - Also I configure the widget "Text Display"; "Desktop Name"
+        - On the left screen I add the widget "Activity Pager" just to the left of the "System Tray"
+            - Also I configure the widget "Text Display"; "Activity Name"
 - Screen Locking
     - Lock screen automatically: uncheck
 
@@ -294,5 +301,26 @@ flatpak install flathub com.xnview.XnViewMP -y
 flatpak install flathub com.gitlab.newsflash -y
 ```
 
-- Install [Tabby](https://tabby.sh/)
-    - download the `.deb` file from [the github releases page](https://github.com/Eugeny/tabby/releases)
+- Other terminal options because although I really like Hyper it does take a lot of RAM
+    - Install [Tabby](https://tabby.sh/) another terminal
+        - download the `.deb` file from [the github releases page](https://github.com/Eugeny/tabby/releases)
+    - [Alacritty](https://github.com/alacritty/alacritty)
+        - To install you can use the following command after installing rust. `sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 && cargo install alacritty`
+        - config options can be found [here](https://github.com/alacritty/alacritty/blob/master/alacritty.yml)
+    - [Wez's Terminal Emulator](https://wezfurlong.org/wezterm/install/linux.html)
+    - [Kitty](https://sw.kovidgoyal.net/kitty/)
+
+        ```sh
+        # install Kitty
+        curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+        # Create a symbolic link to add kitty to PATH
+        sudo ln -s ~/.local/kitty.app/bin/kitty /usr/bin
+        # Place the kitty.desktop file somewhere it can be found by the OS
+        cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+        # Update the path to the kitty icon in the kitty.desktop file
+        sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty.desktop
+        sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50
+        sudo update-alternatives --config x-terminal-emulator
+        ```
+
+- [Android Apps on Linux](https://anbox.io/) instructions can be found [here](https://www.howtogeek.com/760044/how-to-run-android-apps-on-linux/) [here is a list of other alternatives](https://linuxhint.com/android_apps_games_linux/#:~:text=Best%20Way%20to%20Run%20Android%20Apps%20and%20Games,Genymotion.%20...%204%20Android-x86.%20...%20More%20items...%20)
