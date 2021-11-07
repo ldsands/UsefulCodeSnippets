@@ -57,10 +57,10 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
 - I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies.
     - I move this file into `Documents/StartupPrograms` then I select it and allow the file to execute. It should start on system startup as well.
     - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/ldsands/Documents/pCloudLocal` and for the pCloud Drive folder `/pCloudLocal`.
-    - The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). To stop this use the command below:
+    - The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud or Zotero local storage. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). To stop this use the command below:
 
         ```sh
-        echo 'exclude folders[$e]=$HOME/pCloudDrive/
+        echo 'exclude folders[$e]=$HOME/pCloudDrive/,$HOME/Zotero/
         ' >> ~/.config/baloofilerc
         ```
 
