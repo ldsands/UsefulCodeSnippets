@@ -164,6 +164,7 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
             ```
 
     - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
+    - You can also update flatpak by using this command: `sudo flatpak update`
 
 - Install pyenv for managing python
 
@@ -233,6 +234,34 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
 - Install [LibreOffice](https://www.libreoffice.org/)
     - Go to [the download site](https://www.libreoffice.org/download/download/) and download the .deb file. Once it has been downloaded unzip the file.
     - Now enter the "DEBS" directory and run this command: `sudo dpkg -i *.deb`
+
+- Install Calibri font
+
+    ```sh
+    sudo apt-get update
+    sudo apt-get install fontforge
+    sudo apt-get install cabextract
+    wget https://gist.github.com/maxwelleite/10774746/raw/ttf-vista-fonts-installer.sh -q -O - | sudo bash
+    # this will tell you if the Calibri fonts have been installed
+    fc-list | grep Calibri
+    ```
+
+- Other random stuff to install
+    - Codecs and font stuff `sudo apt-get install kubuntu-restricted-extras -y`
+    - If the computer has an nvidia GPU you need to install `kubuntu-driver-manager` using `Muon` then type in the following commands:
+
+        ```sh
+        # to check for your GPU
+        ubuntu-drivers devices
+        # to list drivers
+        ubuntu-drivers list
+        # to install the correct driver
+        sudo ubuntu-drivers autoinstall
+        # you then need to reboot
+        # generate a config file
+        sudo nvidia-xconfig
+        # then open nvidia settings in the GUI
+        ```
 
 ## KDE Plasma Setup
 
@@ -316,10 +345,6 @@ flatpak install flathub org.gnome.gThumb -y
 flatpak install flathub org.gnome.Evolution -y
 # Disk Usage Analyzer - Check folder sizes and available disk space
 flatpak install flathub org.gnome.baobab -y
-# XnView MP - View and organize your images
-flatpak install flathub com.xnview.XnViewMP -y
-# NewsFlash - Follow your favorite blogs and news sites.
-flatpak install flathub com.gitlab.newsflash -y
 ```
 
 - Other terminal options because although I really like Hyper it does take a lot of RAM
