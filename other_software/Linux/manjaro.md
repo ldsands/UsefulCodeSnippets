@@ -52,7 +52,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     ```
 
 - Install Microsoft Edge Beta which is my browser of choice. I install this pretty much so quickly because it allows me to access my email quickly so that I can then sign into and activate other software.
-    - After Edge is installed I go to "Settings" and then "Appearance". Under "Customize Appearance" I select "Dark" mode. I then select "Downloads Button" under "Select which buttons to show on toolbar" to show the download button on the toolbar.
+    - After Edge is installed I go to "Settings" and then ["Appearance"](edge://settings/appearance). Under "Customize Appearance" I select "Dark" mode. I then select "Downloads Button" and "History Button" under "Select which buttons to show on toolbar" to show the download button on the toolbar.
     - I also hide all of the visible extensions by selecting the "Extensions Button" and clicking on the "eye" icon for all of the extensions except the Zotero Connector and Enpass Extension
     - I then also "Pin" several tabs so that they load automatically on launching Edge. Mostly email tabs and other typing practice tabs (I'm trying to get faster).
 - Install Enpass which is my password manager.
