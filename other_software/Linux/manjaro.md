@@ -2,6 +2,16 @@
 
 Manjaro is an arch Linux based distro that has become known for being fairly stable but has some more advanced features such as rolling releases which allow for cutting edge software.
 
+- [Manjaro KDE](#manjaro-kde)
+    - [Installing Manjaro KDE](#installing-manjaro-kde)
+    - [Notes on Installation Issues](#notes-on-installation-issues)
+    - [VSCode Runner](#vscode-runner)
+    - [Other Tips](#other-tips)
+    - [KDE Plasma Setup](#kde-plasma-setup)
+    - [KDE Plasma Notes](#kde-plasma-notes)
+    - [App Configurations](#app-configurations)
+    - [Apps that I'm experimenting with](#apps-that-im-experimenting-with)
+
 ## Installing Manjaro KDE
 
 - Install oh-my-zsh, git, Kitty (a Konsole replacement) setup yay for installing from AUR and install MS Edge (beta).
@@ -20,10 +30,10 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     sudo pacman -Sy base-devel git yay
     # Install Kitty
     sudo pacman -S kitty
-    # change the ctrl+shift to ctrl in Kitty along with some other settings
+    # change the ctrl+shift to ctrl in Kitty along with some other settings more can be found [here](https://sw.kovidgoyal.net/kitty/conf/)
     echo "
     kitty_mod ctrl
-    background_opacity 0.5
+    background_opacity 0.6
     :     font_family      FiraCode Nerd Font Mono
     " >> ~/.config/kitty/kitty.conf
     # enable auto correction (you also need to enable the plugin which is below)
@@ -47,6 +57,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     - I then also "Pin" several tabs so that they load automatically on launching Edge. Mostly email tabs and other typing practice tabs (I'm trying to get faster).
 - Install Enpass which is my password manager.
 <!-- - Install Github cli and login
+    - More details on how to get Github commits may be needed I got some help from [this YouTube video](https://www.youtube.com/watch?v=ZeKytARUnTo)
     - You can also use an environment variable called GH_TOKEN and use a personal token for authentication
 
     ```sh
@@ -60,6 +71,8 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     ``` -->
 
 - Install VSCode
+    - VSCode is my text editor/IDE of choice
+    - I also install the [VSCodeProjectsRunner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it.
 
     ```sh
     # add some dependencies for signing into VSCode
@@ -80,7 +93,19 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v
     # Install VSCode
     yay -S visual-studio-code-bin
+    # sudo pacman -S krunner-vscodeprojects 
+    yay -S krunner-vscodeprojects
     ```
+
+- I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies.
+    - When I execute this file it should prompt to move the file to another location. I accept this prompt which allows pCloud to start automatically on system startup.
+    - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/ldsands/Documents/pCloudLocal` and for the pCloud Drive folder `/pCloudLocal`.
+    - The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud or Zotero local storage. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). To stop this use the command below:
+
+        ```sh
+        echo 'exclude folders[$e]=$HOME/pCloudDrive/,$HOME/Zotero/
+        ' >> ~/.config/baloofilerc
+        ```
 
 - Install flatpak/flathub hosted apps:
     - Apps I install on every computer
@@ -173,20 +198,30 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     pyenv versions
     ```
 
-## Notes on audio
+- Install [OBS Studio](https://obsproject.com/) and [OBS-BackgroundRemoval](https://github.com/royshil/obs-backgroundremoval)
+    - When installing the `linux-headers` make sure you install the correct kernel number that matches the Kernel you're running
+    - You'll then want to restart after installing the `linux-headers` and `v4l2loopback-dkms`
 
-if there is no audio device then install the audio firmware using the command below then restart the computer.
+    ```sh
+    # get linux kernel version
+    uname -r
+    # install v4l2loopback which is needed for virtual camera
+    sudo pacman -S linux-headers v4l2loopback-dkms
+    # reboot computer
+    sudo reboot
+    # install obs and background removal
+    yay -S obs-studio obs-backgroundremoval
+    # yay -S obs-studio obs-backgroundremoval
+    ```
 
-```sh
-sudo pacman -S sof-firmware
-```
+## Notes on Installation Issues
 
-## Install Kitty
+- If there is no audio device then install the audio firmware using the command below then restart the computer.
 
-```sh
-# Install via pacman
-sudo pacman -S kitty
-```
+    ```sh
+    sudo pacman -S sof-firmware
+    ```
+
 
 ## VSCode Runner
 
