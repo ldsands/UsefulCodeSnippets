@@ -25,7 +25,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     git config --global user.name "user_name"
     git config --global user.email "email@example.com"
     # this makes it so you don't have to sign in every time you do anything with Github
-    git config --global credential.helper cache
+    git config --global credential.helper store
     # install yay and other dependencies needed to instal and build AUR packages
     sudo pacman -Sy base-devel git yay
     # Install Kitty
