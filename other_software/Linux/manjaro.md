@@ -27,7 +27,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     # this makes it so you don't have to sign in every time you do anything with Github
     git config --global credential.helper store
     # install yay and other dependencies needed to instal and build AUR packages
-    sudo pacman -Sy base-devel git yay
+    sudo pacman -S --needed git base-devel yay
     # Install Kitty
     sudo pacman -S kitty
     # change the ctrl+shift to ctrl in Kitty along with some other settings more can be found [here](https://sw.kovidgoyal.net/kitty/conf/)
