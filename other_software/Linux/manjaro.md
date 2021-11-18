@@ -265,7 +265,7 @@ System Settings to change. Open "System Settings" then you can search or find th
     - Clicking files or folders; change to "Selects them"
 - Virtual Desktops
     - Workspace Behavior; Virtual Desktops
-        - I create nine Virtual Desktops named `Misc 01`, `Misc 02` and `Misc 03` for row 1; `School 01`, `School 02` and `School 03` for row 2; `Python 01`, `Python 02` and `Python 03` for row 3
+        - I create nine Virtual Desktops named `Random`, `Comms` and `Todo` for row 1; `School 01`, `School 02` and `School 03` for row 2; `Python 01`, `Python 02` and `Python 03` for row 3
         - I also Unselect the "Navigation wraps around" option
 - Panel
     - Right click on the battery icon and select "Show Battery Percentage on Icon" (on computers with a battery like a laptop)
