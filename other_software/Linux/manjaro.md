@@ -94,7 +94,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     # Install VSCode
     yay -S visual-studio-code-bin
     # sudo pacman -S krunner-vscodeprojects 
-    yay -S krunner-vscodeprojects
+    yay -S krunner-vscodeprojects-git
     ```
 
 - I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies.
