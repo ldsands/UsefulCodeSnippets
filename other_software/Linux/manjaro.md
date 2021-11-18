@@ -14,7 +14,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 
 ## Installing Manjaro KDE
 
-- Install oh-my-zsh, git, Kitty (a Konsole replacement) setup yay for installing from AUR and install MS Edge (beta).
+- Install [oh-my-zsh](https://ohmyz.sh/), git, [Kitty](https://sw.kovidgoyal.net/kitty/) (a Konsole replacement) setup [yay](https://github.com/Jguer/yay) for installing from AUR and install MS Edge (beta).
 
     ```sh
     # installs oh-my-zsh
@@ -255,6 +255,7 @@ System Settings to change. Open "System Settings" then you can search or find th
     - KRunner: `meta+space`
     - Switch One Desktop to the Left `meta+ctrl+left`
     - Switch One Desktop to the Right `meta+ctrl+right`
+    - Show Desktop Grid `meta+tab`
 - KRunner:
     - Unselect "Browser History"
     - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
@@ -262,23 +263,21 @@ System Settings to change. Open "System Settings" then you can search or find th
     - Check "Enable automatic mounting of removable media" and "Only automatically mount removable media that has been manually mounted before"
 - Workspace Behavior; General Behavior
     - Clicking files or folders; change to "Selects them"
-- Virtual Desktops and Activities
+- Virtual Desktops
     - Workspace Behavior; Virtual Desktops
-        - I create two additional Virtual Desktops named `Num 01`, `Num 02` and `Num 03`
+        - I create nine Virtual Desktops named `Misc 01`, `Misc 02` and `Misc 03` for row 1; `School 01`, `School 02` and `School 03` for row 2; `Python 01`, `Python 02` and `Python 03` for row 3
         - I also Unselect the "Navigation wraps around" option
-    - Workspace Behavior; Activities
-        - I create two new Activities
-            - The first is called "Python" and I use for the icon `/home/ldsands/Documents/pCloudLocal/Pictures/LogoCollections/Python/python-logo-generic_cropped.svg`
-            - The second is called "School" and I use for the icon `/home/ldsands/Documents/pCloudLocal/Pictures/LogoCollections/Uiowa/Uiowa-Dome-favicon-96x96.png`
-        - Switching between the activities can be done using `meta+tab`
 - Panel
-    - Right click on the battery icon and select "Show Battery Percentage on Icon"
+    - Right click on the battery icon and select "Show Battery Percentage on Icon" (on computers with a battery like a laptop)
     - Right click on the panel (called taskbar on Windows) and select "Edit Panel..."
         - Mouse over the "Icons-Only Task Manager"; Mouse over "Configure"; Then select "Behavior"; for "Groups" select "Do not group" and for "Show Only Tasks" select "From Current Screen"
-        - On the right screen I add the widget "Pager" just to the left of the "System Tray"
-            - Also I configure the widget "Text Display"; "Desktop Name"
-        - On the left screen I add the widget "Activity Pager" just to the left of the "System Tray"
-            - Also I configure the widget "Text Display"; "Activity Name"
+- Desktop
+    - On the right screen in the upper left hand corner I add the widget "Pager" onto the Desktop
+        - I make it big enough to see all nine desktops well
+        - Right click on the widget and select "Configure Pager"
+            - In the "General" tab I select "Show applications icons on window outlines"
+            - Also in the "General" tab I select "Text Display"; "Desktop Name"
+    - On the right screen in the upper right corner I add the "Weather Report" widget
 - Screen Locking
     - Lock screen automatically: uncheck
 
