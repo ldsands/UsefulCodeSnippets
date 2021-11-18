@@ -72,7 +72,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 
 - Install VSCode
     - VSCode is my text editor/IDE of choice
-    - I also install the [VSCodeProjectsRunner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it.
+    - I also install the [VSCodeProjectsRunner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
 
     ```sh
     # add some dependencies for signing into VSCode
