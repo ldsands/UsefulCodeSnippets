@@ -167,16 +167,11 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 - Install pyenv for managing python
 
     ```sh
-    # setup pyenv
-    # upgrade everything
-    sudo apt-get update && sudo apt-get upgrade -y
-    # install dependencies
-    sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+    # install pyenv
     # install pyenv and put into the PATH
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    echo '# pyenv stuff
+    yay -S pyenv
+    echo '
+    # pyenv stuff
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
