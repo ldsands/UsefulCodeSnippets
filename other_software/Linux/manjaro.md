@@ -214,6 +214,9 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     # yay -S obs-studio obs-backgroundremoval
     ```
 
+- Install [Wine](https://www.winehq.org/) so that I can use some Windows applications; namely PDF X-Change Editor and TextAloud 4. <!-- TODO: I'm still working on this. -->
+    - `yay -S wine`
+
 ## Notes on Installation Issues
 
 - If there is no audio device then install the audio firmware using the command below then restart the computer.
