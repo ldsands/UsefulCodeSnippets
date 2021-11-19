@@ -31,6 +31,7 @@ Table of Contents:
         - [Rust](#rust)
     - [Other snippets and instructions](#other-snippets-and-instructions)
         - [Bash/ZSH](#bashzsh)
+        - [Manjaro](#manjaro)
         - [Git](#git)
         - [Github](#github)
         - [Pandoc](#pandoc)
@@ -109,6 +110,12 @@ There are other software based snippets or instructions that I will keep here as
 Bash is the most widely used default shell for Linux. ZSH is an alternative that has a lot of quality of life improvements over bash. I use them mostly in WSL.
 
 - [Useful bash commands](other_software/Linux/bash.md)
+
+### [Manjaro](https://manjaro.org/)
+
+Manjaro (with KDE) is my preferred Linux distro. This file contains installation and setup instructions and tips.
+
+- [Manjaro](other_software/Linux/manjaro.md)
 
 <!-- ### [Docker](https://www.docker.com/)
 
