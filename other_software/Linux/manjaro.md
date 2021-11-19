@@ -19,6 +19,8 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     ```sh
     # installs oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # if you mistype the password then zsh won't be set as the default shell this command will set zsh as the default
+    chsh -s  /usr/bin/zsh
     # setup git to not auto end filenames (can cause issues when opening a repo that has been opened on Windows)
     git config --global core.autocrlf input
     # set up git to use your account (optional)
