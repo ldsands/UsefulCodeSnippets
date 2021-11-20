@@ -246,27 +246,32 @@ sudo pacman -S krunner-vscodeprojects
 
 System Settings to change. Open "System Settings" then you can search or find the categories listed below to edit settings.
 
-- Appearance; Global Theme; select "Breeze Dark"
-- Applications; Default Applications;
-    - Web Browser: select Microsoft Edge (beta)
-    - Terminal emulator: Hyper
+- "Appearance"; "Global Theme"; select "Breeze Dark"
+- "Applications"; "Default Applications";
+    - "Web Browser": select "Microsoft Edge (beta)"
+    - "Terminal emulator": select "Kitty"
 - Shortcuts;
-    - Maximize Window: `meta+home`
-    - KRunner: `meta+space`
-    - Switch One Desktop to the Left `meta+ctrl+left`
-    - Switch One Desktop to the Right `meta+ctrl+right`
-    - Show Desktop Grid `meta+tab`
+    - "Maximize Window": `meta+home`
+    - "KRunner": `meta+space`
+    - "Switch One Desktop to the Left": `meta+ctrl+left`
+    - "Switch One Desktop to the Right": `meta+ctrl+right`
+    - "Show Desktop Grid": `meta+tab`
+    - "Spectacle"; "Capture Rectangular Region": `meta+shift+s`
 - KRunner:
-    - Unselect "Browser History"
+    - Deselect "Browser History"
     - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
 - Removable Storage; Removable Devices
     - Check "Enable automatic mounting of removable media" and "Only automatically mount removable media that has been manually mounted before"
-- Workspace Behavior; General Behavior
+- "Workspace Behavior"; "General Behavior"
     - Clicking files or folders; change to "Selects them"
-- Virtual Desktops
-    - Workspace Behavior; Virtual Desktops
-        - I create nine Virtual Desktops named `Random`, `Comms` and `Todo` for row 1; `School 01`, `School 02` and `School 03` for row 2; `Python 01`, `Python 02` and `Python 03` for row 3
-        - I also Unselect the "Navigation wraps around" option
+- "Virtual Desktops"
+    - "Workspace Behavior"; "Virtual Desktops"
+        - I create 12 Virtual Desktops with three desktops in each of 4 rows
+        - Row 1: `Random 1`, `Random 2` and `Random 2`
+        - Row 2: `School 01`, `School 02` and `School 03`
+        - Row 3: `Python 01`, `Python 02` and `Python 03`
+        - Row 4: `Email`, `Comms` and `Todo`
+    - Enable "Show on-screen display when switching" also enable "Show desktop layout indicators"
 - Panel
     - Right click on the battery icon and select "Show Battery Percentage on Icon" (on computers with a battery like a laptop)
     - Right click on the panel (called taskbar on Windows) and select "Edit Panel..."
@@ -283,7 +288,7 @@ System Settings to change. Open "System Settings" then you can search or find th
 
 ## KDE Plasma Notes
 
-- Sometimes Plasma needs to be restarted. Use these commands to kill and then restart Plasma: `killall plasmashell && kstart5 plasmashell`
+- Sometimes Plasma may need to be restarted. Use these commands to kill and then restart Plasma: `killall plasmashell && kstart5 plasmashell`
 - I've had issues connecting my bluetooth mouse these commands found [here](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/) helped:
 
     ```sh
@@ -313,6 +318,8 @@ System Settings to change. Open "System Settings" then you can search or find th
     - I hide the following directories from the "Places" panel: `Music`, `Pictures` and `Videos`
     - I add these directories to the "Places" panel: `pCloudDrive`, `pCloudLocal`, `ComputerStuff`, `ResearchProjects` and `Uiowa`. I also add any current project and class directories for easy access.
     - In "Configure Toolbars" I search for "Up" in "Available actions" and add it to "Current Actions" and then move it to the top.
+- Gwenview (an Image Viewer)
+    - "Configure Keyboard Shortcuts" select "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
 
 ## Apps that I'm experimenting with
 
