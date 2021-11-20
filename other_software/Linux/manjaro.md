@@ -27,7 +27,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     git config --global user.name "user_name"
     git config --global user.email "email@example.com"
     # this makes it so you don't have to sign in every time you do anything with Github
-    # you will need to push a commit via terminal for this to work
+    # you will need to push (`git push`) a commit via terminal for this to work
     # you will need to enter your Github login and password (you must use a personal access token instead of your password)
     git config --global credential.helper 'store --file ~/.my-credentials'
     # install yay and other dependencies needed to instal and build AUR packages
