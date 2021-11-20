@@ -5,7 +5,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 - [Manjaro KDE](#manjaro-kde)
     - [Installing Manjaro KDE](#installing-manjaro-kde)
     - [Notes on Installation Issues](#notes-on-installation-issues)
-    - [VSCode Runner](#vscode-runner)
     - [Other Tips](#other-tips)
     - [KDE Plasma Setup](#kde-plasma-setup)
     - [KDE Plasma Notes](#kde-plasma-notes)
@@ -137,6 +136,8 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
         flatpak install flathub org.inkscape.Inkscape -y
         ```
 
+    - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
+
 - Setup of various other command line utilities I use
 
     ```sh
@@ -223,13 +224,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     ```sh
     sudo pacman -S sof-firmware
     ```
-
-
-## VSCode Runner
-
-```sh
-sudo pacman -S krunner-vscodeprojects
-```
 
 ## Other Tips
 
@@ -321,17 +315,15 @@ System Settings to change. Open "System Settings" then you can search or find th
     - I add these directories to the "Places" panel: `pCloudDrive`, `pCloudLocal`, `ComputerStuff`, `ResearchProjects` and `Uiowa`. I also add any current project and class directories for easy access.
     - In "Configure Toolbars" I search for "Up" in "Available actions" and add it to "Current Actions" and then move it to the top.
 - Gwenview (an Image Viewer)
-    - "Configure Keyboard Shortcuts" select "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
+    - "Configure Keyboard Shortcuts"
+        - "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
+        - Under "File" next to "Quit" click under "Alternate" select the button labeled "None" then enter `ctrl+w`; select "OK" at the bottom of the dialogue box
 
 ## Apps that I'm experimenting with
 
 ```sh
-# gThumb Image Viewer - View and organize your images
-flatpak install flathub org.gnome.gThumb -y
 # Evolution - Manage your email, contacts and schedule
 flatpak install flathub org.gnome.Evolution -y
-# Disk Usage Analyzer - Check folder sizes and available disk space
-flatpak install flathub org.gnome.baobab -y
 ```
 
 - Other terminal options because although I really like Hyper it does take a lot of RAM
