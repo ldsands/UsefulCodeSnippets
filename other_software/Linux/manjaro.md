@@ -110,34 +110,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
         ' >> ~/.config/baloofilerc
         ```
 
-- Install flatpak/flathub hosted apps:
-    - Apps I install on every computer
-
-        ```sh
-        # Zotero - Collect, organize, cite, and share research
-        flatpak install flathub org.zotero.Zotero -y
-        # SpeedCrunch - A high-precision scientific calculator
-        flatpak install flathub org.speedcrunch.SpeedCrunch -y
-        # Telegram Desktop messenger
-        flatpak install flathub org.telegram.desktop -y
-        # PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
-        flatpak install flathub io.github.peazip.PeaZip -y
-        # Spotify - Online music streaming service
-        flatpak install flathub com.spotify.Client -y
-        # Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
-        flatpak install flathub com.todoist.Todoist -y
-        # Discord - Messaging, Voice, and Video Client
-        flatpak install flathub com.discordapp.Discord -y
-        # Zoom - Video Conferencing, Web Conferencing, Webinars, Screen Sharing
-        flatpak install flathub us.zoom.Zoom -y
-        # Chromium Web Browser - The web browser from Chromium project
-        flatpak install flathub org.chromium.Chromium -y
-        # Inkscape - Vector Graphics Editor
-        flatpak install flathub org.inkscape.Inkscape -y
-        ```
-
-    - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
-
 - Setup of various other command line utilities I use
 
     ```sh
@@ -196,6 +168,40 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     pyenv global 3.9.7
     # see the version that was installed
     pyenv versions
+    ```
+
+- Install flatpak/flathub hosted apps:
+    - Apps I install on every computer
+
+        ```sh
+        # Zotero - Collect, organize, cite, and share research
+        flatpak install flathub org.zotero.Zotero -y
+        # SpeedCrunch - A high-precision scientific calculator
+        flatpak install flathub org.speedcrunch.SpeedCrunch -y
+        # Telegram Desktop messenger
+        flatpak install flathub org.telegram.desktop -y
+        # PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
+        flatpak install flathub io.github.peazip.PeaZip -y
+        # Spotify - Online music streaming service
+        flatpak install flathub com.spotify.Client -y
+        # Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
+        flatpak install flathub com.todoist.Todoist -y
+        # Discord - Messaging, Voice, and Video Client
+        flatpak install flathub com.discordapp.Discord -y
+        # Zoom - Video Conferencing, Web Conferencing, Webinars, Screen Sharing
+        flatpak install flathub us.zoom.Zoom -y
+        # Chromium Web Browser - The web browser from Chromium project
+        flatpak install flathub org.chromium.Chromium -y
+        # Inkscape - Vector Graphics Editor
+        flatpak install flathub org.inkscape.Inkscape -y
+        ```
+
+    - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
+- Install other applications I regularly use.
+
+    ```sh
+    # "Pomotroid is a simple and configurable Pomodoro timer."
+    yay -S pomotroid-bin
     ```
 
 - Install [OBS Studio](https://obsproject.com/) and [OBS-BackgroundRemoval](https://github.com/royshil/obs-backgroundremoval)
@@ -260,6 +266,18 @@ System Settings to change. Open "System Settings" then you can search or find th
     - Check "Enable automatic mounting of removable media" and "Only automatically mount removable media that has been manually mounted before"
 - "Workspace Behavior"; "General Behavior"
     - Clicking files or folders; change to "Selects them"
+- "Workspace Behavior"
+    - "Desktop Effects"
+        - Search for "Desktop Grid"
+            - Select the "Configure..." button
+            - Set "Border width:" to 5
+            - For "Desktop name alignment:" select "Top"
+            - Deselect "Show buttons to alter count of virtual desktops"
+            - Click on the "OK" button
+    - "Screen Edges"
+        - For all corners select "No Action" except:
+            - The lower right corner select "Present Windows All Desktops"
+            - The lower left select "Desktop Grid"
 - "Virtual Desktops"
     - "Workspace Behavior"; "Virtual Desktops"
         - I create 12 Virtual Desktops with three desktops in each of 4 rows
