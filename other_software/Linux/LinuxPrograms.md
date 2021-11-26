@@ -1,6 +1,63 @@
 # Linux Program
 
-## Command Line Programs
+## Wine (On Manjaro)
+
+- make sure wine and winetricks are installed via "Add/Remove Software" or via the command line: `yay -S wine winetricks`
+    - In the example below I will setup a "bottle" for PDF X-Change Editor
+
+    ```sh
+    # create a location to put all of the "bottles"
+    mkdir ~/Documents/wine && cd ~/Documents/wine
+    # create a win64 bottle for a win64 applications with the prefix for the Windows environment (it seems like most name these by application due to different environment requirements)
+    WINEARCH=win64 WINEPREFIX=~/wine/PDFXChangeBottle64 winetricks corefonts win10
+    # create a win32 bottle for a win32 applications with the prefix for the Windows environment dotnet40 (displays a lot of errors but the install works. Required for TextAloud 4 only) and speechsdk (sapi5) are ruquired to run TextAloud 4
+    WINEARCH=win32 WINEPREFIX=~/wine/TextAloud4_32 winetricks corefonts speechsdk dotnet48 win10
+    # the win32 WINEPREFIXs need this package for access to the internet (which allows activating TextAloud 4)
+    yay -S lib32-gnutls
+    # launch winetricks
+    winetricks
+    # launch winetricks with the non-default prefix
+    WINEPREFIX=~/wine/TextAloud4_32 winetricks
+    # winecfg allows you to access some other wine settings (such as which version of Windows to use)
+    winecfg
+    # to kill all wine processes use this command
+    wineserver -k
+    ```
+
+    - To integrate the program with KDE you must create a `.desktop` file and put it here: `/home/ldsands/.local/share/applications/` with the contents below. Some of them have been customized for my use of PDF X-Change Editor
+    - You also need to use `winetricks` then select the `winecfg` then select `Add Program` and find the `.exe` file you want to have access too in KDE
+    - more info about the exec command can be found [here](https://askubuntu.com/questions/431684/how-can-i-find-the-progid-of-a-windows-program-to-use-in-wine)
+
+    ```PDFXEdit9.desktop
+    [Desktop Entry]
+    Comment=The smallest, fastest, most feature-rich FREE PDF editor/viewer available! (Launched using Wine)
+    Exec=env WINEPREFIX="/home/ldsands/wine/PDFXChangeBottle64/" WINEDEBUG=fixme-all wine "/home/ldsands/wine/PDFXChangeBottle64/drive_c/users/ldsands/Documents/pCloudLocal/PortableApps/PDFXEdit9_Portable/PDFXEdit.exe" Z:%f
+    GenericName=PDF Editor
+    Categories=Office;
+    Icon=/home/ldsands/Documents/pCloudLocal/Pictures/NativefierIcons/PDFXEdit.png
+    MimeType=application/pdf;
+    Actions=new-empty-window;
+    Keywords=PDF;
+    Name=PDF X-Change Editor 9
+    NoDisplay=true
+    StartupNotify=false
+    Terminal=false
+    Type=Application
+    ```
+
+    - Another option is to use "Bottles" which can be installed from Flathub `flatpak install flathub com.usebottles.bottles -y`
+        - I used the portable download of PDF X-Change Editor (version 9) for this example
+        - I first run bottles after installation (it probably has to install some more software)
+        - I create a directory to store everything I then copied the portable (extracted) directory of PDFXEdit9_Portable into the new `bottles` directory
+        - I then select "Create a new bottle" button
+            - For name I use `PDFXEdit9PortableBottle`
+            - I select "Software" under "Environment"
+            - I then press "Create"
+        - Bottles will then create a new environment for the application. This will take a while.
+        - Once the bottle creation is complete select the new bottle
+            - 
+
+## Command Line Programs (On Ubuntu)
 
 - [OCRmyPDF](https://ocrmypdf.readthedocs.io/en/latest/index.html) - This a very good OCR command line utility.
 
@@ -84,7 +141,7 @@
     tts-server
     ```
 
-## OBS Extensions
+## OBS Extensions (On Ubuntu)
 
 - Install [OBS Studio](https://obsproject.com/) - `sudo apt-get install obs-studio`
     - Do not install using snap or flatpak
@@ -104,7 +161,7 @@
         qtbase5-dev
     ```
 
-- [OBS Plugin: Background Removal] - This removes the background from the video in OBS
+- [OBS Plugin: Background Removal](https://github.com/royshil/obs-backgroundremoval) - This removes the background from the video in OBS
 
     ```sh
     cd ~/Downloads

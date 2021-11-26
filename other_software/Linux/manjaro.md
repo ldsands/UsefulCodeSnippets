@@ -336,6 +336,10 @@ System Settings to change. Open "System Settings" then you can search or find th
     - "Configure Keyboard Shortcuts"
         - "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
         - Under "File" next to "Quit" click under "Alternate" select the button labeled "None" then enter `ctrl+w`; select "OK" at the bottom of the dialogue box
+- LibreOffice
+    - It seems like when LibreOffice is in dark mode it doesn't automatically change the icons so they are very difficult to see. To change this select "Tools" then "Options" then under "LibreOffice" select "View"
+        - Under "Icon style:" select "Breeze (SVG + dark)" then click the "Apply" button.
+    - I also prefer the "ribben" style of user interface. To change to the ribbon ui go to "View" then "User Interface..." Then select "Tabbed"
 
 ## Apps that I'm experimenting with
 
