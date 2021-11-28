@@ -1,11 +1,16 @@
-# Linux Program
+# Linux Programs
 
-## Random Apps for Manjaro
+- [Linux Programs](#linux-programs)
+    - [Manjaro/Arch Based Distros](#manjaroarch-based-distros)
+        - [Wine (On Manjaro)](#wine-on-manjaro)
+        - [Random Apps for Manjaro](#random-apps-for-manjaro)
+    - [Ubuntu/Debian Based Distros](#ubuntudebian-based-distros)
+        - [Command Line Programs (On Ubuntu)](#command-line-programs-on-ubuntu)
+        - [OBS Extensions (On Ubuntu)](#obs-extensions-on-ubuntu)
 
-- For more battery settings which can help with battery life I download for use on laptops `yay -S slimbookbattery`
-    - My experience with Manjaro (and linux more generally) has shown me that by default Windows is much better for battery life. To fix this I use the standard settings for Slimbook Battery 4 and select battery saving. This has helped a lot with battery drain.
+## Manjaro/Arch Based Distros
 
-## Wine (On Manjaro)
+### Wine (On Manjaro)
 
 - make sure wine and winetricks are installed via "Add/Remove Software" or via the command line: `yay -S wine winetricks`
     - In the example below I will setup a "bottle" for PDF X-Change Editor
@@ -86,7 +91,51 @@
         X-KDE-Protocols=file
         ```
 
-## Command Line Programs (On Ubuntu)
+### Random Apps for Manjaro
+
+- For more battery settings which can help with battery life I download for use on laptops `yay -S slimbookbattery`
+    - My experience with Manjaro (and linux more generally) has shown me that by default Windows is much better for battery life. To fix this I use the standard settings for Slimbook Battery 4 and select battery saving. This has helped a lot with battery drain.
+- [Orange: Interactive data analysis](https://github.com/biolab/orange3) is a data analysis package/collection of packages that allows for visual programming with some predefined modules
+    - Add-ons add to the functionality of Orange. Official add-ons can be found [here](https://github.com/biolab/orange3/blob/stable/README.md).
+    - One way is to install from AUR:
+        - `yay -S python-orange`
+    - The developers recommend using conda.
+
+        ```sh
+        conda config --add channels conda-forge
+        conda config --set channel_priority strict
+        conda install orange3
+        ```
+
+    - I've had success using pyenv venv and pip and this fits into my workflow much better
+
+        ```sh
+        # if you have pyenv installed
+        pyenv install 3.9.7
+        pyenv global 3.9.7
+        # to check the selected version
+        pyenv versions
+        # create a virtual environment
+        python -m venv venv
+        # activate the virtual environment
+        source ./venv/bin/activate
+        # upgrade pip
+        python -m pip install --upgrade pip
+        # install wheel package so that installations go quicker
+        pip install wheel
+        # use pip install to install Orange Canvas
+        pip install orange3
+        # install add-ons that I commonly use
+        pip install Orange3-Text
+        # run Orange Canvas
+        python -m Orange.canvas
+        ```
+
+    - To run the Orange Canvas (the GUI) use this command: `python -m Orange.canvas`
+
+## Ubuntu/Debian Based Distros
+
+### Command Line Programs (On Ubuntu)
 
 - [OCRmyPDF](https://ocrmypdf.readthedocs.io/en/latest/index.html) - This a very good OCR command line utility.
 
@@ -170,7 +219,7 @@
     tts-server
     ```
 
-## OBS Extensions (On Ubuntu)
+### OBS Extensions (On Ubuntu)
 
 - Install [OBS Studio](https://obsproject.com/) - `sudo apt-get install obs-studio`
     - Do not install using snap or flatpak

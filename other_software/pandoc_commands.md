@@ -1,5 +1,21 @@
 # Pandoc Useful Commands
 
+- [Pandoc Useful Commands](#pandoc-useful-commands)
+    - [Installation](#installation)
+    - [Basic commands and conversion](#basic-commands-and-conversion)
+    - [Using citeproc (for citations)](#using-citeproc-for-citations)
+    - [Other Formatting Tricks](#other-formatting-tricks)
+    - [YAML Commands](#yaml-commands)
+    - [Lua filters](#lua-filters)
+
+## Installation
+
+- On Manjaro (Arch Linux) you can use yay to install pandoc and other related software.
+
+    ```sh
+    yay -S pandoc texlive-core texlive-latexextra
+    ```
+
 ## Basic commands and conversion
 
 Example 1: convert markdown doc to word doc
