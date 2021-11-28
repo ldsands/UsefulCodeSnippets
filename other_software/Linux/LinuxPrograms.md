@@ -1,15 +1,23 @@
 # Linux Program
 
+## Random Apps for Manjaro
+
+- For more battery settings which can help with battery life I download for use on laptops `yay -S slimbookbattery`
+    - My experience with Manjaro (and linux more generally) has shown me that by default Windows is much better for battery life. To fix this I use the standard settings for Slimbook Battery 4 and select battery saving. This has helped a lot with battery drain.
+
 ## Wine (On Manjaro)
 
 - make sure wine and winetricks are installed via "Add/Remove Software" or via the command line: `yay -S wine winetricks`
     - In the example below I will setup a "bottle" for PDF X-Change Editor
+    - FYI i'm still actively trying to figure out the best way to deal with this, it has proven to be very confusing and complicated.
 
     ```sh
     # create a location to put all of the "bottles"
     mkdir ~/Documents/wine && cd ~/Documents/wine
     # create a win64 bottle for a win64 applications with the prefix for the Windows environment (it seems like most name these by application due to different environment requirements)
     WINEARCH=win64 WINEPREFIX=~/wine/PDFXChangeBottle64 winetricks corefonts win10
+    # to launch winetricks for this bottle
+    WINEPREFIX=~/wine/PDFXChangeBottle64 winetricks
     # create a win32 bottle for a win32 applications with the prefix for the Windows environment dotnet40 (displays a lot of errors but the install works. Required for TextAloud 4 only) and speechsdk (sapi5) are ruquired to run TextAloud 4
     WINEARCH=win32 WINEPREFIX=~/wine/TextAloud4_32 winetricks corefonts speechsdk dotnet48 win10
     # the win32 WINEPREFIXs need this package for access to the internet (which allows activating TextAloud 4)
@@ -45,7 +53,8 @@
     Type=Application
     ```
 
-    - Another option is to use "Bottles" which can be installed from Flathub `flatpak install flathub com.usebottles.bottles -y`
+    - Another option is to use "[Bottles](https://usebottles.com/)" which can be installed from Flathub `flatpak install flathub com.usebottles.bottles -y` for increased sandboxing however I use the AUR package `yay -S bottles` mostly because it automatically allows access to the `bottles` command via the command line which allows for much easier creation of the `desktop` files needed for desktop integration of portable apps.
+        - You can also use `appimage` it can access files outside of the bottle this allows me to launch the portable version of PDF X-Change Editor from my synced folder but creating a launch desktop file is more complicated
         - I used the portable download of PDF X-Change Editor (version 9) for this example
         - I first run bottles after installation (it probably has to install some more software)
         - I create a directory to store everything I then copied the portable (extracted) directory of PDFXEdit9_Portable into the new `bottles` directory
@@ -55,7 +64,27 @@
             - I then press "Create"
         - Bottles will then create a new environment for the application. This will take a while.
         - Once the bottle creation is complete select the new bottle
-            - 
+        - You can add a `desktop` file to `/home/ldsands/.local/share/applications/` (I use the this filename: `PDFXEdit9.desktop`) and the content of this file is below
+
+        ```PDFXEdit9.desktop
+        [Desktop Entry]
+        # Descriptions and Cosmetic Settings
+        Name=PDF X-Change Editor 9
+        GenericName=PDF Editor
+        Keywords=PDF;pdf;
+        Comment=The smallest, fastest, most feature-rich FREE PDF editor/viewer available! (Launched using Wine)
+        Icon=/home/ldsands/Documents/pCloudLocal/Pictures/NativefierIcons/PDFXEdit.png
+        # Other Settings and classifiers
+        Exec=bottles -b PDFXEdit9PortableBot -e /home/ldsands/Documents/pCloudLocal/PortableApps/PDFXEdit9_Portable/PDFXEdit.exe
+        Categories=Office;
+        Type=Application
+        MimeType=application/pdf;
+        Actions=new-empty-window;
+        NoDisplay=true
+        StartupNotify=true
+        Terminal=false
+        X-KDE-Protocols=file
+        ```
 
 ## Command Line Programs (On Ubuntu)
 
