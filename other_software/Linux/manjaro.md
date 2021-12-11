@@ -188,8 +188,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
         flatpak install flathub com.todoist.Todoist -y
         # Discord - Messaging, Voice, and Video Client
         flatpak install flathub com.discordapp.Discord -y
-        # Zoom - Video Conferencing, Web Conferencing, Webinars, Screen Sharing
-        flatpak install flathub us.zoom.Zoom -y
         # Chromium Web Browser - The web browser from Chromium project
         flatpak install flathub org.chromium.Chromium -y
         # Inkscape - Vector Graphics Editor
@@ -197,11 +195,16 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
         ```
 
     - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
+    - I used to use flatpak for zoom but you can't change the virtual background so I use AUR instead. `flatpak install flathub us.zoom.Zoom -y`
 - Install other applications I regularly use.
 
     ```sh
     # "Pomotroid is a simple and configurable Pomodoro timer."
     yay -S pomotroid-bin
+    # Zoom - Video Conferencing, Web Conferencing, Webinars, Screen Sharing
+    yay -S zoom
+    # The standard Microsoft Fonts which helps with editing MS Office files
+    yay -S ttf-ms-fonts
     ```
 
 - Install [OBS Studio](https://obsproject.com/) and [OBS-BackgroundRemoval](https://github.com/royshil/obs-backgroundremoval)

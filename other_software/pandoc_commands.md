@@ -26,7 +26,7 @@ Example 1: convert markdown doc to word doc
     - `-f` is the from command so you can convert from some form in this case markdown
     - `-t` is the to command which tells pandoc what format to convert the file to in this case docx
     - Finally the filename.md is the file that is used as the input
-    - This order is not important however ther are other commands whose order do matter
+    - This order is not important however there are other commands whose order do matter
 
     ```pandoc
     pandoc -o output.docx -f markdown -t docx filename.md

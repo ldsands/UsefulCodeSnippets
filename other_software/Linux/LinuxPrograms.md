@@ -64,7 +64,7 @@
         - I first run bottles after installation (it probably has to install some more software)
         - I create a directory to store everything I then copied the portable (extracted) directory of PDFXEdit9_Portable into the new `bottles` directory
         - I then select "Create a new bottle" button
-            - For name I use `PDFXEdit9PortableBottle`
+            - For name I use `PDFXEdit9PortableBot`
             - I select "Software" under "Environment"
             - I then press "Create"
         - Bottles will then create a new environment for the application. This will take a while.
