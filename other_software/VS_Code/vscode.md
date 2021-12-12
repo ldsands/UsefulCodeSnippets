@@ -18,6 +18,7 @@ All of my VS Code information that I use
 - [Snippet Generator](https://snippet-generator.app/?description=&tabtrigger=&snippet=&mode=vscode)
 - [Extension API Documentation](https://code.visualstudio.com/api/references/vscode-api)
 - [Keybindings Page](https://code.visualstudio.com/docs/getstarted/keybindings)
+- [Default Windows Keybindings](https://github.com/smcpeak/vscode-default-keys-windows/blob/master/package.json)
 
 ## Code Snippets
 
