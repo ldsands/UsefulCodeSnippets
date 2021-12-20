@@ -255,14 +255,13 @@ System Settings to change. Open "System Settings" then you can search or find th
 - "Applications"; "Default Applications";
     - "Web Browser": select "Microsoft Edge (beta)"
     - "Terminal emulator": select "Kitty"
-- "Shortcuts";
+- Shortcuts;
     - "Maximize Window": `meta+home`
     - "KRunner": `meta+space`
     - "Switch One Desktop to the Left": `meta+ctrl+left`
     - "Switch One Desktop to the Right": `meta+ctrl+right`
     - "Show Desktop Grid": `meta+tab`
     - "Spectacle"; "Capture Rectangular Region": `meta+shift+s`
-    - Click the button "Add Application" select Kitty; Click "Add custom shortcut" `ctrl+shift+t`
 - KRunner:
     - Deselect "Browser History"
     - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
