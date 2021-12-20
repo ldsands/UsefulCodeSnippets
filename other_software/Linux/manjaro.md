@@ -174,8 +174,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     - Apps I install on every computer
 
         ```sh
-        # Zotero - Collect, organize, cite, and share research
-        flatpak install flathub org.zotero.Zotero -y
         # SpeedCrunch - A high-precision scientific calculator
         flatpak install flathub org.speedcrunch.SpeedCrunch -y
         # Telegram Desktop messenger
@@ -184,14 +182,20 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
         flatpak install flathub io.github.peazip.PeaZip -y
         # Spotify - Online music streaming service
         flatpak install flathub com.spotify.Client -y
-        # Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
-        flatpak install flathub com.todoist.Todoist -y
         # Discord - Messaging, Voice, and Video Client
         flatpak install flathub com.discordapp.Discord -y
         # Chromium Web Browser - The web browser from Chromium project
         flatpak install flathub org.chromium.Chromium -y
+        # AppImage Pool - A simple, modern AppImageHub Client.
+        flatpak install flathub io.github.prateekmedia.appimagepool -y
         # Inkscape - Vector Graphics Editor
         flatpak install flathub org.inkscape.Inkscape -y
+        # Caprine - Elegant Facebook Messenger desktop app
+        flatpak install flathub com.sindresorhus.Caprine
+        # Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
+        flatpak install flathub com.todoist.Todoist -y
+        # Zotero - Collect, organize, cite, and share research
+        flatpak install flathub org.zotero.Zotero -y
         ```
 
     - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
@@ -255,13 +259,14 @@ System Settings to change. Open "System Settings" then you can search or find th
 - "Applications"; "Default Applications";
     - "Web Browser": select "Microsoft Edge (beta)"
     - "Terminal emulator": select "Kitty"
-- Shortcuts;
+- "Shortcuts";
     - "Maximize Window": `meta+home`
     - "KRunner": `meta+space`
     - "Switch One Desktop to the Left": `meta+ctrl+left`
     - "Switch One Desktop to the Right": `meta+ctrl+right`
     - "Show Desktop Grid": `meta+tab`
     - "Spectacle"; "Capture Rectangular Region": `meta+shift+s`
+    - Click the button "Add Application" select Kitty; Click "Add custom shortcut" `ctrl+shift+t`
 - KRunner:
     - Deselect "Browser History"
     - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
