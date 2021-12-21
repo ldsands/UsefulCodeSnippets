@@ -284,7 +284,8 @@ System Settings to change. Open "System Settings" then you can search or find th
             - Click on the "OK" button
     - "Screen Edges"
         - For all corners select "No Action" except:
-            - The lower right corner select "Present Windows All Desktops"
+            - The upper right corner select "Present Windows - Current Desktops"
+            - The lower right corner select "Present Windows - All Desktops"
             - The lower left select "Desktop Grid"
 - "Virtual Desktops"
     - "Workspace Behavior"; "Virtual Desktops"

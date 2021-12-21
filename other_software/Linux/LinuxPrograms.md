@@ -4,6 +4,7 @@
     - [Manjaro/Arch Based Distros](#manjaroarch-based-distros)
         - [Wine (On Manjaro)](#wine-on-manjaro)
         - [Random Apps for Manjaro](#random-apps-for-manjaro)
+        - [Nativefier (In Progress I need to wait for Node.js 17.3 to come to manjaro for now)](#nativefier-in-progress-i-need-to-wait-for-nodejs-173-to-come-to-manjaro-for-now)
     - [Ubuntu/Debian Based Distros](#ubuntudebian-based-distros)
         - [Command Line Programs (On Ubuntu)](#command-line-programs-on-ubuntu)
         - [OBS Extensions (On Ubuntu)](#obs-extensions-on-ubuntu)
@@ -95,6 +96,8 @@
 
 - For more battery settings which can help with battery life I download for use on laptops `yay -S slimbookbattery`
     - My experience with Manjaro (and linux more generally) has shown me that by default Windows is much better for battery life. To fix this I use the standard settings for Slimbook Battery 4 and select battery saving. This has helped a lot with battery drain.
+- [Piper](https://github.com/libratbag/piper/wiki) for managing my Logitech mouse peripherals
+    - `yay -S piper`
 - [Orange: Interactive data analysis](https://github.com/biolab/orange3) is a data analysis package/collection of packages that allows for visual programming with some predefined modules
     - Add-ons add to the functionality of Orange. Official add-ons can be found [here](https://github.com/biolab/orange3/blob/stable/README.md).
     - One way is to install from AUR:
@@ -132,6 +135,50 @@
         ```
 
     - To run the Orange Canvas (the GUI) use this command: `python -m Orange.canvas`
+
+### Nativefier (In Progress I need to wait for Node.js 17.3 to come to manjaro for now)
+
+Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
+
+```sh
+# install node.js using yay be sure to select the one that says "community/nodejs"
+sudo pacman -S nodejs npm
+# install corepack and yarn
+yay corepack yarn
+# test install
+node -v
+# to install nativefier
+npm install -g nativefier
+# to install nativefier using yarn
+yarn global add nativefier
+# if you get this error "npm ERR! code ENETUNREACH" use the command below:
+npm config delete proxy
+# to update nativefier (you must have admin privileges) you should update npm first then update nativefier (the command below updates npm and then nativefier)
+npm update -g npm && npm update -g nativefier
+# it is also a good idea to create a folder just for nativefier below is where I put it
+New-Item -Path 'C:\tools\nativefier' -ItemType Directory
+# now navigate to the folder to create the nativefier program there
+cd C:\tools\nativefier
+```
+
+The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
+
+- Some notable options
+    - `--hide-window-frame` disables window frame and controls.
+    - `--single-instance` you can only have one window of this open at a time
+    - `--internal-urls ".*?"` if you want any domain to be able to work in the nativefier window
+    - `--portable` "Make your app store its user data (cookies, cache, etc) inside the app folder"
+
+Some Nativefier Limitations
+
+- You cannot use `ctrl` + `f` to use find in page
+
+Below are a list of the nativefier apps that I install with their code.
+
+```PowerShell
+# Microsoft To Do
+nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon /home/ldsands/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftToDoLogo-2017_App_Button.svg --maximize
+```
 
 ## Ubuntu/Debian Based Distros
 
