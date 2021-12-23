@@ -119,9 +119,9 @@
         # to check the selected version
         pyenv versions
         # create a virtual environment
-        python -m venv venv
+        python -m venv .venv
         # activate the virtual environment
-        source ./venv/bin/activate
+        source ./.venv/bin/activate
         # upgrade pip
         python -m pip install --upgrade pip
         # install wheel package so that installations go quicker
@@ -252,9 +252,9 @@ nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-u
     # Create and enter a directory for coqui-ai/TTS
     cd ~/Documents && mkdir coquiTTS && cd coquiTTS
     # create a virtual environment
-    python -m venv venvKDE # for KDE Neon
+    python -m venv .venvKDE # for KDE Neon
     # activate the virtual environment
-    source ./venvKDE/bin/activate # for KDE Neon
+    source ./.venvKDE/bin/activate # for KDE Neon
     python -m pip install --upgrade pip
     # install wheel package so that installations go quicker
     pip install wheel

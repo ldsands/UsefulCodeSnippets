@@ -92,7 +92,7 @@ Write-Host "Configuring PowerShell Prompt Using Starship"
 if (!(Test-Path -Path "~/.config")) {
     mkdir -p ~/.config | out-null
 }
-$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a975bad49c61e290801ff663ef7df279fe0a96a9/starship.toml
+$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a2a845f29d5712d6434983316d7281fe6a088947/starship.toml
 New-Item "~\.config\starship.toml" -ItemType File -Value $ConfigContent.Content -Force | out-null
 Update-Path | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 

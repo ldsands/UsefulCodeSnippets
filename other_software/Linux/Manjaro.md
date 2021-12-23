@@ -135,13 +135,13 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     mkdir -p ~/.config && mkdir -p ~/.config/bottom/
     # copy my configuration from my gists to the bottom.toml and starship.toml files
     cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
-    cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a975bad49c61e290801ff663ef7df279fe0a96a9/starship.toml
+    cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a2a845f29d5712d6434983316d7281fe6a088947/starship.toml
     # this adds the starship initialize command to the end of the zsh config file
     echo 'eval "$(starship init zsh)"
     ' >> ~/.zshrc
     ```
 
-- Install pyenv for managing python
+- Install [pyenv](https://github.com/pyenv/pyenv) and [python-launcher](https://github.com/brettcannon/python-launcher) for managing python and python virtual environments
 
     ```sh
     # install pyenv
@@ -168,6 +168,14 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     pyenv global 3.9.7
     # see the version that was installed
     pyenv versions
+    # install python-launcher
+    yay -S python-launcher
+    # add the needed line to zshrc file to use pyenv with python-launcher
+    echo $'# python-launcher stuff
+    export PY_PYTHON=$(pyenv exec python -c "import sys; print(\'.\'.join(map(str, sys.version_info[:2])))")
+    ' >> ~/.zshrc
+    # create virtual environment this will automatically use the newest version of python that pyenv installed
+    py -m venv .venv
     ```
 
 - Install flatpak/flathub hosted apps:
