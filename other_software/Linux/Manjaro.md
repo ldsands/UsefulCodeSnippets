@@ -305,6 +305,7 @@ System Settings to change. Open "System Settings" then you can search or find th
     - Enable "Show on-screen display when switching" also enable "Show desktop layout indicators"
 - Panel
     - Right click on the battery icon and select "Show Battery Percentage on Icon" (on computers with a battery like a laptop)
+    - Right click on the clock and select "Configure Digital Clock ..." Then next to "Date format:" select "ISO Date"
     - Right click on the panel (called taskbar on Windows) and select "Edit Panel..."
         - Mouse over the "Icons-Only Task Manager"; Mouse over "Configure"; Then select "Behavior"; for "Groups" select "Do not group" and for "Show Only Tasks" select "From Current Screen"
 - Desktop
@@ -342,9 +343,10 @@ System Settings to change. Open "System Settings" then you can search or find th
 
 - Microsoft Edge (Beta)
     - Sign in using Microsoft Account
-    - Create PWA from my Outlook Accounts:
-        - Open the "Applicaion Launcher" (like the start button from Windows); search for "Outlook (PWA)"; right click on the result; Select "Application" tab;
+    - Create PWAs from my Outlook Accounts (and others):
+        - Open the "Application Launcher" (like the start button from Windows); search for "Outlook (PWA)"; right click on the result; Select "Application" tab;
         - Select the ellipsis menu in the upper right; select permissions; next to "Notifications" Select "Allow"
+        - I do this for my two Outlook Accounts (Personal Outlook, Uiowa Outlook, [MonkeyType](https://monkeytype.com/))
 - Dolphin
     - I hide the following directories from the "Places" panel: `Music`, `Pictures` and `Videos`
     - I add these directories to the "Places" panel: `pCloudDrive`, `pCloudLocal`, `ComputerStuff`, `ResearchProjects` and `Uiowa`. I also add any current project and class directories for easy access.

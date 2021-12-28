@@ -6,6 +6,8 @@ Note: These instructions should work for Mac too.
 
 I have also created a tutorial on how to use some aspects of Zotero that can be accessed [here](https://ldsands.github.io/Slides/main_slides/one_offs/2020_09_Levi_Sands_Ref_Man_Zotero.html#/).
 
+[This blog post](https://www.jdavidstark.com/3-ways-to-increase-your-zotero-cloud-storage/?fbclid=IwAR0HGGW_WcSWFs2VbXQWf3sp58YSA2iNbZIxp7Yikzjq6Gx-TWILjuWFgc4) has some more detail about different ways to set up attachment syncing. I have personally found WebDAV to be more reliable overall (despite the occasional downtime of pCloud's WebDAV service).
+
 ## Links and Account Information
 
 To complete the instructions to install Zotero and setup the WebDAV file syncing, you will have to follow the instructions listed below:
