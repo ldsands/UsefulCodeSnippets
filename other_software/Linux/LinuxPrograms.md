@@ -4,7 +4,7 @@
     - [Manjaro/Arch Based Distros](#manjaroarch-based-distros)
         - [Wine (On Manjaro)](#wine-on-manjaro)
         - [Random Apps for Manjaro](#random-apps-for-manjaro)
-        - [Nativefier (In Progress I need to wait for Node.js 17.3 to come to manjaro for now)](#nativefier-in-progress-i-need-to-wait-for-nodejs-173-to-come-to-manjaro-for-now)
+        - [Nativefier](#nativefier)
     - [Ubuntu/Debian Based Distros](#ubuntudebian-based-distros)
         - [Command Line Programs (On Ubuntu)](#command-line-programs-on-ubuntu)
         - [OBS Extensions (On Ubuntu)](#obs-extensions-on-ubuntu)
@@ -136,29 +136,25 @@
 
     - To run the Orange Canvas (the GUI) use this command: `python -m Orange.canvas`
 
-### Nativefier (In Progress I need to wait for Node.js 17.3 to come to manjaro for now)
+### Nativefier
 
 Nativefier is an electron wrapper that can turn any website into a desktop application. It is very useful for obvious reasons. To install nativefier enter the following code after you have installed node.js:
 
 ```sh
 # install node.js using yay be sure to select the one that says "community/nodejs"
 sudo pacman -S nodejs npm
-# install corepack and yarn
-yay corepack yarn
 # test install
 node -v
 # to install nativefier
 npm install -g nativefier
-# to install nativefier using yarn
-yarn global add nativefier
-# if you get this error "npm ERR! code ENETUNREACH" use the command below:
-npm config delete proxy
+# to install nativefier using npm
+npm install nativefier -g
 # to update nativefier (you must have admin privileges) you should update npm first then update nativefier (the command below updates npm and then nativefier)
 npm update -g npm && npm update -g nativefier
 # it is also a good idea to create a folder just for nativefier below is where I put it
-New-Item -Path 'C:\tools\nativefier' -ItemType Directory
+mkdir /home/ldsands/Documents/NativefierApps/
 # now navigate to the folder to create the nativefier program there
-cd C:\tools\nativefier
+cd /home/ldsands/Documents/NativefierApps/
 ```
 
 The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
@@ -168,6 +164,7 @@ The options are all explained [here](https://github.com/jiahaog/nativefier/blob/
     - `--single-instance` you can only have one window of this open at a time
     - `--internal-urls ".*?"` if you want any domain to be able to work in the nativefier window
     - `--portable` "Make your app store its user data (cookies, cache, etc) inside the app folder"
+    - `--conceal` this combines several files in the `resources` directory into one file
 
 Some Nativefier Limitations
 
@@ -177,7 +174,7 @@ Below are a list of the nativefier apps that I install with their code.
 
 ```PowerShell
 # Microsoft To Do
-nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon /home/ldsands/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftToDoLogo-2017_App_Button.svg --maximize
+nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon /home/ldsands/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftToDoLogo-2017_App_Button.svg --maximize --portable --conceal
 ```
 
 ## Ubuntu/Debian Based Distros

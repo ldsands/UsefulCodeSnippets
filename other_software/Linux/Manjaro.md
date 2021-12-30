@@ -35,7 +35,12 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     sudo pacman -S kitty
     # change the ctrl+shift to ctrl in Kitty along with some other settings more can be found [here](https://sw.kovidgoyal.net/kitty/conf/)
     echo "
-    kitty_mod ctrl
+    map ctrl+c copy_or_interrupt
+    map ctrl+v paste_from_clipboard
+    map ctrl+t new_tab
+    map ctrl+w close_window
+    map ctrl+tab next_tab
+    map ctrl+shift+tab previous_tab
     background_opacity 0.6
     :     font_family      FiraCode Nerd Font Mono
     " >> ~/.config/kitty/kitty.conf
