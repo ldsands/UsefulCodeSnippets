@@ -132,6 +132,10 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     ```
 
 - Sometimes the default shell changes back to bash from zsh. To change this back you can use this command: `chsh -s $(which zsh)`
+- Dealing with mounted partitions can be confusing typically if you are using external (portable) drives you should just format them to NTFS and be done with it (or exFAT if you also interact with MacOS). However because of issues I've had in the past I decided to dive a bit deeper into this.
+    - When creating a new partition I used GParted (`yay -S gparted`) I create a small NTFS partition for keeping files I'll use on Windows and for keeping contact info in case the drive is lost. I create a BTRFS partition with the rest of the space. To allow for anyone to access the drive on that computer you need to first mount the drive then use `df -h` find the correct mount point path (under the "Mounted on" column) for the partition in question. Then I use the two commands below substituting the mount point. This also appears to change the permissions for multiple computers/users and allows for any user to modify all of the files on the partition (based on some limited testing I've done I was able to edit file just fine on another computer using and also using another user account also after doing this). More information can be found [here](https://askubuntu.com/a/587277).
+    - `sudo chown -R :users /run/media/ldsands/LeviSandsSabrent_2TB_Par_BTFS_0002`
+    - `sudo chmod -R g+rw /run/media/ldsands/LeviSandsSabrent_2TB_Par_BTFS_0002`
 
 ### WSL Setup
 

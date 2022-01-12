@@ -13,7 +13,13 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 
 ## Installing Manjaro KDE
 
-- Install [oh-my-zsh](https://ohmyz.sh/), git, [Kitty](https://sw.kovidgoyal.net/kitty/) (a Konsole replacement) setup [yay](https://github.com/Jguer/yay) for installing from AUR and install MS Edge (beta).
+- Install the following command line stuff and Microsoft Edge
+    - [oh-my-zsh](https://ohmyz.sh/) - "Oh My Zsh is a delightful, open source, community-driven framework for managing your Zsh configuration"
+    - [znap](https://github.com/marlonrichert/zsh-snap) - "The fast & light-weight Zsh plugin manager"
+    - [Git](https://git-scm.com) - "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."
+    - [Kitty](https://sw.kovidgoyal.net/kitty/) (a Konsole replacement)
+    - [yay](https://github.com/Jguer/yay) for installing from AUR
+    - [Microsoft Edge (beta)](https://www.microsoftedgeinsider.com/en-us/download/beta) (my preferred browser)
 
     ```sh
     # installs oh-my-zsh
@@ -49,6 +55,20 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     # enable syntax highlighting (you also need to enable the plugin which is below)
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    # add [znap](https://github.com/marlonrichert/zsh-snap) which manages oh-my-zsh plugins
+    echo '# Download Znap, if it's not there yet.
+    [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+        git clone --depth 1 -- \
+            https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+
+    source ~/Git/zsh-snap/znap.zsh  # Start Znap
+    # [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) use `ctrl+s` to use
+    znap source marlonrichert/zsh-autocomplete
+    # [zsh-users](https://github.com/marlonrichert/zsh-autosuggestions)
+    znap source zsh-users/zsh-autosuggestions
+    # [zsh-users](https://github.com/marlonrichert/zsh-syntax-highlighting)
+    znap source zsh-users/zsh-syntax-highlighting
+    ' >> ~./zshrc
     # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
     sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
     sed -i '/^plugins=(/a \    git\n    python\n    pip\n    z\n    command-not-found\n    zsh-autosuggestions\n    zsh-syntax-highlighting' ~/.zshrc
@@ -59,28 +79,15 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     yay -S microsoft-edge-beta-bin
     ```
 
-- Install Microsoft Edge Beta which is my browser of choice. I install this pretty much so quickly because it allows me to access my email quickly so that I can then sign into and activate other software.
+- Setup Microsoft Edge Beta which is my browser of choice. I install this pretty much so quickly because it allows me to access my email quickly so that I can then sign into and activate other software.
     - After Edge is installed I go to "Settings" and then ["Appearance"](edge://settings/appearance). Under "Customize Appearance" I select "Dark" mode. I then select "Downloads Button" and "History Button" under "Select which buttons to show on toolbar" to show the download button on the toolbar.
     - I also hide all of the visible extensions by selecting the "Extensions Button" and clicking on the "eye" icon for all of the extensions except the Zotero Connector and Enpass Extension
     - I then also "Pin" several tabs so that they load automatically on launching Edge. Mostly email tabs and other typing practice tabs (I'm trying to get faster).
-- Install Enpass which is my password manager.
-<!-- - Install Github cli and login
-    - More details on how to get Github commits may be needed I got some help from [this YouTube video](https://www.youtube.com/watch?v=ZeKytARUnTo)
-    - You can also use an environment variable called GH_TOKEN and use a personal token for authentication
-
-    ```sh
-    # install github cli
-    sudo pacman -S github-cli
-    # start Github login
-    gh auth login
-    # select Github.com
-    # select HTTPS
-    # you can then enter a token or use a browser to login
-    ``` -->
-
+- Install [Enpass](https://www.enpass.io/downloads/) which is my password manager.
 - Install VSCode
     - VSCode is my text editor/IDE of choice
-    - I also install the [VSCodeProjectsRunner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
+    - I also install the [VSCode Projects Runner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
+    - I also install the [VSCode Workspaces Runner for KRunner](https://github.com/Merrit/vscode-runner) plugin for KRunner which allows you to open VSCode workspaces directly from KRunner. Unlike VSCode Project Runner this KRunner plugin shows recent workspaces opened in VSCode. It also does not require a VSCode extension to work.
 
     ```sh
     # add some dependencies for signing into VSCode
@@ -115,7 +122,20 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
         ' >> ~/.config/baloofilerc
         ```
 
-- Setup of various other command line utilities I use
+- Setup of various other rust-based command line utilities I use
+    - [Bottom](https://github.com/ClementTsang/bottom) - "[C]ross-platform graphical process/system monitor."
+        - See below for a link to a gist that contains my preferred configuration options
+    - [Exa](https://the.exa.website/)
+        - use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F` or `exa --long --header --group-directories-first -R -T -F -L=2` to see files in folders
+        - I have some aliases that I put into my `~/.zshrc` file for easy access
+            - `alias list="exa --long --header --group-directories-first -F"`
+            - `alias listVisable="exa --long --header --group-directories-first -F -a"`
+            - `alias listAll="exa --long --header --group-directories-first -R -T -F -L=2"`
+    - [Starship](https://starship.rs/) - "The minimal, blazing-fast, and infinitely customizable prompt for any shell!"
+        - This requires a [Nerd Font](https://www.nerdfonts.com/) (or similar) to work properly here is a command that installs the Fira Code Nerd Font: `mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v`
+        - See below for a link to a gist that contains my preferred configuration options
+    - [Zoxide](https://github.com/ajeetdsouza/zoxide#installation) - "A smarter cd command."
+    - [McFly](https://github.com/cantino/mcfly) - "McFly replaces your default `ctrl-r` shell history search with an intelligent search engine that takes into account your working directory and the context of recently executed commands."
 
     ```sh
     # install rust for installation of many of the following utilities
@@ -130,10 +150,11 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     cargo install bottom
     # use bottom by typing in `btm`
     # installation of exa which is a replacement for ls (required rust)
-    rustup update stable
     cargo install exa
-    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F`
-    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -R -T -F -L=2` to see files in folders
+    # install zoxide
+    cargo install zoxide --locked
+    # install mcfly
+    cargo install mcfly
     # this installs starship which is a cross platform/shell prompt
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"
     # create bottom and starship config files
@@ -142,7 +163,12 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
     cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a2a845f29d5712d6434983316d7281fe6a088947/starship.toml
     # this adds the starship initialize command to the end of the zsh config file
-    echo 'eval "$(starship init zsh)"
+    echo '# starship statement
+    eval "$(starship init zsh)"
+    # zoxide statement
+    eval "$(zoxide init zsh)"
+    # mcfly statement
+    eval "$(mcfly init zsh)"
     ' >> ~/.zshrc
     ```
 
@@ -222,6 +248,8 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     yay -S zoom
     # The standard Microsoft Fonts which helps with editing MS Office files
     yay -S ttf-ms-fonts
+    # Xplorer a file explorer that caught my attention
+    yay -S xplorer-bin
     ```
 
 - Install [OBS Studio](https://obsproject.com/) and [OBS-BackgroundRemoval](https://github.com/royshil/obs-backgroundremoval)
@@ -283,6 +311,7 @@ System Settings to change. Open "System Settings" then you can search or find th
 - KRunner:
     - Deselect "Browser History"
     - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
+    - Click on "Get New Plugins"; search for "VSCode Workspaces Runner" then install that plugin
 - Removable Storage; Removable Devices
     - Check "Enable automatic mounting of removable media" and "Only automatically mount removable media that has been manually mounted before"
 - "Workspace Behavior"; "General Behavior"

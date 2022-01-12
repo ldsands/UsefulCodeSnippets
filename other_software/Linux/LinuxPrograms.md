@@ -150,21 +150,23 @@ npm install -g nativefier
 # to install nativefier using npm
 npm install nativefier -g
 # to update nativefier (you must have admin privileges) you should update npm first then update nativefier (the command below updates npm and then nativefier)
-npm update -g npm && npm update -g nativefier
+sudo npm update -g npm && npm update -g nativefier
 # it is also a good idea to create a folder just for nativefier below is where I put it
 mkdir /home/ldsands/Documents/NativefierApps/
 # now navigate to the folder to create the nativefier program there
 cd /home/ldsands/Documents/NativefierApps/
 ```
 
-The options are all explained [here](https://github.com/jiahaog/nativefier/blob/HEAD/docs/api.md).
+The options are all explained [here](https://github.com/nativefier/nativefier/blob/master/API.md).
 
 - Some notable options
     - `--hide-window-frame` disables window frame and controls.
     - `--single-instance` you can only have one window of this open at a time
     - `--internal-urls ".*?"` if you want any domain to be able to work in the nativefier window
     - `--portable` "Make your app store its user data (cookies, cache, etc) inside the app folder"
-    - `--conceal` this combines several files in the `resources` directory into one file
+    - `--conceal` this combines several files in the `resources` directory into one file (I've had issues with this saving login information)
+    - `--maximize` this will maximize the window on launch
+    - `--platform` `windows`, `linux` or `osx` (there is anther option for Mac)
 
 Some Nativefier Limitations
 
@@ -174,7 +176,34 @@ Below are a list of the nativefier apps that I install with their code.
 
 ```PowerShell
 # Microsoft To Do
-nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon /home/ldsands/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftToDoLogo-2017_App_Button.svg --maximize --portable --conceal
+nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftToDoLogo.png --portable
+```
+
+- You will need to create a `.desktop` file (at least for KDE on Arch Linux). You can find user `.desktop` files here: `/home/$USER/.local/share/applications/` or for machine `.desktop` files here `/usr/share/applications/`. From these examples you can enhance the example `.desktop` file I made for Microsoft To Do below.
+
+```MicrosoftToDo.desktop
+[Desktop Entry]
+Categories=Office;Nativefier;
+Comment[en_US]=Microsoft To Do. To Do gives you focus, from work to play.
+Comment=Microsoft To Do. To Do gives you focus, from work to play.
+Exec=/home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo
+GenericName[en_US]=MicrosoftToDo
+GenericName=MicrosoftToDo
+Icon=/home/ldsands/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftToDoLogo.png
+MimeType=
+Name[en_US]=Microsoft To Do
+Name=Microsoft To Do
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+TryExec=/home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
 ```
 
 ## Ubuntu/Debian Based Distros

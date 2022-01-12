@@ -1,6 +1,7 @@
 # Windows programs
 
 - [Windows programs](#windows-programs)
+    - [Important Windows Settings](#important-windows-settings)
     - [Package Managers](#package-managers)
     - [Win 32](#win-32)
         - [Nativefier](#nativefier)
@@ -14,6 +15,19 @@
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
     - [Windows PowerToys](#windows-powertoys)
     - [MS Office Plugins](#ms-office-plugins)
+
+## Important Windows Settings
+
+- When dual booting Windows and Linux, there will be a time conflict. To fix this it is better to modify Windows rather than Linux
+    - The easiest way to do this is to modify the registry to make Windows use UTC (like Linux) rather than local time zones create a `.reg` file and add the code below. Then execute the file to change the registry. I got this code from [here](https://github.com/ShahriarDhruvo/Windows-Universal-Time-Registry/blob/master/Windows%20Universal%20Time%20-%20On.reg).
+        - This will NOT change the time that Windows displays instead it assumes that the time recorded on the motherboard is in UTC rather than local time. Windows will still correctly use the local time in Windows but when loading Linux and Windows they will both assume that the time listed on the motherboard is UTC which fixes the time conflict issue.
+
+        ```.reg
+        Windows Registry Editor Version 5.00
+
+        [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]
+        "RealTimeIsUniversal"=dword:00000001
+        ```
 
 ## Package Managers
 
