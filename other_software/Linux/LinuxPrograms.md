@@ -135,6 +135,17 @@
         ```
 
     - To run the Orange Canvas (the GUI) use this command: `python -m Orange.canvas`
+- [OCRmyPDF](https://ocrmypdf.readthedocs.io/en/latest/index.html) - This a very good OCR command line utility.
+
+    ```sh
+    # install OCRmyPDF and tesseract-english FYI the tesseract will take a long time to install
+    yay -S ocrmypdf tesseract-data-eng-git
+    # some example usage commands
+    ocrmypdf --force-ocr --pdf-renderer sandwich --output-type pdf --deskew --clean "input.pdf" "output-OCR-deskew-clean-sandwich.pdf"
+    ocrmypdf --force-ocr --optimize 3 --jbig2-lossy --pdf-renderer sandwich --output-type pdf --deskew --clean "input.pdf" "output-OCR-deskew-clean-sandwich-jbig2.pdf"
+    ocrmypdf --force-ocr --pdf-renderer hocr --output-type pdf --deskew --clean "input.pdf" "output-OCR-deskew-clean-hocr.pdf"
+    ocrmypdf --force-ocr --optimize 3 --jbig2-lossy --pdf-renderer hocr --output-type pdf --deskew --clean "input.pdf" "output-OCR-deskew-clean-hocr-jbig2.pdf"
+    ```
 
 ### Nativefier
 
@@ -213,6 +224,7 @@ X-KDE-Username=
 - [OCRmyPDF](https://ocrmypdf.readthedocs.io/en/latest/index.html) - This a very good OCR command line utility.
 
     ```sh
+    # for Debian based distros
     # install dependencies
     sudo apt-get -y update
     sudo apt-get -y install \
