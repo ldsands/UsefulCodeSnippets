@@ -219,7 +219,7 @@ KDE Neon is a "flavor" of Ubuntu that uses KDE Plasma instead of GNOME for the d
     # installation of exa which is a replacement for ls (required rust)
     rustup update stable
     cargo install exa
-    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F`
+    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F -a`
     # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -R -T -F -L=2` to see files in folders
     # this installs starship which is a cross platform/shell prompt
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"

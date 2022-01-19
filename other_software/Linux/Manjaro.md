@@ -126,10 +126,12 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     - [Bottom](https://github.com/ClementTsang/bottom) - "[C]ross-platform graphical process/system monitor."
         - See below for a link to a gist that contains my preferred configuration options
     - [Exa](https://the.exa.website/)
-        - use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F` or `exa --long --header --group-directories-first -R -T -F -L=2` to see files in folders
+        - use exa by typing in `exa` I usually use:
+            - `exa --long --header --group-directories-first -F -a` to see all files and directories in the current directory (-a shows hidden files/directories)
+            - `exa --long --header --group-directories-first -R -T -F -L=2` to see files in directories
         - I have some aliases that I put into my `~/.zshrc` file for easy access
-            - `alias list="exa --long --header --group-directories-first -F"`
-            - `alias listVisable="exa --long --header --group-directories-first -F -a"`
+            - `alias list="exa --long --header --group-directories-first -F -a"`
+            - `alias listVisable="exa --long --header --group-directories-first -F"`
             - `alias listAll="exa --long --header --group-directories-first -R -T -F -L=2"`
     - [Starship](https://starship.rs/) - "The minimal, blazing-fast, and infinitely customizable prompt for any shell!"
         - This requires a [Nerd Font](https://www.nerdfonts.com/) (or similar) to work properly here is a command that installs the Fira Code Nerd Font: `mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v`

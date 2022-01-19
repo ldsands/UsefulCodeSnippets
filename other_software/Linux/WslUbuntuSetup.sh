@@ -15,15 +15,15 @@ select SelectedOption in "${ResponseOptions[@]}"; do
             echo "Updating everything"
             sudo apt-get update && sudo apt-get upgrade -y
             break
-            ;;
+        ;;
         "No")
             echo "Nothing was updated"
             break
-            ;;
+        ;;
         "Quit")
             echo "User requested exit"
             exit
-            ;;
+        ;;
         *) echo "invalid option $REPLY";;
     esac
 done
@@ -73,15 +73,15 @@ select SelectedOption in "${ResponseOptions[@]}"; do
                 echo "ZSH has already been installed"
             fi
             break
-            ;;
+        ;;
         "No")
             echo "Nothing has been installed"
             break
-            ;;
+        ;;
         "Quit")
             echo "User requested exit"
             break
-            ;;
+        ;;
         *) echo "invalid option $REPLY";;
     esac
 done
@@ -94,26 +94,26 @@ select SelectedOption in "${ResponseOptions[@]}"; do
             echo "Bash will be the default shell"
             chsh -s $(which bash)
             break
-            ;;
+        ;;
         "PowerShell")
             # echo "PowerShell will be the default shell"
             printf "Unfortunatly at the moment there is an issue when trying to set PowerShell as the default shell in WSL based distros"
             printf "If you are not using linux on WSL then you can use this command to set PowerShell as the default shell\nchsh -s $(which pwsh)"
             # chsh -s $(which pwsh)
             break
-            ;;
+        ;;
         "ZSH")
             echo "ZSH will be the default shell"
             chsh -s $(which zsh)
             break
-            ;;
+        ;;
         "Leave as is")
             echo "Default shell has not been changed"
-            ;;
+        ;;
         "Quit")
             echo "User requested exit"
             exit
-            ;;
+        ;;
         *) echo "invalid option $REPLY";;
     esac
 done
@@ -126,20 +126,20 @@ select SelectedOption in "${ResponseOptions[@]}"; do
             echo "Configuring PowerShell"
             echo "TODO: This still has to be set up"
             break
-            ;;
+        ;;
         "ZSH")
             echo "Configuring ZSH"
             echo "TODO: this still has to be set up"
             break
-            ;;
+        ;;
         "Don't Configure")
             echo "Default shell has not been changed"
             break
-            ;;
+        ;;
         "Quit")
             echo "User requested exit"
             exit
-            ;;
+        ;;
         *) echo "invalid option $REPLY";;
     esac
 done
@@ -152,16 +152,16 @@ select SelectedOption in "${ResponseOptions[@]}"; do
             echo "Install pyenv, poetry, conda"
             echo "TODO: This still has to be set up"
             break
-            ;;
+        ;;
         "No")
             echo "Configuring ZSH"
             echo "TODO: this still has to be set up"
             break
-            ;;
+        ;;
         "Quit")
             echo "User requested exit"
             exit
-            ;;
+        ;;
         *) echo "invalid option $REPLY";;
     esac
 done
@@ -182,7 +182,7 @@ select SelectedOption in "${ResponseOptions[@]}"; do
             rustup update stable
             cargo install exa
             break
-            ;;
+        ;;
         "Install and Aliases")
             echo "Installing Rust and Rust utilities exa and bottom along with adding aliases"
             # install rust for installation of many of the following utilities
@@ -196,19 +196,20 @@ select SelectedOption in "${ResponseOptions[@]}"; do
             cargo install exa
             echo '
             # general rust installed utility aliases
-            alias exaf="exa --long --header --group-directories-first -F"
-            alias exar="exa --long --header --group-directories-first -R -T -F -L=2"
+            alias list="exa --long --header --group-directories-first -F -a"
+            alias listVisable="exa --long --header --group-directories-first -F"
+            alias listAll="exa --long --header --group-directories-first -R -T -F -L=2"
             ' >> ~/.zshrc
             break
-            ;;
+        ;;
         "No")
             echo "Did not install Rust exa or bottom"
             break
-            ;;
+        ;;
         "Quit")
             echo "User requested exit"
             exit
-            ;;
+        ;;
         *) echo "invalid option $REPLY";;
     esac
 done

@@ -247,8 +247,8 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # installation of exa which is a replacement for ls (required rust)
     rustup update stable
     cargo install exa
-    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F`
-    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -R -T -F -L=2` to see files in folders
+    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -F -a` (the -a shows hidden files and directories)
+    # use exa by typing in `exa` I usually use `exa --long --header --group-directories-first -R -T -F -L=2` to see files in directories
     # this installs starship which is a cross platform/shell prompt
     sh -c "$(curl -fsSL https://starship.rs/install.sh)"
     # create bottom and starship config files
@@ -337,8 +337,9 @@ Below are the step I take to setup my linux shell the way I like it in various s
     alias restart="exec "$SHELL""
     alias list="ls -lh -a"
     alias start="cmd.exe /c start"
-    alias exaf="exa --long --header --group-directories-first -F"
-    alias exar="exa --long --header --group-directories-first -R -T -F -L=2"
+    alias list="exa --long --header --group-directories-first -F -a"
+    alias listVisable="exa --long --header --group-directories-first -F"
+    alias listAll="exa --long --header --group-directories-first -R -T -F -L=2"
     ' >> ~/.zshrc
     ```
 
