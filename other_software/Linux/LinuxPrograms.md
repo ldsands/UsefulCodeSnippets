@@ -197,6 +197,7 @@ nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-u
 Categories=Office;Nativefier;
 Comment[en_US]=Microsoft To Do. To Do gives you focus, from work to play.
 Comment=Microsoft To Do. To Do gives you focus, from work to play.
+StartupWMClass=MSToDo
 Exec=/home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo
 GenericName[en_US]=MicrosoftToDo
 GenericName=MicrosoftToDo

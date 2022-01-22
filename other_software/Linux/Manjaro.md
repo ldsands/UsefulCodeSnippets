@@ -36,7 +36,10 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     # you will need to enter your Github login and password (you must use a personal access token instead of your password)
     git config --global credential.helper 'store --file ~/.my-credentials'
     # install yay and other dependencies needed to instal and build AUR packages
-    sudo pacman -S --needed git base-devel yay
+    sudo pacman -S --needed git base-devel yay # this will work for Manjaro but not for other Arch based distros
+    pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+    # enable colors for pacman and yay
+    sudo sed -i 's/#Color/Color/g' /etc/pacman.conf
     # Install Kitty
     sudo pacman -S kitty
     # change the ctrl+shift to ctrl in Kitty along with some other settings more can be found [here](https://sw.kovidgoyal.net/kitty/conf/)
@@ -56,11 +59,13 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     # enable syntax highlighting (you also need to enable the plugin which is below)
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     # add [znap](https://github.com/marlonrichert/zsh-snap) which manages oh-my-zsh plugins
-    echo '# Download Znap, if it's not there yet.
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git
+    source zsh-snap/install.zsh
+    echo '
+    # Download Znap, if it is not there yet.
     [[ -f ~/Git/zsh-snap/znap.zsh ]] ||
-        git clone --depth 1 -- \
-            https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
-
+    git clone --depth 1 -- \
+    https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
     source ~/Git/zsh-snap/znap.zsh  # Start Znap
     # [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) use `ctrl+s` to use
     znap source marlonrichert/zsh-autocomplete
@@ -68,11 +73,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     znap source zsh-users/zsh-autosuggestions
     # [zsh-users](https://github.com/marlonrichert/zsh-syntax-highlighting)
     znap source zsh-users/zsh-syntax-highlighting
-    ' >> ~./zshrc
-    # add plugins - python related (python, pip) - zsh related (zsh-autosuggestions)
-    sed -i 's/plugins=(git)/plugins=(\n)/g' ~/.zshrc
-    sed -i '/^plugins=(/a \    git\n    python\n    pip\n    z\n    command-not-found\n    zsh-autosuggestions\n    zsh-syntax-highlighting' ~/.zshrc
-    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc
+    ' >> ~/.zshrc
     # restart the shell
     exec zsh
     # Install MS Edge (beta)
@@ -114,7 +115,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 
 - I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies.
     - When I execute this file it should prompt to move the file to another location. I accept this prompt which allows pCloud to start automatically on system startup.
-    - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/ldsands/Documents/pCloudLocal` and for the pCloud Drive folder `/pCloudLocal`.
+    - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/ldsands/Documents/pCloudLocalLevi` and for the pCloud Drive folder `/pCloudLocalLevi`.
     - The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud or Zotero local storage. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). To stop this use the command below:
 
         ```sh
@@ -125,6 +126,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 - Setup of various other rust-based command line utilities I use
     - [Bottom](https://github.com/ClementTsang/bottom) - "[C]ross-platform graphical process/system monitor."
         - See below for a link to a gist that contains my preferred configuration options
+        - use bottom by typing in `btm`
     - [Exa](https://the.exa.website/)
         - use exa by typing in `exa` I usually use:
             - `exa --long --header --group-directories-first -F -a` to see all files and directories in the current directory (-a shows hidden files/directories)
@@ -137,6 +139,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
         - This requires a [Nerd Font](https://www.nerdfonts.com/) (or similar) to work properly here is a command that installs the Fira Code Nerd Font: `mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v`
         - See below for a link to a gist that contains my preferred configuration options
     - [Zoxide](https://github.com/ajeetdsouza/zoxide#installation) - "A smarter cd command."
+        - This also uses (optionally) [fzf](https://github.com/junegunn/fzf) which is, "A command-line fuzzy finder"
     - [McFly](https://github.com/cantino/mcfly) - "McFly replaces your default `ctrl-r` shell history search with an intelligent search engine that takes into account your working directory and the context of recently executed commands."
 
     ```sh
@@ -145,16 +148,15 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     # restart shell to access rust
     exec zsh
     rustup update
-    # A cc compiler is needed to compile these rust applications
-    sudo apt install build-essential
     # installation of bottom which is a system resource manager (required rust)
     rustup update stable
     cargo install bottom
-    # use bottom by typing in `btm`
     # installation of exa which is a replacement for ls (required rust)
     cargo install exa
     # install zoxide
     cargo install zoxide --locked
+    # install fzf which is an optional zoxide dependance
+    yay -S fzf
     # install mcfly
     cargo install mcfly
     # this installs starship which is a cross platform/shell prompt
@@ -201,15 +203,15 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     pyenv global 3.9.7
     # see the version that was installed
     pyenv versions
-    # install python-launcher
-    yay -S python-launcher
-    # add the needed line to zshrc file to use pyenv with python-launcher
-    echo $'# python-launcher stuff
-    export PY_PYTHON=$(pyenv exec python -c "import sys; print(\'.\'.join(map(str, sys.version_info[:2])))")
-    ' >> ~/.zshrc
     # create virtual environment this will automatically use the newest version of python that pyenv installed
     py -m venv .venv
     ```
+<!-- # install python-launcher
+yay -S python-launcher
+# add the needed line to zshrc file to use pyenv with python-launcher
+echo $'# python-launcher stuff
+export PY_PYTHON=$(pyenv exec python -c "import sys; print(\'.\'.join(map(str, sys.version_info[:2])))")
+' >> ~/.zshrc -->
 
 - Install flatpak/flathub hosted apps:
     - Apps I install on every computer
@@ -290,8 +292,10 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     yay
     # to cleanup unneeded dependencies
     yay -Yc
-    # to search for a package
+    # to search for a package and then you can install from a list of search results
     yay edge
+    # to install a package
+    yay -S zoom
     ```
 
 ## KDE Plasma Setup
@@ -375,6 +379,71 @@ System Settings to change. Open "System Settings" then you can search or find th
     bluetoothctl discoverable off
     ```
 
+- Start programs in the desired virtual desktop, monitor and monitor location using a bash script. [This link helped me figure all of this out](https://unix.stackexchange.com/questions/94109/launching-applications-from-a-terminal-with-specific-window-size-and-location)
+    - Create a blank text file and change the extension from `.txt` to `.sh`.
+    - Figure out the terminal command to start the program you want to start. This can easily be done by finding the corresponding `.desktop` files. These are located here (`/home/$USER/.local/share/applications/`) and here (`/usr/share/applications/`). Look for the `Exec` property (there can be several of them you may want to use more than one).
+    - You also need the `WM_Class` you can get this by using this command in the terminal: `xprop | grep WM_CLASS` then you need to click on the window you need.
+    - Get needed window information
+        - First you need to setup a window to the correct location
+        - Press `alt+f3` select "More Actions" then "Configure Special Window Settings..." then press the "Detect Window Properties" button near the bottom right of the window
+        - Your cursor will change, click on the window that you want to get the information from
+        - Below the "Size & Position" find the "Position" and "Size" rows copy those values and any others you need (like virtual desktop)
+
+```sh
+# from https://forum.manjaro.org/t/cannot-autostart-kitty-with-latest-kde-minimal/40664/2
+sleep 0.1 & kstart5 --maximize --desktop 1 --windowclass kitty kitty
+kstart5 --maximize --desktop 4 --windowclass gitahead gitahead
+sleep 0.2 & kstart5 --maximize --desktop 5 --windowclass code code
+
+
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass kitty kitty
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass google-chrome /usr/bin/google-chrome-stable %U exec
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass Google-chrome /usr/bin/google-chrome-stable & sleep 1 && exec
+sleep 0.5 && kstart5 exec --desktop 3 --geometry 1080x1021+0+45 --windowclass google-chrome /usr/bin/google-chrome-stable %U #this DOESN'T work
+sleep 0.5 && kstart5 exec --desktop 3 --geometry 1080x1021+0+45 --windowclass Google-chrome /usr/bin/google-chrome-stable %U #this DOESN'T work
+sleep 0.5 && exec kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass google-chrome /usr/bin/google-chrome-stable %U #this DOESN'T work - the terminal did do something but no window
+sleep 0.5 && exec kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass Google-chrome /usr/bin/google-chrome-stable %U #this DOESN'T work - the terminal did do something but no window
+
+sleep 0.5 && kstart5 --desktop 3:Music --geometry 1080x1021+0+45 --windowclass google-chrome /usr/bin/google-chrome-stable %U #desktop options testing
+sleep 0.5 && kstart5 --desktop Music --geometry 1080x1021+0+45 --windowclass google-chrome /usr/bin/google-chrome-stable %U #desktop options testing
+
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass google-chrome /usr/bin/google-chrome-stable %U #this works
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass Google-chrome /usr/bin/google-chrome-stable %U #this works
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass google-chrome google-chrome /usr/bin/google-chrome-stable %U #this DOESN'T work
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass google-chrome google-chrome /usr/bin/google-chrome-stable #this DOESN'T work
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass google-chrome google-chrome #this DOESN'T work
+sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass systemsettings5 systemsettings
+sleep 0.5 && kstart5 --desktop 3 --geometry 1920x1035+1080+465 --windowclass systemsettings5 systemsettings5
+sleep 0.5 && kstart5 --desktop 5 --geometry 1920x1035+1080+465 --windowclass code code
+sleep 0.5 && kstart5 --desktop 3 --geometry 1920x1035+1080+465 --windowclass mstodo-nativefier-80c33e /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo 
+
+kstart5 /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo --windowclass mstodo-nativefier-80c33e --desktop 12: Todo
+kstart5 --desktop 12 --windowclass mstodo-nativefier-80c33e /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo 
+kstart5 --desktop 12 --windowclass "mstodo-nativefier-80c33e", "mstodo-nativefier-80c33e" /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo 
+kstart5 --desktop 3 --geometry 1920x1035+1080+465 --windowclass mstodo-nativefier-80c33e mstodo-nativefier-80c33e /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo 
+kstart5 --desktop 3 --geometry 1920x1035+1080+465 --windowclass mstodo-nativefier-80c33e /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo %U
+kstart5 --desktop 3 --geometry 1920x1035+1080+465 --windowclass mstodo-nativefier-80c33e /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo 
+kstart5 --desktop 12 --windowclass mstodo-nativefier-80c33e /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo 
+kstart5 --desktop 12: Todo --windowclass "mstodo-nativefier-80c33e" /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo %U
+"mstodo-nativefier-80c33e", "mstodo-nativefier-80c33e"
+"mstodo-nativefier-80c33e"
+"mstodo-nativefier-80c33e"
+
+kstart5 --desktop 3 --geometry 1920x1035+1080+465 --windowclass mstodo-nativefier-80c33e /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo %U
+kstart5 --desktop 12 --windowclass Google-chrome /usr/bin/google-chrome-stable %U
+kstart5 --desktop 12 --windowclass Google-chrome
+kstart5 --desktop 12 --windowclass mstodo-nativefier-80c33e
+kstart5 --desktop 12 "/home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo" --windowclass "mstodo-nativefier-80c33e", "mstodo-nativefier-80c33e"
+kstart5 --desktop 12: Todo "/home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo" --windowclass "mstodo-nativefier-80c33e", "mstodo-nativefier-80c33e"
+exec kstart5 --desktop 12 "/home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo"
+exec kstart5 --desktop 12 /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo
+exec kstart5 --desktop 12 /home/ldsands/Documents/NativefierApps/MSToDo-linux-x64/MSToDo
+kstart5 konsole --desktop 12: Todo
+--geometry 1080x1021+0+45
+# for maximized on primary (landscaped) display
+--geometry 1920x1035+1080+465
+```
+
 ## App Configurations
 
 - Microsoft Edge (Beta)
@@ -411,3 +480,8 @@ flatpak install flathub org.gnome.Evolution -y
         - config options can be found [here](https://github.com/alacritty/alacritty/blob/master/alacritty.yml)
     - [Wez's Terminal Emulator](https://wezfurlong.org/wezterm/install/linux.html)
 - [Android Apps on Linux](https://anbox.io/) instructions can be found [here](https://www.howtogeek.com/760044/how-to-run-android-apps-on-linux/) [here is a list of other alternatives](https://linuxhint.com/android_apps_games_linux/#:~:text=Best%20Way%20to%20Run%20Android%20Apps%20and%20Games,Genymotion.%20...%204%20Android-x86.%20...%20More%20items...%20)
+- [Paru](https://github.com/morganamilo/paru) this is a lot like yay but written in Rust and I have a lot of other Rust based command line programs that I use so I may switch to it at some point. Yay does install much easier in Manjaro since they have it in their repo so for now I'll stick with yay.
+    - To install you can use pacman: `sudo pacman -S --needed base-devel` and then you can either use cargo or git.
+        - cargo `cargo install paru`
+        - `pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si`
+        - Until I can install this using pacman I probably won't use it in the meantime i'll keep using yay (updated 2022-01-22)
