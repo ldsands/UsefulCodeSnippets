@@ -8,8 +8,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     - [Other Tips](#other-tips)
     - [KDE Plasma Setup](#kde-plasma-setup)
     - [KDE Plasma Notes](#kde-plasma-notes)
-    - [App Configurations](#app-configurations)
-    - [Apps that I'm experimenting with](#apps-that-im-experimenting-with)
 
 ## Installing Manjaro KDE
 
@@ -252,6 +250,8 @@ export PY_PYTHON=$(pyenv exec python -c "import sys; print(\'.\'.join(map(str, s
     yay -S zoom
     # The standard Microsoft Fonts which helps with editing MS Office files
     yay -S ttf-ms-fonts
+    # [KNotes is a program that lets you write the computer equivalent of sticky notes.](https://kontact.kde.org/components/knotes/)
+    yay -S knotes
     # Xplorer a file explorer that caught my attention
     yay -S xplorer-bin
     ```
@@ -282,6 +282,10 @@ export PY_PYTHON=$(pyenv exec python -c "import sys; print(\'.\'.join(map(str, s
     ```sh
     sudo pacman -S sof-firmware
     ```
+
+- When upgrading Manjaro will often update python as well. When it upgrades the major version (e.g. 3.9.x to 3.10.x) some python packages may be built for an earlier version of python which can cause issues. To update any packages that were built for an earlier version of python you can see the example below.
+    - To see which packages are outdated (built for the old major version) use this command: `pacman -Qoq /usr/lib/python3.9`
+    - To use an AUR helper (in this case yay) to update them use this command: `yay -S $(pacman -Qoq /usr/lib/python3.9) --answerclean All`
 
 ## Other Tips
 
@@ -338,11 +342,12 @@ System Settings to change. Open "System Settings" then you can search or find th
 - "Virtual Desktops"
     - "Workspace Behavior"; "Virtual Desktops"
         - I create 12 Virtual Desktops with three desktops in each of 4 rows
-        - Row 1: `Random 1`, `Random 2` and `Random 2`
+        - Row 1: `Random 01`, `Random 02` and `Random 03`
         - Row 2: `School 01`, `School 02` and `School 03`
         - Row 3: `Python 01`, `Python 02` and `Python 03`
         - Row 4: `Email`, `Comms` and `Todo`
-    - Enable "Show on-screen display when switching" also enable "Show desktop layout indicators"
+    - Enable "Show on-screen display when switching" and change the value to 500 ms
+    - Enable "Show desktop layout indicators"
 - Panel
     - Right click on the battery icon and select "Show Battery Percentage on Icon" (on computers with a battery like a laptop)
     - Right click on the clock and select "Configure Digital Clock ..." Then next to "Date format:" select "ISO Date"
@@ -379,7 +384,7 @@ System Settings to change. Open "System Settings" then you can search or find th
     bluetoothctl discoverable off
     ```
 
-- Start programs in the desired virtual desktop, monitor and monitor location using a bash script. [This link helped me figure all of this out](https://unix.stackexchange.com/questions/94109/launching-applications-from-a-terminal-with-specific-window-size-and-location)
+<!-- - Start programs in the desired virtual desktop, monitor and monitor location using a bash script. [This link helped me figure all of this out](https://unix.stackexchange.com/questions/94109/launching-applications-from-a-terminal-with-specific-window-size-and-location)
     - Create a blank text file and change the extension from `.txt` to `.sh`.
     - Figure out the terminal command to start the program you want to start. This can easily be done by finding the corresponding `.desktop` files. These are located here (`/home/$USER/.local/share/applications/`) and here (`/usr/share/applications/`). Look for the `Exec` property (there can be several of them you may want to use more than one).
     - You also need the `WM_Class` you can get this by using this command in the terminal: `xprop | grep WM_CLASS` then you need to click on the window you need.
@@ -442,7 +447,7 @@ kstart5 konsole --desktop 12: Todo
 --geometry 1080x1021+0+45
 # for maximized on primary (landscaped) display
 --geometry 1920x1035+1080+465
-```
+``` -->
 
 ## App Configurations
 
@@ -454,7 +459,7 @@ kstart5 konsole --desktop 12: Todo
         - I do this for my two Outlook Accounts (Personal Outlook, Uiowa Outlook, [MonkeyType](https://monkeytype.com/))
 - Dolphin
     - I hide the following directories from the "Places" panel: `Music`, `Pictures` and `Videos`
-    - I add these directories to the "Places" panel: `pCloudDrive`, `pCloudLocal`, `ComputerStuff`, `ResearchProjects` and `Uiowa`. I also add any current project and class directories for easy access.
+    - I add these directories to the "Places" panel: `pCloudDrive`, `pCloudLocalLevi`, `ComputerStuff`, `ResearchProjects` and `Uiowa`. I also add any current project and class directories for easy access.
     - In "Configure Toolbars" I search for "Up" in "Available actions" and add it to "Current Actions" and then move it to the top.
 - Gwenview (an Image Viewer)
     - "Configure Keyboard Shortcuts"
@@ -485,3 +490,5 @@ flatpak install flathub org.gnome.Evolution -y
         - cargo `cargo install paru`
         - `pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si`
         - Until I can install this using pacman I probably won't use it in the meantime i'll keep using yay (updated 2022-01-22)
+- [Sticky](https://github.com/collinss/sticky)
+    - A possible alternative to KNotes

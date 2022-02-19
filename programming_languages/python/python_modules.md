@@ -71,6 +71,10 @@
     conda install -y -c conda-forge python-igraph
     ```
 
+- [Loguru](https://github.com/Delgan/loguru)
+    - This module makes logging much easier
+    - The [loguru_template.py](useful_scripts/loguru_template.py) file is curtesy of Acea Sands
+
 ### pywin32
 
 This package allows for accessing the Windows API. The installation is a bit complicated so I've included a script that does most of the installation automatically. The file is called `pywin32install`. Run that and follow the instructions it should finish the installation correctly.

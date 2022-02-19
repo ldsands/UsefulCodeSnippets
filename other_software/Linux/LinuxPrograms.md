@@ -48,7 +48,7 @@
     Exec=env WINEPREFIX="/home/ldsands/wine/PDFXChangeBottle64/" WINEDEBUG=fixme-all wine "/home/ldsands/wine/PDFXChangeBottle64/drive_c/users/ldsands/Documents/pCloudLocal/PortableApps/PDFXEdit9_Portable/PDFXEdit.exe" Z:%f
     GenericName=PDF Editor
     Categories=Office;
-    Icon=/home/ldsands/Documents/pCloudLocal/Pictures/NativefierIcons/PDFXEdit.png
+    Icon=/home/ldsands/Documents/pCloudLocalLevi/Pictures/NativefierIcons/PDFXEdit.png
     MimeType=application/pdf;
     Actions=new-empty-window;
     Keywords=PDF;
@@ -98,6 +98,8 @@
     - My experience with Manjaro (and linux more generally) has shown me that by default Windows is much better for battery life. To fix this I use the standard settings for Slimbook Battery 4 and select battery saving. This has helped a lot with battery drain.
 - [Piper](https://github.com/libratbag/piper/wiki) for managing my Logitech mouse peripherals
     - `yay -S piper`
+- [Kmail](https://apps.kde.org/kmail2/) is an email client. To set it up for an Office365 account (using EWS you can use IMAP but EWS is "better") is a bit of a pain. Fortunately there is a great tutorial on [YouTube](https://www.youtube.com/watch?v=j-dkD92r3FE).
+    - Under the "EWS Settings" section you'll need to enter this site: "[https://outlook.office365.com/EWS/Exchange.asmx](https://outlook.office365.com/EWS/Exchange.asmx)"
 - [Orange: Interactive data analysis](https://github.com/biolab/orange3) is a data analysis package/collection of packages that allows for visual programming with some predefined modules
     - Add-ons add to the functionality of Orange. Official add-ons can be found [here](https://github.com/biolab/orange3/blob/stable/README.md).
     - One way is to install from AUR:
@@ -146,6 +148,8 @@
     ocrmypdf --force-ocr --pdf-renderer hocr --output-type pdf --deskew --clean "input.pdf" "output-OCR-deskew-clean-hocr.pdf"
     ocrmypdf --force-ocr --optimize 3 --jbig2-lossy --pdf-renderer hocr --output-type pdf --deskew --clean "input.pdf" "output-OCR-deskew-clean-hocr-jbig2.pdf"
     ```
+
+- [Kile](https://kile.sourceforge.io/) for LaTeX (also available for [Windows](https://www.microsoft.com/en-us/p/kile/9pmbng78pfk3))
 
 ### Nativefier
 
