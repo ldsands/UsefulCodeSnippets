@@ -113,7 +113,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 
 - I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies.
     - When I execute this file it should prompt to move the file to another location. I accept this prompt which allows pCloud to start automatically on system startup.
-    - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/ldsands/Documents/pCloudLocalLevi` and for the pCloud Drive folder `/pCloudLocalLevi`.
+    - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/$USER/Documents/pCloudLocalLevi` and for the pCloud Drive folder `/pCloudLocalLevi`.
     - The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud or Zotero local storage. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). To stop this use the command below:
 
         ```sh
@@ -461,6 +461,9 @@ kstart5 konsole --desktop 12: Todo
     - I hide the following directories from the "Places" panel: `Music`, `Pictures` and `Videos`
     - I add these directories to the "Places" panel: `pCloudDrive`, `pCloudLocalLevi`, `ComputerStuff`, `ResearchProjects` and `Uiowa`. I also add any current project and class directories for easy access.
     - In "Configure Toolbars" I search for "Up" in "Available actions" and add it to "Current Actions" and then move it to the top.
+    - In "Configure Dolphin" in the "Startup" tab:
+        - I change the default startup location to `/home/$USER/Downloads` (you will need to replace $USER with your username)
+        - I also unselect the "Open new folders in tabs" this is because it doesn't work well with multiple virtual desktops
 - Gwenview (an Image Viewer)
     - "Configure Keyboard Shortcuts"
         - "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
