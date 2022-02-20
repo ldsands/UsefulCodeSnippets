@@ -8,60 +8,6 @@ from loguru import logger
 
 s = time.time()
 
-def Get_Previous_Fiscal_datetime():
-    """Returns a list with the following info:
-
-    [0] previous_fiscal_month (int)
-        [1] previous_fiscal_year (int)
-    [2] previous_fiscal_day (int)
-        [3] previous_fiscal_month_name (str)
-    [4] previous_fiscal_month_length (int)
-    """    
-    current_date = [int(x) for x in str(datetime.date.today()).split("-")]
-    year = current_date[0]
-    current_date[0] = current_date[1]
-    current_date[1] = year
-    if current_date[0] >= 7:
-        current_date[0] -= 6
-        current_date[1] += 1
-    else:
-        current_date[0] += 6
-
-    month_names = [
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-        "January",
-        "February",
-        "March",
-        "April",
-        "May"
-    ]
-    month_lengths = [
-        30,
-        31,
-        31,
-        30,
-        31,
-        30,
-        31,
-        31,
-        28,
-        31,
-        30,
-        31
-    ]
-
-    for x in range(1,13):
-        if current_date[0] == x:
-            current_date.extend((month_names[(x-1)], month_lengths[(x-1)]))
-            break
-
-    return(current_date)
 
 logger_path = "Q:/Acea Sands/test" #path to put log file
 
