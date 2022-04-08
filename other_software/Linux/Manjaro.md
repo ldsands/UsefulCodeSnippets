@@ -8,6 +8,8 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     - [Other Tips](#other-tips)
     - [KDE Plasma Setup](#kde-plasma-setup)
     - [KDE Plasma Notes](#kde-plasma-notes)
+    - [App Configurations](#app-configurations)
+    - [Apps that I'm experimenting with](#apps-that-im-experimenting-with)
 
 ## Installing Manjaro KDE
 
@@ -114,10 +116,10 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 - I use pCloud to sync all of my files across devices and to keep all of my files backed up. The executable file can be downloaded using [this link](https://www.pcloud.com/download-free-online-cloud-file-storage.html). This is an appimage file which means it should be able to run on any Linux distro without any external dependencies.
     - When I execute this file it should prompt to move the file to another location. I accept this prompt which allows pCloud to start automatically on system startup.
     - I then sign in and select the "Sync" tab and then select the "Add New Sync" button. I select for the local folder `home/$USER/Documents/pCloudLocalLevi` and for the pCloud Drive folder `/pCloudLocalLevi`.
-    - The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud or Zotero local storage. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). To stop this use the command below:
+    - The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud or Zotero local storage. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). If you want to see what is being indexed you can use the command `balooctl monitor`. You can get some basic status using the `balooctl status` command. The command `balooctl purge` will delete the indexed files and restart indexing. To disable baloo use `balooctl disable`. To see more command options use the `balooctl` command. To stop this use the command below:
 
         ```sh
-        echo 'exclude folders[$e]=$HOME/pCloudDrive/,$HOME/Zotero/
+        echo 'exclude folders[$e]=$HOME/pCloudDrive/,$HOME/Zotero/,$HOME/yay/,$HOME/,$HOME/.*,$HOME/*.*,$HOME/*.**
         ' >> ~/.config/baloofilerc
         ```
 
@@ -237,6 +239,12 @@ export PY_PYTHON=$(pyenv exec python -c "import sys; print(\'.\'.join(map(str, s
         flatpak install flathub com.todoist.Todoist -y
         # Zotero - Collect, organize, cite, and share research
         flatpak install flathub org.zotero.Zotero -y
+        # Evolution - Manage your email, contacts and schedule
+        flatpak install flathub org.gnome.Evolution -y
+        # Weather - View real-time weather forecasts and other information
+        flatpak install flathub org.kde.kweather
+        # TextSnatcher - Snatch Text with just a Drag
+        flatpak install flathub com.github.rajsolai.textsnatcher
         ```
 
     - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
@@ -254,6 +262,8 @@ export PY_PYTHON=$(pyenv exec python -c "import sys; print(\'.\'.join(map(str, s
     yay -S knotes
     # Xplorer a file explorer that caught my attention
     yay -S xplorer-bin
+    # this installs three Windows fonts: Calibri, Consolas, and Segoe UI (could also instal ttf-win10 for more fonts)
+    yay -S ttf-windows
     ```
 
 - Install [OBS Studio](https://obsproject.com/) and [OBS-BackgroundRemoval](https://github.com/royshil/obs-backgroundremoval)
@@ -475,11 +485,6 @@ kstart5 konsole --desktop 12: Todo
 
 ## Apps that I'm experimenting with
 
-```sh
-# Evolution - Manage your email, contacts and schedule
-flatpak install flathub org.gnome.Evolution -y
-```
-
 - Other terminal options because although I really like Hyper it does take a lot of RAM
     - Install [Tabby](https://tabby.sh/) another terminal
         - download the `.deb` file from [the github releases page](https://github.com/Eugeny/tabby/releases)
@@ -495,3 +500,24 @@ flatpak install flathub org.gnome.Evolution -y
         - Until I can install this using pacman I probably won't use it in the meantime i'll keep using yay (updated 2022-01-22)
 - [Sticky](https://github.com/collinss/sticky)
     - A possible alternative to KNotes
+- gui based graph plotting
+    - [LabPlot2](https://labplot.kde.org/)
+        - a gui for making plots (should make producing plots fairly quick when needed)
+        - installed using flatpak `flatpak install flathub org.kde.labplot2`
+    - [SciLab](http://www.scilab.org)
+        - a gui for making plots (should make producing plots fairly quick when needed)
+        - installed using flatpak `flatpak install flathub org.scilab.Scilab`
+    - [AlphaPlot](https://alphaplot.sourceforge.io/)
+        - installed using flatpak `flatpak install flathub io.github.narunlifescience.AlphaPlot`
+- [Emulsion](https://github.com/lainsce/emulsion/)
+    - a color (scheme) picking/creating application
+    - installed using flatpak `flatpak install flathub io.github.lainsce.Emulsion`
+- a browser for organizing web apps (e.g. email)
+    - [Ferdi](https://getferdi.com/)
+        - installed using flatpak `flatpak install flathub com.getferdi.Ferdi`
+    - [Tangram](https://github.com/sonnyp/Tangram)
+        - installed using flatpak `flatpak install flathub re.sonny.Tangram`
+- Audio modification software
+    - [EasyEffects](https://github.com/wwmm/easyeffects)
+        - Audio effects for PipeWire applications
+        - installed using flatpak `flatpak install flathub com.github.wwmm.easyeffects`

@@ -15,6 +15,8 @@ Julia is a newer programming language that is meant to be dynamically typed like
 
 Julia can be downloaded from [this site](https://julialang.org/downloads/). Instructions for installation on each major OS are located [here](https://julialang.org/downloads/platform/).
 
+- The best way to install Julia now is to first install [Juliaup](https://github.com/JuliaLang/juliaup)
+    - Juliaup allows you to install an manage multiple versions of Julia. Installation instructions can be found [here](https://github.com/JuliaLang/juliaup#installation).
 - For Windows you can install Julia using chocolatey (see below).
 
     ```PowerShell

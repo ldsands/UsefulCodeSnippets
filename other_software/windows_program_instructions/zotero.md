@@ -93,6 +93,10 @@ To complete the instructions to install Zotero and setup the WebDAV file syncing
 - [Citation Picker for Zotero (for VSCode)](https://marketplace.visualstudio.com/items?itemName=mblode.zotero)
     - You must have Better BibTeX installed to use this
     - This allows you to use the same citation selector that you can use in MS Word or LibreOffice Word
+- [Zutilo](https://github.com/wshanks/Zutilo) - "Zotero plugin providing some additional editing features"
+    - I install this mostly for editing tags for many entries at once
+    - This does a lot of other things that I haven't explored yet
+    - [You download the `.xpi` file for installation here:](https://github.com/wshanks/Zutilo/releases)
 - [Mdnotes](https://github.com/argenos/zotero-mdnotes)
     - You must have Better BibTeX and Zotfile installed to use this
     - A Zotero plugin to export item metadata and notes as markdown files

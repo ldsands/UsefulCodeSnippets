@@ -3,6 +3,7 @@
 - [Linux Programs](#linux-programs)
     - [Manjaro/Arch Based Distros](#manjaroarch-based-distros)
         - [Wine (On Manjaro)](#wine-on-manjaro)
+    - [Email applications](#email-applications)
         - [Random Apps for Manjaro](#random-apps-for-manjaro)
         - [Nativefier](#nativefier)
     - [Ubuntu/Debian Based Distros](#ubuntudebian-based-distros)
@@ -92,14 +93,33 @@
         X-KDE-Protocols=file
         ```
 
+## Email applications
+
+I've tried several of them and I have issues with all of them. I may as well leave useful instructions for setting up email applications here.
+
+- [Thunderbird](https://www.thunderbird.net/en-US/)
+    - I install this (and Birdtray) using flatpak.
+    - I really like Thunderbird overall. My biggest issues are first that you cannot minimize to the try and still get notifications (though there is a way to help with this, see below). The other issue is that you have to pay for a plugin to use EWS email accounts (see more below).
+    - To get minimize to tray download and install [Birdtray](https://github.com/gyunaev/birdtray/).
+    - I use [Owl](https://www.beonex.com/owl/) to access EWS email accounts. You are prompted to install the plugin during account setup.
+- [Evolution](https://wiki.gnome.org/Apps/Evolution)
+    - I install this using flatpak.
+    - Although setup is pretty easy and it uses less RAM than others I cannot control shutting down the background processes when I need the extra RAM. Also there is very little customization.
+    - Using EWS also syncs calendar items and contacts. This works for both my University account as well as my personal outlook account.
+        - To set it up for an Office365 account (using EWS you can use IMAP but EWS is "better") is a bit of a pain.
+        - For "Host URL:" enter [https://outlook.office365.com/EWS/Exchange.asmx](https://outlook.office365.com/EWS/Exchange.asmx)
+- [Kmail](https://apps.kde.org/kmail2/)
+    - I install this using flatpak (install the pakage called Kontact).
+    - This is my favorite client but I cannot control shutting down the background processes when I need the extra RAM.
+    - To set it up for an Office365 account (using EWS you can use IMAP but EWS is "better") is a bit of a pain. Fortunately there is a great tutorial on [YouTube](https://www.youtube.com/watch?v=j-dkD92r3FE).
+        - Under the "EWS Settings" section you'll need to enter this site: "[https://outlook.office365.com/EWS/Exchange.asmx](https://outlook.office365.com/EWS/Exchange.asmx)"
+
 ### Random Apps for Manjaro
 
 - For more battery settings which can help with battery life I download for use on laptops `yay -S slimbookbattery`
     - My experience with Manjaro (and linux more generally) has shown me that by default Windows is much better for battery life. To fix this I use the standard settings for Slimbook Battery 4 and select battery saving. This has helped a lot with battery drain.
 - [Piper](https://github.com/libratbag/piper/wiki) for managing my Logitech mouse peripherals
     - `yay -S piper`
-- [Kmail](https://apps.kde.org/kmail2/) is an email client. To set it up for an Office365 account (using EWS you can use IMAP but EWS is "better") is a bit of a pain. Fortunately there is a great tutorial on [YouTube](https://www.youtube.com/watch?v=j-dkD92r3FE).
-    - Under the "EWS Settings" section you'll need to enter this site: "[https://outlook.office365.com/EWS/Exchange.asmx](https://outlook.office365.com/EWS/Exchange.asmx)"
 - [Orange: Interactive data analysis](https://github.com/biolab/orange3) is a data analysis package/collection of packages that allows for visual programming with some predefined modules
     - Add-ons add to the functionality of Orange. Official add-ons can be found [here](https://github.com/biolab/orange3/blob/stable/README.md).
     - One way is to install from AUR:
@@ -160,12 +180,10 @@ Nativefier is an electron wrapper that can turn any website into a desktop appli
 sudo pacman -S nodejs npm
 # test install
 node -v
-# to install nativefier
-npm install -g nativefier
 # to install nativefier using npm
-npm install nativefier -g
+sudo npm install -g nativefier
 # to update nativefier (you must have admin privileges) you should update npm first then update nativefier (the command below updates npm and then nativefier)
-sudo npm update -g npm && npm update -g nativefier
+sudo npm update -g npm && sudo npm update -g nativefier
 # it is also a good idea to create a folder just for nativefier below is where I put it
 mkdir /home/ldsands/Documents/NativefierApps/
 # now navigate to the folder to create the nativefier program there
@@ -186,12 +204,26 @@ The options are all explained [here](https://github.com/nativefier/nativefier/bl
 Some Nativefier Limitations
 
 - You cannot use `ctrl` + `f` to use find in page
+- Although it seems like it is possible to block ads I haven't figured out how to do it yet.
+    - One method that can work for some sites is to use the user agent option (e.g. `--user-agent 'Mozilla/5.0 (xxxxxx)`) more user agents can be found [here](https://user-agents.net/)
 
 Below are a list of the nativefier apps that I install with their code.
 
-```PowerShell
+```sh
+# Outlook Personal
+nativefier https://outlook.live.com/mail/ --name "Outlook Personal" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/microsoft-outlook-2019-240.png --maximize
+# Outlook Personal Calendar
+nativefier https://outlook.live.com/calendar/0/view/week --name "Outlook Personal Calendar" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftOutlookCalendarIcon.png --maximize
+# Uiowa Outlook email
+nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|officeonline|microsoftonline|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --counter --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.png --maximize
+# Uiowa Outlook calendar
+nativefier --name "Uiowa Outlook Calendar" "https://outlook.office.com/calendar/view/week" --internal-urls ".*(office|office365|officeonline|microsoftonline|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --counter --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.png --maximize
 # Microsoft To Do
 nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftToDoLogo.png --portable
+# ProWritingAid editor site
+nativefier --name "ProWritingAid" "https://prowritingaid.com/en/Analysis/Documents/Go" --internal-urls ".*prowritingaid.com.*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/ProWritingAid.png --portable
+# ProWritingAid editor site going directly to a blank document for quick edits
+nativefier --name "ProWritingAid" "https://app.prowritingaid.com/?id=rXW9R9pL8d" --internal-urls ".*prowritingaid.com.*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/ProWritingAid.png --portable
 ```
 
 - You will need to create a `.desktop` file (at least for KDE on Arch Linux). You can find user `.desktop` files here: `/home/$USER/.local/share/applications/` or for machine `.desktop` files here `/usr/share/applications/`. From these examples you can enhance the example `.desktop` file I made for Microsoft To Do below.

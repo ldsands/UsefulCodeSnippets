@@ -205,3 +205,16 @@ print(sys.argv[0])
         """Yield successive n-sized chunks from target_list. Where chunk_size is an int and the target_list is a list that will be split"""
         return [target_list[counter : counter + chunk_size] for counter in range(0, len(target_list), chunk_size)]
     ```
+
+- Getting rid of URLs in text data is a huge pain. This is the best RegEx statement I've found [(here is where I found it)](https://regex101.com/library/Qtj4KW) for finding URLs is below:
+
+    ```Python
+    # this is the bare RegEx: (http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)
+    import re
+
+    target_str = re.sub(
+            r"(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)",
+            " ",
+            target_str,
+        )
+    ```
