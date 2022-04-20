@@ -6,12 +6,12 @@ This a place for a todo list of items to add
 
 ## In Progress
 
-[Creating a Local Package](programming_languages/python/python_modules.md#creating-a-local-package)
-[PySpark](programming_languages/python/python_modules.md#PySpark)
-[Pathlib Getting File Directories](programming_languages/python/python_commands.md#pathlib-getting-file-directories)
-[Multiprocessing in Python](programming_languages/python/python_commands.md#multiprocessing-in-python)
-[Bash WSL Setup](other_software/bash.md#wsl-setup)
-[Docker](other_software/docker.md#docker-stuff)
+[Creating a Local Package](ProgrammingLanguages/Python/PythonModules.md#creating-a-local-package)
+[PySpark](ProgrammingLanguages/Python/PythonModules.md#PySpark)
+[Pathlib Getting File Directories](ProgrammingLanguages/Python/PythonCommands.md#pathlib-getting-file-directories)
+[Multiprocessing in Python](ProgrammingLanguages/Python/PythonCommands.md#multiprocessing-in-python)
+[Bash WSL Setup](OtherSoftware/bash.md#wsl-setup)
+[Docker](OtherSoftware/Docker.md#docker-stuff)
 
 ## General Todos
 

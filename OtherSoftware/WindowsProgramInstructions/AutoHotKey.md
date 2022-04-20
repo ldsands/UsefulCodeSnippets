@@ -9,7 +9,7 @@ AutoHotKey is a program that compiles scripts to automate various tasks in Windo
 
 ## Installation
 
-I use [chocolatey](chocolatey.md) to install AutoHotKey
+I use [chocolatey](Chocolatey.md) to install AutoHotKey
 you can also [download it](https://www.autohotkey.com/) from the main page and install manually
 
 ## Use your scripts

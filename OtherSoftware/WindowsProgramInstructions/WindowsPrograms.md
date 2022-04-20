@@ -49,7 +49,7 @@ Below are Windows programs that are installed using chocolatey or winget
 - [Visual Studio Code or VS Code](https://code.visualstudio.com/) I install this using Chocolatey
     - A truly incredible text editor that is really in IDE in capabilities for many programming languages
     - For me writing in anything else is frustrating because of other programs limitations
-    - For more information on my VS Code setup and other tips see [this other markdown sheet](../vscode.md)
+    - For more information on my VS Code setup and other tips see [this other markdown sheet](../VSCode/VSCode.md)
 - [7+ Taskbar Tweaker](https://tweaker.rammichael.com/) This can be installed using Winget
     - A taskbar settings application that allows for a lot of customization of Windows taskbar.
     - My settings that I usually use are as follows:
@@ -70,13 +70,13 @@ Below are Windows programs that are installed using chocolatey or winget
     - This is a great clipboard manager for Windows. You can now also use `win` + `v` for a similar built in program
 - [Files](https://files-community.github.io/) I install this via the Microsoft Store
     - This is a replacement for file explorer with more useful features
-- [Git](../git.md) I install this using Chocolatey
+- [Git](../Git.md) I install this using Chocolatey
     - This is required for using github it is the source control software on which github is based
     - I don't know much about how to use git without either github and/or vscode
-- [Pandoc](../pandoc_commands.md) I install this using Chocolatey
+- [Pandoc](../PandocCommands.md) I install this using Chocolatey
     - This can convert just about any document format into any other
     - I use it primarily to write in markdown and then convert to either docx or pdf depending on my need at the time
-- [R](../../programming_languages/R/r_resources.md) I install this using Chocolatey
+- [R](../../ProgrammingLanguages/R/RResources.md) I install this using Chocolatey
     - R is a statistically focused programming language it is really quirky but very powerful from a statistical point of view
 - [Nodejs](https://nodejs.org/en/) I install this using Chocolatey
     - This is for installing javascript it has occasionally been useful to me in the past for electron apps and other applications
@@ -84,7 +84,7 @@ Below are Windows programs that are installed using chocolatey or winget
     - This is a super lightweight pdf reader I use it when working LaTeX since it doesn't have a file lock
 - [Dotnetcore-sdk](https://dotnet.microsoft.com/download/dotnet-core) I install this using Chocolatey
     - Used for my C# programming (I wish I could use it more but alas time never seems to allow me to experiment)
-- [Julia](../../programming_languages/julia/julia.md) I install this using Chocolatey
+- [Julia](../../ProgrammingLanguages/Julia/JuliaInstallOverview.md) I install this using Chocolatey
     - Julia is a programming language that is python but rewritten for speed (there are lots of other benefits but speed is what I use it for) I have been able to get some scripts running thousands of times faster when I rewrote them Julia
     - Julia is still really new though so it is limited in the available packages but again otherwise I wish I could write only in Julia
 - [ImageMagick](https://imagemagick.org/) I install this using Chocolatey
@@ -101,7 +101,7 @@ Below are Windows programs that are installed using chocolatey or winget
     - Another LaTeX installer, this one is a bit more comprehensive than MikTeX is
 - [Textify](https://rammichael.com/textify) I install this using winget
     - A simple program that allows for copying text from pretty much any program
-- [Zotero](zotero.md) I install this using Chocolatey
+- [Zotero](Zotero.md) I install this using Chocolatey
     - My preferred reference manager that is free and open source very good alternative to EndNote and other alternatives (in my opinion it is better in pretty much every way)
 - [Firefox](https://www.mozilla.org/en-US/firefox/new/) I install this using Chocolatey
     - Sometimes chrome cannot load something so I usually use Firefox as my back up
@@ -202,7 +202,7 @@ non chocolatey utility programs
 - [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html) For my old keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
 - [Pipx](https://pipxproject.github.io/pipx/) This allows you to use python scripts as though they were programs this does get installed via pip (`pip -m install pipx`) after installing python then add pipx to path by using this command: `python -m pipx ensurepath`. You will have to restart the PowerShell to use pipx.
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
-- [PowerLine for PowerShell](../powershell.md#PowerShell-profiles)
+- [PowerLine for PowerShell](../../ProgrammingLanguages/PowerShell/PowerShell.md#powershell-profiles)
 - [Process Hacker](https://processhacker.sourceforge.io/) Is a process manager and viewer that is far more informational than the built in task manager. I use the [nightly builds](https://processhacker.sourceforge.io/nightly.php) since they have not updated the main release in years.
 - [SylphyHornEx](https://github.com/ViRb3/SylphyHornEx/releases) The best Windows virtual desktop manager I've found very capable and customizable
 - [WindowsTerminalHere](https://github.com/shanselman/WindowsTerminalHere) A small script to allow for use of the new windows terminal from any location by right clicking
@@ -296,8 +296,8 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
     sudo apt upgrade
     ```
 
-- I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../powershell.md#Using-PowerShell-on-Linux)
-- Install Anaconda on WSL [see this section](../../programming_languages/python/python_install.md#Install-anaconda-on-WSL)
+- I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../../ProgrammingLanguages/PowerShell/PowerShell.md#using-powershell-on-linux)
+- Install Anaconda on WSL [see this section](../../ProgrammingLanguages/PowerShell/PowerShell.md#Install-anaconda-on-WSL)
 - Some useful PowerShell commands to use to manage the WSL distros are below [here](https://docs.microsoft.com/en-us/windows/wsl/reference) is a more comprehensive list of WSL commands
 
     ```PowerShell
@@ -320,7 +320,7 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
 
 ## Windows PowerToys
 
-"[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](chocolatey.md/#choco-install-powertoys) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
+"[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](Chocolatey.md) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
 
 - To get to the settings for FancyZones go to this location `C:\Users\%username%\AppData\Local\Microsoft\PowerToys\FancyZones\zones-settings.json`.
 

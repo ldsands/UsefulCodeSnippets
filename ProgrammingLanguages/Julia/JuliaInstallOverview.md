@@ -43,7 +43,7 @@ Julia can be downloaded from [this site](https://julialang.org/downloads/). Inst
 
 ## Installing and Loading Packages
 
-Once you've installed Julia on your system you'll want to update your package repository and install some packages. These instructions are duplicated [here](julia_useful_packages.md#)
+Once you've installed Julia on your system you'll want to update your package repository and install some packages. These instructions are duplicated [here](JuliaUsefulCommands.md)
 
 - You can do this in the REPL or through a script here is the commands need to update through the REPL:
 

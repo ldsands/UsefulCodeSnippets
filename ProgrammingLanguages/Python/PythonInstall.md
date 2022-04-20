@@ -64,7 +64,7 @@
     - You can install an extension that allows for updating pyenv using this command `pyenv update` you can install it on Ubuntu using this command: `git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update`
 - Now you can install poetry see more detailed instructions [here](https://python-poetry.org/docs/master/#installation).
     - To publish the package to PyPI you will need to use an environment variable with your PyPI token.
-    - More instructions on how to use poetry can be found [here](python_modules.md#creating-a-local-package).
+    - More instructions on how to use poetry can be found [here](PythonModules.md#creating-a-local-package).
 
     ```zsh
     # install poetry for python management
@@ -149,7 +149,7 @@ This is for shen the add to path doesn't work for the chocolatey install
     - To create a local version of python `python -m venv .venv`
     - You must then activate this new instance of python, for Linux `source ./.venvUbu/bin/activate` for Windows `.\venv\Scripts\activate.ps1`
 
-- Another option is [Pyflow](https://github.com/David-OConnor/pyflow) which uses Rust on the backend. It is very fast and very easy to use though you do have to have either a pyproject.toml or a line in the script similar to the following: `__requirements__ = ["pandas", "numpy"]` to work with pyflow. This may be my favorite as of Summer 2020 since it is so easy to use. To install pyflow there are several options however I recommend installing rust then use this command: `cargo install pylow`. Instructions on how to install Rust can be found [here](../rust/rust_install.md). If on a debian based distro you can also use this command `cd ~/ && wget https://github.com/David-OConnor/pyflow/releases/download/0.2.7/pyflow_0.2.7_amd64.deb && sudo dpkg -i pyflow_0.2.7_amd64.deb && rm pyflow* && pyflow --version`.
+- Another option is [Pyflow](https://github.com/David-OConnor/pyflow) which uses Rust on the backend. It is very fast and very easy to use though you do have to have either a pyproject.toml or a line in the script similar to the following: `__requirements__ = ["pandas", "numpy"]` to work with pyflow. This may be my favorite as of Summer 2020 since it is so easy to use. To install pyflow there are several options however I recommend installing rust then use this command: `cargo install pylow`. Instructions on how to install Rust can be found [here](../Rust/RustInstall.md). If on a debian based distro you can also use this command `cd ~/ && wget https://github.com/David-OConnor/pyflow/releases/download/0.2.7/pyflow_0.2.7_amd64.deb && sudo dpkg -i pyflow_0.2.7_amd64.deb && rm pyflow* && pyflow --version`.
     - You can create the folder containing all of the Python and Python packages needed by entering `pyflow init` or in a new folder by entering `pyflow new ProjectName`.
     - You can then install packages by using `pyflow install packageName`. This installs that package in the folder containing the project.
     - If you want to run a script quickly or contain everything from within that script you can add a line like this: `__requires__ = ['packageName', 'anotherPackageName']`. Then enter `pyflow script myscript.py` and pyflow will install all of the requirements contained in that script.
@@ -202,7 +202,9 @@ To use venv is a bit more complicated. Launching these environments aren't as st
     deactivate
     ```
 
-### [Poetry Environments](https://python-poetry.org/docs/managing-environments/#:~:text=Poetry%20makes%20project%20environment%20isolation%20one%20of%20its,use%20it%20directly%20without%20creating%20a%20new%20one.)
+### Poetry Environments
+
+More can be found [here](https://python-poetry.org/docs/managing-environments/#:~:text=Poetry%20makes%20project%20environment%20isolation%20one%20of%20its,use%20it%20directly%20without%20creating%20a%20new%20one.)
 
 Poetry will use whatever virtual environment is activated to build the project that you're working on. It will create a pyproject.toml file and if you follow the instructions [here](#pyenv-with-poetry) you can setup the project with relative ease.
 
@@ -215,7 +217,7 @@ Poetry will use whatever virtual environment is activated to build the project t
     os.path.dirname(sys.executable)
     ```
 
-- To automatically install packages from a list you can read more [here](python_modules.md#Install-Python-Modules-Within-a-Script).
+- To automatically install packages from a list you can read more [here](PythonModules.md#install-python-modules-within-a-script).
 
 - When installing python on Windows you can usually just install it from the store but there are some packages cannot "see" that python installation. To deal with this you can do the following after installing python fro mthe python.org website or when installed using chocolatey or winget.
 

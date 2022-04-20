@@ -13,4 +13,4 @@
 
 ## Citeproc examples and resources
 
-pandoc-citeproc is a pandoc "extension" of sorts that allows you to use citations in your markdown documents see [pandoc](../../other_software/pandoc_commands.md) for more details
+pandoc-citeproc is a pandoc "extension" of sorts that allows you to use citations in your markdown documents see [pandoc](../../OtherSoftware/PandocCommands.md) for more details

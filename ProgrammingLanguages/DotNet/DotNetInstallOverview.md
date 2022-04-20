@@ -4,7 +4,7 @@ Note: I will only be using dotnet standard or dotnet core and I will never be us
 
 ## Installation
 
-- For now just see the [chocolatey](../../other_software/windows_program_instructions/chocolatey.md) page for more details for installation on Windows.
+- For now just see the [chocolatey](../../OtherSoftware/WindowsProgramInstructions/Chocolatey.md) page for more details for installation on Windows.
 - For Ubuntu installation you can enter the following code:
 
     ```sh

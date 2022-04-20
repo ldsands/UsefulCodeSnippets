@@ -27,7 +27,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ### Using dotnet Sdk
 
-You can install PowerShell using the dotnet sdk (core or standard) on any platform. However you will not be able to get context menu use with this method (for more details [see this section under my dotnet instructions](../programming_languages/dotnet/dotnet_install_overview.md#dotnet-tools))
+You can install PowerShell using the dotnet sdk (core or standard) on any platform. However you will not be able to get context menu use with this method (for more details [see this section under my dotnet instructions](../DotNet/DotNetInstallOverview.md#dotnet-tools)
 
 ## Adding to Windows Path
 
@@ -414,7 +414,7 @@ PowerShell functions can be very powerful and do pretty much anything you can th
     sudo apt-get install -y powershell
     ```
 
-    - Note: the snap store doesn't work out the box in Ubuntu when using WSL, there is a work around which is below along with the installation command for PowerShell using the snap store. (The snap store commands can also be found in the first code block of [this section](../other_software/bash.md#ubuntu-setup))
+    - Note: the snap store doesn't work out the box in Ubuntu when using WSL, there is a work around which is below along with the installation command for PowerShell using the snap store. (The snap store commands can also be found in the first code block of [this section](../../OtherSoftware/Linux/Bash.md#ubuntu-setup)
 
         ```sh
         # install the snap store and then check to see if it installed correctly

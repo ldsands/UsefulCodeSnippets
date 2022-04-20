@@ -165,7 +165,7 @@ This is a big data analysis packages that requires a bit of setup
 - The second line of code below will help you create the `pyproject.toml` file with some defailts and some prompts to get it started.
     - More details on the `pyproject.toml` file is located [here](https://python-poetry.org/docs/pyproject/)
 - Once you're done then run the build command and then the `poetry install` commands to test it out in the environment you have activated.
-    - You'll then want to follow the instructions [here](python_install.md#pyenv-with-poetry) that I created that goes over how to use an python environment using pyenv-virtualenv and poetry.
+    - You'll then want to follow the instructions [here](PythonInstall.md#poetry-environments) that I created that goes over how to use an python environment using pyenv-virtualenv and poetry.
     - You can make do the build command over and over and it'll just overwrite what you had before (in the `baseDirectory/.dist`) and poetry each time you install using `poetry install` right after using `poetry build` it should reinstall the newer version that you just built for more testing
 - If you want to publish this to PyPI for easy access anywhere then you will need to do the following after setting up your PyPI account and getting a token and then enter the publish command
     - You'll then enter your username and your token which you will have gotten from PyPI. You will then be able to use `pip install packageName` anywhere to use your package

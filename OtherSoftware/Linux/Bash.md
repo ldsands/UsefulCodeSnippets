@@ -43,7 +43,7 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     screen -ls
     ```
 
-- Environment variables are variables that are meant to store different pieces of information (often strings) for use elsewhere. Examples might include a token that is personal to you: you can set the environment variable on your computer and  reference it easily in code but do so without exposing your personal token. To do this in python you can see [an example](../programming_languages/python/python_commands.md#random-useful-commands).
+- Environment variables are variables that are meant to store different pieces of information (often strings) for use elsewhere. Examples might include a token that is personal to you: you can set the environment variable on your computer and  reference it easily in code but do so without exposing your personal token. To do this in python you can see [an example](../../ProgrammingLanguages/Python/PythonCommands.md#random-useful-commands).
     - Below is an example of the directory for some file that I use often using modelFile invokes the path to that file.
     - The second example is setting a token as an environment variable.
 
@@ -139,7 +139,7 @@ Bash is a command shell for unix systems and is the most popular shell used in L
 
 ### WSL Setup
 
-To set up WSL follow the instructions I've set [up here](windows_program_instructions/windows_programs.md/#wsl-windows-subsystem-for-linux).
+To set up WSL follow the instructions I've set [up here](../WindowsProgramInstructions/WindowsPrograms.md#wsl-windows-subsystem-for-linux).
 
 Now to get bash all set up with useful features do the following steps:
 
