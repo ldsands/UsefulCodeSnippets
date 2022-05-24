@@ -3,6 +3,7 @@
 - [Python Installation Instructions and Notes](#python-installation-instructions-and-notes)
     - [Pyenv on Windows](#pyenv-on-windows)
     - [Pyenv (on WSL)](#pyenv-on-wsl)
+    - [Pipenv](#pipenv)
     - [Anaconda](#anaconda)
         - [Anaconda PATH Windows instructions](#anaconda-path-windows-instructions)
         - [Install anaconda on WSL](#install-anaconda-on-wsl)
@@ -78,6 +79,35 @@
     # and again the persistent version
     echo 'export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"' >> ~/.zshrc
     ```
+
+## Pipenv
+
+- This will create and manage virtual environments and adds and removes packages from a lock file and when used with pyenv it can install the version of python required for a project. Below are some lines of code that can be reused.
+
+```sh
+# move into the project directory
+cd myproject
+# you can set the specific version of python if needed
+pipenv --python 3.10.3
+# if there already is a pipfile
+pipenv install
+# Ignore the Pipfile.lock and install from the Pipfile. In addition, do not write out a Pipfile.lock reflecting changes to the Pipfile.
+pipenv install --skip-lock
+# if you need to install packages (for a new or old project) you install just like pip
+pipenv install pandas
+# if you need to install packages that are only used for development use
+pipenv install --dev black flake8 pretty-errors
+# activate the pipenv virtual environment
+pipenv shell
+# check for outdated packages
+pipenv update --outdated
+# upgrade all outdated packages
+pipenv update
+# to remove the pipenv virtual environment load the virtual environment then remove it
+pipenv --rm
+# will show you a dependency graph of your installed dependencies
+pipenv graph
+```
 
 ## Anaconda
 
@@ -183,7 +213,7 @@ Below are my instructions for setting up a conda environment for my reddit data 
     ```
 
     - Another way to create a conda environment is to [create an `environment.yml` file](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
-        - To activate 
+        - To activate
     - Sometimes you need to add packages from conda forge you may need to do this by using `conda install -c conda-forge` then the name of the package that is available on conda forge.
 
 ### [venv environments](https://docs.python.org/3/tutorial/venv.html)

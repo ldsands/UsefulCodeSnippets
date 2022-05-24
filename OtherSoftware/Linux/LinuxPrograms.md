@@ -3,6 +3,7 @@
 - [Linux Programs](#linux-programs)
     - [Manjaro/Arch Based Distros](#manjaroarch-based-distros)
         - [Wine (On Manjaro)](#wine-on-manjaro)
+        - [Waydroid (Android on Linux)](#waydroid-android-on-linux)
     - [Email applications](#email-applications)
         - [Random Apps for Manjaro](#random-apps-for-manjaro)
         - [Nativefier](#nativefier)
@@ -92,6 +93,58 @@
         Terminal=false
         X-KDE-Protocols=file
         ```
+
+### Waydroid (Android on Linux)
+
+- [Waydroid](https://waydro.id/) allows for using an android emulator and thus the apps in Linux.
+- Installation is a bit involved the steps I took are below
+
+```sh
+# install linux-zen which includes some required additions to the kernel needed to run Waydroid
+yay -S linux-zen-versioned-bin
+# restart the computer
+# install waydroid from AUR
+yay -S waydroid waydroid-image
+# install pyclip so that waydroid can access the clipboard
+yay -S python-pyclip
+# check if the waydroid container is enabled
+systemctl is-enabled waydroid-container.service
+# start the waydroid container
+systemctl start waydroid-container.service
+# "this will automatically download the latest Android image if it is not yet available"
+sudo waydroid init
+# start waydroid session 
+waydroid session start
+# start the android gui
+waydroid show-full-ui
+# to install an apk
+waydroid app install $path_to_apk
+waydroid app install Amazon_App.apk
+# list installed apps
+waydroid app list
+# Run an application:
+waydroid app launch $package-name
+waydroid app launch com.amazon.venezia
+
+# alternative way of installing waydroid
+# taken from https://github.com/casualsnek/waydroid_script
+yay -S lzip sqlite
+git clone https://github.com/casualsnek/waydroid_script
+cd waydroid_script
+sudo python -m pip install -r requirements.txt
+sudo python waydroid_extras.py [-i/-g/-n/-h]
+sudo python waydroid_extras.py -g
+sudo systemctl start waydroid-container.service
+waydroid show-full-ui
+# now wait until it has fully booted you may need to restart the computer
+# then run the following line:
+sudo python3 waydroid_extras.py -i
+# you will then need to follow the instructions to register the device
+# it may take 10-20 minutes
+# then clear Google Play Service's cache by searching for "google play" in settings
+# try logging in to the google account
+
+```
 
 ## Email applications
 
@@ -211,13 +264,13 @@ Below are a list of the nativefier apps that I install with their code.
 
 ```sh
 # Outlook Personal
-nativefier https://outlook.live.com/mail/ --name "Outlook Personal" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/microsoft-outlook-2019-240.png --maximize
+nativefier https://outlook.live.com/mail/ --name "Outlook Personal" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/microsoft-outlook-2019-240.png --browserwindow-options '{"webPreferences": { "webviewTag": true, "nodeIntegration": true, "nodeIntegrationInSubFrames": true } }'
 # Outlook Personal Calendar
-nativefier https://outlook.live.com/calendar/0/view/week --name "Outlook Personal Calendar" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftOutlookCalendarIcon.png --maximize
+nativefier https://outlook.live.com/calendar/0/view/week --name "Outlook Personal Calendar" --internal-urls ".*(office|live|office365|sharepoint|microsoft|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftOutlookCalendarIcon.png --browserwindow-options '{"webPreferences": { "webviewTag": true, "nodeIntegration": true, "nodeIntegrationInSubFrames": true } }'
 # Uiowa Outlook email
-nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|officeonline|microsoftonline|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --counter --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.png --maximize
+nativefier --name "Uiowa Outlook" "https://outlook.office365.com/mail/inbox" --internal-urls ".*(office|office365|officeonline|microsoftonline|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --counter --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.png --browserwindow-options '{"webPreferences": { "webviewTag": true, "nodeIntegration": true, "nodeIntegrationInSubFrames": true } }'
 # Uiowa Outlook calendar
-nativefier --name "Uiowa Outlook Calendar" "https://outlook.office.com/calendar/view/week" --internal-urls ".*(office|office365|officeonline|microsoftonline|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --counter --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.png --maximize
+nativefier --name "Uiowa Outlook Calendar" "https://outlook.office.com/calendar/view/week" --internal-urls ".*(office|office365|officeonline|microsoftonline|sharepoint|microsoft|onenote|uiowa)\.(com|edu).*" --counter --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/Uiowa-Dome-favicon-96x96.png --browserwindow-options '{"webPreferences": { "webviewTag": true, "nodeIntegration": true, "nodeIntegrationInSubFrames": true } }'
 # Microsoft To Do
 nativefier --name "MS To Do" "https://to-do.live.com/tasks/planned" --internal-urls ".*(office|office365|sharepoint|microsoft|microsoftonline|onenote)\.(com).*" --icon /home/$USER/Documents/pCloudLocalLevi/Pictures/NativefierIcons/MicrosoftToDoLogo.png --portable
 # ProWritingAid editor site

@@ -19,8 +19,6 @@ There are really two main options for file management in python the first is usi
 
 ### Pathlib Getting File Directories
 
-
-
 ## Exiting a Python Program/Script
 
 Sometimes you need to exit a Python script or program. This is the best way to do it and it prints a message for you as well. Other options are shown below my preferred option.
@@ -74,7 +72,7 @@ TODO:
 - Also for IPython you can use the memory_profiler for cells to get memory information ([see more here](https://jakevdp.github.io/PythonDataScienceHandbook/01.07-timing-and-profiling.html))
     - You must first install the package `pip install memory_profiler`
     - You must then load it by using this code in IPython: `%load_ext memory_profiler`
-    - You can then place `%memit ` in front of a function you want to profile the output will look something like this `peak memory: 589.89 MiB, increment: 188.55 MiB`
+    - You can then place `%memit` in front of a function you want to profile the output will look something like this `peak memory: 589.89 MiB, increment: 188.55 MiB`
 
 ### Multiprocessing in Python
 
@@ -217,4 +215,11 @@ print(sys.argv[0])
             " ",
             target_str,
         )
+    ```
+
+- Formatting print function to stand out much more. The example below prints the string in a green color making it very easy to see.
+
+    ```python
+    def prGreen(text_string):
+        print("\033[92m {}\033[00m".format(text_string))
     ```

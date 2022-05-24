@@ -4,6 +4,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 
 - [Manjaro KDE](#manjaro-kde)
     - [Installing Manjaro KDE](#installing-manjaro-kde)
+    - [Installing Programs](#installing-programs)
     - [Notes on Installation Issues](#notes-on-installation-issues)
     - [Other Tips](#other-tips)
     - [KDE Plasma Setup](#kde-plasma-setup)
@@ -12,6 +13,10 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     - [Apps that I'm experimenting with](#apps-that-im-experimenting-with)
 
 ## Installing Manjaro KDE
+
+- Use [Ventoy](https://www.ventoy.net/en/index.html) to create usb bootable drives with `.iso` files. It can deal with secure boot and can install from multiple `.iso` files on one drive.
+
+## Installing Programs
 
 - Install the following command line stuff and Microsoft Edge
     - [oh-my-zsh](https://ohmyz.sh/) - "Oh My Zsh is a delightful, open source, community-driven framework for managing your Zsh configuration"
@@ -176,10 +181,11 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     ' >> ~/.zshrc
     ```
 
-- Install [pyenv](https://github.com/pyenv/pyenv) and [python-launcher](https://github.com/brettcannon/python-launcher) for managing python and python virtual environments
+- Install [pyenv](https://github.com/pyenv/pyenv) and [Pipenv](https://pipenv.pypa.io/en/latest/) for managing python and python virtual environments
 
     ```sh
-    # install pyenv
+    # install pipenv
+    yay -S python-pipenv
     # install pyenv and put into the PATH
     yay -S pyenv
     echo '
@@ -188,6 +194,8 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
     eval "$(pyenv init -)"
+    # pipenv stuff
+    eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
     ' >> ~/.zshrc
     # restart shell so new path variables can be used
     exec zsh
@@ -206,12 +214,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     # create virtual environment this will automatically use the newest version of python that pyenv installed
     py -m venv .venv
     ```
-<!-- # install python-launcher
-yay -S python-launcher
-# add the needed line to zshrc file to use pyenv with python-launcher
-echo $'# python-launcher stuff
-export PY_PYTHON=$(pyenv exec python -c "import sys; print(\'.\'.join(map(str, sys.version_info[:2])))")
-' >> ~/.zshrc -->
 
 - Install flatpak/flathub hosted apps:
     - Apps I install on every computer
@@ -355,7 +357,7 @@ System Settings to change. Open "System Settings" then you can search or find th
         - Row 1: `Random 01`, `Random 02` and `Random 03`
         - Row 2: `School 01`, `School 02` and `School 03`
         - Row 3: `Python 01`, `Python 02` and `Python 03`
-        - Row 4: `Email`, `Comms` and `Todo`
+        - Row 4: `Email`, `CommsMusic` and `Todo`
     - Enable "Show on-screen display when switching" and change the value to 500 ms
     - Enable "Show desktop layout indicators"
 - Panel
@@ -409,7 +411,6 @@ System Settings to change. Open "System Settings" then you can search or find th
 sleep 0.1 & kstart5 --maximize --desktop 1 --windowclass kitty kitty
 kstart5 --maximize --desktop 4 --windowclass gitahead gitahead
 sleep 0.2 & kstart5 --maximize --desktop 5 --windowclass code code
-
 
 sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass kitty kitty
 sleep 0.5 && kstart5 --desktop 3 --geometry 1080x1021+0+45 --windowclass google-chrome /usr/bin/google-chrome-stable %U exec
@@ -517,7 +518,27 @@ kstart5 konsole --desktop 12: Todo
         - installed using flatpak `flatpak install flathub com.getferdi.Ferdi`
     - [Tangram](https://github.com/sonnyp/Tangram)
         - installed using flatpak `flatpak install flathub re.sonny.Tangram`
+    - [WebCatalog](https://webcatalog.io/webcatalog/)
+        - "Turn Any Websites into Real Desktop Apps" I plan to mostly use this for email and calendaring
+        - installed via appimage
 - Audio modification software
     - [EasyEffects](https://github.com/wwmm/easyeffects)
         - Audio effects for PipeWire applications
         - installed using flatpak `flatpak install flathub com.github.wwmm.easyeffects`
+- [Xonsh](https://xon.sh/) a cross-platform shell that is written in and uses python
+    - `yay -S xonsh`
+    - [tutorial](https://xon.sh/tutorial.html) or use the command `xonfig tutorial`
+    - `xonfig web` # Run the configuration tool in the browser to create ~/.xonshrc
+    - [xensh cheatsheet](https://github.com/anki-code/xonsh-cheatsheet)
+    - recommended ways to install
+        - `python -m pip install 'xonsh[full]'`
+        - `pip install pipx && pipx install --python python3.10 xonsh && pipx run xonsh`
+    - xontribs to look at
+        - [xonsh-autoxsh](https://github.com/Granitosaurus/xonsh-autoxsh)
+        - [xontrib-kitty](https://github.com/scopatz/xontrib-kitty)
+        - <https://github.com/anki-code/xontrib-prompt-starship>
+        - <https://github.com/dyuri/xontrib-langenv>
+        - <https://github.com/AstraLuma/xontrib-z>
+        - <https://github.com/dyuri/xontrib-zoxide>
+        - <https://github.com/anki-code/xontrib-argcomplete>
+        - whole_word_jumping
