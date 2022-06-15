@@ -5,7 +5,6 @@
         - [Pathlib Getting File Directories](#pathlib-getting-file-directories)
     - [Exiting a Python Program/Script](#exiting-a-python-programscript)
     - [Functions in Python](#functions-in-python)
-        - [Optional Arguments](#optional-arguments)
     - [Timing and Profiling Your Scripts](#timing-and-profiling-your-scripts)
         - [Multiprocessing in Python](#multiprocessing-in-python)
     - [IPython/Jupyter special commands](#ipythonjupyter-special-commands)
@@ -30,14 +29,14 @@ raise SystemExit
 ```
 
 ## Functions in Python
-
+<!-- 
 ### Optional Arguments
 
 TODO:
-
+ -->
 ## Timing and Profiling Your Scripts
 
-- Below is what I usually use to time my scripts is is far easier than a lot of alternatives
+- Below is a short way to time scripts is is far easier than a lot of alternatives
 
     ```Python
     # import time module
@@ -49,6 +48,46 @@ TODO:
     elapsed_time = (time.time() - start_time) / 60
     # print out the elapsed time in minutes
     print(f"Completed function in {round(elapsed_time, 3)} minutes")
+    ```
+
+- A more involved version that uses a decorator is shown below
+
+    ```python
+    def function_timer(func):
+        """This is a timer decorator when defining a function if you want that function to
+        be timed then add `@function_timer` before the `def` statement and it'll time the
+        function
+        Arguments:
+            func {function} -- it takes a function for this decorator to work
+        Returns:
+            this will print out the time taken and the time the function started and
+            completed
+        """
+        import functools
+        import time
+        from datetime import datetime
+
+        @functools.wraps(func)
+        def wrapper_timer(*args, **kwargs):
+            start_time = time.time()
+            # start_date = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+            # print(f"The function {func.__name__} started at {start_date}")
+            value = func(*args, **kwargs)
+            elapsed_time = time.time() - start_time
+            stop_date = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
+            if elapsed_time > 60 <= 3600:
+                print(
+                    f"The function {func.__name__} took: {round(elapsed_time/60, 3)} minutes at {stop_date}"
+                )
+            elif elapsed_time > 3600:
+                print(
+                    f"The function {func.__name__} took: {round((elapsed_time/60)/60, 3)} hours at {stop_date}"
+                )
+            else:
+                print(f"The function {func.__name__} took: {round(elapsed_time, 3)} seconds")
+            return value
+
+        return wrapper_timer
     ```
 
 - Printing the current time - sometimes you need to know about what time something happened this can do that by printing the current time

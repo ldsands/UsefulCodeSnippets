@@ -264,8 +264,14 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     yay -S knotes
     # Xplorer a file explorer that caught my attention
     yay -S xplorer-bin
+    # installs a font manager it will list all installed fonts with command `fc-list`
+    yay -S fontconfig
     # this installs three Windows fonts: Calibri, Consolas, and Segoe UI (could also instal ttf-win10 for more fonts)
     yay -S ttf-windows
+    # installs Fira Sans fonts
+    yay -S otf-fira-sans otf-firamath
+    # install pandoc and latex stuff
+    yay -S pandoc texlive-core texlive-latexextra texlive-fontsextra
     ```
 
 - Install [OBS Studio](https://obsproject.com/) and [OBS-BackgroundRemoval](https://github.com/royshil/obs-backgroundremoval)
