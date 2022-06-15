@@ -186,6 +186,8 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     ```sh
     # install pipenv
     yay -S python-pipenv
+    # install poetry
+    yay -S python-poetry
     # install pyenv and put into the PATH
     yay -S pyenv
     echo '
