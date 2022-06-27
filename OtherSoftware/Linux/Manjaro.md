@@ -274,6 +274,8 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     yay -S otf-fira-sans otf-firamath
     # install pandoc and latex stuff
     yay -S pandoc texlive-core texlive-latexextra texlive-fontsextra
+    # "NVTOP stands for Neat Videocard TOP, a (h)top like task monitor for AMD and NVIDIA GPUs." to use just use command `nvtop`
+    yay -S nvtop
     ```
 
 - Install [OBS Studio](https://obsproject.com/) and [OBS-BackgroundRemoval](https://github.com/royshil/obs-backgroundremoval)

@@ -10,6 +10,8 @@
     - [Ubuntu/Debian Based Distros](#ubuntudebian-based-distros)
         - [Command Line Programs (On Ubuntu)](#command-line-programs-on-ubuntu)
         - [OBS Extensions (On Ubuntu)](#obs-extensions-on-ubuntu)
+    - [Other Useful Applications (Distro Agnostic)](#other-useful-applications-distro-agnostic)
+        - [Distro Agnostic Command Line Applications](#distro-agnostic-command-line-applications)
 
 ## Manjaro/Arch Based Distros
 
@@ -39,6 +41,15 @@
     # to kill all wine processes use this command
     wineserver -k
     ```
+
+<!-- TextAloud4 bottles stuff - useful links: https://askubuntu.com/a/1191253 - https://nextup.com/forum/viewtopic.php?f=13&t=6497 - https://appdb.winehq.org/objectManager.php?sClass=application&iId=1800 - https://www.microsoft.com/en-us/download/details.aspx?id=27224 - https://www.microsoft.com/en-us/download/details.aspx?id=27225 - -->
+<!-- Bottles setup: use 32bit, use Caffe (newest version) -->
+<!-- install dependencies .net48 msxml6 -->
+<!-- install SpeechSDK51 (you need to unzip it then run `Microsoft Speech SDK 5.1.msi`) -->
+<!-- install `SpeechSDK51LangPack.exe` (you need to unzip it then run `Microsoft Speech SDK 5.1 Language Pack.msi`) this should add a couple of voices -->
+<!-- TODO: more sapi based instructions that may help can be found here: https://github.com/mjakal/sapi5_on_linux -->
+<!-- install TextAloud4 (`ta4064.exe`) -->
+<!-- this will only work for Balabolka not TextAloud install `SpeechPlatformRuntime.msi` and `MSSpeech_TTS_en-GB_Hazel.msi` and/or `MSSpeech_TTS_en-US_ZiraPro.msi` -->
 
     - To integrate the program with KDE you must create a `.desktop` file and put it here: `/home/ldsands/.local/share/applications/` with the contents below. Some of them have been customized for my use of PDF X-Change Editor
     - You also need to use `winetricks` then select the `winecfg` then select `Add Program` and find the `.exe` file you want to have access too in KDE
@@ -433,3 +444,12 @@ X-KDE-Username=
     sudo ln -s /usr/local/lib/obs-plugins/obs-backgroundremoval.so /usr/lib/obs-plugins/
     sudo ln -s /usr/local/share/obs/obs-plugins/obs-backgroundremoval /usr/share/obs/obs-plugins/
     ```
+
+## Other Useful Applications (Distro Agnostic)
+
+This section consists of applications that are as far as I'm aware largely distro agnostic. Note that most of the applications detailed in both the Ubuntu and Arch sections are probably also distro agnostic but they may often have different installations instructions and/or configuration requirements depending on the distro. Also, many of the instructions below may not be consistently for Ubuntu (Debian based) or Manjaro (Arch based). I'll probably just use whatever installation instructions I used at the time I added the application to this document.
+
+### Distro Agnostic Command Line Applications
+
+- [NVTOP](https://github.com/Syllo/nvtop) "Nvtop stands for Neat Videocard TOP, a (h)top like task monitor for AMD and NVIDIA GPUs."
+    - To install using yay `yay -S nvtop`

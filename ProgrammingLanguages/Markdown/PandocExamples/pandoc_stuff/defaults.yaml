@@ -1,0 +1,14 @@
+# Pandoc Conversion Command Options
+from: markdown
+to: pdf
+pdf-engine: xelatex
+# lua filters
+filters:
+  - pandoc_stuff/center.lua
+# metadata-file which contains the styling options
+metadata-file: pandoc_stuff/meta.yaml
+# Reference Metadata
+citeproc: true
+metadata:
+  bibliography: pandoc_stuff/bib.bib
+  csl: pandoc_stuff/american-sociological-association-levi

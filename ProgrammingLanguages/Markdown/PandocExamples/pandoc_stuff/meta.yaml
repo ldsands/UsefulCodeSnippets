@@ -1,0 +1,37 @@
+# Document Settings
+# fontfamily: arev # this does not seem to work when using the defaults.yaml
+colorlinks: true
+fontsize: 11pt
+geometry: margin=1in
+indent: true
+linestretch: 1 # 1 for single spacing or 2 for double spacing
+link-citations: yes
+# mainfont: Arial
+# mainfont: Calibri
+# mainfont: Comic Sans MS
+# mainfont: Consolas
+# mainfont: Courier New
+# mainfont: DejaVu Sans
+# mainfont: DejaVu Serif
+# mainfont: Droid Sans
+# mainfont: Droid Serif
+# mainfont: Fira Sans
+# mainfont: Georgia
+# mainfont: Impact
+# mainfont: Liberation Mono
+# mainfont: Liberation Sans
+# mainfont: Liberation Serif
+# mainfont: Noto Sans
+# mainfont: Segoe UI
+# mainfont: Times New Roman
+# mainfont: Trebuchet MS
+# mainfont: Verdana
+pagesize: letter
+toc: true # table of contents
+header-includes: |
+  \usepackage {xcolor}
+  \newcommand\BoldBlue[1]{\textbf{\textcolor{blue}{#1}}}
+  \newcommand\BoldRed[1]{\textbf{\textcolor{red}{#1}}}
+  \newcommand\ColorBlue[1]{\textcolor{blue}{#1}}
+  \newcommand\ColorRed[1]{\textcolor{red}{#1}}
+  \usepackage{framed}

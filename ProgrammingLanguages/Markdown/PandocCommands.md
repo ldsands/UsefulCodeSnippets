@@ -41,7 +41,7 @@ Example 2: convert from markdown to html
     1. -t means to what format thus here it is docx
     1. -o means the output file or here EPLS_6209_SP2020_Draft_Levi_Sands.docx
     1. --reference-doc=pandoc_stuff/reference_mod.docx uses another word document as a reference to use the styles that had been modified by me
-    1. --filter pandoc-citeproc this has to be at the end it uses the information from the yaml header for the source for references and csl for the formatting of the references
+    1. --citeproc this has to be at the end it uses the information from the yaml header for the source for references and csl for the formatting of the references
 
     ```pandoc
     pandoc paper_draft.md -t docx -o EPLS_6209_SP2020_Draft_Levi_Sands.docx --reference-doc=pandoc_stuff/reference_mod.docx --filter pandoc-citeproc
@@ -115,12 +115,27 @@ Markdown text here [@citiation_header1; @citation_header2 pp. 240-320]. @Thoits_
       \newcommand\BoldRed[1]{\textbf{\textcolor{red}{#1}}}
       \newcommand\ColorBlue[1]{\textcolor{blue}{#1}}
       \newcommand\ColorRed[1]{\textcolor{red}{#1}}
+      \usepackage{framed}
+
     ```
 
     ```pandoc
     # the ! is only to display here in the markdown do not use it in the pandoc document
+    # this turns the text red while the BoldRed bolds the text and turns it red without needing \textbf{}
     !```{=latex}
     \textbf{\ColorRed{AWESOME}}
+    \BoldRed{Learning Objectives:}
+    !```
+
+    # this below puts a box around the text
+    !```{=latex}
+    \begin{framed}
+    Related Course: Social Inequality (SOC:2810)
+
+    Related Minor: Political Science
+
+    Related Job Titles: Case Worker, Director of a Non-Profit, Tax Preparer, Financial Planner, Homeless Shelter Director
+    \end{framed}
     !```
     ```
 
@@ -151,21 +166,20 @@ for the beginning of the document add this to add a yaml header included are som
 # Document Settings
 link-citations: yes
 pagesize: letter
-# I can't get this to work with FiraSans
-# mainfont: FiraSans
+# You can get a list of installed fonts by installing fontconfig then using `fc-list`
+mainfont: Fira Sans
 # mainfontoptions:
 # - Extension=.otf
 # - UprightFont=*
 # - BoldFont=*-Bold
 # - ItalicFont=*-Italic
 # - BoldItalicFont=*-BoldItalic
-# mainfont: /usr/share/fonts/OTF/FiraSans-Regular.otf
 # mainfontoptions:
 #   - BoldFont=/usr/share/fonts/OTF/FiraSans-Bold.otf
 #   - ItalicFont=/usr/share/fonts/OTF/FiraSans-Italic.otf
 #   - BoldItalicFont=/usr/share/fonts/OTF/FiraSans-BoldItalic.otf
 # mathfont: /usr/share/fonts/OTF/FiraMath-Medium.otf
-fontfamily: arev # a sans serif font that I like it requires texlive-fontsextra installed
+fontfamily: arev # a sans serif font that I like it requires texlive-fontsextra installed and doesn't work well when using xelatex in combination with using the defaults and/or meta files
 fontsize: 11pt
 geometry: margin=1in
 linestretch: 2
