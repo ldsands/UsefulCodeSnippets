@@ -10,7 +10,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     - [KDE Plasma Setup](#kde-plasma-setup)
     - [KDE Plasma Notes](#kde-plasma-notes)
     - [App Configurations](#app-configurations)
-    - [Apps that I'm experimenting with](#apps-that-im-experimenting-with)
 
 ## Installing Manjaro KDE
 
@@ -169,7 +168,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     # create bottom and starship config files
     mkdir -p ~/.config && mkdir -p ~/.config/bottom/
     # copy my configuration from my gists to the bottom.toml and starship.toml files
-    cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
+    cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/470822ff5e9f11786f168e3fcbb675011fb7e964/bottom.toml
     cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a2a845f29d5712d6434983316d7281fe6a088947/starship.toml
     # this adds the starship initialize command to the end of the zsh config file
     echo '# starship statement
@@ -249,6 +248,12 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
         flatpak install flathub org.kde.kweather
         # TextSnatcher - Snatch Text with just a Drag
         flatpak install flathub com.github.rajsolai.textsnatcher
+        # Nvidia System Monitor - Task Manager for Linux for Nvidia graphics cards
+        flatpak install flathub io.github.congard.qnvsm
+        # GreenWithEnvy - System utility designed to provide information, control the fans and overclock your NVIDIA card
+        flatpak install flathub com.leinardi.gwe
+        # Weather - View real-time weather forecasts and other information
+        flatpak install flathub org.kde.kweather
         ```
 
     - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
@@ -256,8 +261,6 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
 - Install other applications I regularly use.
 
     ```sh
-    # "Pomotroid is a simple and configurable Pomodoro timer."
-    yay -S pomotroid-bin
     # Zoom - Video Conferencing, Web Conferencing, Webinars, Screen Sharing
     yay -S zoom
     # The standard Microsoft Fonts which helps with editing MS Office files
@@ -493,62 +496,3 @@ kstart5 konsole --desktop 12: Todo
     - It seems like when LibreOffice is in dark mode it doesn't automatically change the icons so they are very difficult to see. To change this select "Tools" then "Options" then under "LibreOffice" select "View"
         - Under "Icon style:" select "Breeze (SVG + dark)" then click the "Apply" button.
     - I also prefer the "ribben" style of user interface. To change to the ribbon ui go to "View" then "User Interface..." Then select "Tabbed"
-
-## Apps that I'm experimenting with
-
-- Other terminal options because although I really like Hyper it does take a lot of RAM
-    - Install [Tabby](https://tabby.sh/) another terminal
-        - download the `.deb` file from [the github releases page](https://github.com/Eugeny/tabby/releases)
-    - [Alacritty](https://github.com/alacritty/alacritty)
-        - To install you can use the following command after installing rust. `sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 && cargo install alacritty`
-        - config options can be found [here](https://github.com/alacritty/alacritty/blob/master/alacritty.yml)
-    - [Wez's Terminal Emulator](https://wezfurlong.org/wezterm/install/linux.html)
-- [Android Apps on Linux](https://anbox.io/) instructions can be found [here](https://www.howtogeek.com/760044/how-to-run-android-apps-on-linux/) [here is a list of other alternatives](https://linuxhint.com/android_apps_games_linux/#:~:text=Best%20Way%20to%20Run%20Android%20Apps%20and%20Games,Genymotion.%20...%204%20Android-x86.%20...%20More%20items...%20)
-- [Paru](https://github.com/morganamilo/paru) this is a lot like yay but written in Rust and I have a lot of other Rust based command line programs that I use so I may switch to it at some point. Yay does install much easier in Manjaro since they have it in their repo so for now I'll stick with yay.
-    - To install you can use pacman: `sudo pacman -S --needed base-devel` and then you can either use cargo or git.
-        - cargo `cargo install paru`
-        - `pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si`
-        - Until I can install this using pacman I probably won't use it in the meantime i'll keep using yay (updated 2022-01-22)
-- [Sticky](https://github.com/collinss/sticky)
-    - A possible alternative to KNotes
-- gui based graph plotting
-    - [LabPlot2](https://labplot.kde.org/)
-        - a gui for making plots (should make producing plots fairly quick when needed)
-        - installed using flatpak `flatpak install flathub org.kde.labplot2`
-    - [SciLab](http://www.scilab.org)
-        - a gui for making plots (should make producing plots fairly quick when needed)
-        - installed using flatpak `flatpak install flathub org.scilab.Scilab`
-    - [AlphaPlot](https://alphaplot.sourceforge.io/)
-        - installed using flatpak `flatpak install flathub io.github.narunlifescience.AlphaPlot`
-- [Emulsion](https://github.com/lainsce/emulsion/)
-    - a color (scheme) picking/creating application
-    - installed using flatpak `flatpak install flathub io.github.lainsce.Emulsion`
-- a browser for organizing web apps (e.g. email)
-    - [Ferdi](https://getferdi.com/)
-        - installed using flatpak `flatpak install flathub com.getferdi.Ferdi`
-    - [Tangram](https://github.com/sonnyp/Tangram)
-        - installed using flatpak `flatpak install flathub re.sonny.Tangram`
-    - [WebCatalog](https://webcatalog.io/webcatalog/)
-        - "Turn Any Websites into Real Desktop Apps" I plan to mostly use this for email and calendaring
-        - installed via appimage
-- Audio modification software
-    - [EasyEffects](https://github.com/wwmm/easyeffects)
-        - Audio effects for PipeWire applications
-        - installed using flatpak `flatpak install flathub com.github.wwmm.easyeffects`
-- [Xonsh](https://xon.sh/) a cross-platform shell that is written in and uses python
-    - `yay -S xonsh`
-    - [tutorial](https://xon.sh/tutorial.html) or use the command `xonfig tutorial`
-    - `xonfig web` # Run the configuration tool in the browser to create ~/.xonshrc
-    - [xensh cheatsheet](https://github.com/anki-code/xonsh-cheatsheet)
-    - recommended ways to install
-        - `python -m pip install 'xonsh[full]'`
-        - `pip install pipx && pipx install --python python3.10 xonsh && pipx run xonsh`
-    - xontribs to look at
-        - [xonsh-autoxsh](https://github.com/Granitosaurus/xonsh-autoxsh)
-        - [xontrib-kitty](https://github.com/scopatz/xontrib-kitty)
-        - <https://github.com/anki-code/xontrib-prompt-starship>
-        - <https://github.com/dyuri/xontrib-langenv>
-        - <https://github.com/AstraLuma/xontrib-z>
-        - <https://github.com/dyuri/xontrib-zoxide>
-        - <https://github.com/anki-code/xontrib-argcomplete>
-        - whole_word_jumping

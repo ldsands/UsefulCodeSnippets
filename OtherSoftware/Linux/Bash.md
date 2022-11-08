@@ -7,6 +7,7 @@
         - [WSL Setup](#wsl-setup)
     - [Ubuntu Setup](#ubuntu-setup)
         - [Ubuntu Maintenance](#ubuntu-maintenance)
+    - [Xonsh](#xonsh)
 
 Bash is a command shell for unix systems and is the most popular shell used in Linux systems. Zsh is another unix shell that has a ton of useful features not included in Bash, for a list of Zsh features see [this page](https://github.com/hmml/awesome-zsh).
 
@@ -254,7 +255,7 @@ Below are the step I take to setup my linux shell the way I like it in various s
     # create bottom and starship config files
     mkdir -p ~/.config && mkdir -p ~/.config/bottom/
     # copy my configuration from my gists to the bottom.toml and starship.toml files
-    cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
+    cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/470822ff5e9f11786f168e3fcbb675011fb7e964/bottom.toml
     cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/a2a845f29d5712d6434983316d7281fe6a088947/starship.toml
     # this adds the starship initialize command to the end of the zsh config file
     echo 'eval "$(starship init zsh)"
@@ -365,3 +366,8 @@ Below are the step I take to setup my linux shell the way I like it in various s
             ```
 
 - to update everything in Ubuntu use this multi-command: `sudo apt-get update && sudo apt-get upgrade -y`
+
+## Xonsh
+
+- [Xonsh](https://xon.sh/) is another bash alternative that is based around and built using python.
+    - I have another file devoted to Xonsh [found here](../../ProgrammingLanguages/Python/Xonsh.md)

@@ -75,12 +75,14 @@ Python is a general purpose scripting language that because of its popularity ha
 - [Python useful commands](ProgrammingLanguages/Python/PythonCommands.md)
 - [Python useful modules](ProgrammingLanguages/Python/PythonModules.md)
 - [Pandas useful commands](ProgrammingLanguages/Python/PandasCommands.md)
+- [Xonsh](ProgrammingLanguages/Python/Xonsh.md) - This is a python based shell
 
 ### [R](https://www.r-project.org/)
 
 R is a programming language that was written for statisticians by statisticians. This origin show as R is very easy to learn and powerful for basic stats and data manipulation. It is also really bad at doing pretty much anything else.
 
-- [Useful resources and installation](ProgrammingLanguages/R/RResources.md) Note: this has not yet been started <!-- TODO: -->
+<!-- - [Installation notes](ProgrammingLanguages/R/RInstall.md) Note: this has not yet been started --> <!-- TODO: -->
+<!-- - [Useful R Resources](ProgrammingLanguages/R/RResources.md) Note: this has not yet been started --> <!-- TODO: -->
 - [Useful packages](ProgrammingLanguages/R/RUsefulPackages.md)
 
 ### [RegEx](https://en.wikipedia.org/wiki/Regular_expression)

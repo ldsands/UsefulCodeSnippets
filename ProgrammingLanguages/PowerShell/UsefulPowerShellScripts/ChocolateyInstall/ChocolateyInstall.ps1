@@ -111,7 +111,7 @@ Write-Host "Setting Bottom Config File"
 if (!(Test-Path -Path "C:\Users\$env:USERNAME\AppData\Roaming\bottom\bottom.toml")) {
     mkdir -p C:\Users\$env:USERNAME\AppData\Roaming\bottom\bottom.toml | out-null
 }
-$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/6aeadc8d1ba513c4008789bbaf96679caf9555af/bottom.toml
+$ConfigContent = Invoke-WebRequest https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/470822ff5e9f11786f168e3fcbb675011fb7e964/bottom.toml
 New-Item "C:\Users\$env:USERNAME\AppData\Roaming\bottom\bottom.toml" -ItemType File -Value $ConfigContent.Content -Force | out-null
 Update-Path | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 

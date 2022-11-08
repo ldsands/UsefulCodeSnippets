@@ -14,6 +14,7 @@
         - [Command-line utilities](#command-line-utilities)
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
     - [Windows PowerToys](#windows-powertoys)
+    - [Windows Command Line Stuff](#windows-command-line-stuff)
     - [MS Office Plugins](#ms-office-plugins)
 
 ## Important Windows Settings
@@ -323,6 +324,12 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
 "[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](Chocolatey.md) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
 
 - To get to the settings for FancyZones go to this location `C:\Users\%username%\AppData\Local\Microsoft\PowerToys\FancyZones\zones-settings.json`.
+
+## Windows Command Line Stuff
+
+- PowerShell is really great and frankly I prefer it to zsh which is what I've primarily used on Linux
+    - More about how I use and setup PowerShell on Windows can be found [here](../../ProgrammingLanguages/PowerShell/PowerShell.md)
+- Xonsh is a python based shell I have more about it [here](../../ProgrammingLanguages/Python/Xonsh.md)
 
 ## MS Office Plugins
 

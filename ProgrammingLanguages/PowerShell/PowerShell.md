@@ -61,6 +61,9 @@ refreshenv | out-null && & $PROFILE.CurrentUserAllHosts | out-null
 - To make functions and other settings persist across terminals, reboots and closing PowerShell run the following code
     - For linux just change the $PROFILE.CurrentUserAllHosts to $profile
 
+- This profile is out out date to find one that is kept up to date (more or less) you can go [to my gist here](https://gist.github.com/ldsands/bf965c404487488b86fa30dcf22cf261)
+    - You can then use the command `code $PROFILE.CurrentUserAllHosts` to open the profile file in VSCode and then you can just copy the code from the [gist](https://gist.github.com/ldsands/bf965c404487488b86fa30dcf22cf261) (also linked above) and save it to the file opened in vscode
+
 ```PowerShell
 code $PROFILE.CurrentUserAllHosts
 $ProfileTemplate = @"

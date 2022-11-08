@@ -4,6 +4,7 @@
     - [Manjaro/Arch Based Distros](#manjaroarch-based-distros)
         - [Wine (On Manjaro)](#wine-on-manjaro)
         - [Waydroid (Android on Linux)](#waydroid-android-on-linux)
+        - [OBS Plugins](#obs-plugins)
     - [Email applications](#email-applications)
         - [Random Apps for Manjaro](#random-apps-for-manjaro)
         - [Nativefier](#nativefier)
@@ -12,8 +13,13 @@
         - [OBS Extensions (On Ubuntu)](#obs-extensions-on-ubuntu)
     - [Other Useful Applications (Distro Agnostic)](#other-useful-applications-distro-agnostic)
         - [Distro Agnostic Command Line Applications](#distro-agnostic-command-line-applications)
+        - [Flatpak Applications](#flatpak-applications)
+        - [AppImage Applications](#appimage-applications)
 
 ## Manjaro/Arch Based Distros
+
+- I use yay rather than pacman to install AUR packages
+    - A useful command that can tell you information about a package that is installed. For example it is useful if you want to know what it depends on or what depends on that package. `yay -Qi ceph-libs` In this example ceph-libs is the package name.
 
 ### Wine (On Manjaro)
 
@@ -49,7 +55,7 @@
 <!-- install `SpeechSDK51LangPack.exe` (you need to unzip it then run `Microsoft Speech SDK 5.1 Language Pack.msi`) this should add a couple of voices -->
 <!-- TODO: more sapi based instructions that may help can be found here: https://github.com/mjakal/sapi5_on_linux -->
 <!-- install TextAloud4 (`ta4064.exe`) -->
-<!-- this will only work for Balabolka not TextAloud install `SpeechPlatformRuntime.msi` and `MSSpeech_TTS_en-GB_Hazel.msi` and/or `MSSpeech_TTS_en-US_ZiraPro.msi` -->
+<!-- this will only work for Balabolka not TextAloud, install `SpeechPlatformRuntime.msi` and `MSSpeech_TTS_en-GB_Hazel.msi` and/or `MSSpeech_TTS_en-US_ZiraPro.msi` -->
 
     - To integrate the program with KDE you must create a `.desktop` file and put it here: `/home/ldsands/.local/share/applications/` with the contents below. Some of them have been customized for my use of PDF X-Change Editor
     - You also need to use `winetricks` then select the `winecfg` then select `Add Program` and find the `.exe` file you want to have access too in KDE
@@ -156,6 +162,15 @@ sudo python3 waydroid_extras.py -i
 # try logging in to the google account
 
 ```
+
+### OBS Plugins
+
+- [OBS-BackgroundRemoval](https://github.com/royshil/obs-backgroundremoval)
+- [obs-StreamFX](https://github.com/Xaymar/obs-StreamFX)
+    - Need to install the [NVIDIA Broadcast Video Effects](https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-sdk/resources/) which as of 2022-07-12 is only available for Windows
+        - An alternate download location that has more available platforms can be found [here](https://developer.nvidia.com/maxine-getting-started#video-effects-sdk) as of 2022-07-12 only has the Distros Ubuntu and CentOS specifically support
+        - [The Github repo can be found here](https://github.com/NVIDIA/MAXINE-VFX-SDK)
+        - [Here is the documentation for Linux](https://docs.nvidia.com/deeplearning/maxine/vfx-sdk-system-guide/index.html#vfx-sdk-system-guide-linux-intro) I might be able to figure out how to use the software despite the Ubuntu or CentOS system requirement <!-- TODO: Figure this out -->
 
 ## Email applications
 
@@ -453,3 +468,50 @@ This section consists of applications that are as far as I'm aware largely distr
 
 - [NVTOP](https://github.com/Syllo/nvtop) "Nvtop stands for Neat Videocard TOP, a (h)top like task monitor for AMD and NVIDIA GPUs."
     - To install using yay `yay -S nvtop`
+
+### Flatpak Applications
+
+Flatpak allows for applications to "be easily installed on any Linux distribution" [(Flathub Website)](https://flathub.org/home). I use many application installed via Flatpak because they are so easy to install and use and they are highly sandboxed more so than both Snap and AppImage.
+
+- To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
+
+- SpeedCrunch - A high-precision scientific calculator
+    - Installation command `flatpak install flathub org.speedcrunch.SpeedCrunch -y`
+- Telegram Desktop messenger
+    - Installation command `flatpak install flathub org.telegram.desktop -y`
+- PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
+    - Installation command `flatpak install flathub io.github.peazip.PeaZip -y`
+- Spotify - Online music streaming service
+    - Installation command `flatpak install flathub com.spotify.Client -y`
+- Discord - Messaging, Voice, and Video Client
+    - Installation command `flatpak install flathub com.discordapp.Discord -y`
+- Chromium Web Browser - The web browser from Chromium project
+    - Installation command `flatpak install flathub org.chromium.Chromium -y`
+- AppImage Pool - A simple, modern AppImageHub Client.
+    - Installation command `flatpak install flathub io.github.prateekmedia.appimagepool -y`
+- Inkscape - Vector Graphics Editor
+    - Installation command `flatpak install flathub org.inkscape.Inkscape -y`
+- Caprine - Elegant Facebook Messenger desktop app
+    - Installation command `flatpak install flathub com.sindresorhus.Caprine`
+- Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
+    - Installation command `flatpak install flathub com.todoist.Todoist -y`
+- Zotero - Collect, organize, cite, and share research
+    - Installation command `flatpak install flathub org.zotero.Zotero -y`
+- Evolution - Manage your email, contacts and schedule
+    - Installation command `flatpak install flathub org.gnome.Evolution -y`
+- [Weather](https://invent.kde.org/plasma-mobile/kweather) - View real-time weather forecasts and other information
+    - Installation command `flatpak install flathub org.kde.kweather`
+- TextSnatcher - Snatch Text with just a Drag
+    - Installation command `flatpak install flathub com.github.rajsolai.textsnatcher`
+- System Monitors (GPU, System)
+    - [GreenWithEnvy](https://gitlab.com/leinardi/gwe) - System utility designed to provide information, control the fans and overclock your NVIDIA card
+        - Installation command `flatpak install flathub com.leinardi.gwe`
+        - Be aware that this does not seem to launch correctly when pinned to the taskbar in Manjaro KDE
+    - [Nvidia System Monitor](https://github.com/congard/nvidia-system-monitor-qt) "Task Manager for Linux for Nvidia graphics cards"
+        - Installation command `flatpak install flathub io.github.congard.qnvsm`
+    - [CoreStats](https://gitlab.com/cubocore/coreapps/corestats) "A system resource viewer for C Suite." Very simple but still useful
+        - Installation command `flatpak install flathub org.cubocore.CoreStats`
+
+### AppImage Applications
+
+"Linux apps that run anywhere" [(AppImage Home Page)](https://appimage.org/). You can find a list of AppImage applications at [AppImageHub](https://www.appimagehub.com/).

@@ -41,7 +41,7 @@ def Logger_initialization(path:str,level="INFO",backtrace=False,diagnose=True,ti
         backtrace = backtrace,
         diagnose = diagnose,
         level=level)
-    logger.info("Logger successfully initilized")
+    logger.info("Logger successfully initialized")
     return(logger)
 
 @logger.catch

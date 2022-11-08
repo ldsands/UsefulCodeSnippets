@@ -3,11 +3,11 @@
 - [Python Installation Instructions and Notes](#python-installation-instructions-and-notes)
     - [Pyenv on Windows](#pyenv-on-windows)
     - [Pyenv (on WSL)](#pyenv-on-wsl)
-    - [Pipenv](#pipenv)
     - [Anaconda](#anaconda)
         - [Anaconda PATH Windows instructions](#anaconda-path-windows-instructions)
         - [Install anaconda on WSL](#install-anaconda-on-wsl)
     - [Virtual environments](#virtual-environments)
+        - [Pipenv Environments](#pipenv-environments)
         - [Conda Environments](#conda-environments)
         - [venv environments](#venv-environments)
         - [Poetry Environments](#poetry-environments)
@@ -20,6 +20,8 @@
     ```PowerShell
     # install using chocolatey
     choco install pyenv-win
+    # install using PowerShell
+    Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
     # update the list of available versions of python for installation
     pyenv update
     # list all available versions of python for installation
@@ -42,13 +44,14 @@
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
-    # install pyenv and put into the PATH
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    echo '# pyenv stuff
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
+    # install pyenv using the script contained [here](https://github.com/pyenv/pyenv-installer)
+    curl https://pyenv.run | bash
+    # add this to the shell config file (~/.zshrc for zsh, ~/.bashrc for bash or )
+    echo 'export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"\n' >> ~/.zshrc
+    eval "$(pyenv virtualenv-init -)"\n' >> ~/.zshrc
+    # now restart the shell
+    exec $SHELL
     # install python using pyenv
     pyenv install 3.9.7
     # set this version to the global version of python
@@ -79,35 +82,6 @@
     # and again the persistent version
     echo 'export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"' >> ~/.zshrc
     ```
-
-## Pipenv
-
-- This will create and manage virtual environments and adds and removes packages from a lock file and when used with pyenv it can install the version of python required for a project. Below are some lines of code that can be reused.
-
-```sh
-# move into the project directory
-cd myproject
-# you can set the specific version of python if needed
-pipenv --python 3.10.3
-# if there already is a pipfile
-pipenv install
-# Ignore the Pipfile.lock and install from the Pipfile. In addition, do not write out a Pipfile.lock reflecting changes to the Pipfile.
-pipenv install --skip-lock
-# if you need to install packages (for a new or old project) you install just like pip
-pipenv install pandas
-# if you need to install packages that are only used for development use
-pipenv install --dev black flake8 pretty-errors
-# activate the pipenv virtual environment
-pipenv shell
-# check for outdated packages
-pipenv update --outdated
-# upgrade all outdated packages
-pipenv update
-# to remove the pipenv virtual environment load the virtual environment then remove it
-pipenv --rm
-# will show you a dependency graph of your installed dependencies
-pipenv graph
-```
 
 ## Anaconda
 
@@ -186,6 +160,35 @@ This is for shen the add to path doesn't work for the chocolatey install
 
 - [Poetry](https://python-poetry.org/) is another option that looks a lot like conda but for "normal" python. It can deal with different versions of python as well though I liked using pyenv or pyflow for that better than Poetry (or pyenv-win for Windows which can be installed using chocolatey `choco install pyenv-win`, I haven't experimented with these yet though).
 
+### [Pipenv Environments](https://docs.pipenv.org/)
+
+- This will create and manage virtual environments and adds and removes packages from a lock file and when used with pyenv it can install the version of python required for a project. Below are some lines of code that can be reused.
+
+```sh
+# move into the project directory
+cd myproject
+# you can set the specific version of python if needed
+pipenv --python 3.10.3
+# if there already is a pipfile
+pipenv install
+# Ignore the Pipfile.lock and install from the Pipfile. In addition, do not write out a Pipfile.lock reflecting changes to the Pipfile.
+pipenv install --skip-lock
+# if you need to install packages (for a new or old project) you install just like pip
+pipenv install pandas
+# if you need to install packages that are only used for development use
+pipenv install --dev black flake8 pretty-errors
+# activate the pipenv virtual environment
+pipenv shell
+# check for outdated packages
+pipenv update --outdated
+# upgrade all outdated packages
+pipenv update
+# to remove the pipenv virtual environment load the virtual environment then remove it
+pipenv --rm
+# will show you a dependency graph of your installed dependencies
+pipenv graph
+```
+
 ### [Conda Environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
 Below are my instructions for setting up a conda environment for my reddit data project
@@ -233,6 +236,13 @@ To use venv is a bit more complicated. Launching these environments aren't as st
     ```
 
 ### Poetry Environments
+
+- This will creat and manage virtual environments using Poetry
+
+```sh
+pyenv local 3.9.8
+TODO:
+```
 
 More can be found [here](https://python-poetry.org/docs/managing-environments/#:~:text=Poetry%20makes%20project%20environment%20isolation%20one%20of%20its,use%20it%20directly%20without%20creating%20a%20new%20one.)
 

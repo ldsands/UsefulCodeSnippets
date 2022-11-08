@@ -28,7 +28,7 @@ The changelog is located [here](https://www.tracker-software.com/product/pdf-xch
 - Customize Toolbars
     - Remove the commands already on the "Document Options" toolbar (in the lower left corner)
     - Open the "Commands" tab in the Customize Toolbars dialogue box
-    - For all of the following commands search for the cammand, then drag the command down to the "Document Options" toolbar, then right click on that command and deselect "Show Text"
+    - For all of the following commands search for the command, then drag the command down to the "Document Options" toolbar, then right click on that command and deselect "Show Text"
         - cmd.tool.selectText (Select Text)
         - cmd.tool.annot.highlight (Highlight Text Tool)
         - cmd.tool.cropPage (Crop Page Tool)
@@ -54,6 +54,8 @@ The changelog is located [here](https://www.tracker-software.com/product/pdf-xch
 - Search can be brought up using `ctrl+shift+f` this will do a search for the characters/words but it has many additional options
     - Under "WHERE would you like to search" you can select "In All Open Documents"
     - Under "Options..." you can specify the "Proximity" which I use to find two words that may be with in the same paragraph or the same page, I use this a lot
+    - Under the "Advanced Criteria" there are several other useful options
+        - In the second text box that says "any of these words" when the box is empty you can search for two separate combination of words by using quotes and a " " (space character) in between multiple search strings. Here is an example: `"cultural code" "semiotic code"` this will search the document(s) for both cultural code and semiotic code they will each be highlighted in different colors if "Colored Search Results" is enabled
 - Under "Options" you can select "Colored Search Results" to highlight all of the different words from the most recent search in different colors
 
 ### PDF Conversion and Enhancement

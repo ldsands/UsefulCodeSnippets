@@ -23,6 +23,47 @@
     ```
 
 - [PrettyErrors](https://github.com/onelivesleft/PrettyErrors/) - "Prettify Python exception output to make it legible." Just add `import pretty_errors` to the file and errors will be much more readable.
+- [Rich](https://github.com/willmcgugan/rich): Rich is a Python library for rich text and beautiful formatting in the terminal.
+    - This package makes it easy to print output that has different formatting. For example if you want to print output that has red text do the following:
+
+        ```python
+        # simple example
+        from rich.console import Console
+
+        console = Console()
+        console.print("Printing in red text using rich", style="red")
+
+        # or in the form of a function with some different style options shown
+        def rich_setup():
+            from rich.console import Console
+            from rich.style import Style
+            
+            console = Console()
+            # just the words will have the color, can use color names or hex (and others)
+            rich_prog = Style(color="blue", bold=False)
+            rich_temp = Style(color="purple", bold=False)
+            rich_test = Style(color="red", bold=True)
+            # can use bgcolor to set the background color
+            rich_prog = Style(color="white", bgcolor="#0247FE", bold=True)
+            rich_temp = Style(color="white", bgcolor="#8601AF", bold=True)
+            rich_test = Style(color="white", bgcolor="#C21460", bold=True)
+            return console, rich_prog, rich_temp, rich_test
+        console, rich_prog, rich_temp, rich_test = rich_setup()
+        test = "testing string"
+        console.print(f"{test}: testing", style=rich_prog)
+        console.print(f"{test}: testing", style=rich_temp)
+        console.print(f"{test}: testing", style=rich_test)
+        # there are other printing options such as rule (the style applies to the rule not the text)
+        console.rule("testing", style=rich_prog)
+
+        # another function can make the print function shorter and easier to use:
+        def rprint(printing_string: str, style=""):
+            console.print(printing_string, style=style)
+        rprint(f"{test}: testing", style=rich_prog)
+        rprint(f"{test}: testing", style=rich_temp)
+        rprint(f"{test}: testing", style=rich_test)
+        ```
+
 - [pdfminer.six](https://github.com/pdfminer/pdfminer.six) - "extracting information from PDF documents. It focuses on getting and analyzing text data."
 
 - [Altair](https://altair-viz.github.io/index.html)
@@ -198,7 +239,6 @@ This is a big data analysis packages that requires a bit of setup
 - [PyFlow](https://github.com/David-OConnor/pyflow): An installation and dependency system for Python (it looks way easier than environments)
 - [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI): Python GUI For Humans - Transforms tkinter, Qt, Remi, WxPython into portable people-friendly Pythonic interfaces - [RealPython Article](https://realpython.com/pysimplegui-python/)
 - [PySnooper](https://github.com/cool-RR/pysnooper):  "[Y]ou just add one decorator line to the function you're interested in. You'll get a play-by-play log of your function [...]"
-- [Rich](https://github.com/willmcgugan/rich): Rich is a Python library for rich text and beautiful formatting in the terminal.
 - [Sidetable](https://pbpython.com/sidetable.html): Create Simple Summary Tables in Pandas
 - [Tabulate](https://github.com/astanin/python-tabulate): Pretty-print tabular data in Python, a library and a command-line utility.
 - [Typer](https://github.com/tiangolo/typer): Typer, build great CLIs. Easy to code. Based on Python type hints.

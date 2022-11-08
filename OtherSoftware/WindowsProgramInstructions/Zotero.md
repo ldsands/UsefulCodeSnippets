@@ -25,8 +25,10 @@ To complete the instructions to install Zotero and setup the WebDAV file syncing
 1. Sign into into your Zotero account
 1. In the file syncing section, select WebDAV in the dropdown menu
 1. Make sure https is selected
-1. In the text box add webdav.pcloud.com:443
-1. Enter your pCloud username and password
+1. In the text box add "webdav.pcloud.com:443"
+1. Enter your pCloud username (this should be your pCloud email account) and password
+1. Mostly to save space I also select "as needed" in the dropdown boxes that are labeled as "Downloaded files"
+    - This makes it so that attachments will only be downloaded when you try to open the attached file rather than trying to download all of the file attachments for your entire library every time you sync.
 1. Press OK at the bottom of the settings dialogue box
 1. Click on the Green sync arrow in the upper right hand part of the Zotero window
     - Note for Windows: Syncing will fail on the first try that is normal (probably a bug) to fix this do the following:

@@ -6,15 +6,18 @@
     - [Using citeproc (for citations)](#using-citeproc-for-citations)
     - [LaTeX Tips](#latex-tips)
     - [Other Formatting Tricks](#other-formatting-tricks)
-    - [YAML Commands](#yaml-commands)
+    - [YAML Files](#yaml-files)
     - [Lua filters](#lua-filters)
 
 ## Installation
 
-- On Manjaro (Arch Linux) you can use yay to install pandoc and other related software.
+- On Manjaro (Arch Linux) you can use yay to install pandoc some fonts and other related software.
 
     ```sh
-    yay -S pandoc texlive-core texlive-latexextra texlive-fontsextra
+    # this installs fonts, pandoc, fontconfig, and a few texlive packages which allows for creating pdfs using pandoc
+    yay -S ttf-ms-win11-auto pandoc fontconfig texlive-core texlive-latexextra texlive-fontsextra
+    # or if you can install the full texlive which is much larger (over 7 gigs) and takes much longer to install
+    yay -S ttf-ms-win11-auto pandoc texlive-full 
     ```
 
 ## Basic commands and conversion
@@ -39,47 +42,87 @@ Example 2: convert from markdown to html
     1. pandoc calls pandoc
     1. paper_draft.md is the input file
     1. -t means to what format thus here it is docx
-    1. -o means the output file or here EPLS_6209_SP2020_Draft_Levi_Sands.docx
+    1. -o means the output file or here Draft_Paper.docx
     1. --reference-doc=pandoc_stuff/reference_mod.docx uses another word document as a reference to use the styles that had been modified by me
     1. --citeproc this has to be at the end it uses the information from the yaml header for the source for references and csl for the formatting of the references
 
     ```pandoc
-    pandoc paper_draft.md -t docx -o EPLS_6209_SP2020_Draft_Levi_Sands.docx --reference-doc=pandoc_stuff/reference_mod.docx --filter pandoc-citeproc
+    pandoc paper_draft.md -t docx -o Draft_Paper.docx --reference-doc=pandoc_stuff/reference_mod.docx --filter pandoc-citeproc
     ```
 
 Other useful conversion command notes
 
-- To use some settings that are used frequently can be removed from the markdown file's `yaml` header and moved to another `yaml` file with this command
+- To use some settings that are used frequently can be removed from the markdown file's `yaml` header and moved to another `yaml` file(s) with this command. More information can be found [here](https://pandoc.org/MANUAL.html#defaults-files).
 
     ```sh
     pandoc TestDoc.md -t docx -o TestDoc.pdf --defaults=pandoc_stuff/defaults.yaml
     ```
 
-    - Or you can put this at the top of the target document's `yaml` header
+    - Or you can put this at the top of the target document's `yaml` header though I've haven't been able to get this to work with the `meta.yaml` reference I use in the `defaults.yaml`
 
         ```yaml
-        defaults: pandoc_stuff/default.yaml
+        defaults: pandoc_stuff/defaults.yaml
         ```
 
-    - This is what I usually put into my `defaults.yaml` file
+    - This is what I usually put into my `defaults.yaml` file, which as shown below works with `meta.yaml`
 
         ```yaml
         # Pandoc Conversion Command Options
         from: markdown
         to: pdf
         pdf-engine: xelatex
-        # lua filters (not working with defaults.yaml)
+        # lua filters
         filters:
           - pandoc_stuff/center.lua
+        # metadata-file which contains the styling options
         metadata-file: pandoc_stuff/meta.yaml
         # Reference Metadata
-        bibliography: pandoc_stuff/bib.bib
-        csl: pandoc_stuff/american-sociological-association-levi
         citeproc: true
-        cite-method: citeproc
+        metadata:
+          bibliography: pandoc_stuff/bib.bib
+          csl: pandoc_stuff/american-sociological-association-levi
         ```
 
-    - Note: I cannot seem to get this working with lua filters
+    - `meta.yaml` is more for formatting stuff below is what I use which works with the above options used in the `defaults.yaml`
+
+        ```yaml
+        # Document Settings
+        colorlinks: true
+        fontsize: 11pt
+        geometry: margin=1in
+        indent: true
+        linestretch: 1 # 1 for single spacing or 2 for double spacing
+        link-citations: yes
+        # mainfont: Arial
+        # mainfont: Calibri
+        # mainfont: Comic Sans MS
+        # mainfont: Consolas
+        # mainfont: Courier New
+        # mainfont: DejaVu Sans
+        # mainfont: DejaVu Serif
+        # mainfont: Droid Sans
+        # mainfont: Droid Serif
+        # mainfont: Fira Sans
+        # mainfont: Georgia
+        # mainfont: Impact
+        # mainfont: Liberation Mono
+        # mainfont: Liberation Sans
+        # mainfont: Liberation Serif
+        # mainfont: Noto Sans
+        mainfont: Segoe UI
+        # mainfont: Times New Roman
+        # mainfont: Trebuchet MS
+        # mainfont: Verdana
+        pagesize: letter
+        toc: true # table of contents
+        header-includes: |
+          \usepackage {xcolor}
+          \newcommand\BoldBlue[1]{\textbf{\textcolor{blue}{#1}}}
+          \newcommand\BoldRed[1]{\textbf{\textcolor{red}{#1}}}
+          \newcommand\ColorBlue[1]{\textcolor{blue}{#1}}
+          \newcommand\ColorRed[1]{\textcolor{red}{#1}}
+          \usepackage{framed}
+        ```
 
 ## [Using citeproc (for citations)](https://pandoc.org/MANUAL.html)
 
@@ -157,7 +200,7 @@ Markdown text here [@citiation_header1; @citation_header2 pp. 240-320]. @Thoits_
 
 - A pagebreak when creating `pdf` files is done with: `\pagebreak`
 
-## YAML Commands
+## YAML Files
 
 for the beginning of the document add this to add a yaml header included are some inclusions that I usually use (linux version)
 
@@ -166,7 +209,7 @@ for the beginning of the document add this to add a yaml header included are som
 # Document Settings
 link-citations: yes
 pagesize: letter
-# You can get a list of installed fonts by installing fontconfig then using `fc-list`
+# You can get a list of installed fonts by installing fontconfig then using `fc-list` you may need to use the `fc-cache -fv` command to refresh the list of installed fonts before some of the fonts listed below are seen by the system
 mainfont: Fira Sans
 # mainfontoptions:
 # - Extension=.otf
