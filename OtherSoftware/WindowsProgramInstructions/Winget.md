@@ -4,10 +4,15 @@ Windows Package Manager or winget is the new package manager for Windows that is
 
 ## Winget Commands
 
-
-
 ## Winget install
 
+List of programs to install using Winget
+
+```sh
+winget install --id QL-Win.QuickLook -e
+winget install --id rammichael.7+TaskbarTweaker -e
+winget install --id rammichael.Textify -e
+winget install --id=9NGHP3DX8HDX -e # [Files App](https://files.community/)
 winget install --id=Amazon.Kindle -e
 winget install --id=Bitwarden.Bitwarden -e
 winget install --id=ChristianSchenk.MiKTeX -e
@@ -19,7 +24,7 @@ winget install --id=GOG.Galaxy -e
 winget install --id=Gephi.Gephi -e
 winget install --id=Julialang.Julia -e
 winget install --id=KDE.KDEConnect -e
-
+winget install --id=LINQPad.LINQPad -e
 winget install --id=Lexikos.AutoHotkey -e
 winget install --id=LibreOffice.LibreOffice -e
 winget install --id=Microsoft.EdgeBeta -e
@@ -49,15 +54,12 @@ winget install --id=TimKosse.FilezillaClient -e
 winget install --id=Ubisoft.Uplay -e
 winget install --id=Valve.Steam -e
 winget install --id=VideoLAN.VLC -e
+winget install --id=WinDirStat.WinDirStat -e
 winget install --id=Zoom.Zoom -e
 winget install --id=agalwood.Motrix -e
 winget install --id=twitch.twitch -e
-
-winget install --id=LINQPad.LINQPad -e
 winget install --id=voidtools.Everything -e
-winget install --id QL-Win.QuickLook -e
-winget install -e --id rammichael.7+TaskbarTweaker
-winget install -e --id rammichael.Textify
+
+```
 
 winget install bottom
-

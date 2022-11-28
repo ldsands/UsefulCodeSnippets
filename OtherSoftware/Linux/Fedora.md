@@ -1,14 +1,19 @@
-# Manjaro KDE
+# Fedora KDE
 
 Fedora is a Linux distro that is very stable but has more frequent updates than many other distros that are also very stable.
 
-- [Manjaro KDE](#manjaro-kde)
+- [Fedora KDE](#fedora-kde)
     - [Installing Fedora KDE](#installing-fedora-kde)
+        - [Installing Nvidia Drivers](#installing-nvidia-drivers)
     - [Installing Programs](#installing-programs)
 
 ## Installing Fedora KDE
 
 I used the Fedora Media Writer on Windows to write Fedora KDE to a flash drive. I then just followed the instructions after booting into Fedora running on that flash drive.
+
+### Installing Nvidia Drivers
+
+If you are running Fedora on a PC with an Nvidia GPU Video will be really bad until the Nvidia drivers are installed. Good instructions can be found [here](https://www.linuxcapable.com/how-to-install-nvidia-drivers-on-fedora-36-linux/).
 
 ## Installing Programs
 

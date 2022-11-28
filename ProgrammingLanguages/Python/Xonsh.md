@@ -6,6 +6,7 @@
     - [Xonsh Installation](#xonsh-installation)
         - [Linux Installation Notes](#linux-installation-notes)
         - [Windows Installation Notes](#windows-installation-notes)
+    - [Xontribs](#xontribs)
     - [Xonsh Setup](#xonsh-setup)
 
 ## Xonsh Installation
@@ -55,16 +56,30 @@
     pyenv install 3.10.8
     # set this version of python as the global default version of python
     pyenv global 3.10.8
-    # install pipx
-    pip install pipx
     # install xonsh using pipx
     # upgrade pip
     python -m pip install --upgrade pip
-    # install xonsh
+    ```
+
+    - Install xonsh
+
+    ```PowerShell
     pip install xonsh[full]
+    ```
+
+    - To install xonsh using pipx see below. I do not recommend this as of 2022-11-18 on windows due to some subprocess mode issues ([issue 4566](https://github.com/xonsh/xonsh/issues/4566) [issue 4886](https://github.com/xonsh/xonsh/issues/4886)).
+
+    ```PowerShell
+    # install pipx
+    pip install pipx
+    pipx install 'xonsh[full]'
     # you may then have to restart your shell
     pipx runpip xonsh install readline
     ```
+
+## Xontribs
+
+- [Vox](https://xon.sh/python_virtual_environments.html?highlight=vox) comes with Xonsh and is used for managing virtual environments
 
 ## Xonsh Setup
 

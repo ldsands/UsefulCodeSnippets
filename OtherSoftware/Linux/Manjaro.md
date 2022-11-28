@@ -159,7 +159,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     cargo install exa
     # install zoxide
     cargo install zoxide --locked
-    # install fzf which is an optional zoxide dependance
+    # install fzf which is an optional zoxide dependency
     yay -S fzf
     # install mcfly
     cargo install mcfly
