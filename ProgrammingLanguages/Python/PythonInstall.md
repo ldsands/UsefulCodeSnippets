@@ -2,7 +2,7 @@
 
 - [Python Installation Instructions and Notes](#python-installation-instructions-and-notes)
     - [Pyenv on Windows](#pyenv-on-windows)
-    - [Pyenv (on WSL)](#pyenv-on-wsl)
+    - [Pyenv On Linux (Including WSL)](#pyenv-on-linux-including-wsl)
     - [Anaconda](#anaconda)
         - [Anaconda PATH Windows instructions](#anaconda-path-windows-instructions)
         - [Install anaconda on WSL](#install-anaconda-on-wsl)
@@ -32,24 +32,31 @@
     pyenv global 3.9.7
     ```
 
-## Pyenv (on WSL)
+## Pyenv On Linux (Including WSL)
 
 - Pyenv is a simpler version of what anaconda does but it is pretty much just as powerful. I used [this site](https://dev.to/writingcode/the-python-virtual-environment-with-pyenv-pipenv-3mlo) for help putting this together. Below are the instructions to install pyenv and add it to path.
+    - You will likely need to install some dependencies to build python. More about that can be found [here](https://github.com/pyenv/pyenv/wiki#troubleshooting--faq).
 
     ```sh
-    # setup pyenv
-    # upgrade everything
+    # setup pyenv for Ubuntu (including Ubuntu on WSL)
+    # upgrade everything for Ubuntu
     sudo apt-get update && sudo apt-get upgrade -y
-    # install dependencies
+    # install dependencies for Ubuntu
     sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
     xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+    # upgrade everything for Fedora
+
+    # install dependencies for Fedora
+    sudo dnf install make gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-devel libnsl2-devel -y
     # install pyenv using the script contained [here](https://github.com/pyenv/pyenv-installer)
     curl https://pyenv.run | bash
-    # add this to the shell config file (~/.zshrc for zsh, ~/.bashrc for bash or )
-    echo 'export PATH="$HOME/.pyenv/bin:$PATH"
+    # add this to the shell config file (~/.zshrc for zsh, ~/.bashrc for bash)
+    echo '
+    export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init --path)"
-    eval "$(pyenv virtualenv-init -)"\n' >> ~/.zshrc
+    eval "$(pyenv virtualenv-init -)"
+    ' >> ~/.bashrc
     # now restart the shell
     exec $SHELL
     # install python using pyenv
@@ -70,8 +77,18 @@
     - To publish the package to PyPI you will need to use an environment variable with your PyPI token.
     - More instructions on how to use poetry can be found [here](PythonModules.md#creating-a-local-package).
 
+    ```sh
+    # To install Poetry on Linux
+    curl -sSL https://install.python-poetry.org | python3 -
+    # To install Poetry on Windows (must use PowerShell)
+    (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+    # because I use pyenv to manage multiple versions of python at once I change a setting as shown below so that Poetry uses the same version of python
+    poetry config virtualenvs.prefer-active-python true
+    ```
+
     ```zsh
-    # install poetry for python management
+    # below is the pld way of installing
+    # install poetry on Linux for python management
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
     echo '# poetry path
     export PATH="$HOME/.local/bin:$PATH"\n' >> ~/.zshrc
@@ -237,7 +254,7 @@ To use venv is a bit more complicated. Launching these environments aren't as st
 
 ### Poetry Environments
 
-- This will creat and manage virtual environments using Poetry
+- This will create and manage virtual environments using Poetry
 
 ```sh
 pyenv local 3.9.8
@@ -246,7 +263,45 @@ TODO:
 
 More can be found [here](https://python-poetry.org/docs/managing-environments/#:~:text=Poetry%20makes%20project%20environment%20isolation%20one%20of%20its,use%20it%20directly%20without%20creating%20a%20new%20one.)
 
-Poetry will use whatever virtual environment is activated to build the project that you're working on. It will create a pyproject.toml file and if you follow the instructions [here](#pyenv-with-poetry) you can setup the project with relative ease.
+- Poetry will use whatever virtual environment is activated to build the project that you're working on. It will create a pyproject.toml file and if you follow the instructions [here](#pyenv-with-poetry) you can setup the project with relative ease.
+- To use pyenv with Poetry you can set the version of python by creating a local version of python file (using pyenv). See below for an example of how to do this.
+
+```sh
+pyenv install 3.10.8
+pyenv local 3.10.8
+poetry install
+```
+
+- For a brand new project Poetry will create a new directory using a default file structure ([more here](https://python-poetry.org/docs/basic-usage/#project-setup)). You can also create a pyproject.toml file for existing projects and thus avoid creating a new project file structure for the project ([more here](https://python-poetry.org/docs/basic-usage/#initialising-a-pre-existing-project)).
+- To activate Poetry's virtual environment see below ([more here](https://python-poetry.org/docs/basic-usage/#activating-the-virtual-environment)).
+- To add dependencies for the project to the `pyproject.toml` file the easiest way is to use `poetry add package_name` you can also add dependencies manually ([more here](https://python-poetry.org/docs/basic-usage/#specifying-dependencies)).
+
+```sh
+# create new project
+poetry new poetry-demo
+# create pyproject.toml for existing project
+cd pre-existing-project
+poetry init
+# add dependencies
+poetry add pandas
+# activate Poetry's virtual environment
+poetry shell
+# you can also manually activate a Poetry virtualenv more directly (first line Linux second line for Wondows)
+source {path_to_venv}/bin/activate
+{path_to_venv}\Scripts\activate.ps1
+# to deactivate just use the exit or deactivate command
+poetry exit # for when you use poetry shell to activate your virtualenv 
+poetry deactivate # for when you manually activate your virtualenv
+# to show Poetry virtualenv info and the next line just the path of the virtualenv
+poetry env info
+poetry env info --path
+# to list Poetry envs
+poetry env list
+# to delete a Poetry env use the remove command (3 examples below)
+poetry env remove /full/path/to/python
+poetry env remove python3.7
+poetry env remove 3.7
+```
 
 ## Useful Python Install Commands
 
