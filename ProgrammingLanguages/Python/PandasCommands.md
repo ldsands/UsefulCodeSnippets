@@ -23,7 +23,6 @@ dta = pd.DataFrame(
 <!-- 
 ### Importing data
 
-
 - TODO:
  -->
 
@@ -62,7 +61,6 @@ dta = pd.DataFrame(
     # then create the list of dataframes
     dataframe_list = [dta[i:i+chunk_size] for i in range(0,dta.shape[0],chunk_size)]
     ```
-    
 
 - In networking creating a weighted two-mode network can be a bit complicated but I found [this question](https://stackoverflow.com/a/44906862) on stackoverflow that address this perfectly. The code given in the answer is as follows: `df = df.groupby(['Col1', 'Col2']).size().reset_index(name='Freq')`.
 
@@ -84,6 +82,14 @@ dta = dta[dta.index.isin(linkid_list)]
 ## Useful Functions
 
 This is a collection of functions that I find to be useful in various scripts.
+
+- Pandas can now use Apache Arrow as a backend engine which will sometimes use less memory and often work faster. This can be enabled with one line of code:
+    - Note that this will probably be released with pandas 2.0 (it may be the default I'm not sure)
+
+    ```python
+    import pandas as pd
+    pd.options.mode.dtype_backend = 'pyarrow'
+    ```
 
 - Sometimes you need to see the whole dataframe below is a way to do that in just a couple of lines
 

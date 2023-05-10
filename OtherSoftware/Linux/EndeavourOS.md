@@ -1,56 +1,43 @@
-# Fedora KDE
+# EndeavourOS KDE Plasma
 
-Fedora is a Linux distro that is very stable but has more frequent updates than many other distros that are also very stable.
+EndeavourOS is an arch Linux based distro that has become known for being fairly stable but has some more advanced features such as rolling releases which allow for cutting edge software.
 
-- [Fedora KDE](#fedora-kde)
-    - [Installing Fedora KDE](#installing-fedora-kde)
-        - [Installing Nvidia Drivers](#installing-nvidia-drivers)
-    - [Installing Programs](#installing-programs)
-    - [KDE Plasma Setup](#kde-plasma-setup)
-    - [App Configurations](#app-configurations)
+## Installing EndeavourOS KDE Plasma
 
-## Installing Fedora KDE
-
-I used Rufus on Windows to write the Fedora KDE `iso` file to a flash drive. I then just followed the instructions after booting into Fedora running on that flash drive.
-
-### Installing Nvidia Drivers
-
-If you are running Fedora on a PC with an Nvidia GPU Video will be really bad until the Nvidia drivers are installed. Good instructions can be found [here](https://www.linuxcapable.com/how-to-install-nvidia-drivers-on-fedora-36-linux/).
+- Use Rufus or some similar program to create a usb bootable drive with `.iso` files.
+- During the installation you will need to choose
 
 ## Installing Programs
 
-- Note: A good gui for using dnf is called [dnfdragora](https://github.com/manatools/dnfdragora). You can install it using `dnf install dnfdragora-gui`. This can make installing some applications using dnf easier.
-- Install the following command line stuff and other configurations
+- Set up Git settings (so that there isn't any conflict with Windows)
     - [Git](https://git-scm.com) - "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."
-    - [Kitty](https://sw.kovidgoyal.net/kitty/) (my preferred terminal emulator)
-    - Set def to download more items at once ([found in this video's description](https://www.youtube.com/watch?v=RrRpXs2pkzg))
 
     ```sh
-    # install git
-    sudo dnf install git-all -y
+    # git should be preinstalled on EndeavourOS so you won't need to install it
     # setup git to not auto end filenames (can cause issues when opening a repo that has been opened on Windows)
     git config --global core.autocrlf input
     # set up git to use your account (optional)
     git config --global user.name "user_name"
     git config --global user.email "email@example.com"
-    # set dnf download settings to download 10 items at once
-    fastestmirror=True
-    max_parallel_downloads=10
-    defaultyes=True
-    keepcache=True
-    # clear dnf cache
-    sudo dnf clean all
-    # enable RPM Fusion
-    sudo dnf groupupdate core
-    # change Hostname
-    sudo hostnamectl set-hostname "ldsands_host"
-    # install media codecs
-    sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-    sudo dnf groupupdate sound-and-video
-    # Install Kitty
-    dnf install kitty -y
-    # change the ctrl+shift to ctrl in Kitty along with some other settings more can be found [here](https://sw.kovidgoyal.net/kitty/conf/)
+    ```
+
+- Install the following command line stuff and several programs that I regularly use
+    - yay comes preinstalled so I use that for the majority of the installations
+    - [Kitty](https://sw.kovidgoyal.net/kitty/) (my preferred terminal emulator)
+    - [Pamac](https://wiki.manjaro.org/index.php?title=Pamac) - "Pamac (Add/Remove Software) is Manjaro's Package Manager. It is based on libalpm with AUR and Appstream support." - I like this for a gui to install applications
+    - [Flatpak](https://www.flatpak.org/) [(and enable Flathub)](https://flathub.org/home)
+    - [Enpass](https://www.enpass.io/) (my preferred password manager)
+    - [pCloud](https://www.pcloud.com/) (my preferred cloud syncing platform/application)
+    - [Microsoft Edge (Beta)](https://www.microsoftedgeinsider.com/en-us/download/beta) (my preferred web browser)
+    - [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) (my preferred text editor and IDE)
+        - I also install the [VSCode Projects Runner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
+        - I sometimes also install the [VSCode Workspaces Runner for KRunner](https://github.com/Merrit/vscode-runner) plugin for KRunner which allows you to open VSCode workspaces directly from KRunner. Unlike VSCode Project Runner this KRunner plugin shows recent workspaces opened in VSCode. It also does not require a VSCode extension to work.
+
+    ```sh
+    yay -S kitty kitty-shell-integration kitty-terminfo
+    # to add settings to the `~/.config/kitty/kitty.conf` file
     echo "
+    # located here `~/.config/kitty/kitty.conf`
     map ctrl+c copy_or_interrupt
     map ctrl+v paste_from_clipboard
     map ctrl+t new_tab
@@ -59,38 +46,37 @@ If you are running Fedora on a PC with an Nvidia GPU Video will be really bad un
     map ctrl+shift+tab previous_tab
     background_opacity 0.6
     :     font_family      FiraCode Nerd Font Mono
+    # :     font_family      CaskaydiaCove Nerd Font
+    startup_session ~/.config/kitty/kitty-start.kitty
+    # create a kitty-start.kitty file here: `$HOME/.config/kitty/` you can use the command: `touch /$HOME/.config/kitty/`
+    # to start a shell as the default add one of the lines below with out the "# " characters
+    # launch nu
+    # launch xonsh
+    # launch bash
+    # launch zsh
     " >> ~/.config/kitty/kitty.conf
+    # install pamac
+    yay -S pamac-all
+    # install flatpak
+    yay -S flatpak
+    # enable installation from flathub (you'll need to restart to use this)
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    # install enpass (my password manager of choice)
+    yay -S enpass-bin
+    yay -S pcloud-drive
+    yay -S microsoft-edge-beta-bin
+    yay -S visual-studio-code-bin
+    yay -S krunner-vscodeprojects-git
+    # if you want to install the VSCode Workspaces Runner for KRunner
+    yay -S plasma-runner-vscode-git
     ```
 
-- Install Enpass (my password manager). Look [here under the "For RPM package"](https://www.enpass.io/support/kb/general/how-to-install-enpass-on-linux/)
+- Install fonts (mostly for VSCode)
 
     ```sh
-    # Add Enpass yum repository
-    cd /etc/yum.repos.d/
-    sudo wget https://yum.enpass.io/enpass-yum.repo
-    # After that, you can install Enpass as any other software package:
-    sudo yum install enpass
-    ```
-
-- [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions)
-    - I also install the [VSCode Projects Runner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
-    - I also install the [VSCode Workspaces Runner for KRunner](https://github.com/Merrit/vscode-runner) plugin for KRunner which allows you to open VSCode workspaces directly from KRunner. Unlike VSCode Project Runner this KRunner plugin shows recent workspaces opened in VSCode. It also does not require a VSCode extension to work.
-
-    ```sh
-    # We currently ship the stable 64-bit VS Code in a yum repository, the following script will install the key and repository:
-    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-    sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=<https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc>" > /etc/yum.repos.d/vscode.repo'
-    # Then update the package cache and install the package using dnf (Fedora 22 and above):
-    dnf check-update
-    sudo dnf install code
-    # to install both of the VSCode Runners for KRunner you need to install cmake and other dependencies
-    sudo dnf install cmake extra-cmake-modules kf5-ki18n-devel kf5-kservice-devel kf5-krunner-devel kf5-ktextwidgets-devel kf5-kconfigwidgets-devel qt5-qtdeclarative-devel gettext -y
-    # Verify the version installation using the following command:
-    cmake --version
-    # then to install VSCode Project Runner using their script
-    curl https://raw.githubusercontent.com/alex1701c/krunner-vscodeprojects/master/install.sh | bash
-    # then restart KRunner (this won't work when using Wayland)
-    kquitapp5 krunner;kstart5 krunner
+    yay -S zip
+    mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "CascadiaCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip && unzip CascadiaCode.zip && sudo fc-cache -f -v
+    mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v
     ```
 
 - Install Rust and rust related programs
@@ -109,7 +95,7 @@ If you are running Fedora on a PC with an Nvidia GPU Video will be really bad un
 
     ```sh
     # install rustup
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     # you need to select 1 to install rust then restart your shell
     # update rust
     rustup update
@@ -126,19 +112,19 @@ If you are running Fedora on a PC with an Nvidia GPU Video will be really bad un
     # install zoxide
     cargo install zoxide --locked
     # install fzf which is an optional zoxide dependency
-    sudo dnf install fzf -y
+    yay -S fzf
     # install mcfly
     cargo install mcfly
     # this installs starship which is a cross platform/shell prompt
-    cargo install starship --locked
-    # create bottom and starship config files
-    mkdir -p ~/.config && mkdir -p ~/.config/bottom/
+    curl -sS https://starship.rs/install.sh | sh
     # enter bash for the following commands
     bash
+    # create bottom and starship config files
+    mkdir -p ~/.config && mkdir -p ~/.config/bottom/
     # copy my configuration from my gists to the bottom.toml, starship.toml and config.nu files
     cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/bottom.toml -N
     cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/starship.toml -N
-    cd ~/.config/nushell/ && wget ‐‐directory-prefix=~/.config/nushell/config.nu https://gist.githubusercontent.com/ldsands/d3eac90b0b9d2b8613e165cc9e49d4f3/raw/config.nu -N
+    cd ~/.config/nushell/ && wget ‐‐directory-prefix=~/.config/nushell/config.nu https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/starship.toml -N
     # add a file so that kitty's default tab opens using Nushell
     '
     # point to a startup session file
@@ -153,31 +139,56 @@ If you are running Fedora on a PC with an Nvidia GPU Video will be really bad un
     - Install pyenv using the [pyenv-installer repo](https://github.com/pyenv/pyenv-installer). You will also need to install dependencies to build python, more information about which dependencies to install can be found [here](https://github.com/pyenv/pyenv/wiki#troubleshooting--faq).
     - Install [Poetry](https://python-poetry.org/) to manage python project virtual environments.
 
-    ```sh
-    # install python/pyenv build dependencies
-    sudo dnf install make gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-devel libnsl2-devel -y
-    # install pyenv
-    curl https://pyenv.run | bash
-    # you may need to add these lines to ~/.bashrc (this uses Nushell)
-    '
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init --path)"
-    eval "$(pyenv virtualenv-init -)"
-    ' | save -a ~/.bashrc
-    # install Poetry
-    curl -sSL https://install.python-poetry.org | python3 -
-    ```
+```sh
+# install python/pyenv build dependencies
+sudo dnf install make gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-devel libnsl2-devel -y
+# install pyenv
+curl https://pyenv.run | bash
+# you may need to add these lines to ~/.bashrc (this uses Nushell)
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+# install Poetry
+curl -sSL https://install.python-poetry.org | python3 -
+# add Poetry to PATH
+echo '
+# poetry path
+export PATH="$HOME/.local/bin:$PATH"\n' >> ~/.bashrc
+```
 
-- Configure Discover (probably the easiest way to install, update, uninstall and manage applications)
-    - Although Discover is the KDE application management application I put it here because some of the settings are distro specific
-    - In the lower left there are several tabs, click on "Settings"
-        - Under the "Flatpak" section make sure to enable "Flathub"
+- Install flatpak applications
 
-- Install Tabby (a terminal emulator that is awesome but it does take a lot of resources to run)
-    - Install Tabby by:
-        - [Download the `.rpm` version of the latest release](https://github.com/Eugeny/tabby/releases/latest)
-        - Either double click on the file to use Discover to install it or use the following command in a terminal `sudo dnf localinstall file_name.rpm`
-    - Deselect the "Enable global hotkey" toggle
+```sh
+# update all flatpak applications
+flatpak update
+# show the applications that were explicitly installed (not including runtimes installed as dependencies)
+flatpak list --app
+flatpak install flathub com.discordapp.Discord # Discord
+flatpak install flathub com.github.tchx84.Flatseal # flatseal for managing flatpak permissions
+flatpak install flathub com.usebottles.bottles # bottles (for Windows applications)
+flatpak install flathub io.github.shiftey.Desktop # github desktop
+flatpak install flathub org.telegram.desktop # Telegram Desktop
+flatpak install flathub org.zotero.Zotero # Zotero
+```
+
+- There are a couple of URLs on AUR where you can find other KDE applications that are not listed in the normal AUR database (they're listed under the Extra repository)
+    - [Group Details - plasma (x86_64)](https://archlinux.org/groups/x86_64/plasma/) - core KDE Plasma packages
+    - [Group Details - kde-applications (x86_64)](https://archlinux.org/groups/x86_64/kde-applications/) - KDE applications
+
+- NixOS is a package manager (and they have their own distro) that is distro agnostic and has a lot of advantages over other package managers.
+
+```sh
+# install NixOS package manager (this will install it for multi-users which is recommended)
+sh <(curl -L https://nixos.org/nix/install) --daemon
+# To install packages that contain non-free software you'll need to add the line below to this file: ~/.config/nixpkgs/config.nix
+{ allowUnfree = true; }
+# to allow KDE to see the .desktop files you'll need to use the command below:
+cp -L ~/.nix-profile/share/applications/* ~/.local/share/applications/
+```
+
+TODO: add this later from LinuxPrograms.md
+
+- Bluetooth may have issues and need to be enabled with this command: `sudo systemctl enable bluetooth` ([I found out about this here](https://discovery.endeavouros.com/audio/bluetooth/2021/03/)).
 
 ## KDE Plasma Setup
 
@@ -188,6 +199,8 @@ System Settings to change. Open "System Settings" then you can search or find th
         - Select "Breeze Dark"
 - Under the "Workspace" category
     - "Workspace Behavior"
+        - "General Behavior"
+            - Clicking files or folders; change to "Selects them"
         - "Desktop Effects"
             - Search for "Desktop Grid"
                 - Select the "Configure..." button
@@ -195,8 +208,6 @@ System Settings to change. Open "System Settings" then you can search or find th
                 - For "Desktop name alignment:" select "Top"
                 - Deselect "Show buttons to alter count of virtual desktops"
                 - Click on the "OK" button
-        - "General Behavior"
-            - Clicking files or folders; change to "Selects them"
         - "Screen Edges"
             - For all corners select "No Action" except:
                 - The upper right corner select "Present Windows - Current Desktops"
@@ -214,10 +225,14 @@ System Settings to change. Open "System Settings" then you can search or find th
             - Enable "Navigation wraps around"
             - Enable "Show on-screen display when switching" and change the value toaa 500 ms
             - Enable "Show desktop layout indicators"
-    - "Window Behavior"
+    - "Window Management"
         - "Task Switcher"
+            - Click on the button "Get New Task Switchers..."
+                - Search for Thumbnail Grid and click on it
+                - Click on the "Install" button in the upper right
             - In the "Visualization" column select "Thumbnail Grid" from the dropdown menu
             - Do this for both the "Main" and the "Alternate" tabs (at the top of the sub-window that contains the settings above)
+            - Click on the "Apply" button in the lower right corner
     - "Shortcuts" (these are in alphabetical order since scrolling through them isn't as useful as searching for each individually)
         - "KRunner": `meta+space`
         - "Maximize Window": `meta+home`
@@ -244,10 +259,8 @@ System Settings to change. Open "System Settings" then you can search or find th
     - "Applications"; "Default Applications";
         - "Web Browser": select "Microsoft Edge (beta)"
         - "Terminal emulator": select "Kitty"
-- Under the "Hardware" category
-    - Removable Storage; Removable Devices
-        - Check "Enable automatic mounting of removable media" and "Only automatically mount removable media that has been manually mounted before"
-- Select "Highlight Changed Settings" button at the bottom of the side bar to easily see which settings have been changed from their defaults
+- Next to the search box in the upper left click on the hamburger menu
+    - Select "Highlight Changed Settings" button to easily see which settings have been changed from their defaults
 
 Next there are several changes I make to the panel(s) (taskbar(s)) and the desktop.
 
@@ -260,7 +273,7 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
             - For "Groups" select "Do not group"
             - For "Show Only Tasks" select "From Current Screen"
     - Right Click on the down arrow in the system tray and click on "Configure System Tray..."
-        - "General"
+        - "General" Tab
             - From the "Panel icon spacing:" drop down box select "Small"
         - "Keyboard Shortcuts" Tab
             - Click on the button that says "None" and enter the keyboard shortcut `meta+a`
@@ -285,12 +298,6 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
 
 ## App Configurations
 
-- Microsoft Edge (Beta)
-    - Sign in using Microsoft Account
-    - Create PWAs from my Outlook Accounts (and others):
-        - Open the "Application Launcher" (like the start button from Windows); search for "Outlook (PWA)"; right click on the result; Select "Application" tab;
-        - Select the ellipsis menu in the upper right; select permissions; next to "Notifications" Select "Allow"
-        - I do this for my two Outlook Accounts (Personal Outlook, Uiowa Outlook) and [MonkeyType](https://monkeytype.com/) which I use to keep my typing speed up.
 - Dolphin
     - I hide the following directories from the "Places" panel: `Music`, `Pictures` and `Videos`
     - I add these directories to the "Places" panel: `pCloudDrive`, `pCloudLocalLevi`, `ComputerStuff`, `ResearchProjects` and `Uiowa`. I also add any current project and class directories for easy access.
@@ -298,29 +305,14 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
         - Click on "Configure Toolbars"
             - I search for "Up" in "Available actions" and add it to "Current Actions" and then move it to the top.
         - Click on "Configure Dolphin"
+            - In the "General" tab:
+                - In the "Behavior" tab:
+                    - Under "Miscellaneous:" Deselect "Show selection marker"
             - In the "Startup" tab:
                 - Change the default startup location to `/home/$USER/Downloads` (you will need to replace $USER with your username)
-                - Unselect the "Open new folders in tabs" this is because it doesn't work well with multiple virtual desktops (however using `ctrl+t` will still open a new tab in the currently opened window)
             - In the "Context Menu" tab: (If you have Kitty installed)
                 - Click on the button on the bottom of the window labeled "Download New Services..."
                 - In the search box (in the upper right) search for "Kitty"
                 - Select "Open Kitty Here" ([the GitHub repo for this service](https://github.com/raphtlw/open-kitty-here), [the KDE Store link](https://store.kde.org/p/1378539))
                 - Click on the button (in the upper right) labeled "Install"
-- Gwenview (an Image Viewer)
-    - Click on the hamburger menu near the upper right hand corner and mouse over "Configure"
-        - Click on "Configure Keyboard Shortcuts"
-            - Next to "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
-            - Under "File" next to "Quit" click under "Alternate" next to "Custom:" select the button then enter `ctrl+w`; select "OK" at the bottom of the dialogue box
-- Okular (a document viewer)
-    - In the menu bar click on "Settings"
-        - Click on "Configure Keyboard Shortcuts..."
-            - Next to "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
-            - Under "File" next to "Quit" click under "Alternate" next to "Custom:" select the button then enter `ctrl+w`; select "OK" at the bottom of the dialogue box (a pop up will ask if you want to reassign clik on "Reassign")
-        - Click on "Configure Okular..."
-            - In the "General" tab
-                - Uncheck "Open in continuous mode by default"
-                - Next to "Default zoom:" select "Fit Page"
-- LibreOffice
-    - It seems like when LibreOffice is in dark mode it doesn't automatically change the icons so they are very difficult to see. To change this select "Tools" then "Options" then under "LibreOffice" select "View"
-        - Under "Icon style:" select "Breeze (SVG + dark)" then click the "Apply" button.
-    - I also prefer the "ribben" style of user interface. To change to the ribbon ui go to "View" then "User Interface..." Then select "Tabbed"
+                - Deselect "Run In Konsole"

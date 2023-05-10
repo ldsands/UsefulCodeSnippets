@@ -229,16 +229,25 @@ This is a big data analysis packages that requires a bit of setup
 
 ## Modules to Look Into
 
-- [AutoScraper](https://github.com/alirezamika/autoscraper): A Smart, Automatic, Fast and Lightweight Web Scraper for Python
-- [DearPyGui](https://github.com/hoffstadt/DearPyGui): "Dear PyGui: A fast and powerful Graphical User Interface for Python with minimal dependencies" Has MIT licence
-- [Fil](https://github.com/pythonspeed/filprofiler): for memory profiling a script
-- [Helium](https://github.com/mherrmann/selenium-python-helium): Selenium-python is great for web automation. Helium makes it easier to use.
-- [Jupytext](https://github.com/mwouts/jupytext): Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts
-- [MyST](https://myst-parser.readthedocs.io/en/latest/index.html): MyST allows you to write Sphinx documentation entirely in markdown.
-- [PandasGUI](https://github.com/adamerose/PandasGUI): A GUI for Pandas DataFrames
-- [PyFlow](https://github.com/David-OConnor/pyflow): An installation and dependency system for Python (it looks way easier than environments)
-- [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI): Python GUI For Humans - Transforms tkinter, Qt, Remi, WxPython into portable people-friendly Pythonic interfaces - [RealPython Article](https://realpython.com/pysimplegui-python/)
-- [PySnooper](https://github.com/cool-RR/pysnooper):  "[Y]ou just add one decorator line to the function you're interested in. You'll get a play-by-play log of your function [...]"
-- [Sidetable](https://pbpython.com/sidetable.html): Create Simple Summary Tables in Pandas
-- [Tabulate](https://github.com/astanin/python-tabulate): Pretty-print tabular data in Python, a library and a command-line utility.
-- [Typer](https://github.com/tiangolo/typer): Typer, build great CLIs. Easy to code. Based on Python type hints.
+- [AutoScraper](https://github.com/alirezamika/autoscraper) - "A Smart, Automatic, Fast and Lightweight Web Scraper for Python"
+- [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) - "A modern and customizable python UI-library based on Tkinter"
+- [DearPyGui](https://github.com/hoffstadt/DearPyGui) - "Dear PyGui: A fast and powerful Graphical User Interface for Python with minimal dependencies" Has MIT licence
+- [Fil](https://github.com/pythonspeed/filprofiler) - for memory profiling a script
+- [Flet](https://flet.dev/) - "The fastest way to build Flutter apps in Python"
+- [Gooey](https://github.com/chriskiehl/Gooey) - "Turn (almost) any Python command line program into a full GUI application with one line"
+- [Helium](https://github.com/mherrmann/selenium-python-helium) - "Selenium-python is great for web automation. Helium makes it easier to use."
+- [huak](https://github.com/cnpryer/huak): "A Python package manager written in Rust inspired by Cargo."
+- [Hypothesis](https://hypothesis.readthedocs.io/en/latest/index.html) - "Hypothesis is a Python library for creating unit tests which are simpler to write and more powerful when run, finding edge cases in your code you wouldn’t have thought to look for. It is stable, powerful and easy to add to any existing test suite. It works by letting you write tests that assert that something should be true for every case, not just the ones you happen to think of."
+- [Jupytext](https://github.com/mwouts/jupytext) - "Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts"
+- [makeapp](https://github.com/idlesign/makeapp) - "Simplifies Python application rollout and publishing."
+- [MyST](https://myst-parser.readthedocs.io/en/latest/index.html) - "MyST allows you to write Sphinx documentation entirely in markdown."
+- [PandasGUI](https://github.com/adamerose/PandasGUI) - "A GUI for Pandas DataFrames"
+- [PyAutoGUI](https://github.com/asweigart/pyautogui) - "A cross-platform GUI automation Python module for human beings. Used to programmatically control the mouse & keyboard."
+- [PyFlow](https://github.com/David-OConnor/pyflow) - "An installation and dependency system for Python (it looks way easier than environments)"
+- [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI) - "Python GUI For Humans - Transforms tkinter, Qt, Remi, WxPython into portable people-friendly Pythonic interfaces - [RealPython Article](https://realpython.com/pysimplegui-python/)"
+- [PySimpleGUI](https://www.pysimplegui.org/en/latest/) - "Create GUI applications trivially with a full set of widgets."
+- [PySnooper](https://github.com/cool-RR/pysnooper) - "[Y]ou just add one decorator line to the function you're interested in. You'll get a play-by-play log of your function [...]"
+- [PyWebIO](https://github.com/pywebio/PyWebIO) - "Write interactive web app in script way."
+- [Sidetable](https://pbpython.com/sidetable.html) - "Create Simple Summary Tables in Pandas"
+- [Tabulate](https://github.com/astanin/python-tabulate) - "Pretty-print tabular data in Python, a library and a command-line utility."
+- [Typer](https://github.com/tiangolo/typer) - "Typer, build great CLIs. Easy to code. Based on Python type hints."

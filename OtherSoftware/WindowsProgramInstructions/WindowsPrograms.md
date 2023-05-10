@@ -2,18 +2,19 @@
 
 - [Windows programs](#windows-programs)
     - [Important Windows Settings](#important-windows-settings)
+    - [Useful Windows Features](#useful-windows-features)
     - [Package Managers](#package-managers)
     - [Win 32](#win-32)
         - [Nativefier](#nativefier)
         - [Utilities](#utilities)
         - [Gaming Stuff](#gaming-stuff)
         - [Programs that are rarely used or installed](#programs-that-are-rarely-used-or-installed)
-    - [UWP or Windows Store apps](#uwp-or-windows-store-apps)
+    - [Windows Store apps](#windows-store-apps)
         - [For all computers](#for-all-computers)
     - [Other Windows features](#other-windows-features)
         - [Command-line utilities](#command-line-utilities)
         - [WSL (Windows subsystem for Linux)](#wsl-windows-subsystem-for-linux)
-    - [Windows PowerToys](#windows-powertoys)
+    - [Windows PowerToys and Sysinternals](#windows-powertoys-and-sysinternals)
     - [Windows Command Line Stuff](#windows-command-line-stuff)
     - [MS Office Plugins](#ms-office-plugins)
 
@@ -30,14 +31,45 @@
         "RealTimeIsUniversal"=dword:00000001
         ```
 
+## Useful Windows Features
+
+- Shutdown/Restart commands and shortcuts
+    - You can create a shortcut on the desktop (or elsewhere) that allows you boot reboot or shutdown with additional parameters. Create the shortcut, for the "location" enter the desired command, you can then name it whatever you want on the next screen. (some of the content here was taken from [this excellent video by Linus Tech Tips](https://www.youtube.com/watch?v=4GASGO0go5I))
+        - To reboot directly into UEFI settings the command is "shutdown -t 0 -r -fw"
+        - To boot into advanced startup settings the command is "shutdown -t 0 -r -o"
+        - To just restart Windows (with no delay) the command is "shutdown -t 0 -r"
+    - Some of these can also be useful to memorize for using with the Run command/window (shortcut for this is `win+r`) so that if the GUI is broken you can restart/shutdown easily.
+    - Many more commands that can be used with shortcuts or in the Run command/window can be found [here](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands#command-line-reference-a-z)
+- Many useful features, settings, tips and programs can be found [in this excellent video created by Linus Tech Tips](https://www.youtube.com/watch?v=4GASGO0go5I). Some of the highlights are listed below.
+    - To edit group policies via an open source GUI you can install [PolicyPlus from GitHub](https://github.com/Fleex255/PolicyPlus)
+    - You can start programs that need administrator privileges automatically without having to explicitly allow it every time using Task Scheduler.
+        - The example I'll use here is for PowerToys (even though the program has this option built in)
+        - Create a basic task (upper right)
+        - In the "Trigger" tab select "When I log on"
+        - In the "Action" tab select "Start a program"
+        - In the "Start a Program" tab find the exe or shortcut to the program you want to start (e.g. `C:\Program Files\PowerToys\PowerToys.exe`)
+        - In the "Finish" tab check the box next to "Open the Properties dialog for this task when I click Finish"
+        - In the "Finish" tab click Finish
+        - In the Window that pops up after in the "General" tab, select "Run with highest privileges"
+            - I haven't gotten this working when the user is not the administrator but I left these extra three steps below in case I figure it out someday
+            - If the user is not an administrator you can click on the "Change User..." button under the "Security" section
+            - In the text box labeled "Enter the object name to select" enter the administrator's user account name which is likely the Microsoft account email address (e.g. username@outlook.com)
+            - Also select the "Run whether the user is logged in or not" option
+        - In the "settings" tab and uncheck the "Stop the task if it runs longer than:" option
+        - Click on the "OK" button
+        - You will then need to enter the password of the user that will authorize the program
+
 ## Package Managers
 
-There are three main package managers for Windows. Chocolaty, Scoop and Winget.
+There are three main package managers for Windows. Winget, Chocolaty and Scoop.
 
-- [Chocolatey](https://chocolatey.org/packages) has by far the largest number of packages but it does require administrator rights for many of its packages. As such it can install pretty much anything that can be installed on Windows.
+- [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/) is a new (released first alpha in Spring 2020) package manager that is officially supported by Microsoft. It will have all of the capabilities of both Chocolatey and Scoop once it is feature complete as well as some that the other two will not have. The major benefit of using Winget is that all of the packages accessible through Winget will be vetted by Microsoft. Also because of it's "official" nature it already has a very large repository of programs and is growing much faster than Chocolatey or Scoop.
+    - [I have a page devoted to Winget](/OtherSoftware/WindowsProgramInstructions/Winget.md).
+    - You can use [WingetUI](https://github.com/marticliment/WingetUI) to interact with Winget through a well designed GUI. It can also be used to both search for and install packages using both Chocolatey and Scoop.
+    - [Winstall](https://winstall.app/) is a website that makes looking for packages very easy. Although WingetUI can also be used to search for Winget Packages I still see a use for Winstall due to it's simplicity and the ability to add many packages to an easily obtainable command to install all the packages that you select from the website.
+- [Chocolatey](https://chocolatey.org/packages) has by far the largest number of packages but it does require administrator rights for many of its packages. As such it can install pretty much anything that can be installed on Windows. It was my preferred way to install packages however as of 2023 I generally prefer using Winget, especially since Winget can install chocolatey to get at some packages that Winget doesn't yet have.
+    - [I have a page devoted to Chocolatey](/OtherSoftware/WindowsProgramInstructions/Chocolatey.md)
 - [Scoop](https://scoop.sh/) is a lot like chocolatey but does not require any administrator rights. Because of this it can be vary useful to use on a machine at work or somewhere similar. A side effect of this benefit is that it installs all of the programs that you install with scoop in the `~\scoop` folder. This means that these programs will not be added to path and will not show up in your start folder and other similar benefits. [Here](https://github.com/lukesampson/scoop/wiki/Chocolatey-Comparison) is a good write of of a comparison between chocolatey and scoop.
-- Finally [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/) is a new (released first alpha in Spring 2020) package manager that is officially supported by Microsoft. It will have all of the capabilities of both Chocolatey and Scoop once it is feature complete as well as some that the other two will not have. The major benefit of using Winget is that all of the packages accessible through Winget will be vetted by Microsoft. Also because of it's "official" nature it already has a very large repository of programs and is growing much faster than Chocolatey or Scoop.
-
 - Useful package manager links:
     - [Simple tutorial for Chocolatey and Scoop](https://dev.to/bowmanjd/chocolatey-vs-scoop-package-managers-for-windows-2kik)
 
@@ -71,6 +103,8 @@ Below are Windows programs that are installed using chocolatey or winget
     - This is a great clipboard manager for Windows. You can now also use `win` + `v` for a similar built in program
 - [Files](https://files-community.github.io/) I install this via the Microsoft Store
     - This is a replacement for file explorer with more useful features
+- [Free Download Manager](https://www.freedownloadmanager.org/) On Windows you can install via Winget
+    - A download program that can download just about anything and is cross platform - I use this in place of Motrix which is no longer supported
 - [Git](../Git.md) I install this using Chocolatey
     - This is required for using github it is the source control software on which github is based
     - I don't know much about how to use git without either github and/or vscode
@@ -129,6 +163,7 @@ Below are Windows programs that are installed using chocolatey or winget
 - [PotPlayer](https://potplayer.daum.net/) I install this using Chocolatey
     - An audio player that allows for variable speed playback
     - It also allows me to pause using bluetooth controls (VLC doesn't do this)
+- [Windows Toolbox](https://www.cttstore.com/windows-toolbox) - "[...] Windows Utility [to help] clean and maintain various windows systems." There is also a free version that you can get [here](https://github.com/ChrisTitusTech/winutil). Most useful for removing a lot of things that Windows has running by default in the background.
 
 Below are Windows programs that are not able to be installed via chocolatey that I always install
 
@@ -209,6 +244,11 @@ non chocolatey utility programs
 - [WindowsTerminalHere](https://github.com/shanselman/WindowsTerminalHere) A small script to allow for use of the new windows terminal from any location by right clicking
 - [iCUE](https://www.corsair.com/us/en/icue) For corsair headset
 - [Glances](https://nicolargo.github.io/glances/) Since sometimes process hacker is targeted by Windows Defender I use bottom or glances. Glances can be installed via python pip (`pip install glances`) or even better via pipx (`pipx install glances`) so that it can remain isolated.
+- [MiniTool Partition Wizard](https://www.partitionwizard.com/) - "All-in-one Disk Partition Manager"
+    - You can use Winget to install it (`winget install --id=MiniTool.PartitionWizard.Free  -e`)
+    - This is a free (with paid option with additional features)
+    - The paid version has many additional features but I don't think I would likely ever have any use for them
+- [Wintoys](https://apps.microsoft.com/store/detail/wintoys/9P8LTPGCBZXD) - "Set up, debloat, optimize, repair, and tweak your operating system in a simple, time-saving, yet safe approach. Maintain it in a clean, healthy and productive state while having everything you need in one place."
 <!-- - [Pomotroid](https://splode.github.io/pomotroid/) this is a simple but customizable Pomodoro timer I use it pretty regularly -->
 <!-- - [Stretchly](https://hovancik.net/stretchly/) A relatively simple but customization work/break timer can be installed using Winget -->
 
@@ -253,7 +293,7 @@ These are not available on chocolatey
     - This allows you to move playlists and liked songs from one service to another
     - Licence is in Enpass
 
-## UWP or Windows Store apps
+## Windows Store apps
 
 ### For all computers
 
@@ -281,31 +321,34 @@ TODO: need to look through my various notes to add here
 
 ### WSL (Windows subsystem for Linux)
 
-WSL allows for using the linux kernel from within Windows. To install WSL follow the instructions contained on [this site](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and to enable WSL2 use [this site](https://docs.microsoft.com/en-us/windows/wsl/wsl2-install). Below is a short version all put together.
+- WSL allows for using the linux kernel from within Windows.
+    - A handy application to help manage WSL and installed distros is [WSL Manager](https://github.com/bostrot/wsl2-distro-manager) it can be purchased and then installed from the Microsoft store for around $7. It can also be [installed for free in various other ways](https://github.com/bostrot/wsl2-distro-manager#-install).
+- To install WSL follow the instructions contained on [this site](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and to enable WSL2 use [this site](https://docs.microsoft.com/en-us/windows/wsl/wsl2-install). Below is a short version all put together.
+    - Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+    - You'll need to restart after this
+    - Then download the version of linux from the Windows store you want (probably Ubuntu)
+        - Make sure you launch after that and then your distro will install
+    - You'll be prompted to create a username and password
+        - You'll want to check that your distro is running on WSL 2 and WSL 1 you can do this by entering `wsl -l -v` into PowerShell
+        - To change a distro from WSL 1 to WSL 2 (or visa versa if you change the numbers) enter this code into PowerShell `wsl --set-version <Distro> 2`
+    - Type in these two commands to update stuff
 
-- Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-- You'll need to restart after this
-- Then download the version of linux from the Windows store you want (probably Ubuntu)
-    - Make sure you launch after that and then your distro will install
-- You'll be prompted to create a username and password
-    - You'll want to check that your distro is running on WSL 2 and WSL 1 you can do this by entering `wsl -l -v` into PowerShell
-    - To change a distro from WSL 1 to WSL 2 (or visa versa if you change the numbers) enter this code into PowerShell `wsl --set-version <Distro> 2`
-- Type in these two commands to update stuff
-
-    ```cmd
-    sudo apt update
-    sudo apt upgrade
-    ```
+        ```cmd
+        sudo apt update
+        sudo apt upgrade
+        ```
 
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../../ProgrammingLanguages/PowerShell/PowerShell.md#using-powershell-on-linux)
 - Install Anaconda on WSL [see this section](../../ProgrammingLanguages/PowerShell/PowerShell.md#Install-anaconda-on-WSL)
-- Some useful PowerShell commands to use to manage the WSL distros are below [here](https://docs.microsoft.com/en-us/windows/wsl/reference) is a more comprehensive list of WSL commands
+- Some useful PowerShell commands to use to manage the WSL distros are below [here](https://learn.microsoft.com/en-us/windows/wsl/basic-commands) has a more comprehensive list of WSL commands
 
     ```PowerShell
     # list the wsl distros that are installed
     wsl --list --verbose
     # terminate a WSL distro from PowerShell
     wsl --terminate <distro name>
+    # list distros that can be installed in WSL
+    wsl --list --online
     ```
 
 - Duplicating an installed distro can be useful for various reasons here is some code to do that which I found [here](https://stackoverflow.com/questions/51584765/how-do-you-install-multiple-separate-instances-of-ubuntu-in-wsl/60428590#60428590)
@@ -319,14 +362,24 @@ WSL allows for using the linux kernel from within Windows. To install WSL follow
     wsl -d UbuntuRuby
     ```
 
-## Windows PowerToys
+## Windows PowerToys and Sysinternals
 
 "[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](Chocolatey.md) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
 
 - To get to the settings for FancyZones go to this location `C:\Users\%username%\AppData\Local\Microsoft\PowerToys\FancyZones\zones-settings.json`.
 
+[Sysinternals](https://learn.microsoft.com/en-us/sysinternals/) - "[...] you’ll find Sysinternals utilities to help you manage, troubleshoot and diagnose your Windows systems and applications." There are a ton (around 178) of utilities most of which I have never looked at before.
+
+- A great video that talks about some Sysinternals can be found [here](https://www.youtube.com/watch?v=4GASGO0go5I)
+- You can install three of them individually via winget or the whore suite via winget, the Microsoft Store, or at the site above you can get an installer to download
+- A few Sysinternals highlights
+    - Autoruns - to find and disable/enable programs that run on startup
+    - Process Explorer - to see what processes are using what files (e.g. dll files etc.)
+    - TCP View - for viewing all networks connections and which process is using them
+
 ## Windows Command Line Stuff
 
+- There is a [long list of useful commands](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands#command-line-reference-a-z) that can be used in Windows with shortcuts, with the Run command/window (use `win+r` to bring it up), directory in the terminal and/or via other ways.
 - PowerShell is really great and frankly I prefer it to zsh which is what I've primarily used on Linux
     - More about how I use and setup PowerShell on Windows can be found [here](../../ProgrammingLanguages/PowerShell/PowerShell.md)
 - Xonsh is a python based shell I have more about it [here](../../ProgrammingLanguages/Python/Xonsh.md)

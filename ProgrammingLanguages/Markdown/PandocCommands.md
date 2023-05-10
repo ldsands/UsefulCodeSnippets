@@ -17,8 +17,30 @@
     # this installs fonts, pandoc, fontconfig, and a few texlive packages which allows for creating pdfs using pandoc
     yay -S ttf-ms-win11-auto pandoc fontconfig texlive-core texlive-latexextra texlive-fontsextra
     # or if you can install the full texlive which is much larger (over 7 gigs) and takes much longer to install
-    yay -S ttf-ms-win11-auto pandoc texlive-full 
+    yay -S ttf-ms-win11-auto pandoc texlive-full
     ```
+
+- On Fedora use def to install pandoc, some fonts and other useful software
+
+    ```sh
+    # installs pandoc fontconfig and a few fonts
+    sudo dnf install pandoc fontconfig
+    # isntalls texlive (usually takes a while because it has over 1535 packages to install and over 1.5 gb, it took 5 min to install)
+    sudo dnf install texlive-scheme-medium
+    # installs the extra parts of the latex that I need (this has over 1800 packages and is 2 gb, it took min 5 to install)
+    sudo dnf install texlive-collection-latexextra texlive-collection-fontsextra
+    ```
+
+    - There are several levels of texlive installation they are listed below (taken from the output of this command `dnf search texlive-scheme`).
+        - texlive-scheme-basic.noarch : basic scheme (plain and latex)
+        - texlive-scheme-context.noarch : ConTeXt scheme
+        - texlive-scheme-full.noarch : full scheme (everything)
+        - texlive-scheme-gust.noarch : GUST TeX Live scheme
+        - texlive-scheme-medium.noarch : medium scheme (small + more packages and languages)
+        - texlive-scheme-minimal.noarch : minimal scheme (plain only)
+        - texlive-scheme-small.noarch : small scheme (basic + xetex, metapost, a few languages)
+        - texlive-scheme-tetex.noarch : teTeX scheme (more than medium, but nowhere near full)
+    - More information about how to install Windows fonts on Fedora can be found [in this article](https://www.fosslinux.com/42406/how-to-install-microsoft-truetype-fonts-on-fedora.htm).
 
 ## Basic commands and conversion
 

@@ -12,9 +12,13 @@
         - [Command Line Programs (On Ubuntu)](#command-line-programs-on-ubuntu)
         - [OBS Extensions (On Ubuntu)](#obs-extensions-on-ubuntu)
     - [Other Useful Applications (Distro Agnostic)](#other-useful-applications-distro-agnostic)
+        - [Nix Package Manager](#nix-package-manager)
         - [Distro Agnostic Command Line Applications](#distro-agnostic-command-line-applications)
         - [Flatpak Applications](#flatpak-applications)
         - [AppImage Applications](#appimage-applications)
+        - [Bottles (For using Windows Applications)](#bottles-for-using-windows-applications)
+        - [Other Distro Agnostic Applications](#other-distro-agnostic-applications)
+    - [Linux (Distro Agnostic) Settings](#linux-distro-agnostic-settings)
 
 ## Manjaro/Arch Based Distros
 
@@ -464,10 +468,56 @@ X-KDE-Username=
 
 This section consists of applications that are as far as I'm aware largely distro agnostic. Note that most of the applications detailed in both the Ubuntu and Arch sections are probably also distro agnostic but they may often have different installations instructions and/or configuration requirements depending on the distro. Also, many of the instructions below may not be consistently for Ubuntu (Debian based) or Manjaro (Arch based). I'll probably just use whatever installation instructions I used at the time I added the application to this document.
 
+### Nix Package Manager
+
+- Nix is a package manager that is distro agnostic and has a lot of advantages over other package managers. They also have their own distro called NixOS.
+
+```sh
+# install NixOS package manager (this will install it for multi-users which is recommended)
+sh <(curl -L https://nixos.org/nix/install) --daemon
+# install NixOS package manager (this will install it for a single user)
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+# [to update nix (on linux)](https://nixos.org/manual/nix/stable/installation/upgrading.html)
+nix-channel --update; nix-env -iA nixpkgs.nix nixpkgs.cacert; systemctl daemon-reload; systemctl restart nix-daemon
+```
+
+- To get installation commands you can go to the [Nix Packages Search site](https://search.nixos.org/packages) and search for packages you want to install. Make sure you use the `nix-env` and make sure you use `nixpkgs` unless you're on NixOS.
+    - For KDE if you want the applications you install via Nix to be visible to KDE, you will also need to like the location of the .desktop files to the "normal" location of the .desktop files. It can be done this command `cp -L ~/.nix-profile/share/applications/* ~/.local/share/applications/`
+    - The documentation for `nix-env` can be found [here](https://nixos.org/manual/nix/stable/command-ref/nix-env.html). Apparently the nix-env is the older way to use nix packages.
+
+```sh
+# example install Telegram Desktop
+nix-env -iA nixpkgs.tdesktop
+# To install packages that contain non-free software you'll need to add the line below to this file: ~/.config/nixpkgs/config.nix
+{ allowUnfree = true; }
+# to allow KDE to see the .desktop files you'll need to use the command below (you may need to use sudo)
+cp -L ~/.nix-profile/share/applications/* ~/.local/share/applications/
+# to uninstall you must complete two commands, first uninstall
+nix-env --uninstall telegram.desktop
+# then use garbage collection to remove the files
+nix-collect-garbage
+# to upgrade all installed nix packages:
+nix-env -u
+# to show what would be upgraded (but don't actually upgrade)
+nix-env -u --dry-run
+```
+
 ### Distro Agnostic Command Line Applications
 
 - [NVTOP](https://github.com/Syllo/nvtop) "Nvtop stands for Neat Videocard TOP, a (h)top like task monitor for AMD and NVIDIA GPUs."
     - To install using yay `yay -S nvtop`
+- [Auto CPU-Freq](https://github.com/AdnanHodzic/auto-cpufreq) - for saving battery life on laptops
+    - At time of writing you cannot install this using aur without issues instead you should use the installer with the code shown below:
+
+    ```sh
+    # clone the repo enter the dir then start the installer
+    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+    cd auto-cpufreq && sudo ./auto-cpufreq-installer
+    # you must install the daemon for it to boot with the system
+    sudo auto-cpufreq --install
+    # to see stats use this command
+    auto-cpufreq --stats
+    ```
 
 ### Flatpak Applications
 
@@ -499,10 +549,15 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
     - Installation command `flatpak install flathub org.zotero.Zotero -y`
 - Evolution - Manage your email, contacts and schedule
     - Installation command `flatpak install flathub org.gnome.Evolution -y`
+- [Gabut Download Manager](https://flathub.org/apps/details/com.github.gabutakut.gabutdm) - "Simple and Faster Download Manager"
+    - `flatpak install flathub com.github.gabutakut.gabutdm`
 - [Weather](https://invent.kde.org/plasma-mobile/kweather) - View real-time weather forecasts and other information
     - Installation command `flatpak install flathub org.kde.kweather`
 - TextSnatcher - Snatch Text with just a Drag
     - Installation command `flatpak install flathub com.github.rajsolai.textsnatcher`
+- [Zoom](https://flathub.org/apps/details/us.zoom.Zoom) - "Video Conferencing, Web Conferencing, Webinars, Screen Sharing"
+    - Installation command `flatpak install flathub us.zoom.Zoom`
+    - Some settings using Flatseal would be useful for staying logged in and keeping configurations. [A blog that talks about this can be found here](https://www.mayrhofer.eu.org/post/zoom-flatpak-sandboxing/).
 - System Monitors (GPU, System)
     - [GreenWithEnvy](https://gitlab.com/leinardi/gwe) - System utility designed to provide information, control the fans and overclock your NVIDIA card
         - Installation command `flatpak install flathub com.leinardi.gwe`
@@ -515,3 +570,74 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
 ### AppImage Applications
 
 "Linux apps that run anywhere" [(AppImage Home Page)](https://appimage.org/). You can find a list of AppImage applications at [AppImageHub](https://www.appimagehub.com/).
+
+### Bottles (For using Windows Applications)
+
+- [Bottles](https://usebottles.com) - "Easily run Windows software on Linux with Bottles!"
+- I usually install this using Flatpak so that it is sandboxed
+- To install the runners for the bottles:
+    - Click on the hamburger menu in the upper right then select the "Runners" tab
+        - I usually use the "Soda" runners as they are the preferred runners made by the Bottles devs
+        - Click on the "Soda" button/dropdown
+            - Click on the "🖫" (disk symbol) next to the latest version
+- General Bottle Setup
+    - Click on the "+" in the upper left
+        - Name your bottle and I generally either select "Application" or "Custom" (I select the latest "Soda" runner)
+- The Library tab
+    - This allows you to put programs installed within bottles into one place and launch them from one location even if they're installed in different bottles
+    - To add a program to the Library tab enter the bottle of the application you wish to add
+        - Under "Programs" select the hamburger menu next to the application you wish to add then select "Add to Library"
+- Desktop Entries
+    - Adding a desktop entry allows for a program to be visible to the Linux Desktop Environment (e.g. KDE) so that you can for example search for the program in the application laucher, or pin a program to the taskbar
+    - Under "Programs" select the hamburger menu next to the application you wish to add then select "Add Desktop Entry"
+- Applications that I install in Bottles
+    - Bottle notes for [Balabolka](http://balabolka.site/balabolka.htm)
+        - Under "Options", click on "Dependencies"
+            - Click on the "🖫" (disk symbol) next to "dotnet48"
+            - Click on the "🖫" (disk symbol) next to "msxml6" (not sure if this is needed but it was recommend on WineHQ)
+            - Click the back button in the upper left to return to the main bottle page once the installation of dependencies are completed
+        - Click on the blue "Run Executable..." button
+            - Install the Microsoft Speech Platform with the "SpeechPlatformRuntime.msi" file ([found here](https://www.microsoft.com/en-us/download/details.aspx?id=27225))
+            - Install a Microsoft Speech Platform voice for example using the file "MSSpeech_TTS_en-GB_Hazel.msi" ([found here](https://www.microsoft.com/en-us/download/details.aspx?id=27224))
+            - Install Balabolka
+        - To refresh the program list installed in the bottle click the back button in the upper left then click on the bottle name to reenter the main bottle page
+            - There should now be two entries under "Programs"
+        - Launch Balabolka (by clicking on the play symbol on the same line as "balabolka")
+    - Bottle notes for [PDFXEdit]
+        - I usually name these bottles in this format: PDFXEdit-Purpose-Soda-7.0-8
+            - "Purpose" is domain which I use it for
+                - For example, I usually have one called "Random" for whatever random PDF I may open and work on. I also usually have one for any research projects that I'm actively writing so that I don't have to worry about losing an open set of PDFs, or mixing with other projects so that there are too many PDFs open at one time.
+        - Under "Options", click on "Settings", then under "Display" click on "Advanced Display Settings"
+            - Disable "Window Manager Decorations" (this removes the bar at the top of the window that Linux/KDE puts there when the program is maximized)
+        - Under "Options", click on "Dependencies"
+            - Click on the "🖫" (disk symbol) next to "allfonts"
+        - I used the portable download of PDF X-Change Editor (version 9) for this example
+        - There does seem to be one reoccurring bug while using PDFXEdit with bottles, after a while of the program staying open it seems to freeze and I have to kill all processes for the bottle to get it to close
+
+### Other Distro Agnostic Applications
+
+- [Ventoy](https://www.ventoy.net/en/index.html) - "Ventoy is an open source tool to create bootable USB drive for ISO/WIM/IMG/VHD(x)/EFI files." You can also install it on Windows.
+- [fprint](https://fprint.freedesktop.org/) - "The fprint project aims to add support for consumer fingerprint reader devices, in Linux, as well as other free Unices."
+    - [A list of supported devices can be found here.](https://fprint.freedesktop.org/supported-devices.html) To see if your device is supported you can use the command `lsusb` and then use that information to see if your device is on the supported list.
+    - To install you can use [this page](https://forum.kde.org/viewtopic.php?t=175570) as a guide for Ubuntu based distros. For Arch based distros you can go [here](https://wiki.archlinux.org/title/Fprint) and then [here for the Fingerprint GUI.](https://wiki.archlinux.org/title/Fingerprint_GUI)
+- [Free Download Manager](https://www.freedownloadmanager.org/) - "It's a powerful modern download accelerator and organizer for Windows, macOS, Android, and Linux."
+    - via yay `yay -Syu freedownloadmanager`
+
+## Linux (Distro Agnostic) Settings
+
+- Swap Partitions
+    - Swap partitions are a temporary RAM storage that is put onto a harddrive it is usually used as an emergency overload in case memory gets overloaded.
+    - Unfortunately, for some reason when I run some python scripts the swap partition gets overloaded even though the RAM is largely unused. So to help with this I have placed some commands below to disable and enable swap. I used the article [How to Disable Swap in Linux](https://linuxhandbook.com/disable-swap-linux/) as a reference.
+
+    ```sh
+    # show swap partitions and files
+    swapon --show
+    # disable a swap file or partition (you can get the path to the swap file/partition using the command above)
+    sudo swapoff /dev/zram0
+    # disable all active swap files/partitions
+    sudo swapoff -a
+    # enable all swap files/partitions
+    sudo swapon -a
+    # To delete the swap file/partitions
+    sudo rm /dev/zram0
+    ```

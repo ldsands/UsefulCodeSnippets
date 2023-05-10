@@ -4,7 +4,7 @@
     - [Python file management](#python-file-management)
         - [Pathlib Getting File Directories](#pathlib-getting-file-directories)
     - [Exiting a Python Program/Script](#exiting-a-python-programscript)
-    - [Functions in Python](#functions-in-python)
+    - [Logging in Python](#logging-in-python)
     - [Timing and Profiling Your Scripts](#timing-and-profiling-your-scripts)
         - [Multiprocessing in Python](#multiprocessing-in-python)
     - [IPython/Jupyter special commands](#ipythonjupyter-special-commands)
@@ -28,11 +28,126 @@ sys.exit("You did not enter an API key please do so")
 raise SystemExit
 ```
 
-## Functions in Python
-<!-- 
-### Optional Arguments
+## Logging in Python
 
+Logging is an important concept to know with python especially as scripts and packages become more complicated. Using logging is preferable to adding print statements to track what is happening in your scripts and packages.
+
+- Some basic logging concepts are important to know. A basic example is below.
+    - There are differnt levels of logs
+    - You can specify which level of the logs (and above) will be displayed (in the example below the levels that will be displayed are warning and critical)
+        - the default levels in order (lowest to highest level) are : debug, info, warning, error, critical
+        - You can set the level to "NOTSET" to include all levels
+
+    ```python
+    import logging
+
+    def main() -> None:
+        logging.basicConfig(level=logging.WARNING)
+
+        logging.debug("This is a debug message")
+        logging.info("This is a info message")
+        logging.warning("This is a warning message")
+        logging.error("This is a error message")
+        logging.critical("This is a critical message")
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+- You can do many things to format the logging output some examples are below.
+    - format can modifiy the formatting of the logging messages
+    - datefmt is the datetime formatting
+    - filename is for saving the logging outputs to a file instead of the console
+
+    ```python
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s %(levelname)s %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        filename="logs/basic.log"
+    )
+    ```
+
+- To have the logging output go to both the console and a file you have to set up handelers. See below for a simple example.
+
+    ```python
+    import logging
+    import sys
+
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        handlers=[
+            logging.FileHandler("logs/basic.log"),
+            logging.StreamHandler(sys.stdout),
+        ],
+    )
+    ```
+
+- This example includes colorful outputs for easier reading using [rich](https://rich.readthedocs.io/en/stable/index.html) ([more about rich's logging options can be found here](https://rich.readthedocs.io/en/stable/logging.html)).
+    - It also has the format set to output to a log file (using the normal logging package defaults) as well.
+    - There is no need for a format for the console output since rich does this for you
+    - The `rich_tracebacks` when set to `True` will allow you to log exceptions (example below)
+
+    ```python
+    import logging
+    from rich.logging import RichHandler
+
+    logging.basicConfig(
+        level=logging.INFO,
+        handlers=[
+            logging.FileHandler("logs/basic.log"),
+            RichHandler(markup=True, rich_tracebacks=True),
+        ],
+    )
+    log = logging.getLogger("rich")
+    log.debug("This is a debug message")
+
+    # exception example
+    x = 5
+    y = "5"
+    try:
+        z = x + y
+    except Exception:
+        log.exception("There is an exception here")
+    ```
+
+- To set up Rich with logging and get a good format for the log file too is a bit more complicated. Below is an example:
+    - I modified the example below from what I found [on this site](https://calmcode.io/logging/rich.html) mostly to cut down on the code.
+
+    ```python
+    import logging
+    from rich.logging import RichHandler
+
+    def set_up_logger() -> logging.Logger:
+        log = logging.getLogger(__name__)
+        log.setLevel(logging.DEBUG)
+        date_format = "%Y-%m-%d %H:%M:%S"
+        output_format = "%(asctime)s %(levelname)s %(message)s"
+        shell_handler = RichHandler(markup=True, rich_tracebacks=True, log_time_format=date_format)
+        file_handler = logging.FileHandler("logs/basic.log")
+        shell_handler.setLevel(logging.DEBUG)
+        file_handler.setLevel(logging.DEBUG)
+        file_formatter = logging.Formatter(fmt=output_format, datefmt=date_format)
+        file_handler.setFormatter(file_formatter)
+        log.addHandler(shell_handler)
+        log.addHandler(file_handler)
+        return log
+
+    log = set_up_logger()
+    log.critical("This is a critical message")
+    x = 5
+    y = "5"
+    try:
+        z = x + y
+    except Exception:
+        log.exception("test")
+    ```
+
+<!-- ## Functions in Python -->
+<!-- 
 TODO:
+### Optional Arguments
  -->
 ## Timing and Profiling Your Scripts
 

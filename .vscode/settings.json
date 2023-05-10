@@ -17,5 +17,8 @@
         "tab.activeBorder": "#0080e4",
         "commandCenter.border": "#e7e7e799"
     },
-    "peacock.color": "#0063B1"
+    "peacock.color": "#0063B1",
+    "kanban": {
+        "openOnStartup": false
+    }
 }

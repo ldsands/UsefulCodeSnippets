@@ -1,8 +1,8 @@
-# Manjaro KDE
+# Manjaro KDE Plasma
 
 Manjaro is an arch Linux based distro that has become known for being fairly stable but has some more advanced features such as rolling releases which allow for cutting edge software.
 
-- [Manjaro KDE](#manjaro-kde)
+- [Manjaro KDE Plasma](#manjaro-kde-plasma)
     - [Installing Manjaro KDE](#installing-manjaro-kde)
     - [Installing Programs](#installing-programs)
     - [Notes on Installation Issues](#notes-on-installation-issues)
@@ -21,9 +21,10 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     - [oh-my-zsh](https://ohmyz.sh/) - "Oh My Zsh is a delightful, open source, community-driven framework for managing your Zsh configuration"
     - [znap](https://github.com/marlonrichert/zsh-snap) - "The fast & light-weight Zsh plugin manager"
     - [Git](https://git-scm.com) - "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."
-    - [Kitty](https://sw.kovidgoyal.net/kitty/) (a Konsole replacement)
-    - [yay](https://github.com/Jguer/yay) for installing from AUR
-    - [Microsoft Edge (beta)](https://www.microsoftedgeinsider.com/en-us/download/beta) (my preferred browser)
+    - [Kitty](https://sw.kovidgoyal.net/kitty/) - a Konsole replacement
+    - [yay](https://github.com/Jguer/yay) - for installing from AUR
+    - [Microsoft Edge (beta)](https://www.microsoftedgeinsider.com/en-us/download/beta) - my preferred browser
+    - [Auto CPU-Freq](https://github.com/AdnanHodzic/auto-cpufreq) - for saving battery life on laptops
 
     ```sh
     # installs oh-my-zsh
@@ -82,6 +83,7 @@ Manjaro is an arch Linux based distro that has become known for being fairly sta
     exec zsh
     # Install MS Edge (beta)
     yay -S microsoft-edge-beta-bin
+    yay -S auto-cpufreq
     ```
 
 - Setup Microsoft Edge Beta which is my browser of choice. I install this pretty much so quickly because it allows me to access my email quickly so that I can then sign into and activate other software.

@@ -4,9 +4,33 @@ Windows Package Manager or winget is the new package manager for Windows that is
 
 ## Winget Commands
 
+The commands below are copied from the `winget -h` command
+
+```
+install    Installs the given package
+show       Shows information about a package
+source     Manage sources of packages
+search     Find and show basic info of packages
+list       Display installed packages
+upgrade    Shows and performs available upgrades
+uninstall  Uninstalls the given package
+hash       Helper to hash installer files
+validate   Validates a manifest file
+settings   Open settings or set administrator settings
+features   Shows the status of experimental features
+export     Exports a list of the installed packages
+import     Installs all the packages in a file
+```
+
 ## Winget install
 
-List of programs to install using Winget
+One of the most useful programs to install is [WingetUI](https://github.com/marticliment/WingetUI) which is a Winget Management GUI (it also can manage Scoop and Chocolatey packages too). To install it use the command below:
+
+```powershell
+winget install --id=SomePythonThings.WingetUIStore  -e # WingetUI a winget GUI
+```
+
+A list of programs to install using Winget are below:
 
 ```sh
 winget install --id QL-Win.QuickLook -e
@@ -37,6 +61,7 @@ winget install --id=Microsoft.dotnet -e
 winget install --id=Min.Min -e
 winget install --id=Mozilla.Firefox -e
 winget install --id=NickeManarin.ScreenToGif
+winget install --id=Nvidia.Broadcast -e
 winget install --id=OBSProject.OBSStudio -e
 winget install --id=Playnite.Playnite -e
 winget install --id=Python.Python -e
@@ -59,7 +84,16 @@ winget install --id=Zoom.Zoom -e
 winget install --id=agalwood.Motrix -e
 winget install --id=twitch.twitch -e
 winget install --id=voidtools.Everything -e
+winget install --id=MiniTool.PartitionWizard.Free  -e # MiniTool Partition for managing partitions
+winget install --id=SoftDeluxe.FreeDownloadManager  -e # Free Download Manager
+winget install --id=Bostrot.WSLManager -e # WSL Manager can also be installed in many other ways
 
+# stuff to evaluate
+
+winget install --id=Microsoft.Sysinternals.Autoruns -e
+winget install --id=Microsoft.Sysinternals.ProcessExplorer -e
+winget install --id=Microsoft.Sysinternals.ProcessMonitor -e
+winget install --id=9P7KNL5RWT25 -e #Sysinternals Suite
 ```
 
 winget install bottom

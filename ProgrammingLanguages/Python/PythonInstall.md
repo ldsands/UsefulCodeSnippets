@@ -90,14 +90,16 @@
     # below is the pld way of installing
     # install poetry on Linux for python management
     curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+    # if you have issues with poetry not being added to PATH you can use the command below
     echo '# poetry path
-    export PATH="$HOME/.local/bin:$PATH"\n' >> ~/.zshrc
+    export PATH="$HOME/.local/bin:$PATH"
+    export PATH=$HOME/.local/bin/poetry:$PATH' >> ~/.bashrc
     mkdir $ZSH_CUSTOM/plugins/poetry
     poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
     # this adds the token for publishing from poetry to PyPI
     export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"
     # and again the persistent version
-    echo 'export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"' >> ~/.zshrc
+    echo 'export POETRY_PYPI_TOKEN_PYPI="pypi-ThisWillBeRandomCharactersForYourToken"' >> ~/.bashrc
     ```
 
 ## Anaconda
@@ -257,7 +259,8 @@ To use venv is a bit more complicated. Launching these environments aren't as st
 - This will create and manage virtual environments using Poetry
 
 ```sh
-pyenv local 3.9.8
+pyenv install 3.9.16
+pyenv local 3.9.16
 TODO:
 ```
 
@@ -267,8 +270,8 @@ More can be found [here](https://python-poetry.org/docs/managing-environments/#:
 - To use pyenv with Poetry you can set the version of python by creating a local version of python file (using pyenv). See below for an example of how to do this.
 
 ```sh
-pyenv install 3.10.8
-pyenv local 3.10.8
+pyenv install 3.10
+pyenv local 3.10
 poetry install
 ```
 
@@ -286,7 +289,7 @@ poetry init
 poetry add pandas
 # activate Poetry's virtual environment
 poetry shell
-# you can also manually activate a Poetry virtualenv more directly (first line Linux second line for Wondows)
+# you can also manually activate a Poetry virtualenv more directly (first line Linux second line for Windows)
 source {path_to_venv}/bin/activate
 {path_to_venv}\Scripts\activate.ps1
 # to deactivate just use the exit or deactivate command
@@ -301,6 +304,13 @@ poetry env list
 poetry env remove /full/path/to/python
 poetry env remove python3.7
 poetry env remove 3.7
+```
+
+- To restrict the version of Python (same syntax for all version requirements) you can do the following:
+
+```toml
+[tool.poetry.dependencies]
+python = "^3.10, <3.11"
 ```
 
 ## Useful Python Install Commands

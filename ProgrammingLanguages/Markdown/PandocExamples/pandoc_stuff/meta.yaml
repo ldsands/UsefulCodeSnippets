@@ -19,7 +19,7 @@ link-citations: yes
 # mainfont: Georgia
 # mainfont: Impact
 # mainfont: Liberation Mono
-# mainfont: Liberation Sans
+mainfont: Liberation Sans
 # mainfont: Liberation Serif
 # mainfont: Noto Sans
 # mainfont: Segoe UI
@@ -28,7 +28,7 @@ link-citations: yes
 # mainfont: Verdana
 pagesize: letter
 toc: true # table of contents
-header-includes: |
+header-includes:
   \usepackage {xcolor}
   \newcommand\BoldBlue[1]{\textbf{\textcolor{blue}{#1}}}
   \newcommand\BoldRed[1]{\textbf{\textcolor{red}{#1}}}

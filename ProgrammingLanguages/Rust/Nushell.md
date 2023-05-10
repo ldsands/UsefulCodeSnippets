@@ -17,7 +17,7 @@ You can find the official documentation for installation [here](https://www.nush
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # update rust using rustup
 rustup update
-# install Nushell using cargo
+# install Nushell using cargo (this is the same command you can use to update Nushell)
 cargo install nu --features=dataframe
 # you will need to restart your shell
 # you can now start Nushell with this command
@@ -42,8 +42,7 @@ code $nu.config-path
 
 ```sh
 # to install starship
-rustup update
-cargo install starship --locked
+curl -sS https://starship.rs/install.sh | sh
 # for starship copy the 4 lines below to the $nu.env-path file
 # for Nushell starting with starship
 # comment out these lines if you see an error with showing "-c" as an "unknown flag" also remove the -c in the init.nu file
@@ -54,13 +53,35 @@ starship init nu | save ~/.cache/starship/init.nu
 # to install zoxide use cargo
 rustup update
 cargo install zoxide --locked
-# for zoxide copy the next two lines lines below to the $nu.env-path file
+# for zoxide copy the next three lines lines below to the $nu.env-path file
 # for Nushell starting with zoxide
-zoxide init nushell | save ~/.zoxide.nu
+# zoxide init nushell | save ~/.zoxide.nu # only use the first time then comment out
+source ~/.zoxide.nu
 ```
 
 - Setting aliases
     - Unfortunately due to the way that Nushell parses things you cannot set aliases conditionally so instead I just copy the corresponding os section to the bottom of the `config.nu` file. Here are the related GitHub Issues: [5068](https://github.com/nushell/nushell/issues/5068) [6048](https://github.com/nushell/nushell/issues/6048) [7203](https://github.com/nushell/nushell/issues/7203)
+
+- There are many options to start Nushell automatically when starting a terminal.
+    - One option is to add the `nu` command to whatever shell is the default (for example for bash put this in the `~/.bashrc` file). Shown below in the code block.
+    - Another option is to use your terminal emulator to launch Nushell. Shown below is what I have done to make this happen with Kitty.
+        - Note: this does seem to create some problems for loading some of the environment variables when they're loaded using other shell configuration files (such as adding python's poetry to the PATH environment variable via the `.bashrc` file). Due to this issue I don't use this option any more.
+    - Another option is to directly change the default shell using the command `chsh -s $ (which nu)`. This changes a file that contains this info (maybe `/etc/passwd`)
+
+```sh
+# using bash
+# start Nushell automatically via bash in the `~/.bashrc` file
+echo "Starting Nushell Automatically. To disable this comment out the line containing 'nu' in ~/.bashrc."
+nu
+# using Kitty option
+startup_session ~/.config/kitty/kitty-start.kitty
+# create a kitty-start.kitty file here: `$HOME/.config/kitty/` you can use the command: `touch /$HOME/.config/kitty/`
+# to start a shell as the default add one of the lines below with out the "# " characters
+# launch nu
+# launch xonsh
+# launch bash
+# launch zsh
+```
 
 ## Useful Nushell Notes
 

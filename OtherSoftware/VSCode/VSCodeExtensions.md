@@ -19,6 +19,7 @@ Extensions are a package of software that adds to the capabilities to VS Code. B
             - [R Extensions](#r-extensions)
             - [Themes](#themes)
         - [Full List](#full-list)
+    - [Extensions I Uninstalled](#extensions-i-uninstalled)
 
 ## Managing Extensions
 
@@ -262,3 +263,42 @@ These are all of the extensions that I use on my installation of VS Code. To get
 - vscodeintellicode
 - wordcounter
 - xml
+
+## Extensions I Uninstalled
+
+This is a list of extensions I removed on 2023-02-19 due to lack of use. I kept the list just in case I want to find them again in the future
+
+- Front Matter CMS
+- Genie Builder
+- GitLens
+- Keyboard Macro Beta
+- Kivy
+- KvLang
+- Live Server
+- MyST-Markdown
+- Office Viewer(Markdown Editor)
+- Tabnine AI Autocompleter for [...]
+- Test Adapter Converter
+- Thunder Client
+- Windows Default Keybindings
+- Bash Beautify
+- Batch Rename
+- Bookmarks
+- Copy Filename
+- Copy-Workspace-Path
+- Direnv
+- Filesize
+- Gitkraken
+- Linux Desktop File Support
+- Markdown Emoji
+- Open Folder Context Menus for VS Code
+- Open in Browser
+- Open in External App
+- Perfect Line Selection
+- Plotly Dash Snippets
+- Pretty Compact Json Prettifier
+- Reg (.reg Win Registry)
+- Run on Save (by Pucelle Commented Out a Line in Settings)
+- Scoped Sort
+- Sort Json Objects
+- Xonsh IDE
