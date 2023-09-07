@@ -240,7 +240,10 @@ non chocolatey utility programs
 - [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../../ProgrammingLanguages/PowerShell/PowerShell.md#powershell-profiles)
 - [Process Hacker](https://processhacker.sourceforge.io/) Is a process manager and viewer that is far more informational than the built in task manager. I use the [nightly builds](https://processhacker.sourceforge.io/nightly.php) since they have not updated the main release in years.
-- [SylphyHornEx](https://github.com/ViRb3/SylphyHornEx/releases) The best Windows virtual desktop manager I've found very capable and customizable
+- [Windows Virtual Desktop Helper](https://github.com/dankrusi/WindowsVirtualDesktopHelper) - "App to help manage Virtual Desktops for Windows 10 and Windows 11"
+    - Just download the zip file from the releases page on their GitHub repo and use that executable (the installer isn't signed so the anti-virus is more likely to trigger)
+    - I used to use [SylphyHornPlusWin11](https://github.com/hwtnb/SylphyHornPlusWin11), however as of August 2023 it doesn't seem to be working
+    - [SylphyHornEx](https://github.com/ViRb3/SylphyHornEx/releases) is what I used before but it is no longer updated (they moved on to SylphyHornPlusWin11)
 - [WindowsTerminalHere](https://github.com/shanselman/WindowsTerminalHere) A small script to allow for use of the new windows terminal from any location by right clicking
 - [iCUE](https://www.corsair.com/us/en/icue) For corsair headset
 - [Glances](https://nicolargo.github.io/glances/) Since sometimes process hacker is targeted by Windows Defender I use bottom or glances. Glances can be installed via python pip (`pip install glances`) or even better via pipx (`pipx install glances`) so that it can remain isolated.
@@ -249,6 +252,9 @@ non chocolatey utility programs
     - This is a free (with paid option with additional features)
     - The paid version has many additional features but I don't think I would likely ever have any use for them
 - [Wintoys](https://apps.microsoft.com/store/detail/wintoys/9P8LTPGCBZXD) - "Set up, debloat, optimize, repair, and tweak your operating system in a simple, time-saving, yet safe approach. Maintain it in a clean, healthy and productive state while having everything you need in one place."
+- [WizTree](https://www.diskanalyzer.com/) - "Find the files and folders using the most space on your hard drive - QUICKLY!"
+    - Use Winget to install this `winget install --id=AntibodySoftware.WizTree  -e`
+    - Use this instead of WinDirStat as it is way faster
 <!-- - [Pomotroid](https://splode.github.io/pomotroid/) this is a simple but customizable Pomodoro timer I use it pretty regularly -->
 <!-- - [Stretchly](https://hovancik.net/stretchly/) A relatively simple but customization work/break timer can be installed using Winget -->
 

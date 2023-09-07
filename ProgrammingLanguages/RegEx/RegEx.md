@@ -11,6 +11,7 @@ A collection of Regex code that I've used on many occasions
     - [New line followed by wording (not two blank line breaks)](#new-line-followed-by-wording-not-two-blank-line-breaks)
     - [Remove new lines in-between a split sentence](#remove-new-lines-in-between-a-split-sentence)
     - [Match everything in between to matches](#match-everything-in-between-to-matches)
+    - [Match With Any Number of Words in Any Order](#match-with-any-number-of-words-in-any-order)
 
 ## Useful sites
 
@@ -164,4 +165,19 @@ example text
 
 ```text
 https://www.lds.org/study/manual/general-handbook/title-page?lang=eng"
+```
+
+## Match With Any Number of Words in Any Order
+
+This will return a match (for example when you use dta.col_name.str.contains("RegEx statement", regex=True, case=False) in a python pandas dataframe) when a given string contains all three words in any order with any amount of characters between them. The first RegEx statement below means: match if the string contains Reprehenderit AND incididunt AND Ullamco. The way I've used it is to get True or False return while using python. The second line of RegEx shown below is an example of how you can also use normal RegEx syntax to make the query more complicated (like checking for Reprehenderit OR fugiat AND incididunt AND Ullamco). You can get whole words using `\b` in the statement you can find more about there [here in a StackOverflow post](https://stackoverflow.com/a/74180275/8396684).
+
+```regex
+(?=.*Reprehenderit)(?=.*incididunt)(?=.*Ullamco)
+(?=.*(Reprehenderit|fugiat))(?=.*incididunt)(?=.*Ullamco)
+```
+
+example text
+
+```text
+Reprehenderit qui fugiat excepteur fugiat non aliqua incididunt quis fugiat adipisicing. Ullamco mollit aliqua aliquip do aliqua. Lorem nisi id et velit in incididunt commodo velit incididunt reprehenderit aliquip mollit. Mollit sunt laborum esse sint. Excepteur excepteur fugiat nulla cupidatat quis. Quis sunt sint veniam laborum consectetur officia Lorem aute dolore est. Sit sit labore deserunt excepteur deserunt amet minim ex.
 ```

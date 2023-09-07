@@ -11,6 +11,7 @@
         - [Conda Environments](#conda-environments)
         - [venv environments](#venv-environments)
         - [Poetry Environments](#poetry-environments)
+        - [Rye Environments](#rye-environments)
     - [Useful Python Install Commands](#useful-python-install-commands)
 
 ## Pyenv on Windows
@@ -179,6 +180,8 @@ This is for shen the add to path doesn't work for the chocolatey install
 
 - [Poetry](https://python-poetry.org/) is another option that looks a lot like conda but for "normal" python. It can deal with different versions of python as well though I liked using pyenv or pyflow for that better than Poetry (or pyenv-win for Windows which can be installed using chocolatey `choco install pyenv-win`, I haven't experimented with these yet though).
 
+- [Rye](https://rye-up.com/) is another option that looks a lot like Poetry but also manages python versions. It also makes all virtual environments use python that has been pre-compiled then downloaded so that rye can be as portable as possible. [More detailed can be found here](#rye-environments).
+
 ### [Pipenv Environments](https://docs.pipenv.org/)
 
 - This will create and manage virtual environments and adds and removes packages from a lock file and when used with pyenv it can install the version of python required for a project. Below are some lines of code that can be reused.
@@ -311,6 +314,36 @@ poetry env remove 3.7
 ```toml
 [tool.poetry.dependencies]
 python = "^3.10, <3.11"
+```
+
+### Rye Environments
+
+- Installation
+    - Note that some linux distros may need additional package installation. For Arch you'll need `libxcrypt-compat` install using `yay` or something similar. [The related issue can be found on GitHub](https://github.com/mitsuhiko/rye/issues/15).
+
+```sh
+# on linux
+# run installation script (should run in bash)
+curl -sSf https://rye-up.com/get | bash
+# add shims to ~/.bashrc
+echo '
+# add rye shims to path
+source "$HOME/.rye/env"
+'  >> ~/.bashrc
+# verify that rye is installed
+rye
+```
+
+- Below is example code to start a new project and get it going
+
+```sh
+# create new project
+rye init my-project
+cd my-project
+# set python version (create .python-version file)
+rye pin 3.10
+# start first sync and create virtual environment
+rye sync
 ```
 
 ## Useful Python Install Commands

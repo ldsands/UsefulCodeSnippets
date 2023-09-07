@@ -20,7 +20,7 @@ The changelog is located [here](https://www.tracker-software.com/product/pdf-xch
         - Select: "Add New License Key..." paste in the serial key which can be found [here](https://www.tracker-software.com/myaccount) (after logging in)
     - Speech:
         - Disable: "Use Default Voice"
-        - Select: "Vocalizer Expressive serena [...]" (if installed I prchased this from [this location](https://sites.fastspring.com/nextup/product/nuance?store=parameters))
+        - Select: "Vocalizer Expressive serena [...]" (if installed I purchased this from [this location](https://sites.fastspring.com/nextup/product/nuance?store=parameters))
         - Disable: "Use Default Speech Attributes"
         - Select 10: "Rate"
     - Tools tab:

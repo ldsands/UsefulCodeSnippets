@@ -19,6 +19,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 # install Nushell using cargo (this is the same command you can use to update Nushell)
 cargo install nu --features=dataframe
+# for debian based systems you may need to install the packages below
+sudo apt install pkg-config libssl-dev
+# you may need to install a c compiler WSL Ubuntu doesn't come with one (do this if you see an error saying "error: linker `cc` not found")
+sudo apt install build-essential
 # you will need to restart your shell
 # you can now start Nushell with this command
 nu
@@ -66,12 +70,19 @@ source ~/.zoxide.nu
     - One option is to add the `nu` command to whatever shell is the default (for example for bash put this in the `~/.bashrc` file). Shown below in the code block.
     - Another option is to use your terminal emulator to launch Nushell. Shown below is what I have done to make this happen with Kitty.
         - Note: this does seem to create some problems for loading some of the environment variables when they're loaded using other shell configuration files (such as adding python's poetry to the PATH environment variable via the `.bashrc` file). Due to this issue I don't use this option any more.
-    - Another option is to directly change the default shell using the command `chsh -s $ (which nu)`. This changes a file that contains this info (maybe `/etc/passwd`)
+    - Another option is to directly change the default shell using the command `chsh -s $(which nu)`.
+        - For some distros you'll need to add the nu to the file `/etc/shells`. You add the result of the command `which nu`.
+            - If you installed Nushell using cargo it should be `/home/$USER/.cargo/bin/nu`
+        - This changes the file `/etc/passwd`
+        - To change it back to bash you can use this command `chsh -s $(which bash)` (you'll have to enter this command in bash).
+        - Be aware that if you set Nushell as the default shell using this method it can mess with some of the environment variables that are set in `~/.bashrc`.
+            - For example, poetry due to an interaction with pyenv will not load properly.
 
 ```sh
 # using bash
 # start Nushell automatically via bash in the `~/.bashrc` file
 echo "Starting Nushell Automatically. To disable this comment out the line containing 'nu' in ~/.bashrc."
+echo "To open ~/.bashrc in VSCode you can run \`bash_config\`"
 nu
 # using Kitty option
 startup_session ~/.config/kitty/kitty-start.kitty
