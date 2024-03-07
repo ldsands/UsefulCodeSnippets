@@ -13,12 +13,21 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     - [Git](https://git-scm.com) - "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."
 
     ```sh
-    # git should be preinstalled on EndeavourOS so you won't need to install it
+    # git should be preinstalled on EndeavourOS so you wont need to install it
     # setup git to not auto end filenames (can cause issues when opening a repo that has been opened on Windows)
     git config --global core.autocrlf input
     # set up git to use your account (optional)
     git config --global user.name "user_name"
     git config --global user.email "email@example.com"
+    git config --global credential.helper 'store --file ~/.my-credentials'
+    # set up git to use your account (optional, make sure that you use the "{ID}+{username}@users.noreply.github.com" email format)
+    git config --global user.name "user_name"
+    git config --global user.email "email@example.com"
+    # this makes it so you dont have to sign in every time you do anything with Github
+    # if you still have issues you can look [here](https://stackoverflow.com/a/51097104) for some helpful tips
+    # you will need to push (`git push`) a commit via terminal for this to work
+    # you will need to enter your Github login and password (you must use a personal access token instead of your password)
+    git config --global credential.helper 'store --file ~/.my-credentials'
     ```
 
 - Install the following command line stuff and several programs that I regularly use
