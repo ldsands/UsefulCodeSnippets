@@ -32,6 +32,7 @@ nu
 - I also like to copy the [Github repo nu_scripts](https://github.com/nushell/nu_scripts) into the directory `~/.config/` in order to access some of the useful scripts that others have created for Nushell. To do this use the code below
 - You can then open the config file in VSCode using this command `code $nu.config-path`
     - I then use my personal Nushell config file gist to paste in my config file
+        - Some of those instructions are below
 
 ```sh
 # go to the `~/.config/` directory
@@ -57,10 +58,21 @@ starship init nu | save ~/.cache/starship/init.nu
 # to install zoxide use cargo
 rustup update
 cargo install zoxide --locked
+# if you need to install straight from the git (for an unreleased fix or feature) you can install it that way using the command below but you'll add some additional configurations to get it to work
+cargo install zoxide --git https://ajeetdsouza/zoxide
 # for zoxide copy the next three lines lines below to the $nu.env-path file
 # for Nushell starting with zoxide
 # zoxide init nushell | save ~/.zoxide.nu # only use the first time then comment out
 source ~/.zoxide.nu
+```
+
+- to update the 3rd party extensions shown above you can use the code below
+
+```sh
+# update starship
+curl -sS https://starship.rs/install.sh | sh
+# update zoxide
+cargo install zoxide
 ```
 
 - Setting aliases

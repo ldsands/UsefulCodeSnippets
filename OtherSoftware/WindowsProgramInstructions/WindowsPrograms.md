@@ -151,6 +151,8 @@ Below are Windows programs that are installed using chocolatey or winget
 - [QuickLook](https://github.com/QL-Win/QuickLook) I install this using Chocolatey
     - This is used to easily and quickly preview files in windows explorer using the `spacebar` when having a file selected
     - I also install the epub and MS office previewers found on [this page](https://github.com/QL-Win/QuickLook/wiki/Available-Plugins)
+- [qView](https://interversehq.com/qview/) - "Practical and minimal image viewer" - Cross-Platform - I install via Winget
+    - does pretty much everything including `svg` and `webp` which many others don't show in one application with the normal ones (e.g. png, jpeg, etc.)
 - [Hwmonitor](https://www.cpuid.com/softwares/hwmonitor.html) I install this using Chocolatey
     - I don't use this much either but it is very good and showing hardware resource usage, its useful for tracking down hardware problems or if you happen to be using a ton of CPU on something it can help you track down whats using it
 - [VLC](https://www.videolan.org/vlc/) I install this using Chocolatey
@@ -232,6 +234,8 @@ nativefier --name "MS Teams" "https://teams.microsoft.com/" --internal-urls ".*(
 non chocolatey utility programs
 
 - [Focus To-Do](https://www.focustodo.cn/) This is a to-do focused Pomodoro timer. I don't really use the to-do aspect of it but I like the timer aspect quite a bit
+- [FreeFileSync](https://freefilesync.org/) - "FreeFileSync is a folder comparison and synchronization software that creates and manages backup copies of all your important files."
+    - For backing up file locally to other drives, also available on Linux
 - [Gephi](https://gephi.org/) this is network visualization software that is open source. This can be installed using winget: `winget install --id=Gephi.Gephi -e`. To install it you must download it along with the java 8 sdk and apache maven. The code to install those two are as follows: `jdk8` and `choco install maven`
 - [Glances]
 - [Kite](https://kite.com/) this is a utility to help with python autocompletion

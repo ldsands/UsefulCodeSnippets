@@ -113,3 +113,5 @@ Note: It may not be a bad idea to configure all settings and Add-ons before you 
 - [Citation Picker for Zotero (for VSCode)](https://marketplace.visualstudio.com/items?itemName=mblode.zotero)
     - You must have Better BibTeX installed to use this
     - This allows you to use the same citation selector that you can use in MS Word or LibreOffice Word in VSCode
+- You can use Zotero in OnlyOffice by going to the "Plugins" tab and entering an API key
+    - Make sure you save this API key somewhere you will not lose it, you will only be shown the API key once

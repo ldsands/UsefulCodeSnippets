@@ -525,39 +525,55 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
 
 - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
 
-- SpeedCrunch - A high-precision scientific calculator
-    - Installation command `flatpak install flathub org.speedcrunch.SpeedCrunch -y`
-- Telegram Desktop messenger
-    - Installation command `flatpak install flathub org.telegram.desktop -y`
-- PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
-    - Installation command `flatpak install flathub io.github.peazip.PeaZip -y`
-- Spotify - Online music streaming service
-    - Installation command `flatpak install flathub com.spotify.Client -y`
-- Discord - Messaging, Voice, and Video Client
-    - Installation command `flatpak install flathub com.discordapp.Discord -y`
-- Chromium Web Browser - The web browser from Chromium project
-    - Installation command `flatpak install flathub org.chromium.Chromium -y`
 - AppImage Pool - A simple, modern AppImageHub Client.
     - Installation command `flatpak install flathub io.github.prateekmedia.appimagepool -y`
-- Inkscape - Vector Graphics Editor
-    - Installation command `flatpak install flathub org.inkscape.Inkscape -y`
 - Caprine - Elegant Facebook Messenger desktop app
     - Installation command `flatpak install flathub com.sindresorhus.Caprine`
-- Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
-    - Installation command `flatpak install flathub com.todoist.Todoist -y`
-- Zotero - Collect, organize, cite, and share research
-    - Installation command `flatpak install flathub org.zotero.Zotero -y`
-- Evolution - Manage your email, contacts and schedule
+- Chromium Web Browser - The web browser from Chromium project
+    - Installation command `flatpak install flathub org.chromium.Chromium -y`
+- Discord - Messaging, Voice, and Video Client
+    - Installation command `flatpak install flathub com.discordapp.Discord -y`
+- [Easy Effects](https://github.com/wwmm/easyeffects) - "Limiter, compressor, convolver, equalizer and auto volume and many other plugins for PipeWire applications"
     - Installation command `flatpak install flathub org.gnome.Evolution -y`
+    - To get a loudness equalization effect you can use [this site](https://www.frackstudio.com/xeq/tips-tricks-xeq-ten-bands/) go to the heading labeled "5. Limiter" for a good explanation. I've created some instructions to implement this using Easy Effects below
+        - To get a loudness equalization effect you can go to the "Output" tab then "Add Effect" then select "Compressor"
+        - I leave everything at default (for now I haven't had a chance to do much testing as of 2023-12-03)
+- Evolution - Manage your email, contacts and schedule
+    - I haven't used this one in a while, I think Thunderbird is probably the better option as of 2023-11-27
+    - Installation command `flatpak install flathub org.gnome.Evolution -y`
+- Flatseal - "Manage Flatpak permissions"
+    - Installation command `flatpak install flathub com.github.tchx84.Flatseal`
 - [Gabut Download Manager](https://flathub.org/apps/details/com.github.gabutakut.gabutdm) - "Simple and Faster Download Manager"
     - `flatpak install flathub com.github.gabutakut.gabutdm`
-- [Weather](https://invent.kde.org/plasma-mobile/kweather) - View real-time weather forecasts and other information
-    - Installation command `flatpak install flathub org.kde.kweather`
-- TextSnatcher - Snatch Text with just a Drag
-    - Installation command `flatpak install flathub com.github.rajsolai.textsnatcher`
-- [Zoom](https://flathub.org/apps/details/us.zoom.Zoom) - "Video Conferencing, Web Conferencing, Webinars, Screen Sharing"
-    - Installation command `flatpak install flathub us.zoom.Zoom`
-    - Some settings using Flatseal would be useful for staying logged in and keeping configurations. [A blog that talks about this can be found here](https://www.mayrhofer.eu.org/post/zoom-flatpak-sandboxing/).
+- Inkscape - Vector Graphics Editor
+    - Krita is probably better but this one is a bit more simple for better and for worse
+    - Installation command `flatpak install flathub org.inkscape.Inkscape -y`
+- Krita
+    - Installation command `flatpak install flathub org.kde.krita -y`
+- LibreOffice - Office Applications lots of features for an almost perfect replacement for MS Office
+    - Installation command `flatpak install flathub org.libreoffice.LibreOffice -y`
+    - To use LanguageTool in LibreOffice you need to use their API ([instructions can be found at this link](https://languagetool.org/insights/post/product-libreoffice/#how-to-enable-languagetool-on-libreoffice))
+- OBS Studio - "Live streaming and video recording software"
+    - Installation command `flatpak install flathub com.obsproject.Studio`
+        - I used XSHM for screen capture to work (pipewire is the other option but it must require something more to work)
+    - [OBS Background Removal](https://github.com/occ-ai/obs-backgroundremoval) - "An OBS plugin for removing background in portrait images (video), making it easy to replace the background when recording or streaming."
+        - Installation command `flatpak install com.obsproject.Studio.Plugin.BackgroundRemoval`
+- Okular - Lightweight pdf viewer
+    - Installation command `flatpak install flathub org.kde.okular`
+- OnlyOffice - Office Applications I like it better than LibreOffice for slides and word documents
+    - Installation command `flatpak install flathub org.onlyoffice.desktopeditors`
+- PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
+    - Installation command `flatpak install flathub io.github.peazip.PeaZip -y`
+- [Piper](https://github.com/libratbag/piper/wiki) - "Gaming mouse configuration utility" (for managing my Logitech mouse peripherals in Linux)
+    - Installation command `flatpak install flathub org.freedesktop.Piper -y`
+    - As of 2023-11-29 they have not had an official release since 0.7 which was was in 2022-06 this means that the flakpak version is outdated
+        - probably should install this using the git e.g. use AUR (`yay -S piper-git`) or [build it](https://github.com/libratbag/piper/wiki/Installation#building-from-source)
+- SpeedCrunch - A high-precision scientific calculator
+    - Installation command `flatpak install flathub org.speedcrunch.SpeedCrunch -y`
+- Spotify - Online music streaming service
+    - Installation command `flatpak install flathub com.spotify.Client -y`
+- System Monitoring Center - Multi-featured system monitor
+    - Installation command `flatpak install flathub io.github.hakandundar34coding.system-monitoring-center`
 - System Monitors (GPU, System)
     - [GreenWithEnvy](https://gitlab.com/leinardi/gwe) - System utility designed to provide information, control the fans and overclock your NVIDIA card
         - Installation command `flatpak install flathub com.leinardi.gwe`
@@ -566,6 +582,23 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
         - Installation command `flatpak install flathub io.github.congard.qnvsm`
     - [CoreStats](https://gitlab.com/cubocore/coreapps/corestats) "A system resource viewer for C Suite." Very simple but still useful
         - Installation command `flatpak install flathub org.cubocore.CoreStats`
+- TextSnatcher - Snatch Text with just a Drag
+    - Installation command `flatpak install flathub com.github.rajsolai.textsnatcher`
+- Thunderbird - Email
+    - Installation command `flatpak install flathub org.mozilla.Thunderbird`
+- Telegram Desktop messenger
+    - Installation command `flatpak install flathub org.telegram.desktop -y`
+- Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
+    - Installation command `flatpak install flathub com.todoist.Todoist -y`
+- Warehouse - A gui for managing installed flatpak applications (particularly good for removing leftover data)
+    - Installation command `https://flathub.org/apps/io.github.flattool.Warehouse`
+- [Weather](https://invent.kde.org/plasma-mobile/kweather) - View real-time weather forecasts and other information
+    - Installation command `flatpak install flathub org.kde.kweather`
+- [Zoom](https://flathub.org/apps/details/us.zoom.Zoom) - "Video Conferencing, Web Conferencing, Webinars, Screen Sharing"
+    - Installation command `flatpak install flathub us.zoom.Zoom`
+    - Some settings using Flatseal would be useful for staying logged in and keeping configurations. [A blog that talks about this can be found here](https://www.mayrhofer.eu.org/post/zoom-flatpak-sandboxing/).
+- Zotero - Collect, organize, cite, and share research
+    - Installation command `flatpak install flathub org.zotero.Zotero -y`
 
 ### AppImage Applications
 
@@ -607,6 +640,8 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
         - I usually name these bottles in this format: PDFXEdit-Purpose-Soda-7.0-8
             - "Purpose" is domain which I use it for
                 - For example, I usually have one called "Random" for whatever random PDF I may open and work on. I also usually have one for any research projects that I'm actively writing so that I don't have to worry about losing an open set of PDFs, or mixing with other projects so that there are too many PDFs open at one time.
+            - If you want you can leave off the version of soda you used to create the bottle since you can update the runner used the bottle if you do the following
+                - Under "Options", click on "Settings", then under "Components" click on the box labeled "Runner"
         - Under "Options", click on "Settings", then under "Display" click on "Advanced Display Settings"
             - Disable "Window Manager Decorations" (this removes the bar at the top of the window that Linux/KDE puts there when the program is maximized)
         - Under "Options", click on "Dependencies"

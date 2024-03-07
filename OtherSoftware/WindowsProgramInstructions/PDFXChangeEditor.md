@@ -72,3 +72,19 @@ The changelog is located [here](https://www.tracker-software.com/product/pdf-xch
 ### Random Tips
 
 - Using the `alt+left` will take you to the last place you clicked or searched in the document and the `alt+right` will then take you forward again
+
+### Conversion Tips
+
+- When converting other formats to PDF the best I've found is [Calibre](https://calibre-ebook.com/).
+    - To get the best TTS output select `txt` and use the applicable options below (most will apply)
+    - Some of the settings I find helpful for converting (especially from epub) are below:
+        - Under the "Look & Feel" tab
+            - Under the "Fonts" tab
+                - Make sure you unselect "Keep ligatures"
+            - Under the "Text" tab
+                - Select "Smarten punctuation"
+                - Select Transliterate Unicode characters to ASCII
+        - Under the "Heuristic processing"
+            - Select "Enable heuristic processing"
+                - Under "Unwap lines" you may want to increase the "Line un-wrap factor:" number to 1.00 if you're having issues having line breaks within paragraphs
+                    - A helpful post about this can be found [here](https://www.reddit.com/r/ebooks/comments/1hst5i/comment/caxrrqu/?utm_source=share&utm_medium=web2x&context=3).

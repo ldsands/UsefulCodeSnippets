@@ -41,12 +41,12 @@ winget install --id=Amazon.Kindle -e
 winget install --id=Bitwarden.Bitwarden -e
 winget install --id=ChristianSchenk.MiKTeX -e
 winget install --id=Discord.Discord -e
-winget install --id=DuongDieuPhap.ImageGlass -e
 winget install --id=EpicGames.EpicGamesLauncher -e
 winget install --id=File-New-Project.EarTrumpet -e
 winget install --id=GOG.Galaxy -e
 winget install --id=Gephi.Gephi -e
 winget install --id=Julialang.Julia -e
+winget install --id=jurplel.qView  -e # simple image viewer that is cross-platform
 winget install --id=KDE.KDEConnect -e
 winget install --id=LINQPad.LINQPad -e
 winget install --id=Lexikos.AutoHotkey -e
@@ -82,11 +82,11 @@ winget install --id=VideoLAN.VLC -e
 winget install --id=Zoom.Zoom -e
 winget install --id=agalwood.Motrix -e
 winget install --id=twitch.twitch -e
-winget install --id=voidtools.Everything -e
 winget install --id=MiniTool.PartitionWizard.Free  -e # MiniTool Partition for managing partitions
 winget install --id=SoftDeluxe.FreeDownloadManager  -e # Free Download Manager
 winget install --id=Bostrot.WSLManager -e # WSL Manager can also be installed in many other ways
 winget install --id=AntibodySoftware.WizTree  -e # like WinDirStat but way faster
+winget install --id=AntibodySoftware.WizFile  -e # like everything but has some more features (except networked drives)
 
 # stuff to evaluate
 
@@ -96,7 +96,9 @@ winget install --id=Microsoft.Sysinternals.ProcessMonitor -e
 winget install --id=9P7KNL5RWT25 -e #Sysinternals Suite
 
 # old programs that I don't use anymore
+winget install --id=voidtools.Everything -e # use WizFile instead it has some more features (except networked drives)
 winget install --id=WinDirStat.WinDirStat -e # use WizTree instead
+winget install --id=DuongDieuPhap.ImageGlass -e # image viewer (doesn't seem to update via winget as easily as qView)
 ```
 
 winget install bottom

@@ -31,7 +31,10 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     - [Microsoft Edge (Beta)](https://www.microsoftedgeinsider.com/en-us/download/beta) (my preferred web browser)
     - [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) (my preferred text editor and IDE)
         - I also install the [VSCode Projects Runner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
+            - As of at least 2023-10-27 using `yay -S krunner-vscodeprojects-git` does not work so follow the instructions below
+                - For this you may need to build this manually. To do so you'll need to install some dependencies `yay -S cmake ecm-tools extra-cmake-modules`. You then might be able to uninstall those dependencies if they weren't installed anymore.
         - I sometimes also install the [VSCode Workspaces Runner for KRunner](https://github.com/Merrit/vscode-runner) plugin for KRunner which allows you to open VSCode workspaces directly from KRunner. Unlike VSCode Project Runner this KRunner plugin shows recent workspaces opened in VSCode. It also does not require a VSCode extension to work.
+            - As of at least 2023-10-27 this aur entry (installed using `yay -S plasma-runner-vscode-git`) has been orphaned you'll need to figure out how to install it manually. There are instructions on the GitHub website.
 
     ```sh
     yay -S kitty kitty-shell-integration kitty-terminfo
@@ -66,9 +69,6 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     yay -S pcloud-drive
     yay -S microsoft-edge-beta-bin
     yay -S visual-studio-code-bin
-    yay -S krunner-vscodeprojects-git
-    # if you want to install the VSCode Workspaces Runner for KRunner
-    yay -S plasma-runner-vscode-git
     ```
 
 - Install fonts (mostly for VSCode)
@@ -163,11 +163,21 @@ export PATH="$HOME/.local/bin:$PATH"\n' >> ~/.bashrc
 flatpak update
 # show the applications that were explicitly installed (not including runtimes installed as dependencies)
 flatpak list --app
-flatpak install flathub com.discordapp.Discord # Discord
-flatpak install flathub com.github.tchx84.Flatseal # flatseal for managing flatpak permissions
 flatpak install flathub com.usebottles.bottles # bottles (for Windows applications)
+flatpak install flathub com.google.Chrome # web browser
+flatpak install flathub com.discordapp.Discord # Discord
+flatpak install flathub com.microsoft.EdgeDev # web browser
+flatpak install flathub com.github.tchx84.Flatseal # flatseal for managing flatpak permissions
+flatpak install flathub io.enpass.Enpass # for passwords NOTE: it will not work with browsers
 flatpak install flathub io.github.shiftey.Desktop # github desktop
+flatpak install flathub org.libreoffice.LibreOffice # MS Office replacement
+flatpak install flathub org.kde.okular # lightweight pdf viewer NOTE: should remove the pacman version first
+flatpak install flathub com.obsproject.Studio # OBS Studio for virtual meetings/streaming/recording
+flatpak install com.obsproject.Studio.Plugin.BackgroundRemoval # Background Removal for OBS
+flatpak install flathub org.onlyoffice.desktopeditors # OnlyOffice better for docx and pptx files
+flatpak install flathub io.github.hakandundar34coding.system-monitoring-center # system resource monitor
 flatpak install flathub org.telegram.desktop # Telegram Desktop
+flatpak install flathub io.github.flattool.Warehouse # Warehouse for flakpak program management
 flatpak install flathub org.zotero.Zotero # Zotero
 ```
 
@@ -252,7 +262,9 @@ System Settings to change. Open "System Settings" then you can search or find th
         - Deselect "Kate Sessions"
         - Deselect "Konsole Profiles"
         - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
+            - This may not work so instead go tho the projects GitHub pages and follow the instructions found there
         - Click on "Get New Plugins"; search for "VSCode Workspaces Runner" then install that plugin
+            - This may not work so instead go tho the projects GitHub pages and follow the instructions found there
 - Under the "Personalization" category
     - "Notifications"
         - Next to "Low priority notifications" enable "Show in history"
@@ -316,3 +328,18 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
                 - Select "Open Kitty Here" ([the GitHub repo for this service](https://github.com/raphtlw/open-kitty-here), [the KDE Store link](https://store.kde.org/p/1378539))
                 - Click on the button (in the upper right) labeled "Install"
                 - Deselect "Run In Konsole"
+- Gwenview (an Image Viewer)
+    - Click on the hamburger menu near the upper right hand corner and mouse over "Configure"
+        - Click on "Configure Keyboard Shortcuts"
+            - Next to "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
+            - Under "File" next to "Quit" click under "Alternate" next to "Custom:" select the button then enter `ctrl+w`; select "OK" at the bottom of the dialogue box
+- Okular (a document viewer)
+    - [Note that there is a bug](https://bugs.kde.org/show_bug.cgi?id=443404) that can impact scrolling using a scroll wheel when not in continuous mode
+    - In the menu bar click on "Settings"
+        - Click on "Configure Keyboard Shortcuts..."
+            - Next to "Open Containing Folder" select "Custom" enter the Keyboard shortcut of `ctrl+e, ctrl+e`
+            - Under "File" next to "Quit" click under "Alternate" next to "Custom:" select the button then enter `ctrl+w`; select "OK" at the bottom of the dialogue box (a pop up will ask if you want to reassign click on "Reassign")
+        - Click on "Configure Okular..."
+            - In the "General" tab
+                - Uncheck "Open in continuous mode by default"
+                - Next to "Default zoom:" select "Fit Page"
