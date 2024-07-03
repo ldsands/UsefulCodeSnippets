@@ -47,5 +47,6 @@ Some of the settings I use in VS Code with short explanations
     {
         "editor.fontFamily": "FiraCode NF",
         "editor.fontFamily": "CaskaydiaCove NF",
+        "editor.fontFamily": "Cascadia Code NF",
     }
     ```

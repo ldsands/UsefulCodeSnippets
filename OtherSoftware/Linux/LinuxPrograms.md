@@ -1,7 +1,7 @@
 # Linux Programs
 
 - [Linux Programs](#linux-programs)
-    - [Manjaro/Arch Based Distros](#manjaroarch-based-distros)
+    - [Arch Based Distros](#arch-based-distros)
         - [Wine (On Manjaro)](#wine-on-manjaro)
         - [Waydroid (Android on Linux)](#waydroid-android-on-linux)
         - [OBS Plugins](#obs-plugins)
@@ -20,10 +20,13 @@
         - [Other Distro Agnostic Applications](#other-distro-agnostic-applications)
     - [Linux (Distro Agnostic) Settings](#linux-distro-agnostic-settings)
 
-## Manjaro/Arch Based Distros
+## Arch Based Distros
 
 - I use yay rather than pacman to install AUR packages
     - A useful command that can tell you information about a package that is installed. For example it is useful if you want to know what it depends on or what depends on that package. `yay -Qi ceph-libs` In this example ceph-libs is the package name.
+- For configuring Logitech Devices you can use [Solaar](https://pwr-solaar.github.io/Solaar/)
+    - You should install this from extra on the Arch repository
+    - There is a Flatpak application that appears to work but I cannot get it to recognize devices (I suspect some combination of Arch, bluetooth and Flatpak is causing the issue)
 
 ### Wine (On Manjaro)
 
@@ -621,7 +624,12 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
     - To add a program to the Library tab enter the bottle of the application you wish to add
         - Under "Programs" select the hamburger menu next to the application you wish to add then select "Add to Library"
 - Desktop Entries
-    - Adding a desktop entry allows for a program to be visible to the Linux Desktop Environment (e.g. KDE) so that you can for example search for the program in the application laucher, or pin a program to the taskbar
+    - Adding a desktop entry allows for a program to be visible to the Linux Desktop Environment (e.g. KDE) so that you can for example search for the program in the application launcher, or pin a program to the taskbar
+        - You'll need Flatseal to do this using these instructions
+            - In Flatseal select Bottles then find the "Other Files" box
+                - Click on the button on the right side
+                - In the textbox that appears enter "/var/home/$USER/.local/share/applications"
+        - You can also use this command in the terminal instead of using Flatseal: `flatpak override com.usebottles.bottles --user --filesystem=xdg-data/applications`
     - Under "Programs" select the hamburger menu next to the application you wish to add then select "Add Desktop Entry"
 - Applications that I install in Bottles
     - Bottle notes for [Balabolka](http://balabolka.site/balabolka.htm)

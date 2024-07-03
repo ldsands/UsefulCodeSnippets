@@ -8,5 +8,6 @@
 ## Fonts I Use
 
 - coding fonts
-    - ["CascadiaCode.zip"](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip)
+    - [CascadiaCode-{version}.zip](https://github.com/microsoft/cascadia-code/releases) (check for latest version in the releases page)
+        - Old version, they released a new NerdFont version in 2024 ["CascadiaCode.zip"](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip)
     - ["FiraCode.zip"](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip)

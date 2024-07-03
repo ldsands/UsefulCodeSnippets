@@ -98,7 +98,8 @@ echo "To open ~/.bashrc in VSCode you can run \`bash_config\`"
 nu
 # using Kitty option
 startup_session ~/.config/kitty/kitty-start.kitty
-# create a kitty-start.kitty file here: `$HOME/.config/kitty/` you can use the command: `touch /$HOME/.config/kitty/`
+# create a `kitty-start.kitty` file here: `$HOME/.config/kitty/` you can use the command: `touch /$HOME/.config/kitty/`
+# create a `kitty-start.kitty` file here: `$HOME/.config/kitty/` you can use the command: `touch /$HOME/.config/kitty/kitty-start.kitty`
 # to start a shell as the default add one of the lines below with out the "# " characters
 # launch nu
 # launch xonsh

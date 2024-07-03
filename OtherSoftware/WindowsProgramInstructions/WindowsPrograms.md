@@ -128,6 +128,15 @@ Below are Windows programs that are installed using chocolatey or winget
     - My favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
 - CascadiaCode Nerd Font I install this using Chocolatey
     - Another excellent font for coding that included ligatures and glyphs it can be found on GitHub [here](https://github.com/ryanoasis/nerd-fonts/tree/606db3752d4e6d31a2f47258ce86f7bb07511521/patched-fonts/CascadiaCode)
+- [Ollama](https://github.com/ollama/ollama) and [Open WebUI](https://github.com/open-webui/open-webui)
+    - Ollama is run in the terminal and is very easy to use
+    - Open WebUI ideally uses docker to use Ollama (can use other LLM managers as well)
+        - To use docker install Docker Desktop (using winget `winget install --id=Docker.DockerDesktop  -e`)
+        - You can run it with a GPU or just on CPU
+            - Installation of both Open WebUI and Ollama into one docker container (I installed docker desktop which requires you to start up docker before running the installation commands)
+                - with GPU: `docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
+                - CPU only: `docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
+            - You can use the play and stop button in Docker Desktop to launch and exit the container
 - [PeaZip](https://peazip.github.io/) I install this using Chocolatey
     - a good alternative to 7-zip that includes the zstandard codec
 - [R Studio] I install this using Chocolatey

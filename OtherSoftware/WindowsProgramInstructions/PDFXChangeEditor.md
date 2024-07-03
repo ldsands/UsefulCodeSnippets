@@ -82,7 +82,7 @@ The changelog is located [here](https://www.tracker-software.com/product/pdf-xch
             - Under the "Fonts" tab
                 - Make sure you unselect "Keep ligatures"
             - Under the "Text" tab
-                - Select "Smarten punctuation"
+                - Select "Unsmarten punctuation"
                 - Select Transliterate Unicode characters to ASCII
         - Under the "Heuristic processing"
             - Select "Enable heuristic processing"

@@ -59,6 +59,7 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     background_opacity 0.6
     :     font_family      FiraCode Nerd Font Mono
     # :     font_family      CaskaydiaCove Nerd Font
+    # :     font_family      Cascadia Code NF
     startup_session ~/.config/kitty/kitty-start.kitty
     # create a kitty-start.kitty file here: `$HOME/.config/kitty/` you can use the command: `touch /$HOME/.config/kitty/`
     # to start a shell as the default add one of the lines below with out the "# " characters
@@ -84,6 +85,8 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
 
     ```sh
     yay -S zip
+    # the CascadiaCode-2404.23.zip needs to be tested to see if it works
+    mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "CascadiaCode-2404.23.zip" https://github.com/microsoft/cascadia-code/releases/download/v2404.23/CascadiaCode-2404.23.zip && unzip CascadiaCode-2404.23.zip && sudo fc-cache -f -v
     mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "CascadiaCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip && unzip CascadiaCode.zip && sudo fc-cache -f -v
     mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v
     ```
@@ -298,6 +301,9 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
             - From the "Panel icon spacing:" drop down box select "Small"
         - "Keyboard Shortcuts" Tab
             - Click on the button that says "None" and enter the keyboard shortcut `meta+a`
+        - "Entries" Tab
+            - Search for "notifications"
+                - next to "Notifications" in the column "Keyboard Shortcut" click on the button then enter the keyboard shortcut `meta+n`
     - Right Click on the panel and click "Add Widgets..."
         - Find and drag the "Window List" Widget to the panel next to the System Tray
     - If there are two monitors
