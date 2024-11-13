@@ -572,8 +572,9 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
         - Installation command `flatpak install flathub com.obsproject.Studio.Plugin.BackgroundRemoval`
 - Okular - Lightweight pdf viewer
     - Installation command `flatpak install flathub org.kde.okular`
-- OnlyOffice - Office Applications I like it better than LibreOffice for slides and word documents
+- ONLYOFFICE - Office Applications I like it better than LibreOffice for slides and word documents
     - Installation command `flatpak install flathub org.onlyoffice.desktopeditors`
+    - There is an issue that in ONLYOFFICE Spreadsheet when using the "Filter" feature it can mess up the rows particularly with functions so I use LibreOffice for spreadsheet work
 - PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
     - Installation command `flatpak install flathub io.github.peazip.PeaZip -y`
 - [Piper](https://github.com/libratbag/piper/wiki) - "Gaming mouse configuration utility" (for managing my Logitech mouse peripherals in Linux)
