@@ -6,7 +6,7 @@ Windows Package Manager or winget is the new package manager for Windows that is
 
 The commands below are copied from the `winget -h` command
 
-```
+```pwsh
 install    Installs the given package
 show       Shows information about a package
 source     Manage sources of packages
@@ -22,15 +22,31 @@ export     Exports a list of the installed packages
 import     Installs all the packages in a file
 ```
 
-## Winget install
+The commands I find most useful
 
-One of the most useful programs to install is [WingetUI](https://github.com/marticliment/WingetUI) which is a Winget Management GUI (it also can manage Scoop and Chocolatey packages too). As of 2024-06-10 the WingetUI will be changing its name eventually to UniGetUI but that change has not yet taken place. To install it use the command below:
-
-```powershell
-winget install --id=SomePythonThings.WingetUIStore  -e # WingetUI a winget GUI
+```pwsh
+winget upgrade # this will list all available package upgrades
+winget upgrade --source winget --all # this will upgrade all packages that come from winget
+winget upgrade --all # this will upgrade all available package upgrades
+winget list # this will list all the install applications including applications not installed via winget
+winget list --source winget  # this will list all the applications installed via winget
+winget --reset # resets the winget cache
 ```
 
-A list of programs to install using Winget are below:
+## WingetUI install
+
+- [UniGetUI](https://github.com/marticliment/UniGetUI) - One of the most useful programs to install which is a Winget Management GUI (it also can manage Scoop and Chocolatey packages too).
+    - [In 2024 they changed the name from "WingetUI"](https://github.com/marticliment/UniGetUI/discussions/1900).
+    - To install it use the command below:
+
+```pwsh
+winget install UniGetUI --source winget # UniGetUI a winget GUI
+winget install --id=SomePythonThings.WingetUIStore  -e # UniGetUI a winget GUI
+```
+
+## Winget Applications
+
+A list of applications to install using Winget are below:
 
 ```sh
 winget install --id QL-Win.QuickLook -e
@@ -95,6 +111,8 @@ winget install --id=Microsoft.Sysinternals.ProcessMonitor -e
 winget install --id=9P7KNL5RWT25 -e #Sysinternals Suite
 winget install --id=Bitwarden.Bitwarden -e # probably will be better than Enpass but I haven't take the time to migrate
 winget install --id=PrestonN.FreeTube  -e # for watching YouTube on Windows
+winget install --id=Zidoro.Pomatez  -e # A Pomodoro timer that is cross platform
+winget install --id=RandomEngy.VidCoder  -e # for converting video files (to save space) uses handbreak on the backend (can also keep media creating date so that it works with programs like google photos)
 
 # old programs that I don't use anymore
 winget install --id=DuongDieuPhap.ImageGlass -e # image viewer (doesn't seem to update via winget as easily as qView)

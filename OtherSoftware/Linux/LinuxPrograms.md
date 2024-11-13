@@ -527,6 +527,7 @@ nix-env -u --dry-run
 Flatpak allows for applications to "be easily installed on any Linux distribution" [(Flathub Website)](https://flathub.org/home). I use many application installed via Flatpak because they are so easy to install and use and they are highly sandboxed more so than both Snap and AppImage.
 
 - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
+- To clean up unused flakpak applications and dependencies: `flatpak uninstall --unused`
 
 - AppImage Pool - A simple, modern AppImageHub Client.
     - Installation command `flatpak install flathub io.github.prateekmedia.appimagepool -y`
@@ -556,11 +557,19 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
 - LibreOffice - Office Applications lots of features for an almost perfect replacement for MS Office
     - Installation command `flatpak install flathub org.libreoffice.LibreOffice -y`
     - To use LanguageTool in LibreOffice you need to use their API ([instructions can be found at this link](https://languagetool.org/insights/post/product-libreoffice/#how-to-enable-languagetool-on-libreoffice))
+    - I like to change some of the settings
+        - From "View" select "User Interface"
+            - Select "Tabbed"
+        - There is an issue with fonts in some flatpak applications (I think only GTK based applications) being very blocky (the antialiasing doesn't work right)
+            - [some details can be found here](https://github.com/flatpak/flatpak/issues/2861)
+            - To fix this for Arch Distros you must install a gtk package. Use this command `yay -S xdg-desktop-portal-gtk`
+            - Another fix for this is to use Flatseal select LibreOffice then deselect "Wayland windowing system" (sub-label is "socket=wayland")
 - OBS Studio - "Live streaming and video recording software"
     - Installation command `flatpak install flathub com.obsproject.Studio`
         - I used XSHM for screen capture to work (pipewire is the other option but it must require something more to work)
+        - You must make sure that "v4l2loopback" is installed to use the virtual camera feature
     - [OBS Background Removal](https://github.com/occ-ai/obs-backgroundremoval) - "An OBS plugin for removing background in portrait images (video), making it easy to replace the background when recording or streaming."
-        - Installation command `flatpak install com.obsproject.Studio.Plugin.BackgroundRemoval`
+        - Installation command `flatpak install flathub com.obsproject.Studio.Plugin.BackgroundRemoval`
 - Okular - Lightweight pdf viewer
     - Installation command `flatpak install flathub org.kde.okular`
 - OnlyOffice - Office Applications I like it better than LibreOffice for slides and word documents
@@ -575,9 +584,9 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
     - Installation command `flatpak install flathub org.speedcrunch.SpeedCrunch -y`
 - Spotify - Online music streaming service
     - Installation command `flatpak install flathub com.spotify.Client -y`
-- System Monitoring Center - Multi-featured system monitor
-    - Installation command `flatpak install flathub io.github.hakandundar34coding.system-monitoring-center`
 - System Monitors (GPU, System)
+    - [Mission Center](https://missioncenter.io/) - Monitor system resource usage
+        - Installation command `flatpak install flathub io.missioncenter.MissionCenter`
     - [GreenWithEnvy](https://gitlab.com/leinardi/gwe) - System utility designed to provide information, control the fans and overclock your NVIDIA card
         - Installation command `flatpak install flathub com.leinardi.gwe`
         - Be aware that this does not seem to launch correctly when pinned to the taskbar in Manjaro KDE
@@ -585,10 +594,14 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
         - Installation command `flatpak install flathub io.github.congard.qnvsm`
     - [CoreStats](https://gitlab.com/cubocore/coreapps/corestats) "A system resource viewer for C Suite." Very simple but still useful
         - Installation command `flatpak install flathub org.cubocore.CoreStats`
+    - No longer supported - System Monitoring Center - Multi-featured system monitor
+        - Installation command `flatpak install flathub io.github.hakandundar34coding.system-monitoring-center`
 - TextSnatcher - Snatch Text with just a Drag
     - Installation command `flatpak install flathub com.github.rajsolai.textsnatcher`
 - Thunderbird - Email
     - Installation command `flatpak install flathub org.mozilla.Thunderbird`
+- Teams for Linux
+    - Installation command `flatpak install flathub com.github.IsmaelMartinez.teams_for_linux`
 - Telegram Desktop messenger
     - Installation command `flatpak install flathub org.telegram.desktop -y`
 - Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
@@ -610,6 +623,7 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
 ### Bottles (For using Windows Applications)
 
 - [Bottles](https://usebottles.com) - "Easily run Windows software on Linux with Bottles!"
+    - Note that on [2023-10-05 Bottles devs announced that they will be doing a major overhaul](https://usebottles.com/blog/bottles-next-a-new-chapter/) of bottles.
 - I usually install this using Flatpak so that it is sandboxed
 - To install the runners for the bottles:
     - Click on the hamburger menu in the upper right then select the "Runners" tab
@@ -637,10 +651,26 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
             - Click on the "🖫" (disk symbol) next to "dotnet48"
             - Click on the "🖫" (disk symbol) next to "msxml6" (not sure if this is needed but it was recommend on WineHQ)
             - Click the back button in the upper left to return to the main bottle page once the installation of dependencies are completed
-        - Click on the blue "Run Executable..." button
-            - Install the Microsoft Speech Platform with the "SpeechPlatformRuntime.msi" file ([found here](https://www.microsoft.com/en-us/download/details.aspx?id=27225))
-            - Install a Microsoft Speech Platform voice for example using the file "MSSpeech_TTS_en-GB_Hazel.msi" ([found here](https://www.microsoft.com/en-us/download/details.aspx?id=27224))
+        - Click on the blue "Run Executable..." button (the order does matter here)
+            - First it tis not absolutely needed but it is a good idea to move all the files you need into the bottle "drive"
+                - Click on the thre dots button in the upper right then click on "Browse Files..."
+                - Copy the `SpeechPlatformRuntime.msi` and `MSSpeech_TTS_en-GB_Hazel.msi` files into the opened "drive"
+                    - I put then in a new directory called `InstallationFiles`
+            - Install the Microsoft Speech Platform with the `SpeechPlatformRuntime.msi` file ([found here](https://www.microsoft.com/en-us/download/details.aspx?id=27225))
+                - Follow the installation instructions
+                - It is a good idea to reboot the bottle after this by clicking on the power symbol "⏻" then clicking on "Reboot"
+            - Install a Microsoft Speech Platform voice for example using the file `MSSpeech_TTS_en-GB_Hazel.msi` ([found here](https://www.microsoft.com/en-us/download/details.aspx?id=27224))
+                - Follow the installation instructions
+                - It is a good idea to reboot the bottle after this by clicking on the power symbol "⏻" then clicking on "Reboot"
             - Install Balabolka
+                - You can just use the portable version by copying the files for the portable version into the bottle (as mentioned above)
+                    - If I use the portable version of Balabolka then I also create a directory called `PortableApps` I then copy the contents extracted from `balabolka_portable.zip` into the new directory
+                    - Under "Programs" click on "Add Shortcuts..."
+                        - Navigate to the `PortableApps/Balabolka` directory you created and copied earlier then select `balabolka.exe`
+                - If you use the non-portable version of Balabolka then you should copy over the contents from the downloaded `balabolka.zip` file into the `InstallationFiles` directory mentioned above
+                    - Click on the "Run Executable..." button navigate to `InstallationFiles/balabolka` and click on `setup.exe`
+                    - Follow the installation instructions
+                    - The `balabolka.exe` file should automatically be added to the "Programs" section
         - To refresh the program list installed in the bottle click the back button in the upper left then click on the bottle name to reenter the main bottle page
             - There should now be two entries under "Programs"
         - Launch Balabolka (by clicking on the play symbol on the same line as "balabolka")
@@ -655,7 +685,7 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
         - Under "Options", click on "Dependencies"
             - Click on the "🖫" (disk symbol) next to "allfonts"
         - I used the portable download of PDF X-Change Editor (version 9) for this example
-        - There does seem to be one reoccurring bug while using PDFXEdit with bottles, after a while of the program staying open it seems to freeze and I have to kill all processes for the bottle to get it to close
+        - When running PDF-XChange Editor in Bottles on Linux the program will freeze after a while. To deal with this I usually "Force Stop Process" on the process called "PDFXEdit.exe". Doing this seems to work better than trying to stop any other bottle related process.
 
 ### Other Distro Agnostic Applications
 

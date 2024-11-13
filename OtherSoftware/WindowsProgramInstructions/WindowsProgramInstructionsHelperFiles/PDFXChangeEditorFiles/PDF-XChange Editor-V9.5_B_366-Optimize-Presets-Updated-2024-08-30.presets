@@ -1,0 +1,96 @@
+{
+	"Presets" : {
+		"Items" : [
+			{
+				"ID" : "{BA7E9986-E4BD-4728-84B3AF21A4CE96C7}",
+				"Data" : {
+					"Fonts" : {
+						"Enabled" : true,
+						"SubsetAll" : true,
+						"UnembedType" : 1,
+						"MergeSubsets" : true
+					},
+					"Images" : {
+						"Comp" : {
+							"Mono" : {
+								"Method" : 1,
+								"JBIG2Quality" : 0
+							},
+							"Color" : {
+								"Method" : 2,
+								"JPEGQuality" : 2,
+								"JPEG2000Tile" : 256
+							},
+							"Indexed" : {
+								"Method" : 1
+							},
+							"Grayscale" : {
+								"Method" : 2,
+								"JPEGQuality" : 2,
+								"JPEG2000Tile" : 256
+							}
+						},
+						"Scale" : {
+							"Mono" : {
+								"To" : 300,
+								"Method" : 3,
+								"IfAbove" : 450
+							},
+							"Color" : {
+								"To" : 150,
+								"Method" : 3,
+								"IfAbove" : 225
+							},
+							"Indexed" : {
+								"To" : 150,
+								"Method" : 1,
+								"IfAbove" : 225
+							},
+							"Grayscale" : {
+								"To" : 150,
+								"Method" : 3,
+								"IfAbove" : 225
+							}
+						},
+						"Enabled" : true,
+						"ReducedOnly" : true
+					},
+					"CleanUp" : {
+						"Flags" : 4095,
+						"Enabled" : true,
+						"CleanUpCompress" : 0
+					},
+					"PresetID" : "",
+					"Transparency" : {
+						"Enabled" : true,
+						"Quality" : 2,
+						"LowFlags" : 10,
+						"HightFlags" : 12,
+						"MediumFlags" : 14,
+						"LowTransLevel" : 75,
+						"LowLineArtText" : 288,
+						"HightTransLevel" : 100,
+						"HightLineArtText" : 1200,
+						"MediumTransLevel" : 75,
+						"LowGradientMeshes" : 144,
+						"MediumLineArtText" : 300,
+						"HightGradientMeshes" : 300,
+						"MediumGradientMeshes" : 150
+					},
+					"DiscardObjects" : {
+						"Flags" : 284,
+						"Enabled" : true
+					},
+					"VersionForSave" : 0,
+					"DiscardUserData" : {
+						"Flags" : 120,
+						"Enabled" : true
+					}
+				},
+				"Desc" : "",
+				"Name" : "V1.7ImageCompressJPEG2000",
+				"Flags" : 0
+			}
+		]
+	}
+}

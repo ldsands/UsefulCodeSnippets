@@ -37,6 +37,7 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     - [Flatpak](https://www.flatpak.org/) [(and enable Flathub)](https://flathub.org/home)
     - [Enpass](https://www.enpass.io/) (my preferred password manager)
     - [pCloud](https://www.pcloud.com/) (my preferred cloud syncing platform/application)
+        - install the AppImage file from their website
     - [Microsoft Edge (Beta)](https://www.microsoftedgeinsider.com/en-us/download/beta) (my preferred web browser)
     - [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) (my preferred text editor and IDE)
         - I also install the [VSCode Projects Runner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
@@ -76,7 +77,6 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     # install enpass (my password manager of choice)
     yay -S enpass-bin
-    yay -S pcloud-drive
     yay -S microsoft-edge-beta-bin
     yay -S visual-studio-code-bin
     ```
@@ -136,7 +136,6 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     # copy my configuration from my gists to the bottom.toml, starship.toml and config.nu files
     cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/bottom.toml -N
     cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/starship.toml -N
-    cd ~/.config/nushell/ && wget ‐‐directory-prefix=~/.config/nushell/config.nu https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/starship.toml -N
     # add a file so that kitty's default tab opens using Nushell
     '
     # point to a startup session file
@@ -148,12 +147,14 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     ```
 
 - Install python related programs
-    - Install pyenv using the [pyenv-installer repo](https://github.com/pyenv/pyenv-installer). You will also need to install dependencies to build python, more information about which dependencies to install can be found [here](https://github.com/pyenv/pyenv/wiki#troubleshooting--faq).
-    - Install [Poetry](https://python-poetry.org/) to manage python project virtual environments.
+    - Install [UV](https://docs.astral.sh/uv/) for managing both python and python projects
+    - I used to use pyenv and poetry to manage python and python projects respectively
+        - Install pyenv using the [pyenv-installer repo](https://github.com/pyenv/pyenv-installer). You will also need to install dependencies to build python, more information about which dependencies to install can be found [here](https://github.com/pyenv/pyenv/wiki#troubleshooting--faq).
+        - Install [Poetry](https://python-poetry.org/) to manage python project virtual environments.
 
 ```sh
-# install python/pyenv build dependencies
-sudo dnf install make gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-devel libnsl2-devel -y
+# install UV
+curl -LsSf https://astral.sh/uv/install.sh | sh
 # install pyenv
 curl https://pyenv.run | bash
 # you may need to add these lines to ~/.bashrc (this uses Nushell)
@@ -175,21 +176,25 @@ export PATH="$HOME/.local/bin:$PATH"\n' >> ~/.bashrc
 flatpak update
 # show the applications that were explicitly installed (not including runtimes installed as dependencies)
 flatpak list --app
-flatpak install flathub com.usebottles.bottles # bottles (for Windows applications)
-flatpak install flathub com.google.Chrome # web browser
+# the list below is in alphabetical order
 flatpak install flathub com.discordapp.Discord # Discord
-flatpak install flathub com.microsoft.EdgeDev # web browser
+flatpak install flathub com.github.IsmaelMartinez.teams_for_linux # Microsoft Teams
 flatpak install flathub com.github.tchx84.Flatseal # flatseal for managing flatpak permissions
+flatpak install flathub com.google.Chrome # web browser
+flatpak install flathub com.microsoft.EdgeDev # web browser
+flatpak install flathub com.obsproject.Studio # OBS Studio for virtual meetings/streaming/recording, note you must install v4l2loopback via `yay -S v4l2loopback` to use the virtual camera feature
+flatpak install flathub com.obsproject.Studio.Plugin.BackgroundRemoval # Background Removal for OBS
+flatpak install flathub com.spotify.Client # Spotify for music
+flatpak install flathub com.usebottles.bottles # bottles (for Windows applications)
 flatpak install flathub io.enpass.Enpass # for passwords NOTE: it will not work with browsers
-flatpak install flathub io.github.shiftey.Desktop # github desktop
-flatpak install flathub org.libreoffice.LibreOffice # MS Office replacement
-flatpak install flathub org.kde.okular # lightweight pdf viewer NOTE: should remove the pacman version first
-flatpak install flathub com.obsproject.Studio # OBS Studio for virtual meetings/streaming/recording
-flatpak install com.obsproject.Studio.Plugin.BackgroundRemoval # Background Removal for OBS
-flatpak install flathub org.onlyoffice.desktopeditors # OnlyOffice better for docx and pptx files
-flatpak install flathub io.github.hakandundar34coding.system-monitoring-center # system resource monitor
-flatpak install flathub org.telegram.desktop # Telegram Desktop
 flatpak install flathub io.github.flattool.Warehouse # Warehouse for flakpak program management
+flatpak install flathub io.github.peazip.PeaZip # for extraction and compression
+flatpak install flathub io.github.shiftey.Desktop # github desktop
+flatpak install flathub io.missioncenter.MissionCenter # Monitor system resource usage
+flatpak install flathub org.kde.okular # lightweight pdf viewer NOTE: should remove the pacman version first
+flatpak install flathub org.libreoffice.LibreOffice # MS Office replacement
+flatpak install flathub org.onlyoffice.desktopeditors # OnlyOffice better for docx and pptx files
+flatpak install flathub org.telegram.desktop # Telegram Desktop
 flatpak install flathub org.zotero.Zotero # Zotero
 ```
 
@@ -234,7 +239,7 @@ System Settings to change. Open "System Settings" then you can search or find th
             - For all corners select "No Action" except:
                 - The upper right corner select "Present Windows - Current Desktops"
                 - The lower right corner select "Present Windows - All Desktops"
-                - The lower left select "Desktop Grid"
+                - The lower left select "Grid"
         - "Screen Locking"
             - Lock screen automatically: uncheck
         - "Virtual Desktops"
@@ -249,9 +254,6 @@ System Settings to change. Open "System Settings" then you can search or find th
             - Enable "Show desktop layout indicators"
     - "Window Management"
         - "Task Switcher"
-            - Click on the button "Get New Task Switchers..."
-                - Search for Thumbnail Grid and click on it
-                - Click on the "Install" button in the upper right
             - In the "Visualization" column select "Thumbnail Grid" from the dropdown menu
             - Do this for both the "Main" and the "Alternate" tabs (at the top of the sub-window that contains the settings above)
             - Click on the "Apply" button in the lower right corner
@@ -265,10 +267,9 @@ System Settings to change. Open "System Settings" then you can search or find th
         - "Switch One Desktop to the Left": `meta+ctrl+left`
         - "Switch One Desktop to the Right": `meta+ctrl+right`
         - Click the button "Add Application" select Kitty; Click "Add custom shortcut" `meta+shift+t`
-    - "Startup and Shutdown"
-        - "Background Services"
-            - Make sure that "Removable Device Automounter" is not checked
     - "Search"; "Plasma Search": (to modify results that appear in KRunner)
+        - Click on "Configure KRunner..."
+            - Next to "History:" select "Enabled auto-complete"
         - Deselect "Browser History"
         - Deselect "Browser Tabs"
         - Deselect "Kate Sessions"
@@ -295,7 +296,7 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
         - Mouse over the "Icons-Only Task Manager"; Mouse over "Configure"
         - Select the "Behavior" tab in the sidebar;
             - For "Groups" select "Do not group"
-            - For "Show Only Tasks" select "From Current Screen"
+            - For "Show Only Tasks" select "From current screen" (make sure both "From current desktop" and "From current activity" are also selected)
     - Right Click on the down arrow in the system tray and click on "Configure System Tray..."
         - "General" Tab
             - From the "Panel icon spacing:" drop down box select "Small"
@@ -332,11 +333,12 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
         - Click on "Configure Toolbars"
             - I search for "Up" in "Available actions" and add it to "Current Actions" and then move it to the top.
         - Click on "Configure Dolphin"
-            - In the "General" tab:
-                - In the "Behavior" tab:
+            - In the "Interface" tab:
+                - In the "Folders & Tabs" tab:
+                    - Change the default startup location to `/home/$USER/Downloads` (you will need to replace $USER with your username)
+            - In the "View" tab:
+                - In the "General" tab:
                     - Under "Miscellaneous:" Deselect "Show selection marker"
-            - In the "Startup" tab:
-                - Change the default startup location to `/home/$USER/Downloads` (you will need to replace $USER with your username)
             - In the "Context Menu" tab: (If you have Kitty installed)
                 - Click on the button on the bottom of the window labeled "Download New Services..."
                 - In the search box (in the upper right) search for "Kitty"
@@ -358,3 +360,23 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
             - In the "General" tab
                 - Uncheck "Open in continuous mode by default"
                 - Next to "Default zoom:" select "Fit Page"
+- LibreOffice
+    - From "View" select "User Interface"
+        - Select "Tabbed"
+    - There is an issue with fonts in some flatpak applications (I think only GTK based applications) being very blocky (the antialiasing doesn't work right)
+        - [some details can be found here](https://github.com/flatpak/flatpak/issues/2861)
+        - To fix this for Arch Distros you must install a gtk package. Use this command `yay -S xdg-desktop-portal-gtk`
+        - Another fix for this is to use Flatseal select LibreOffice then deselect "Wayland windowing system" (sub-label is "socket=wayland")
+
+## Other Important Notes
+
+- The Baloo file extractor will cache all files for searches however that is not a good idea for pCloud or Zotero local storage. More information can be found [here](https://community.kde.org/Baloo/Configuration#Exclude_Folders). If you want to see what is being indexed you can use the command `balooctl6 monitor`. You can get some basic status using the `balooctl6 status` command. The command `balooctl6 purge` will delete the indexed files and restart indexing. To disable baloo use `balooctl6 disable`. To see more command options use the `balooctl6` command. To stop this use the command below:
+
+    ```sh
+    echo 'exclude folders[$e]=$HOME/pCloudDrive/,$HOME/Zotero/,$HOME/yay/,$HOME/,$HOME/.*,$HOME/*.*,$HOME/*.**
+    ' >> ~/.config/baloofilerc
+    ```
+
+- I usually dual boot Windows and Linux. The default for bootctl (systemd) to select an OS to boot is 5 seconds.
+    - To increase the systemd timeout to select an OS to boot into you can use the command `bootctl set-timeout ""` in linux (this example sets the timeout to 10 seconds).
+    - You can also press `shift+t` then hit `+` or `-` to increase or decease the time until boot automatically happens

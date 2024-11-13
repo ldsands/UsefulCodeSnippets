@@ -11,7 +11,8 @@
         - [Conda Environments](#conda-environments)
         - [venv environments](#venv-environments)
         - [Poetry Environments](#poetry-environments)
-        - [Rye Environments](#rye-environments)
+        - [Rye Environments (Use UV instead)](#rye-environments-use-uv-instead)
+        - [uv Environments](#uv-environments)
     - [Useful Python Install Commands](#useful-python-install-commands)
 
 ## Pyenv on Windows
@@ -316,8 +317,12 @@ poetry env remove 3.7
 python = "^3.10, <3.11"
 ```
 
-### Rye Environments
+### Rye Environments (Use UV instead)
 
+- I used to use rye but all rye features will eventually be implemented into UV there are some options to convert from rye to UV
+    - you should be able to just replace `tool.rye` with `tool.uv` in `pyproject.toml` then run `uv sync`
+        - [you can find more about in this GitHub discussion](https://github.com/astral-sh/rye/discussions/1342#discussioncomment-10405626)
+    - [There is a migration tool that you can use](https://github.com/lucianosrp/rye-uv)
 - Installation
     - Note that some linux distros may need additional package installation. For Arch you'll need `libxcrypt-compat` install using `yay` or something similar. [The related issue can be found on GitHub](https://github.com/mitsuhiko/rye/issues/15).
 
@@ -344,6 +349,64 @@ cd my-project
 rye pin 3.10
 # start first sync and create virtual environment
 rye sync
+```
+
+### uv Environments
+
+- "An extremely fast Python package and project manager, written in Rust." It can manage both python versions and virtual environments.
+- [Documentation can be found at this link](https://docs.astral.sh/uv/)
+
+```sh
+# to install uv on Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# to install uv on Windows
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+- [For basic project management](https://docs.astral.sh/uv/#project-management)
+    - Note: lockfiles are created and updated whenever `uv sync` or `uv run` are used. "The lockfile may also be explicitly updated using `uv lock`." This lockfile is unique to uv.
+
+```sh
+# create project
+uv init ExampleProject
+# move into created directory
+cd ExampleProject
+# add packages
+uv add ruff
+# can then use the installed packages if needed
+uv run ruff check
+# to run an example script
+uv run python hello.py
+# to install the requirements for an existing project (must be in directory containing `pyproject.toml`)
+uv sync
+# upgrade the latest package versions supported by within the project's constraints
+uv lock --upgrade
+# to generate a requirements.txt
+uv pip compile pyproject.toml -o requirements.txt
+```
+
+- [Managing python versions with uv](https://docs.astral.sh/uv/guides/install-python/)
+    - This is similar to pyenv but has many benefits over pyenv
+
+```sh
+# To list installed and available Python versions:
+uv python list
+# install python 3.12 (latest stable release)
+uv python install 3.12
+# To install multiple Python versions:
+uv python install 3.11 3.12
+# To install a version that satisfies constraints:
+uv python install '>=3.8,<3.10'
+```
+
+- [uv also has the ability install "tools" that can be used from anywhere](https://docs.astral.sh/uv/guides/tools/)
+    - you can think of this like pipx
+
+```sh
+# install a packages as a uv tool
+uv tool install ruff
+# use that package
+ruff --version
 ```
 
 ## Useful Python Install Commands
