@@ -681,12 +681,18 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
                 - For example, I usually have one called "Random" for whatever random PDF I may open and work on. I also usually have one for any research projects that I'm actively writing so that I don't have to worry about losing an open set of PDFs, or mixing with other projects so that there are too many PDFs open at one time.
             - If you want you can leave off the version of soda you used to create the bottle since you can update the runner used the bottle if you do the following
                 - Under "Options", click on "Settings", then under "Components" click on the box labeled "Runner"
-        - Under "Options", click on "Settings", then under "Display" click on "Advanced Display Settings"
-            - Disable "Window Manager Decorations" (this removes the bar at the top of the window that Linux/KDE puts there when the program is maximized)
+        - Under "Options", click on "Settings"
+            - Under "Compatibility" click on "Windows Version"
+                - Select Windows 11
+            - Under "Display" click on "Advanced Display Settings"
+                - Disable "Window Manager Decorations" (this removes the bar at the top of the window that Linux/KDE puts there when the program is maximized)
         - Under "Options", click on "Dependencies"
             - Click on the "🖫" (disk symbol) next to "allfonts"
         - I used the portable download of PDF X-Change Editor (version 9) for this example
         - When running PDF-XChange Editor in Bottles on Linux the program will freeze after a while. To deal with this I usually "Force Stop Process" on the process called "PDFXEdit.exe". Doing this seems to work better than trying to stop any other bottle related process.
+        - Other notes:
+            - Some notes that are useful from the [Wine website](https://appdb.winehq.org/objectManager.php?sClass=application&iId=15599)
+            - On [the PDF-XChange forums there is some discussion](https://forum.pdf-xchange.com/viewtopic.php?p=187062&hilit=wine#p187062) of the application freezing after a while which is something I also experience
 
 ### Other Distro Agnostic Applications
 
