@@ -429,6 +429,8 @@ X-KDE-Username=
 
 ### OBS Extensions (On Ubuntu)
 
+Note: this is outdated use OBS via Flatpak as it now seems to work pretty much perfectly as of late 2024
+
 - Install [OBS Studio](https://obsproject.com/) - `sudo apt-get install obs-studio`
     - Do not install using snap or flatpak
 
@@ -540,8 +542,14 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
 - [Easy Effects](https://github.com/wwmm/easyeffects) - "Limiter, compressor, convolver, equalizer and auto volume and many other plugins for PipeWire applications"
     - Installation command `flatpak install flathub org.gnome.Evolution -y`
     - To get a loudness equalization effect you can use [this site](https://www.frackstudio.com/xeq/tips-tricks-xeq-ten-bands/) go to the heading labeled "5. Limiter" for a good explanation. I've created some instructions to implement this using Easy Effects below
-        - To get a loudness equalization effect you can go to the "Output" tab then "Add Effect" then select "Compressor"
-        - I leave everything at default (for now I haven't had a chance to do much testing as of 2023-12-03)
+        - Manual instructions to get loudness equalization
+            - To get a loudness equalization effect you can go to the "Output" tab then "Add Effect" then select "Compressor"
+            - I leave everything at default (for now I haven't had a chance to do much testing as of 2023-12-03)
+        - Some presets you can download and apply:
+            - You need to put the `.json` files here (for flatpack installation) `~/.var/app/com.github.wwmm.easyeffects/config/easyeffects/output`
+            - [Has several different loudness equalization presets](https://github.com/Digitalone1/EasyEffects-Presets)
+                - I think I like the crystallization version a bit better
+            - [Has a preset with both loudness equalization and some auto gain (based on the work of the repo above)](https://github.com/JackHack96/EasyEffects-Presets)
 - Evolution - Manage your email, contacts and schedule
     - I haven't used this one in a while, I think Thunderbird is probably the better option as of 2023-11-27
     - Installation command `flatpak install flathub org.gnome.Evolution -y`
@@ -581,6 +589,13 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
     - Installation command `flatpak install flathub org.freedesktop.Piper -y`
     - As of 2023-11-29 they have not had an official release since 0.7 which was was in 2022-06 this means that the flakpak version is outdated
         - probably should install this using the git e.g. use AUR (`yay -S piper-git`) or [build it](https://github.com/libratbag/piper/wiki/Installation#building-from-source)
+- [Speech Note](https://github.com/mkiol/dsnote) - "Notes with offline Speech to Text, Text to Speech and Machine Translation"
+    - Installation command `flatpak install flathub net.mkiol.SpeechNote`
+    - Works pretty well even without a GPU
+        - some good voices (in order of preference)
+            - English British (Piper Alba Medium Female) / en
+            - English British (Piper Jenny Medium Female) / en
+            - English British (Piper Cori High Female) / en
 - SpeedCrunch - A high-precision scientific calculator
     - Installation command `flatpak install flathub org.speedcrunch.SpeedCrunch -y`
 - Spotify - Online music streaming service
@@ -693,6 +708,7 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
         - Other notes:
             - Some notes that are useful from the [Wine website](https://appdb.winehq.org/objectManager.php?sClass=application&iId=15599)
             - On [the PDF-XChange forums there is some discussion](https://forum.pdf-xchange.com/viewtopic.php?p=187062&hilit=wine#p187062) of the application freezing after a while which is something I also experience
+                - [PDF-XChange forums on crashing issues](https://forum.pdf-xchange.com/viewtopic.php?p=171650&hilit=wine#p171650)
 
 ### Other Distro Agnostic Applications
 
