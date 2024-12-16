@@ -22,8 +22,9 @@
 
 ## Arch Based Distros
 
-- I use yay rather than pacman to install AUR packages
+- I use yay rather than pacman to install arch and AUR packages
     - A useful command that can tell you information about a package that is installed. For example it is useful if you want to know what it depends on or what depends on that package. `yay -Qi ceph-libs` In this example ceph-libs is the package name.
+    - The `yay -Yc` command removes any unused programs installed via pacman/yay
 - For configuring Logitech Devices you can use [Solaar](https://pwr-solaar.github.io/Solaar/)
     - You should install this from extra on the Arch repository
     - There is a Flatpak application that appears to work but I cannot get it to recognize devices (I suspect some combination of Arch, bluetooth and Flatpak is causing the issue)
@@ -634,7 +635,14 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
 
 ### AppImage Applications
 
-"Linux apps that run anywhere" [(AppImage Home Page)](https://appimage.org/). You can find a list of AppImage applications at [AppImageHub](https://www.appimagehub.com/).
+- "Linux apps that run anywhere" [(AppImage Home Page)](https://appimage.org/). You can find a list of AppImage applications at [AppImageHub](https://www.appimagehub.com/).
+    - Unfortunately AppImageHub is not very comprehensive but it is the best there is as far as I'm aware (as of 2024-12-16)
+    - You can also use [AppImage Pool](https://flathub.org/apps/io.github.prateekmedia.appimagepool) that can be installed via Flatpak that accesses the AppImageHub database and can install AppImage applications
+- AppImage applications don't always come with a `.desktop` file or at least don't place it where needed all the time
+    - To help with this issue you can use [this repo](https://github.com/un1t/appimage-desktop-entry)
+        - Download the file and use the instructions to extract and then create a `.desktop` file that can then be used to find the application in KDE
+        - In the directory containing the file `appimage-desktop-entry.sh` use the example command below (make sure to use the correct ) to create the `.desktop` file and have it automatically moved to the correct location for KDE to see it
+            - `bash ./appimage-desktop-entry.sh /home/$USER/Documents/AppImageApplications/LM_Studio-0.3.3.AppImage` (Note I did this in Nushell)
 
 ### Bottles (For using Windows Applications)
 
