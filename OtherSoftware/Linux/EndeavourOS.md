@@ -339,12 +339,17 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
             - In the "View" tab:
                 - In the "General" tab:
                     - Under "Miscellaneous:" Deselect "Show selection marker"
-            - In the "Context Menu" tab: (If you have Kitty installed)
-                - Click on the button on the bottom of the window labeled "Download New Services..."
-                - In the search box (in the upper right) search for "Kitty"
-                - Select "Open Kitty Here" ([the GitHub repo for this service](https://github.com/raphtlw/open-kitty-here), [the KDE Store link](https://store.kde.org/p/1378539))
-                - Click on the button (in the upper right) labeled "Install"
-                - Deselect "Run In Konsole"
+            - In the "Context Menu" tab:
+                - If you have Kitty installed
+                    - Click on the button on the bottom of the window labeled "Download New Services..."
+                    - In the search box (in the upper right) search for "Kitty"
+                    - Select "Open Kitty Here" ([the GitHub repo for this service](https://github.com/raphtlw/open-kitty-here), [the KDE Store link](https://store.kde.org/p/1378539))
+                    - Click on the button (in the upper right) labeled "Install"
+                    - Deselect "Run In Konsole"
+                - To add The option to open a folder in VSCode
+                    - At the bottom click on the button "Download New Services..."
+                    - Search for "VSCode" (in the upper right)
+                    - Click the "Install" button that show up when you mouse over "Open In VSCode"
 - Gwenview (an Image Viewer)
     - Click on the hamburger menu near the upper right hand corner and mouse over "Configure"
         - Click on "Configure Keyboard Shortcuts"
