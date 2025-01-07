@@ -28,6 +28,7 @@
 - For configuring Logitech Devices you can use [Solaar](https://pwr-solaar.github.io/Solaar/)
     - You should install this from extra on the Arch repository
     - There is a Flatpak application that appears to work but I cannot get it to recognize devices (I suspect some combination of Arch, bluetooth and Flatpak is causing the issue)
+    - It also appears as thought the Flatpak of this packages is updated rarely
 
 ### Wine (On Manjaro)
 

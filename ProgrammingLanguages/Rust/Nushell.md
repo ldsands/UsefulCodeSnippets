@@ -64,6 +64,10 @@ cargo install zoxide --git https://ajeetdsouza/zoxide
 # for Nushell starting with zoxide
 # zoxide init nushell | save ~/.zoxide.nu # only use the first time then comment out
 source ~/.zoxide.nu
+
+# for yazi
+# to install yazi you can use cargo
+cargo install --locked yazi-fm yazi-cli
 ```
 
 - to update the 3rd party extensions shown above you can use the code below

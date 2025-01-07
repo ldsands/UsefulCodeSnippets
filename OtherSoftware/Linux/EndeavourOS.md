@@ -129,6 +129,8 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     cargo install mcfly
     # this installs starship which is a cross platform/shell prompt
     curl -sS https://starship.rs/install.sh | sh
+    # install yazi a file browser for the shell (you may have to use yay instead)
+    cargo install --locked yazi-fm yazi-cli
     # enter bash for the following commands
     bash
     # create bottom and starship config files
