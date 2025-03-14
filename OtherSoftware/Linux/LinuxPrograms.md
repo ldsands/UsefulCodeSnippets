@@ -727,6 +727,17 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
     - To install you can use [this page](https://forum.kde.org/viewtopic.php?t=175570) as a guide for Ubuntu based distros. For Arch based distros you can go [here](https://wiki.archlinux.org/title/Fprint) and then [here for the Fingerprint GUI.](https://wiki.archlinux.org/title/Fingerprint_GUI)
 - [Free Download Manager](https://www.freedownloadmanager.org/) - "It's a powerful modern download accelerator and organizer for Windows, macOS, Android, and Linux."
     - via yay `yay -Syu freedownloadmanager`
+- [Crontab (cron guru for creating cron jobs)](https://crontab.guru)
+    - For running commands on Linux on a schedule
+    - Good resource for this can be found at [crontab.guru](https://crontab.guru)
+    - To use this with running a uv environment for python you can do the following `00 09 * * * /home/ldsands/TeslaTakedown/.venv/bin/python3 /home/ldsands/TeslaTakedown/0001_scrape_html_file.py >/dev/null 2>&1` ([more about this is in a UV issue here](https://github.com/astral-sh/uv/issues/11991))
+        - In the issue linked above they said that this command should work but I couldn't get it to work `uv run --project /root/my_project /root/my_project/task.py` it possibly broke in an update
+        - the `>/dev/null 2>&1` at the end to not send an email I think this was causing issues but that may have been because of this error message: "No MTA installed, discarding output" installing an MTA might have solved it (could use this probably but I haven't tested it `sudo apt-get install postfix`)
+        - can see log of crontab using this command: `grep -i cron /var/log/syslog`
+        - Don't forget to check the timezone of the computer
+            - can check the timezone with this command: `timedatectl`
+            - can see possible timezones with this command: `timedatectl list-timezones | grep America`
+            - can set the timezone to central with this command: `sudo timedatectl set-timezone America/Chicago`
 
 ## Linux (Distro Agnostic) Settings
 

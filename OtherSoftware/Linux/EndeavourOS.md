@@ -129,7 +129,7 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     cargo install mcfly
     # this installs starship which is a cross platform/shell prompt
     curl -sS https://starship.rs/install.sh | sh
-    # install yazi a file browser for the shell (you may have to use yay instead)
+    # install yazi a file browser for the shell, note I have had issues so you may have to use yay instead
     cargo install --locked yazi-fm yazi-cli
     # enter bash for the following commands
     bash
@@ -169,6 +169,21 @@ curl -sSL https://install.python-poetry.org | python3 -
 echo '
 # poetry path
 export PATH="$HOME/.local/bin:$PATH"\n' >> ~/.bashrc
+```
+
+- Install other command line applications I use
+    - btop for resource motoring (works better than bottom)
+
+```sh
+# install btop
+yay -S btop
+# launch btop
+btop
+# you must then exit btop (use the `q` key)
+# now use bash
+bash
+# append my preferred configurations to the bottom of the config file
+cd ~/.config/btop/ && curl -sS https://gist.githubusercontent.com/ldsands/100eb8950fc7bccb94e2ba22b64d44c4/raw/btop.conf >> btop.conf
 ```
 
 - Install flatpak applications

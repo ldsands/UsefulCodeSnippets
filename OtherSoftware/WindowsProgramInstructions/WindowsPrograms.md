@@ -103,6 +103,9 @@ Below are Windows programs that are installed using chocolatey or winget
     - This is a great clipboard manager for Windows. You can now also use `win` + `v` for a similar built in program
 - [Files](https://files-community.github.io/) I install this via the Microsoft Store
     - This is a replacement for file explorer with more useful features
+- [Flow Launcher](https://www.flowlauncher.com/) I install this via Winget
+    - I like this better than PowerToys Run
+    - I also install plugin called "Visual Studio Code Workspaces"
 - [Free Download Manager](https://www.freedownloadmanager.org/) On Windows you can install via Winget
     - A download program that can download just about anything and is cross platform - I use this in place of Motrix which is no longer supported
 - [Git](../Git.md) I install this using Chocolatey

@@ -54,11 +54,15 @@ winget install --id rammichael.7+TaskbarTweaker -e
 winget install --id rammichael.Textify -e
 winget install --id=9NGHP3DX8HDX -e # [Files App](https://files.community/)
 winget install --id=Amazon.Kindle -e
+winget install --id=AntibodySoftware.WizFile  -e # like everything but has some more features (except networked drives)
+winget install --id=AntibodySoftware.WizTree  -e # like WinDirStat but way faster
+winget install --id=Bostrot.WSLManager -e # WSL Manager can also be installed in many other ways
 winget install --id=ChristianSchenk.MiKTeX -e
 winget install --id=Discord.Discord -e
 winget install --id=Docker.DockerDesktop  -e # docker desktop
 winget install --id=EpicGames.EpicGamesLauncher -e
 winget install --id=File-New-Project.EarTrumpet -e
+winget install --id=Flow-Launcher.Flow-Launcher  -e # launcher might be better than PowerToys run
 winget install --id=GOG.Galaxy -e
 winget install --id=Gephi.Gephi -e
 winget install --id=Julialang.Julia -e
@@ -73,8 +77,8 @@ winget install --id=Microsoft.Teams -e
 winget install --id=Microsoft.VisualStudioCode -e
 winget install --id=Microsoft.WindowsTerminalPreview -e
 winget install --id=Microsoft.dotnet -e
-winget install --id=jurplel.qView  -e # simple image viewer that is cross-platform
 winget install --id=Min.Min -e
+winget install --id=MiniTool.PartitionWizard.Free  -e # MiniTool Partition for managing partitions
 winget install --id=Mozilla.Firefox -e
 winget install --id=NickeManarin.ScreenToGif
 winget install --id=Nvidia.Broadcast -e
@@ -87,6 +91,7 @@ winget install --id=RiotGames.LeagueOfLegends -e
 winget install --id=Rust.rustup -e
 winget install --id=ShareX.ShareX -e
 winget install --id=Signal.Signal -e
+winget install --id=SoftDeluxe.FreeDownloadManager  -e # Free Download Manager
 winget install --id=SpeedCrunch.SpeedCrunch -e
 winget install --id=Spotify.Spotify -e
 winget install --id=Stretchly.Stretchly -e
@@ -96,12 +101,8 @@ winget install --id=Ubisoft.Uplay -e
 winget install --id=Valve.Steam -e
 winget install --id=VideoLAN.VLC -e
 winget install --id=Zoom.Zoom -e
+winget install --id=jurplel.qView  -e # simple image viewer that is cross-platform
 winget install --id=twitch.twitch -e
-winget install --id=MiniTool.PartitionWizard.Free  -e # MiniTool Partition for managing partitions
-winget install --id=SoftDeluxe.FreeDownloadManager  -e # Free Download Manager
-winget install --id=Bostrot.WSLManager -e # WSL Manager can also be installed in many other ways
-winget install --id=AntibodySoftware.WizTree  -e # like WinDirStat but way faster
-winget install --id=AntibodySoftware.WizFile  -e # like everything but has some more features (except networked drives)
 
 # stuff to evaluate
 
@@ -113,6 +114,7 @@ winget install --id=Bitwarden.Bitwarden -e # probably will be better than Enpass
 winget install --id=PrestonN.FreeTube  -e # for watching YouTube on Windows
 winget install --id=Zidoro.Pomatez  -e # A Pomodoro timer that is cross platform
 winget install --id=RandomEngy.VidCoder  -e # for converting video files (to save space) uses handbreak on the backend (can also keep media creating date so that it works with programs like google photos)
+
 
 # old programs that I don't use anymore
 winget install --id=DuongDieuPhap.ImageGlass -e # image viewer (doesn't seem to update via winget as easily as qView)
