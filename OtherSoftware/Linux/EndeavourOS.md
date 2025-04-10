@@ -32,13 +32,12 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
 
 - Install the following command line stuff and several programs that I regularly use
     - yay comes preinstalled so I use that for the majority of the installations
-    - [Kitty](https://sw.kovidgoyal.net/kitty/) (my preferred terminal emulator)
-    - [Pamac](https://wiki.manjaro.org/index.php?title=Pamac) - "Pamac (Add/Remove Software) is Manjaro's Package Manager. It is based on libalpm with AUR and Appstream support." - I like this for a gui to install applications
+    - [Ghostty](https://ghostty.org/)
     - [Flatpak](https://www.flatpak.org/) [(and enable Flathub)](https://flathub.org/home)
     - [Enpass](https://www.enpass.io/) (my preferred password manager)
     - [pCloud](https://www.pcloud.com/) (my preferred cloud syncing platform/application)
         - install the AppImage file from their website
-    - [Microsoft Edge (Beta)](https://www.microsoftedgeinsider.com/en-us/download/beta) (my preferred web browser)
+    - Microsoft Edge (my preferred web browser)
     - [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) (my preferred text editor and IDE)
         - I also install the [VSCode Projects Runner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
             - As of at least 2023-10-27 using `yay -S krunner-vscodeprojects-git` does not work so follow the instructions below
@@ -47,37 +46,17 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
             - As of at least 2023-10-27 this aur entry (installed using `yay -S plasma-runner-vscode-git`) has been orphaned you'll need to figure out how to install it manually. There are instructions on the GitHub website.
 
     ```sh
-    yay -S kitty kitty-shell-integration kitty-terminfo
-    # to add settings to the `~/.config/kitty/kitty.conf` file
-    echo "
-    # located here `~/.config/kitty/kitty.conf`
-    map ctrl+c copy_or_interrupt
-    map ctrl+v paste_from_clipboard
-    map ctrl+t new_tab
-    map ctrl+w close_window
-    map ctrl+tab next_tab
-    map ctrl+shift+tab previous_tab
-    background_opacity 0.6
-    :     font_family      FiraCode Nerd Font Mono
-    # :     font_family      CaskaydiaCove Nerd Font
-    # :     font_family      Cascadia Code NF
-    startup_session ~/.config/kitty/kitty-start.kitty
-    # create a kitty-start.kitty file here: `$HOME/.config/kitty/` you can use the command: `touch /$HOME/.config/kitty/`
-    # to start a shell as the default add one of the lines below with out the "# " characters
-    # launch nu
-    # launch xonsh
-    # launch bash
-    # launch zsh
-    " >> ~/.config/kitty/kitty.conf
-    # install pamac
-    yay -S pamac-all
+    # install Ghostty
+    yay -S ghostty
+    # get my Ghostty config file from my gist
+    cd ~/.config/ghostty/ && wget ‐‐directory-prefix=~/.config/ghostty/config https://gist.githubusercontent.com/ldsands/1ac4cba04925688354099842ab95045b/raw/config -N
     # install flatpak
     yay -S flatpak
     # enable installation from flathub (you'll need to restart to use this)
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     # install enpass (my password manager of choice)
     yay -S enpass-bin
-    yay -S microsoft-edge-beta-bin
+    yay -S microsoft-edge-stable-bin
     yay -S visual-studio-code-bin
     ```
 
@@ -111,10 +90,8 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     # you need to select 1 to install rust then restart your shell
     # update rust
     rustup update
-    # nushell dependencies for Fedora
-    sudo dnf install libxcb openssl-devel libX11-devel -y
     # install Nushell using cargo
-    cargo install nu --features=dataframe
+    cargo install nu --locked
     # you will need to restart your shell
     # you can now start Nushell with this command
     nu
@@ -157,22 +134,10 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
 ```sh
 # install UV
 curl -LsSf https://astral.sh/uv/install.sh | sh
-# install pyenv
-curl https://pyenv.run | bash
-# you may need to add these lines to ~/.bashrc (this uses Nushell)
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n eval "$(pyenv init -)"\nfi' >> ~/.bashrc
-# install Poetry
-curl -sSL https://install.python-poetry.org | python3 -
-# add Poetry to PATH
-echo '
-# poetry path
-export PATH="$HOME/.local/bin:$PATH"\n' >> ~/.bashrc
 ```
 
 - Install other command line applications I use
-    - btop for resource motoring (works better than bottom)
+    - btop for resource motoring (works better than bottom for gpu information otherwise I prefer bottom)
 
 ```sh
 # install btop
@@ -220,32 +185,22 @@ flatpak install flathub org.zotero.Zotero # Zotero
     - [Group Details - plasma (x86_64)](https://archlinux.org/groups/x86_64/plasma/) - core KDE Plasma packages
     - [Group Details - kde-applications (x86_64)](https://archlinux.org/groups/x86_64/kde-applications/) - KDE applications
 
-- NixOS is a package manager (and they have their own distro) that is distro agnostic and has a lot of advantages over other package managers.
-
-```sh
-# install NixOS package manager (this will install it for multi-users which is recommended)
-sh <(curl -L https://nixos.org/nix/install) --daemon
-# To install packages that contain non-free software you'll need to add the line below to this file: ~/.config/nixpkgs/config.nix
-{ allowUnfree = true; }
-# to allow KDE to see the .desktop files you'll need to use the command below:
-cp -L ~/.nix-profile/share/applications/* ~/.local/share/applications/
-```
-
-TODO: add this later from LinuxPrograms.md
-
 - Bluetooth may have issues and need to be enabled with this command: `sudo systemctl enable bluetooth` ([I found out about this here](https://discovery.endeavouros.com/audio/bluetooth/2021/03/)).
 
 ## KDE Plasma Setup
 
 System Settings to change. Open "System Settings" then you can search or find the categories listed (in the left sidebar) below to edit settings. I try to follow the order they appear in the System Settings Application.
 
-- "Appearance"
+- "Appearance & Style"
     - "Global Theme"
         - Select "Breeze Dark"
-- Under the "Workspace" category
-    - "Workspace Behavior"
-        - "General Behavior"
-            - Clicking files or folders; change to "Selects them"
+- Under the "Apps & Windows" category
+    - Go to "Default Applications";
+        - "Web Browser": select "Vivaldi"
+        - "Terminal emulator": select "Ghostty"
+    - Go to "Notifications"
+        - Next to "Low priority notifications" enable "Show in history"
+    - Go to "Window Management"
         - "Desktop Effects"
             - Search for "Desktop Grid"
                 - Select the "Configure..." button
@@ -253,13 +208,10 @@ System Settings to change. Open "System Settings" then you can search or find th
                 - For "Desktop name alignment:" select "Top"
                 - Deselect "Show buttons to alter count of virtual desktops"
                 - Click on the "OK" button
-        - "Screen Edges"
-            - For all corners select "No Action" except:
-                - The upper right corner select "Present Windows - Current Desktops"
-                - The lower right corner select "Present Windows - All Desktops"
-                - The lower left select "Grid"
-        - "Screen Locking"
-            - Lock screen automatically: uncheck
+        - "Task Switcher"
+            - In the "Visualization" column select "Thumbnail Grid" from the dropdown menu
+            - Do this for both the "Main" and the "Alternate" tabs (at the top of the sub-window that contains the settings above)
+            - Click on the "Apply" button in the lower right corner
         - "Virtual Desktops"
             - "Workspace Behavior"; "Virtual Desktops"
                 - I create 12 Virtual Desktops with three desktops in each of 4 rows
@@ -268,23 +220,25 @@ System Settings to change. Open "System Settings" then you can search or find th
                 - Row 3: `Python 01`, `Python 02` and `Python 03`
                 - Row 4: `Email`, `CommsMusic` and `Todo`
             - Enable "Navigation wraps around"
-            - Enable "Show on-screen display when switching" and change the value toaa 500 ms
+            - Enable "Show on-screen display when switching" and change the value to 500 ms
             - Enable "Show desktop layout indicators"
-    - "Window Management"
-        - "Task Switcher"
-            - In the "Visualization" column select "Thumbnail Grid" from the dropdown menu
-            - Do this for both the "Main" and the "Alternate" tabs (at the top of the sub-window that contains the settings above)
-            - Click on the "Apply" button in the lower right corner
+- Under the "Input & Output" category
+    - Go to "Mouse & Touchpad"
+        - "Screen Edges"
+            - For all corners select "No Action" except:
+                - The upper right corner select "Present Windows - Current Desktops"
+                - The lower right corner select "Present Windows - All Desktops"
+                - The lower left select "Grid"
     - "Shortcuts" (these are in alphabetical order since scrolling through them isn't as useful as searching for each individually)
         - "KRunner": `meta+space`
         - "Maximize Window": `meta+home`
-        - "Show Desktop Grid": `meta+tab`
+        - "Toggle Grid View": `meta+tab`
         - "Spectacle"; "Capture Rectangular Region": `meta+shift+s`
         - "Switch One Desktop Down": `meta+ctrl+down`
         - "Switch One Desktop Up": `meta+ctrl+up`
         - "Switch One Desktop to the Left": `meta+ctrl+left`
         - "Switch One Desktop to the Right": `meta+ctrl+right`
-        - Click the button "Add Application" select Kitty; Click "Add custom shortcut" `meta+shift+t`
+        - Click the button "Add Application" select Ghostty; Click "Add custom shortcut" `meta+shift+t`
     - "Search"; "Plasma Search": (to modify results that appear in KRunner)
         - Click on "Configure KRunner..."
             - Next to "History:" select "Enabled auto-complete"
@@ -295,13 +249,14 @@ System Settings to change. Open "System Settings" then you can search or find th
         - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
             - This may not work so instead go tho the projects GitHub pages and follow the instructions found there
         - Click on "Get New Plugins"; search for "VSCode Workspaces Runner" then install that plugin
-            - This may not work so instead go tho the projects GitHub pages and follow the instructions found there
-- Under the "Personalization" category
-    - "Notifications"
-        - Next to "Low priority notifications" enable "Show in history"
-    - "Applications"; "Default Applications";
-        - "Web Browser": select "Microsoft Edge (beta)"
-        - "Terminal emulator": select "Kitty"
+            - This may not work so instead go tho the projects GitHub pages and follow the instructions found there'
+- Under the "Workspace" category
+    - "Workspace Behavior"
+        - "General Behavior"
+            - Clicking files or folders; change to "Selects them"
+- Under the "Security & Privacy" category
+    - "Screen Locking"
+        - Lock screen automatically: uncheck
 - Next to the search box in the upper left click on the hamburger menu
     - Select "Highlight Changed Settings" button to easily see which settings have been changed from their defaults
 
@@ -363,7 +318,7 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
                     - In the search box (in the upper right) search for "Kitty"
                     - Select "Open Kitty Here" ([the GitHub repo for this service](https://github.com/raphtlw/open-kitty-here), [the KDE Store link](https://store.kde.org/p/1378539))
                     - Click on the button (in the upper right) labeled "Install"
-                    - Deselect "Run In Konsole"
+                - Deselect "Run In Konsole"
                 - To add The option to open a folder in VSCode
                     - At the bottom click on the button "Download New Services..."
                     - Search for "VSCode" (in the upper right)
