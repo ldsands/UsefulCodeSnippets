@@ -114,6 +114,7 @@ winget install --id=Bitwarden.Bitwarden -e # probably will be better than Enpass
 winget install --id=PrestonN.FreeTube  -e # for watching YouTube on Windows
 winget install --id=Zidoro.Pomatez  -e # A Pomodoro timer that is cross platform
 winget install --id=RandomEngy.VidCoder  -e # for converting video files (to save space) uses handbreak on the backend (can also keep media creating date so that it works with programs like google photos)
+winget install --id=ToEverything.AFFiNE  -e # Notion/Obsidian alternative that is Open Source
 
 
 # old programs that I don't use anymore

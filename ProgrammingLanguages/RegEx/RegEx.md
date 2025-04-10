@@ -10,7 +10,8 @@ A collection of Regex code that I've used on many occasions
     - [Two New Lines in a Row](#two-new-lines-in-a-row)
     - [New line followed by wording (not two blank line breaks)](#new-line-followed-by-wording-not-two-blank-line-breaks)
     - [Remove new lines in-between a split sentence](#remove-new-lines-in-between-a-split-sentence)
-    - [Match everything in between to matches](#match-everything-in-between-to-matches)
+    - [Match All in Text Citations](#match-all-in-text-citations)
+    - [Match Everything in Between to Matches](#match-everything-in-between-to-matches)
     - [Match With Any Number of Words in Any Order](#match-with-any-number-of-words-in-any-order)
 
 ## Useful sites
@@ -151,7 +152,28 @@ Alford, Robert and Roger Friedland. 1985. Powers of Theory: Capitalism, the Stat
 ```
 -->
 
-## Match everything in between to matches
+## Match All in Text Citations
+
+- This should match all in-text citations in the style similar to ASA
+    - Below are some options that seem to work to varying degrees
+    - Also [here](https://stackoverflow.com/a/16826935) is some python code that is better than the regex options below
+
+```rexex
+# option 1 - a bit over-broad since it gets everything in between ()
+# [found here](https://stackoverflow.com/a/4320974)
+\((.+?)\)
+# option 2 - doesn't get some citations
+# [found here](https://stackoverflow.com/a/4320971)
+\(\D*\d\d\d\d(?:;\D*\d\d\d\d)*\)
+# option 3 - a bit too limited
+# [found here](https://stackoverflow.com/a/7579431)
+\(\D*\d{4}(;\D*\d{4})*\)
+# option 4 - seems too over-broad catches sentences between separated ()
+# [found here](https://stackoverflow.com/a/74549480)
+\s\([^(]*?\d{4}.*?\)
+```
+
+## Match Everything in Between to Matches
 
 I don't totally understand how this works but when you put what you're looking for on either side of the "middle section" it will only select that text
 

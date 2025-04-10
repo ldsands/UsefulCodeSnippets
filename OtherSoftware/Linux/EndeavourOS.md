@@ -205,6 +205,7 @@ flatpak install flathub com.spotify.Client # Spotify for music
 flatpak install flathub com.usebottles.bottles # bottles (for Windows applications)
 flatpak install flathub io.enpass.Enpass # for passwords NOTE: it will not work with browsers
 flatpak install flathub io.github.flattool.Warehouse # Warehouse for flakpak program management
+flatpak install flathub it.mijorus.gearlever # Gear Lever for management of AppImage applications (create desktop files etc.)
 flatpak install flathub io.github.peazip.PeaZip # for extraction and compression
 flatpak install flathub io.github.shiftey.Desktop # github desktop
 flatpak install flathub io.missioncenter.MissionCenter # Monitor system resource usage

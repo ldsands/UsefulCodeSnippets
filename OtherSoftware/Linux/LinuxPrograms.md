@@ -12,12 +12,13 @@
         - [Command Line Programs (On Ubuntu)](#command-line-programs-on-ubuntu)
         - [OBS Extensions (On Ubuntu)](#obs-extensions-on-ubuntu)
     - [Other Useful Applications (Distro Agnostic)](#other-useful-applications-distro-agnostic)
-        - [Nix Package Manager](#nix-package-manager)
-        - [Distro Agnostic Command Line Applications](#distro-agnostic-command-line-applications)
-        - [Flatpak Applications](#flatpak-applications)
         - [AppImage Applications](#appimage-applications)
         - [Bottles (For using Windows Applications)](#bottles-for-using-windows-applications)
+        - [Distro Agnostic Command Line Applications](#distro-agnostic-command-line-applications)
+        - [Flatpak Applications](#flatpak-applications)
+        - [Nix Package Manager](#nix-package-manager)
         - [Other Distro Agnostic Applications](#other-distro-agnostic-applications)
+        - [Snap](#snap)
     - [Linux (Distro Agnostic) Settings](#linux-distro-agnostic-settings)
 
 ## Arch Based Distros
@@ -121,6 +122,8 @@
         ```
 
 ### Waydroid (Android on Linux)
+
+NOTE: I have not updated this in a long time and I'm not sure it is worth it
 
 - [Waydroid](https://waydro.id/) allows for using an android emulator and thus the apps in Linux.
 - Installation is a bit involved the steps I took are below
@@ -475,171 +478,14 @@ Note: this is outdated use OBS via Flatpak as it now seems to work pretty much p
 
 This section consists of applications that are as far as I'm aware largely distro agnostic. Note that most of the applications detailed in both the Ubuntu and Arch sections are probably also distro agnostic but they may often have different installations instructions and/or configuration requirements depending on the distro. Also, many of the instructions below may not be consistently for Ubuntu (Debian based) or Manjaro (Arch based). I'll probably just use whatever installation instructions I used at the time I added the application to this document.
 
-### Nix Package Manager
-
-- Nix is a package manager that is distro agnostic and has a lot of advantages over other package managers. They also have their own distro called NixOS.
-
-```sh
-# install NixOS package manager (this will install it for multi-users which is recommended)
-sh <(curl -L https://nixos.org/nix/install) --daemon
-# install NixOS package manager (this will install it for a single user)
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-# [to update nix (on linux)](https://nixos.org/manual/nix/stable/installation/upgrading.html)
-nix-channel --update; nix-env -iA nixpkgs.nix nixpkgs.cacert; systemctl daemon-reload; systemctl restart nix-daemon
-```
-
-- To get installation commands you can go to the [Nix Packages Search site](https://search.nixos.org/packages) and search for packages you want to install. Make sure you use the `nix-env` and make sure you use `nixpkgs` unless you're on NixOS.
-    - For KDE if you want the applications you install via Nix to be visible to KDE, you will also need to like the location of the .desktop files to the "normal" location of the .desktop files. It can be done this command `cp -L ~/.nix-profile/share/applications/* ~/.local/share/applications/`
-    - The documentation for `nix-env` can be found [here](https://nixos.org/manual/nix/stable/command-ref/nix-env.html). Apparently the nix-env is the older way to use nix packages.
-
-```sh
-# example install Telegram Desktop
-nix-env -iA nixpkgs.tdesktop
-# To install packages that contain non-free software you'll need to add the line below to this file: ~/.config/nixpkgs/config.nix
-{ allowUnfree = true; }
-# to allow KDE to see the .desktop files you'll need to use the command below (you may need to use sudo)
-cp -L ~/.nix-profile/share/applications/* ~/.local/share/applications/
-# to uninstall you must complete two commands, first uninstall
-nix-env --uninstall telegram.desktop
-# then use garbage collection to remove the files
-nix-collect-garbage
-# to upgrade all installed nix packages:
-nix-env -u
-# to show what would be upgraded (but don't actually upgrade)
-nix-env -u --dry-run
-```
-
-### Distro Agnostic Command Line Applications
-
-- [NVTOP](https://github.com/Syllo/nvtop) "Nvtop stands for Neat Videocard TOP, a (h)top like task monitor for AMD and NVIDIA GPUs."
-    - To install using yay `yay -S nvtop`
-- [Auto CPU-Freq](https://github.com/AdnanHodzic/auto-cpufreq) - for saving battery life on laptops
-    - At time of writing you cannot install this using aur without issues instead you should use the installer with the code shown below:
-
-    ```sh
-    # clone the repo enter the dir then start the installer
-    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
-    cd auto-cpufreq && sudo ./auto-cpufreq-installer
-    # you must install the daemon for it to boot with the system
-    sudo auto-cpufreq --install
-    # to see stats use this command
-    auto-cpufreq --stats
-    ```
-
-### Flatpak Applications
-
-Flatpak allows for applications to "be easily installed on any Linux distribution" [(Flathub Website)](https://flathub.org/home). I use many application installed via Flatpak because they are so easy to install and use and they are highly sandboxed more so than both Snap and AppImage.
-
-- To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
-- To clean up unused flakpak applications and dependencies: `flatpak uninstall --unused`
-
-- AppImage Pool - A simple, modern AppImageHub Client.
-    - Installation command `flatpak install flathub io.github.prateekmedia.appimagepool -y`
-- Caprine - Elegant Facebook Messenger desktop app
-    - Installation command `flatpak install flathub com.sindresorhus.Caprine`
-- Chromium Web Browser - The web browser from Chromium project
-    - Installation command `flatpak install flathub org.chromium.Chromium -y`
-- Discord - Messaging, Voice, and Video Client
-    - Installation command `flatpak install flathub com.discordapp.Discord -y`
-- [Easy Effects](https://github.com/wwmm/easyeffects) - "Limiter, compressor, convolver, equalizer and auto volume and many other plugins for PipeWire applications"
-    - Installation command `flatpak install flathub org.gnome.Evolution -y`
-    - To get a loudness equalization effect you can use [this site](https://www.frackstudio.com/xeq/tips-tricks-xeq-ten-bands/) go to the heading labeled "5. Limiter" for a good explanation. I've created some instructions to implement this using Easy Effects below
-        - Manual instructions to get loudness equalization
-            - To get a loudness equalization effect you can go to the "Output" tab then "Add Effect" then select "Compressor"
-            - I leave everything at default (for now I haven't had a chance to do much testing as of 2023-12-03)
-        - Some presets you can download and apply:
-            - You need to put the `.json` files here (for flatpack installation) `~/.var/app/com.github.wwmm.easyeffects/config/easyeffects/output`
-            - [Has several different loudness equalization presets](https://github.com/Digitalone1/EasyEffects-Presets)
-                - I think I like the crystallization version a bit better
-            - [Has a preset with both loudness equalization and some auto gain (based on the work of the repo above)](https://github.com/JackHack96/EasyEffects-Presets)
-- Evolution - Manage your email, contacts and schedule
-    - I haven't used this one in a while, I think Thunderbird is probably the better option as of 2023-11-27
-    - Installation command `flatpak install flathub org.gnome.Evolution -y`
-- Flatseal - "Manage Flatpak permissions"
-    - Installation command `flatpak install flathub com.github.tchx84.Flatseal`
-- [Gabut Download Manager](https://flathub.org/apps/details/com.github.gabutakut.gabutdm) - "Simple and Faster Download Manager"
-    - `flatpak install flathub com.github.gabutakut.gabutdm`
-- Inkscape - Vector Graphics Editor
-    - Krita is probably better but this one is a bit more simple for better and for worse
-    - Installation command `flatpak install flathub org.inkscape.Inkscape -y`
-- Krita
-    - Installation command `flatpak install flathub org.kde.krita -y`
-- LibreOffice - Office Applications lots of features for an almost perfect replacement for MS Office
-    - Installation command `flatpak install flathub org.libreoffice.LibreOffice -y`
-    - To use LanguageTool in LibreOffice you need to use their API ([instructions can be found at this link](https://languagetool.org/insights/post/product-libreoffice/#how-to-enable-languagetool-on-libreoffice))
-    - I like to change some of the settings
-        - From "View" select "User Interface"
-            - Select "Tabbed"
-        - There is an issue with fonts in some flatpak applications (I think only GTK based applications) being very blocky (the antialiasing doesn't work right)
-            - [some details can be found here](https://github.com/flatpak/flatpak/issues/2861)
-            - To fix this for Arch Distros you must install a gtk package. Use this command `yay -S xdg-desktop-portal-gtk`
-            - Another fix for this is to use Flatseal select LibreOffice then deselect "Wayland windowing system" (sub-label is "socket=wayland")
-- OBS Studio - "Live streaming and video recording software"
-    - Installation command `flatpak install flathub com.obsproject.Studio`
-        - I used XSHM for screen capture to work (pipewire is the other option but it must require something more to work)
-        - You must make sure that "v4l2loopback" is installed to use the virtual camera feature
-    - [OBS Background Removal](https://github.com/occ-ai/obs-backgroundremoval) - "An OBS plugin for removing background in portrait images (video), making it easy to replace the background when recording or streaming."
-        - Installation command `flatpak install flathub com.obsproject.Studio.Plugin.BackgroundRemoval`
-- Okular - Lightweight pdf viewer
-    - Installation command `flatpak install flathub org.kde.okular`
-- ONLYOFFICE - Office Applications I like it better than LibreOffice for slides and word documents
-    - Installation command `flatpak install flathub org.onlyoffice.desktopeditors`
-    - There is an issue that in ONLYOFFICE Spreadsheet when using the "Filter" feature it can mess up the rows particularly with functions so I use LibreOffice for spreadsheet work
-- PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
-    - Installation command `flatpak install flathub io.github.peazip.PeaZip -y`
-- [Piper](https://github.com/libratbag/piper/wiki) - "Gaming mouse configuration utility" (for managing my Logitech mouse peripherals in Linux)
-    - Installation command `flatpak install flathub org.freedesktop.Piper -y`
-    - As of 2023-11-29 they have not had an official release since 0.7 which was was in 2022-06 this means that the flakpak version is outdated
-        - probably should install this using the git e.g. use AUR (`yay -S piper-git`) or [build it](https://github.com/libratbag/piper/wiki/Installation#building-from-source)
-- [Speech Note](https://github.com/mkiol/dsnote) - "Notes with offline Speech to Text, Text to Speech and Machine Translation"
-    - Installation command `flatpak install flathub net.mkiol.SpeechNote`
-    - Works pretty well even without a GPU
-        - some good voices (in order of preference)
-            - English British (Piper Alba Medium Female) / en
-            - English British (Piper Jenny Medium Female) / en
-            - English British (Piper Cori High Female) / en
-- SpeedCrunch - A high-precision scientific calculator
-    - Installation command `flatpak install flathub org.speedcrunch.SpeedCrunch -y`
-- Spotify - Online music streaming service
-    - Installation command `flatpak install flathub com.spotify.Client -y`
-- System Monitors (GPU, System)
-    - [Mission Center](https://missioncenter.io/) - Monitor system resource usage
-        - Installation command `flatpak install flathub io.missioncenter.MissionCenter`
-    - [GreenWithEnvy](https://gitlab.com/leinardi/gwe) - System utility designed to provide information, control the fans and overclock your NVIDIA card
-        - Installation command `flatpak install flathub com.leinardi.gwe`
-        - Be aware that this does not seem to launch correctly when pinned to the taskbar in Manjaro KDE
-    - [Nvidia System Monitor](https://github.com/congard/nvidia-system-monitor-qt) "Task Manager for Linux for Nvidia graphics cards"
-        - Installation command `flatpak install flathub io.github.congard.qnvsm`
-    - [CoreStats](https://gitlab.com/cubocore/coreapps/corestats) "A system resource viewer for C Suite." Very simple but still useful
-        - Installation command `flatpak install flathub org.cubocore.CoreStats`
-    - No longer supported - System Monitoring Center - Multi-featured system monitor
-        - Installation command `flatpak install flathub io.github.hakandundar34coding.system-monitoring-center`
-- TextSnatcher - Snatch Text with just a Drag
-    - Installation command `flatpak install flathub com.github.rajsolai.textsnatcher`
-- Thunderbird - Email
-    - Installation command `flatpak install flathub org.mozilla.Thunderbird`
-- Teams for Linux
-    - Installation command `flatpak install flathub com.github.IsmaelMartinez.teams_for_linux`
-- Telegram Desktop messenger
-    - Installation command `flatpak install flathub org.telegram.desktop -y`
-- Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
-    - Installation command `flatpak install flathub com.todoist.Todoist -y`
-- Warehouse - A gui for managing installed flatpak applications (particularly good for removing leftover data)
-    - Installation command `https://flathub.org/apps/io.github.flattool.Warehouse`
-- [Weather](https://invent.kde.org/plasma-mobile/kweather) - View real-time weather forecasts and other information
-    - Installation command `flatpak install flathub org.kde.kweather`
-- [Zoom](https://flathub.org/apps/details/us.zoom.Zoom) - "Video Conferencing, Web Conferencing, Webinars, Screen Sharing"
-    - Installation command `flatpak install flathub us.zoom.Zoom`
-    - Some settings using Flatseal would be useful for staying logged in and keeping configurations. [A blog that talks about this can be found here](https://www.mayrhofer.eu.org/post/zoom-flatpak-sandboxing/).
-- Zotero - Collect, organize, cite, and share research
-    - Installation command `flatpak install flathub org.zotero.Zotero -y`
-
 ### AppImage Applications
 
 - "Linux apps that run anywhere" [(AppImage Home Page)](https://appimage.org/). You can find a list of AppImage applications at [AppImageHub](https://www.appimagehub.com/).
     - Unfortunately AppImageHub is not very comprehensive but it is the best there is as far as I'm aware (as of 2024-12-16)
     - You can also use [AppImage Pool](https://flathub.org/apps/io.github.prateekmedia.appimagepool) that can be installed via Flatpak that accesses the AppImageHub database and can install AppImage applications
 - AppImage applications don't always come with a `.desktop` file or at least don't place it where needed all the time
+    - Now there is a flatpak application that can automates much of the AppImage management including creating `.desktop` files
+        - [Gear Lever](https://github.com/mijorus/gearlever) - to install `flatpak install flathub it.mijorus.gearlever`
     - To help with this issue you can use [this repo](https://github.com/un1t/appimage-desktop-entry)
         - Download the file and use the instructions to extract and then create a `.desktop` file that can then be used to find the application in KDE
         - In the directory containing the file `appimage-desktop-entry.sh` use the example command below (make sure to use the correct ) to create the `.desktop` file and have it automatically moved to the correct location for KDE to see it
@@ -719,6 +565,170 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
             - On [the PDF-XChange forums there is some discussion](https://forum.pdf-xchange.com/viewtopic.php?p=187062&hilit=wine#p187062) of the application freezing after a while which is something I also experience
                 - [PDF-XChange forums on crashing issues](https://forum.pdf-xchange.com/viewtopic.php?p=171650&hilit=wine#p171650)
 
+### Distro Agnostic Command Line Applications
+
+- [NVTOP](https://github.com/Syllo/nvtop) "Nvtop stands for Neat Videocard TOP, a (h)top like task monitor for AMD and NVIDIA GPUs."
+    - To install using yay `yay -S nvtop`
+- [Auto CPU-Freq](https://github.com/AdnanHodzic/auto-cpufreq) - for saving battery life on laptops
+    - At time of writing you cannot install this using aur without issues instead you should use the installer with the code shown below:
+
+    ```sh
+    # clone the repo enter the dir then start the installer
+    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+    cd auto-cpufreq && sudo ./auto-cpufreq-installer
+    # you must install the daemon for it to boot with the system
+    sudo auto-cpufreq --install
+    # to see stats use this command
+    auto-cpufreq --stats
+    ```
+
+### Flatpak Applications
+
+Flatpak allows for applications to "be easily installed on any Linux distribution" [(Flathub Website)](https://flathub.org/home). I use many application installed via Flatpak because they are so easy to install and use and they are highly sandboxed more so than both Snap and AppImage.
+
+- To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
+- To clean up unused flakpak applications and dependencies: `flatpak uninstall --unused`
+
+- AppImage Pool - A simple, modern AppImageHub Client.
+    - Installation command `flatpak install flathub io.github.prateekmedia.appimagepool -y`
+- Caprine - Elegant Facebook Messenger desktop app
+    - Installation command `flatpak install flathub com.sindresorhus.Caprine`
+    - Not verified but it is linked on the official GitHub repo of the app
+- Chromium Web Browser - The web browser from Chromium project
+    - Installation command `flatpak install flathub org.chromium.Chromium -y`
+- Discord - Messaging, Voice, and Video Client
+    - Installation command `flatpak install flathub com.discordapp.Discord -y`
+- [Easy Effects](https://github.com/wwmm/easyeffects) - "Limiter, compressor, convolver, equalizer and auto volume and many other plugins for PipeWire applications"
+    - Installation command `flatpak install flathub org.gnome.Evolution -y`
+    - To get a loudness equalization effect you can use [this site](https://www.frackstudio.com/xeq/tips-tricks-xeq-ten-bands/) go to the heading labeled "5. Limiter" for a good explanation. I've created some instructions to implement this using Easy Effects below
+        - Manual instructions to get loudness equalization
+            - To get a loudness equalization effect you can go to the "Output" tab then "Add Effect" then select "Compressor"
+            - I leave everything at default (for now I haven't had a chance to do much testing as of 2023-12-03)
+        - Some presets you can download and apply:
+            - You need to put the `.json` files here (for flatpack installation) `~/.var/app/com.github.wwmm.easyeffects/config/easyeffects/output`
+            - [Has several different loudness equalization presets](https://github.com/Digitalone1/EasyEffects-Presets)
+                - I think I like the crystallization version a bit better
+            - [Has a preset with both loudness equalization and some auto gain (based on the work of the repo above)](https://github.com/JackHack96/EasyEffects-Presets)
+- Evolution - Manage your email, contacts and schedule
+    - I haven't used this one in a while, I think Thunderbird is probably the better option as of 2023-11-27
+    - Installation command `flatpak install flathub org.gnome.Evolution -y`
+- Flatseal - "Manage Flatpak permissions"
+    - Installation command `flatpak install flathub com.github.tchx84.Flatseal`
+- [Gabut Download Manager](https://flathub.org/apps/details/com.github.gabutakut.gabutdm) - "Simple and Faster Download Manager"
+    - `flatpak install flathub com.github.gabutakut.gabutdm`
+- [Gear Lever](https://github.com/mijorus/gearlever) - "Manage AppImages with ease" can create `.desktop` files and can help with updates for some AppImage applications
+    - `flatpak install flathub it.mijorus.gearlever`
+- Inkscape - Vector Graphics Editor
+    - Krita is probably better but this one is a bit more simple for better and for worse
+    - Installation command `flatpak install flathub org.inkscape.Inkscape -y`
+- Krita
+    - Installation command `flatpak install flathub org.kde.krita -y`
+- LibreOffice - Office Applications lots of features for an almost perfect replacement for MS Office
+    - Installation command `flatpak install flathub org.libreoffice.LibreOffice -y`
+    - To use LanguageTool in LibreOffice you need to use their API ([instructions can be found at this link](https://languagetool.org/insights/post/product-libreoffice/#how-to-enable-languagetool-on-libreoffice))
+    - I like to change some of the settings
+        - From "View" select "User Interface"
+            - Select "Tabbed"
+        - There is an issue with fonts in some flatpak applications (I think only GTK based applications) being very blocky (the antialiasing doesn't work right)
+            - [some details can be found here](https://github.com/flatpak/flatpak/issues/2861)
+            - To fix this for Arch Distros you must install a gtk package. Use this command `yay -S xdg-desktop-portal-gtk`
+            - Another fix for this is to use Flatseal select LibreOffice then deselect "Wayland windowing system" (sub-label is "socket=wayland")
+- OBS Studio - "Live streaming and video recording software"
+    - Installation command `flatpak install flathub com.obsproject.Studio`
+        - I used XSHM for screen capture to work (pipewire is the other option but it must require something more to work)
+        - You must make sure that "v4l2loopback" is installed to use the virtual camera feature
+    - [OBS Background Removal](https://github.com/occ-ai/obs-backgroundremoval) - "An OBS plugin for removing background in portrait images (video), making it easy to replace the background when recording or streaming."
+        - Installation command `flatpak install flathub com.obsproject.Studio.Plugin.BackgroundRemoval`
+- Okular - Lightweight pdf viewer
+    - Installation command `flatpak install flathub org.kde.okular`
+- ONLYOFFICE - Office Applications I like it better than LibreOffice for slides and word documents
+    - Installation command `flatpak install flathub org.onlyoffice.desktopeditors`
+    - There is an issue that in ONLYOFFICE Spreadsheet when using the "Filter" feature it can mess up the rows particularly with functions so I use LibreOffice for spreadsheet work
+- PeaZip - Free file archiver utility, open, extract RAR TAR ZIP archives
+    - Installation command `flatpak install flathub io.github.peazip.PeaZip -y`
+- [Piper](https://github.com/libratbag/piper/wiki) - "Gaming mouse configuration utility" (for managing my Logitech mouse peripherals in Linux)
+    - Installation command `flatpak install flathub org.freedesktop.Piper -y`
+    - As of 2023-11-29 they have not had an official release since 0.7 which was was in 2022-06 this means that the flakpak version is outdated
+        - probably should install this using the git e.g. use AUR (`yay -S piper-git`) or [build it](https://github.com/libratbag/piper/wiki/Installation#building-from-source)
+- [Speech Note](https://github.com/mkiol/dsnote) - "Notes with offline Speech to Text, Text to Speech and Machine Translation"
+    - Installation command `flatpak install flathub net.mkiol.SpeechNote`
+    - Works pretty well even without a GPU
+        - some good voices (in order of preference)
+            - English British (Piper Alba Medium Female) / en
+            - English British (Piper Jenny Medium Female) / en
+            - English British (Piper Cori High Female) / en
+- SpeedCrunch - A high-precision scientific calculator
+    - Installation command `flatpak install flathub org.speedcrunch.SpeedCrunch -y`
+- Spotify - Online music streaming service
+    - Installation command `flatpak install flathub com.spotify.Client -y`
+- System Monitors (GPU, System)
+    - [Mission Center](https://missioncenter.io/) - Monitor system resource usage
+        - Installation command `flatpak install flathub io.missioncenter.MissionCenter`
+    - [GreenWithEnvy](https://gitlab.com/leinardi/gwe) - System utility designed to provide information, control the fans and overclock your NVIDIA card
+        - Installation command `flatpak install flathub com.leinardi.gwe`
+        - Be aware that this does not seem to launch correctly when pinned to the taskbar in Manjaro KDE
+    - [Nvidia System Monitor](https://github.com/congard/nvidia-system-monitor-qt) "Task Manager for Linux for Nvidia graphics cards"
+        - Installation command `flatpak install flathub io.github.congard.qnvsm`
+    - [CoreStats](https://gitlab.com/cubocore/coreapps/corestats) "A system resource viewer for C Suite." Very simple but still useful
+        - Installation command `flatpak install flathub org.cubocore.CoreStats`
+    - No longer supported - System Monitoring Center - Multi-featured system monitor
+        - Installation command `flatpak install flathub io.github.hakandundar34coding.system-monitoring-center`
+- TextSnatcher - Snatch Text with just a Drag
+    - Installation command `flatpak install flathub com.github.rajsolai.textsnatcher`
+- Thunderbird - Email
+    - Installation command `flatpak install flathub org.mozilla.Thunderbird`
+- Teams for Linux
+    - Installation command `flatpak install flathub com.github.IsmaelMartinez.teams_for_linux`
+- Telegram Desktop messenger
+    - Installation command `flatpak install flathub org.telegram.desktop -y`
+- Todoist: To-Do List & Tasks "The best to-do list app right now" - The Verge
+    - Installation command `flatpak install flathub com.todoist.Todoist -y`
+- Warehouse - A gui for managing installed flatpak applications (particularly good for removing leftover data)
+    - Installation command `https://flathub.org/apps/io.github.flattool.Warehouse`
+- [Weather](https://invent.kde.org/plasma-mobile/kweather) - View real-time weather forecasts and other information
+    - Installation command `flatpak install flathub org.kde.kweather`
+- [Zoom](https://flathub.org/apps/details/us.zoom.Zoom) - "Video Conferencing, Web Conferencing, Webinars, Screen Sharing"
+    - Installation command `flatpak install flathub us.zoom.Zoom`
+    - Some settings using Flatseal would be useful for staying logged in and keeping configurations. [A blog that talks about this can be found here](https://www.mayrhofer.eu.org/post/zoom-flatpak-sandboxing/).
+- Zotero - Collect, organize, cite, and share research
+    - Installation command `flatpak install flathub org.zotero.Zotero -y`
+
+### Nix Package Manager
+
+NOTE: I haven't ever gotten around to really figuring this out maybe I'll pick it up in the future
+
+- Nix is a package manager that is distro agnostic and has a lot of advantages over other package managers. They also have their own distro called NixOS.
+
+```sh
+# install NixOS package manager (this will install it for multi-users which is recommended)
+sh <(curl -L https://nixos.org/nix/install) --daemon
+# install NixOS package manager (this will install it for a single user)
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+# [to update nix (on linux)](https://nixos.org/manual/nix/stable/installation/upgrading.html)
+nix-channel --update; nix-env -iA nixpkgs.nix nixpkgs.cacert; systemctl daemon-reload; systemctl restart nix-daemon
+```
+
+- To get installation commands you can go to the [Nix Packages Search site](https://search.nixos.org/packages) and search for packages you want to install. Make sure you use the `nix-env` and make sure you use `nixpkgs` unless you're on NixOS.
+    - For KDE if you want the applications you install via Nix to be visible to KDE, you will also need to like the location of the .desktop files to the "normal" location of the .desktop files. It can be done this command `cp -L ~/.nix-profile/share/applications/* ~/.local/share/applications/`
+    - The documentation for `nix-env` can be found [here](https://nixos.org/manual/nix/stable/command-ref/nix-env.html). Apparently the nix-env is the older way to use nix packages.
+
+```sh
+# example install Telegram Desktop
+nix-env -iA nixpkgs.tdesktop
+# To install packages that contain non-free software you'll need to add the line below to this file: ~/.config/nixpkgs/config.nix
+{ allowUnfree = true; }
+# to allow KDE to see the .desktop files you'll need to use the command below (you may need to use sudo)
+cp -L ~/.nix-profile/share/applications/* ~/.local/share/applications/
+# to uninstall you must complete two commands, first uninstall
+nix-env --uninstall telegram.desktop
+# then use garbage collection to remove the files
+nix-collect-garbage
+# to upgrade all installed nix packages:
+nix-env -u
+# to show what would be upgraded (but don't actually upgrade)
+nix-env -u --dry-run
+```
+
 ### Other Distro Agnostic Applications
 
 - [Ventoy](https://www.ventoy.net/en/index.html) - "Ventoy is an open source tool to create bootable USB drive for ISO/WIM/IMG/VHD(x)/EFI files." You can also install it on Windows.
@@ -738,6 +748,25 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
             - can check the timezone with this command: `timedatectl`
             - can see possible timezones with this command: `timedatectl list-timezones | grep America`
             - can set the timezone to central with this command: `sudo timedatectl set-timezone America/Chicago`
+
+### Snap
+
+- Snap is very similar to flatpak but has some advantages and disadvantages below are some advantages of both platforms
+    - Snap is slower to startup, officially supported by Canonical (a company that also manages Ubuntu), it can be used on linux servers and even IoT devices, it generally takes up less storage space than flatpak packages, slightly better security (on average), easier to build and maintain packages
+    - Flatpak does not require admin privileges, complexly open source, broader distribution and distro support
+    - Some packages are better supported on Snap and some on Flatpak sometimes it just depends
+- [Snapcraft](https://snapcraft.io/) - The store for snap packages
+- To install snap on Arch Linux
+    - `yay -S snapd` - to install snapd
+    - `sudo systemctl enable --now snapd.socket` - to allow systemd manage snap communication
+    - `sudo systemctl enable --now snapd.apparmor.service` - "If AppArmor is enabled in your system, enable the service which loads AppArmor profiles for snaps"
+    - probably should reboot after this
+- Other useful Snap commands
+    - `snap refresh --list` list snap packages that need to be updated
+    - `sudo snap refresh` to update snap packages
+- Snap packages I use/install usually only because they have better support on Snap over Flatpak
+    - [Vivaldi](https://snapcraft.io/vivaldi) - One of my favorite browsers
+        - `sudo snap install vivaldi`
 
 ## Linux (Distro Agnostic) Settings
 
