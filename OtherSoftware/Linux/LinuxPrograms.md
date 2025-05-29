@@ -26,6 +26,9 @@
 - I use yay rather than pacman to install arch and AUR packages
     - A useful command that can tell you information about a package that is installed. For example it is useful if you want to know what it depends on or what depends on that package. `yay -Qi ceph-libs` In this example ceph-libs is the package name.
     - The `yay -Yc` command removes any unused programs installed via pacman/yay
+    - To list every explicitly installed packages `yay -Qm`" [(taken from this reddit)](https://www.reddit.com/r/archlinux/comments/woh8fr/list_packages_installed_by_yay/?rdt=34147)
+        - related `yay -Q` lists all that are installed via yay/pacman
+        - `yay -Ps` gives some top level summary information about packages are installed
 - For configuring Logitech Devices you can use [Solaar](https://pwr-solaar.github.io/Solaar/)
     - You should install this from extra on the Arch repository
     - There is a Flatpak application that appears to work but I cannot get it to recognize devices (I suspect some combination of Arch, bluetooth and Flatpak is causing the issue)

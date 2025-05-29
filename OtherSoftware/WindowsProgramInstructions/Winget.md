@@ -49,60 +49,63 @@ winget install --id=SomePythonThings.WingetUIStore  -e # UniGetUI a winget GUI
 A list of applications to install using Winget are below:
 
 ```sh
-winget install --id QL-Win.QuickLook -e
-winget install --id rammichael.7+TaskbarTweaker -e
-winget install --id rammichael.Textify -e
-winget install --id=9NGHP3DX8HDX -e # [Files App](https://files.community/)
-winget install --id=Amazon.Kindle -e
-winget install --id=AntibodySoftware.WizFile  -e # like everything but has some more features (except networked drives)
-winget install --id=AntibodySoftware.WizTree  -e # like WinDirStat but way faster
-winget install --id=Bostrot.WSLManager -e # WSL Manager can also be installed in many other ways
-winget install --id=ChristianSchenk.MiKTeX -e
-winget install --id=Discord.Discord -e
-winget install --id=Docker.DockerDesktop  -e # docker desktop
-winget install --id=EpicGames.EpicGamesLauncher -e
-winget install --id=File-New-Project.EarTrumpet -e
-winget install --id=Flow-Launcher.Flow-Launcher  -e # launcher might be better than PowerToys run
-winget install --id=GOG.Galaxy -e
-winget install --id=Gephi.Gephi -e
-winget install --id=Julialang.Julia -e
-winget install --id=KDE.KDEConnect -e
-winget install --id=LINQPad.LINQPad -e
-winget install --id=Lexikos.AutoHotkey -e
-winget install --id=LibreOffice.LibreOffice -e
-winget install --id=Microsoft.EdgeBeta -e
-winget install --id=Microsoft.PowerShell -e
-winget install --id=Microsoft.PowerToys -e
-winget install --id=Microsoft.Teams -e
-winget install --id=Microsoft.VisualStudioCode -e
-winget install --id=Microsoft.WindowsTerminalPreview -e
-winget install --id=Microsoft.dotnet -e
-winget install --id=Min.Min -e
-winget install --id=MiniTool.PartitionWizard.Free  -e # MiniTool Partition for managing partitions
-winget install --id=Mozilla.Firefox -e
+## Audio/Visual Apps
 winget install --id=NickeManarin.ScreenToGif
 winget install --id=Nvidia.Broadcast -e
-winget install --id=OBSProject.OBSStudio -e
-winget install --id=Playnite.Playnite -e
-winget install --id=Python.Python -e
-winget install --id=RProject.R -e
-winget install --id=RStudio.RStudio -e
-winget install --id=RiotGames.LeagueOfLegends -e
-winget install --id=Rust.rustup -e
+winget install --id=OBSProject.OBSStudio -e # for controlling video outputs
 winget install --id=ShareX.ShareX -e
-winget install --id=Signal.Signal -e
-winget install --id=SoftDeluxe.FreeDownloadManager  -e # Free Download Manager
-winget install --id=SpeedCrunch.SpeedCrunch -e
 winget install --id=Spotify.Spotify -e
-winget install --id=Stretchly.Stretchly -e
-winget install --id=SumatraPDF.SumatraPDF -e
-winget install --id=TimKosse.FilezillaClient -e
-winget install --id=Ubisoft.Uplay -e
-winget install --id=Valve.Steam -e
-winget install --id=VideoLAN.VLC -e
+winget install --id=VideoLAN.VLC -e # for playing video files
 winget install --id=Zoom.Zoom -e
 winget install --id=jurplel.qView  -e # simple image viewer that is cross-platform
+## Browsers
+winget install --id=Min.Min -e # https://minbrowser.org/
+winget install --id=Mozilla.Firefox -e
+TODO
+## Communication Apps
+winget install --id=Signal.Signal -e
+winget install --id=Telegram.TelegramDesktop  -e
+## Development Apps
+winget install --id=ChristianSchenk.MiKTeX -e
+winget install --id=Docker.DockerDesktop  -e # docker desktop
+winget install --id=Gephi.Gephi -e # graphing networks and flowcharts https://gephi.org/
+winget install --id=Julialang.Julia -e
+winget install --id=LINQPad.LINQPad -e
+winget install --id=RProject.R -e
+winget install --id=RStudio.RStudio -e
+winget install --id=Rust.rustup -e
+winget install --id=SumatraPDF.SumatraPDF -e
+winget install --id=TimKosse.FilezillaClient -e
+## Document Apps
+winget install --id=Amazon.Kindle -e
+winget install --id=LibreOffice.LibreOffice -e
+winget install --id=Microsoft.VisualStudioCode -e
+## Gaming Applications
+winget install --id=Discord.Discord -e
+winget install --id=EpicGames.EpicGamesLauncher -e
+winget install --id=GOG.Galaxy -e
+winget install --id=Playnite.Playnite -e
+winget install --id=Ubisoft.Uplay -e
+winget install --id=Valve.Steam -e
 winget install --id=twitch.twitch -e
+## TODO and Timers
+winget install --id=Stretchly.Stretchly -e # todo timer https://hovancik.net/stretchly/
+## Windows Utilities
+### Apps I always install
+winget install --id=AntibodySoftware.WizFile  -e # like everything but has some more features (except networked drives)
+winget install --id=AntibodySoftware.WizTree  -e # like WinDirStat but way faster
+winget install --id=Giorgiotani.Peazip  -e # peazip for compression and decompression
+### Others I sometimes install
+winget install --id=9NGHP3DX8HDX -e # [Files App](https://files.community/) do NOT set it as the default explorer
+winget install --id=File-New-Project.EarTrumpet -e
+winget install --id=Lexikos.AutoHotkey -e
+winget install --id=MiniTool.PartitionWizard.Free  -e # MiniTool Partition for managing partitions
+winget install --id=QL-Win.QuickLook -e # https://github.com/QL-Win/QuickLook
+winget install --id=SoftDeluxe.FreeDownloadManager  -e # Free Download Manager
+winget install --id=SpeedCrunch.SpeedCrunch -e
+winget install --id=rammichael.7+TaskbarTweaker -e # https://tweaker.ramensoftware.com/
+winget install --id=rammichael.Textify -e # https://ramensoftware.com/textify
+
 
 # stuff to evaluate
 
@@ -119,6 +122,7 @@ winget install --id=ToEverything.AFFiNE  -e # Notion/Obsidian alternative that i
 
 # old programs that I don't use anymore
 winget install --id=DuongDieuPhap.ImageGlass -e # image viewer (doesn't seem to update via winget as easily as qView)
+winget install --id=Flow-Launcher.Flow-Launcher  -e # launcher some ways than PowerToys run (Windows Command Palette is my preferred over both)
 winget install --id=WinDirStat.WinDirStat -e # use WizTree instead
 winget install --id=agalwood.Motrix -e # updates have pretty much stopped
 winget install --id=voidtools.Everything -e # use WizFile instead it has some more features (except networked drives)

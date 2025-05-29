@@ -6,8 +6,10 @@ Fedora is a Linux distro that is very stable but has more frequent updates than 
     - [Installing Fedora KDE](#installing-fedora-kde)
         - [Installing Nvidia Drivers](#installing-nvidia-drivers)
     - [Installing Programs](#installing-programs)
+    - [Useful Fedora Notes to Be Aware Of](#useful-fedora-notes-to-be-aware-of)
     - [KDE Plasma Setup](#kde-plasma-setup)
     - [App Configurations](#app-configurations)
+    - [Useful Commands to Use](#useful-commands-to-use)
 
 ## Installing Fedora KDE
 
@@ -19,57 +21,81 @@ If you are running Fedora on a PC with an Nvidia GPU Video will be really bad un
 
 ## Installing Programs
 
-- Note: A good gui for using dnf is called [dnfdragora](https://github.com/manatools/dnfdragora). You can install it using `dnf install dnfdragora-gui`. This can make installing some applications using dnf easier.
-- Install the following command line stuff and other configurations
-    - [Git](https://git-scm.com) - "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."
-    - [Kitty](https://sw.kovidgoyal.net/kitty/) (my preferred terminal emulator)
-    - Set def to download more items at once ([found in this video's description](https://www.youtube.com/watch?v=RrRpXs2pkzg))
+Install the following command line stuff and other configurations
 
-    ```sh
-    # install git
-    sudo dnf install git-all -y
-    # setup git to not auto end filenames (can cause issues when opening a repo that has been opened on Windows)
-    git config --global core.autocrlf input
-    # set up git to use your account (optional)
-    git config --global user.name "user_name"
-    git config --global user.email "email@example.com"
-    # set dnf download settings to download 10 items at once
-    fastestmirror=True
-    max_parallel_downloads=10
-    defaultyes=True
-    keepcache=True
-    # clear dnf cache
-    sudo dnf clean all
-    # enable RPM Fusion
-    sudo dnf groupupdate core
-    # change Hostname
-    sudo hostnamectl set-hostname "ldsands_host"
-    # install media codecs
-    sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-    sudo dnf groupupdate sound-and-video
-    # Install Kitty
-    dnf install kitty -y
-    # change the ctrl+shift to ctrl in Kitty along with some other settings more can be found [here](https://sw.kovidgoyal.net/kitty/conf/)
-    echo "
-    map ctrl+c copy_or_interrupt
-    map ctrl+v paste_from_clipboard
-    map ctrl+t new_tab
-    map ctrl+w close_window
-    map ctrl+tab next_tab
-    map ctrl+shift+tab previous_tab
-    background_opacity 0.6
-    :     font_family      FiraCode Nerd Font Mono
-    " >> ~/.config/kitty/kitty.conf
-    ```
+- [Git](https://git-scm.com) - "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency."
+
+```sh
+# install git
+sudo dnf install git-all -y
+# setup git to not auto end filenames (can cause issues when opening a repo that has been opened on Windows)
+git config --global core.autocrlf input
+# set up git to use your account (optional)
+git config --global user.name "user_name"
+git config --global user.email "email@example.com"
+git config --global credential.helper 'store --file ~/.my-credentials'
+# set up git to use your account (optional, make sure that you use the "{ID}+{username}@users.noreply.github.com" email format)
+git config --global user.name "user_name"
+git config --global user.email "email@example.com"
+# this makes it so you dont have to sign in every time you do anything with Github
+# if you still have issues you can look [here](https://stackoverflow.com/a/51097104) for some helpful tips
+# you will need to push (`git push`) a commit via terminal for this to work
+# you will need to enter your Github login and password (you must use a personal access token instead of your password)
+git config --global credential.helper 'store --file ~/.my-credentials'
+```
+
+- Install a terminal emulator
+    - [Ghostty](https://ghostty.org/) My preferred terminal emulator as of 2025
+    - [Kitty](https://sw.kovidgoyal.net/kitty/) my old preferred terminal emulator
+
+```sh
+# enable Ghostty from copr
+dnf copr enable pgdev/ghostty
+# Install Ghostty
+dnf install ghostty
+# Install Kitty
+dnf install kitty -y
+# change the ctrl+shift to ctrl in Kitty along with some other settings more can be found [here](https://sw.kovidgoyal.net/kitty/conf/)
+echo "
+map ctrl+c copy_or_interrupt
+map ctrl+v paste_from_clipboard
+map ctrl+t new_tab
+map ctrl+w close_window
+map ctrl+tab next_tab
+map ctrl+shift+tab previous_tab
+background_opacity 0.6
+:     font_family      FiraCode Nerd Font Mono
+" >> ~/.config/kitty/kitty.conf
+```
+
+- Set def to download more items at once ([found in this video's description](https://www.youtube.com/watch?v=RrRpXs2pkzg))
+
+```sh
+# set dnf download settings to download 10 items at once
+fastestmirror=True
+max_parallel_downloads=10
+defaultyes=True
+keepcache=True
+# clear dnf cache
+sudo dnf clean all
+# enable RPM Fusion
+sudo dnf groupupdate core
+# change Hostname
+sudo hostnamectl set-hostname "ldsands_host"
+# install media codecs
+sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+sudo dnf groupupdate sound-and-video
+```
 
 - Install Enpass (my password manager). Look [here under the "For RPM package"](https://www.enpass.io/support/kb/general/how-to-install-enpass-on-linux/)
+    - Unfortunately, their instructions use yum just use dnf for install but otherwise it works as of 2025-05-29
 
     ```sh
     # Add Enpass yum repository
     cd /etc/yum.repos.d/
     sudo wget https://yum.enpass.io/enpass-yum.repo
     # After that, you can install Enpass as any other software package:
-    sudo yum install enpass
+    sudo dnf install enpass
     ```
 
 - [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions)
@@ -93,7 +119,7 @@ If you are running Fedora on a PC with an Nvidia GPU Video will be really bad un
     kquitapp5 krunner;kstart5 krunner
     ```
 
-- Install Rust and rust related programs
+- Install Rust and rust related programs ([Go to this file for the details to install them all](/ProgrammingLanguages/Rust/Nushell.md))
     - The recommended way to use and install rust is by using rustup more can be found [here](https://www.rust-lang.org/tools/install)
     - The code below will also install several rust related programs
         - [Nushell](https://www.nushell.sh/) is a shell that is written in rust and cross-platform.
@@ -108,180 +134,35 @@ If you are running Fedora on a PC with an Nvidia GPU Video will be really bad un
         - [McFly](https://github.com/cantino/mcfly) - "McFly replaces your default `ctrl-r` shell history search with an intelligent search engine that takes into account your working directory and the context of recently executed commands."
 
     ```sh
-    # install rustup
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
-    # you need to select 1 to install rust then restart your shell
-    # update rust
-    rustup update
-    # nushell dependencies for Fedora
-    sudo dnf install libxcb openssl-devel libX11-devel -y
-    # install Nushell using cargo
-    cargo install nu --features=dataframe
-    # you will need to restart your shell
-    # you can now start Nushell with this command
-    nu
-    # once you start Nushell for the first time you can just press `y` twice to create the default Nushell config and env files
-    # installation of bottom which is a system resource manager (required rust)
-    cargo install bottom
-    # install zoxide
-    cargo install zoxide --locked
-    # install fzf which is an optional zoxide dependency
-    sudo dnf install fzf -y
-    # install mcfly
-    cargo install mcfly
-    # this installs starship which is a cross platform/shell prompt
-    cargo install starship --locked
-    # create bottom and starship config files
-    mkdir -p ~/.config && mkdir -p ~/.config/bottom/
-    # enter bash for the following commands
-    bash
-    # copy my configuration from my gists to the bottom.toml, starship.toml and config.nu files
-    cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/bottom.toml -N
-    cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/starship.toml -N
-    cd ~/.config/nushell/ && wget ‐‐directory-prefix=~/.config/nushell/config.nu https://gist.githubusercontent.com/ldsands/d3eac90b0b9d2b8613e165cc9e49d4f3/raw/config.nu -N
-    # add a file so that kitty's default tab opens using Nushell
-    '
-    # point to a startup session file
-    startup_session ~/.config/kitty/kitty-start.kitty
-    ' | save -a ~/.config/kitty/kitty.conf
-    '# launches default tab using `nu` command thus starting Nushell
-    launch nu
-    ' | save ~/.config/kitty/kitty-start.kitty
+    # install yazi via dnf copr rather than cargo
+    dnf copr enable lihaohong/yazi
+    dnf install yazi
     ```
 
 - Install python related programs
-    - Install pyenv using the [pyenv-installer repo](https://github.com/pyenv/pyenv-installer). You will also need to install dependencies to build python, more information about which dependencies to install can be found [here](https://github.com/pyenv/pyenv/wiki#troubleshooting--faq).
-    - Install [Poetry](https://python-poetry.org/) to manage python project virtual environments.
+    - Install [UV](https://docs.astral.sh/uv/) for managing both python and python projects
 
-    ```sh
-    # install python/pyenv build dependencies
-    sudo dnf install make gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel xz-devel libuuid-devel gdbm-devel libnsl2-devel -y
-    # install pyenv
-    curl https://pyenv.run | bash
-    # you may need to add these lines to ~/.bashrc (this uses Nushell)
-    '
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init --path)"
-    eval "$(pyenv virtualenv-init -)"
-    ' | save -a ~/.bashrc
-    # install Poetry
-    curl -sSL https://install.python-poetry.org | python3 -
-    ```
+```sh
+# install UV
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
 - Configure Discover (probably the easiest way to install, update, uninstall and manage applications)
     - Although Discover is the KDE application management application I put it here because some of the settings are distro specific
     - In the lower left there are several tabs, click on "Settings"
         - Under the "Flatpak" section make sure to enable "Flathub"
 
-- Install Tabby (a terminal emulator that is awesome but it does take a lot of resources to run)
-    - Install Tabby by:
-        - [Download the `.rpm` version of the latest release](https://github.com/Eugeny/tabby/releases/latest)
-        - Either double click on the file to use Discover to install it or use the following command in a terminal `sudo dnf localinstall file_name.rpm`
-    - Deselect the "Enable global hotkey" toggle
+## Useful Fedora Notes to Be Aware Of
+
+- Fedora uses dnf for packages management. Previously yum was a newer alternative however the improvements made to yum eventually were incorporated into dnf 5 which is the default for newer Fedora releases. [This Reddit post helps](https://www.reddit.com/r/Fedora/comments/12eoxg2/dnf_rpm_yum_its_just_too_much_and_confusing/)
+- Note: A good gui for using dnf is called [dnfdragora](https://github.com/manatools/dnfdragora). You can install it using `dnf install dnfdragora-gui`. This can make installing some applications using dnf easier.
+- There are multiple repositories that act kind of like AUR for Arch Linux
+    - [Terra](https://terra.fyralabs.com/)
+    - [Fedora COPR](https://copr.fedorainfracloud.org/coprs/)
 
 ## KDE Plasma Setup
 
-System Settings to change. Open "System Settings" then you can search or find the categories listed (in the left sidebar) below to edit settings. I try to follow the order they appear in the System Settings Application.
-
-- "Appearance"
-    - "Global Theme"
-        - Select "Breeze Dark"
-- Under the "Workspace" category
-    - "Workspace Behavior"
-        - "Desktop Effects"
-            - Search for "Desktop Grid"
-                - Select the "Configure..." button
-                - Set "Border width:" to 5
-                - For "Desktop name alignment:" select "Top"
-                - Deselect "Show buttons to alter count of virtual desktops"
-                - Click on the "OK" button
-        - "General Behavior"
-            - Clicking files or folders; change to "Selects them"
-        - "Screen Edges"
-            - For all corners select "No Action" except:
-                - The upper right corner select "Present Windows - Current Desktops"
-                - The lower right corner select "Present Windows - All Desktops"
-                - The lower left select "Desktop Grid"
-        - "Screen Locking"
-            - Lock screen automatically: uncheck
-        - "Virtual Desktops"
-            - "Workspace Behavior"; "Virtual Desktops"
-                - I create 12 Virtual Desktops with three desktops in each of 4 rows
-                - Row 1: `Random 01`, `Random 02` and `Random 03`
-                - Row 2: `School 01`, `School 02` and `School 03`
-                - Row 3: `Python 01`, `Python 02` and `Python 03`
-                - Row 4: `Email`, `CommsMusic` and `Todo`
-            - Enable "Navigation wraps around"
-            - Enable "Show on-screen display when switching" and change the value toaa 500 ms
-            - Enable "Show desktop layout indicators"
-    - "Window Behavior"
-        - "Task Switcher"
-            - In the "Visualization" column select "Thumbnail Grid" from the dropdown menu
-            - Do this for both the "Main" and the "Alternate" tabs (at the top of the sub-window that contains the settings above)
-    - "Shortcuts" (these are in alphabetical order since scrolling through them isn't as useful as searching for each individually)
-        - "KRunner": `meta+space`
-        - "Maximize Window": `meta+home`
-        - "Show Desktop Grid": `meta+tab`
-        - "Spectacle"; "Capture Rectangular Region": `meta+shift+s`
-        - "Switch One Desktop Down": `meta+ctrl+down`
-        - "Switch One Desktop Up": `meta+ctrl+up`
-        - "Switch One Desktop to the Left": `meta+ctrl+left`
-        - "Switch One Desktop to the Right": `meta+ctrl+right`
-        - Click the button "Add Application" select Kitty; Click "Add custom shortcut" `meta+shift+t`
-    - "Startup and Shutdown"
-        - "Background Services"
-            - Make sure that "Removable Device Automounter" is not checked
-    - "Search"; "Plasma Search": (to modify results that appear in KRunner)
-        - Deselect "Browser History"
-        - Deselect "Browser Tabs"
-        - Deselect "Kate Sessions"
-        - Deselect "Konsole Profiles"
-        - Click on "Get New Plugins"; search for "VSCodeProjectsRunner" then install that plugin
-        - Click on "Get New Plugins"; search for "VSCode Workspaces Runner" then install that plugin
-- Under the "Personalization" category
-    - "Notifications"
-        - Next to "Low priority notifications" enable "Show in history"
-    - "Applications"; "Default Applications";
-        - "Web Browser": select "Microsoft Edge (beta)"
-        - "Terminal emulator": select "Kitty"
-- Under the "Hardware" category
-    - Removable Storage; Removable Devices
-        - Check "Enable automatic mounting of removable media" and "Only automatically mount removable media that has been manually mounted before"
-- Select "Highlight Changed Settings" button at the bottom of the side bar to easily see which settings have been changed from their defaults
-
-Next there are several changes I make to the panel(s) (taskbar(s)) and the desktop.
-
-- Panel (in Windows Terminology the taskbar)
-    - Right click on the battery icon and select "Show Battery Percentage on Icon" (on computers with a battery like a laptop)
-    - Right click on the clock and select "Configure Digital Clock ..." Then next to "Date format:" select "ISO Date"
-    - Right click on the panel (called taskbar on Windows) and select "Edit Panel..."
-        - Mouse over the "Icons-Only Task Manager"; Mouse over "Configure"
-        - Select the "Behavior" tab in the sidebar;
-            - For "Groups" select "Do not group"
-            - For "Show Only Tasks" select "From Current Screen"
-    - Right Click on the down arrow in the system tray and click on "Configure System Tray..."
-        - "General"
-            - From the "Panel icon spacing:" drop down box select "Small"
-        - "Keyboard Shortcuts" Tab
-            - Click on the button that says "None" and enter the keyboard shortcut `meta+a`
-    - Right Click on the panel and click "Add Widgets..."
-        - Find and drag the "Window List" Widget to the panel next to the System Tray
-    - If there are two monitors
-        - Do the following for whichever monitor that is not the "Primary" monitor (as indicated in the "Display Configuration" in the System Settings application)
-            - Right click on a blank spot of the desktop, mouse over "Add Panel" then click on "Default Panel"
-            - Repeat the above panel settings for the new panel
-            - Remove the system tray from one monitor (I usually choose the non primary monitor to keep the system tray)
-            - Remove the "Window List" Widget from one monitor (I usually choose the non-primary monitor to keep this widget)
-- Desktop
-    - Right click on a blank section of the desktop and select "Enter Edit Mode"
-        - Select the "Add Widgets..." (assuming there are two monitors, if not I put the locations used below will all work with each other on one monitor)
-            - On the right screen in the upper left hand corner I add the widget "Pager" onto the Desktop
-                - I make it big enough to see all nine desktops well
-                - Right click on the widget and select "Configure Pager"
-                    - In the "General" tab I select "Show applications icons on window outlines"
-                    - Also in the "General" tab I select "Text Display"; "Desktop Name"
-            - On the right screen in the upper right corner I add the "Weather Report" widget
-            - On the left screen in the lower left I add the "Window List" widget
+[Go to the file specifically designed for setting up KDE](/OtherSoftware/Linux/KDEConfigurations.md)
 
 ## App Configurations
 
@@ -324,3 +205,15 @@ Next there are several changes I make to the panel(s) (taskbar(s)) and the deskt
     - It seems like when LibreOffice is in dark mode it doesn't automatically change the icons so they are very difficult to see. To change this select "Tools" then "Options" then under "LibreOffice" select "View"
         - Under "Icon style:" select "Breeze (SVG + dark)" then click the "Apply" button.
     - I also prefer the "ribben" style of user interface. To change to the ribbon ui go to "View" then "User Interface..." Then select "Tabbed"
+
+## Useful Commands to Use
+
+- To upgrade the system (I assume upon major releases) [go to this link](https://docs.fedoraproject.org/en-US/quick-docs/upgrading-fedora-offline/#sect-performing-system-upgrade)
+
+```sh
+# To update your Fedora Linux release from the command-line do
+sudo dnf upgrade --refresh
+
+# non dnf updates
+flatpak update; uv self update; rustup update; cargo install-update -a
+```

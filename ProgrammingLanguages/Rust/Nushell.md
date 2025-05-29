@@ -4,6 +4,7 @@
 
 - [Nushell](#nushell)
     - [Installing Nushell](#installing-nushell)
+    - [Other Rust and Newshell Related Command Line Applications](#other-rust-and-newshell-related-command-line-applications)
     - [Useful Nushell Notes](#useful-nushell-notes)
 
 ## Installing Nushell
@@ -17,12 +18,26 @@ You can find the official documentation for installation [here](https://www.nush
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # update rust using rustup
 rustup update
+
+# [install cargo-update which makes updating cargo packages/applications easier](https://crates.io/crates/cargo-update)
+cargo install cargo-update
+# check for all newer versions of cargo installed packages/applications (also self updates cargo install-update when applicable)
+cargo install-update -a
+
+# to see all cargo installed packages/applications such as Nushell Bottom or Typst you can use the command below
+cargo install --list
+
 # install Nushell using cargo (this is the same command you can use to update Nushell)
-cargo install nu --features=dataframe
+cargo install nu --locked
+
 # for debian based systems you may need to install the packages below
 sudo apt install pkg-config libssl-dev
 # you may need to install a c compiler WSL Ubuntu doesn't come with one (do this if you see an error saying "error: linker `cc` not found")
 sudo apt install build-essential
+# for Fedora you may need the dependencies below
+sudo dnf install openssl-devel -y
+sudo dnf install cmake clang make gcc -y
+
 # you will need to restart your shell
 # you can now start Nushell with this command
 nu
@@ -43,11 +58,48 @@ git clone https://github.com/nushell/nu_scripts.git
 code $nu.config-path
 ```
 
+- I then like to customize my Newshell with various options
+    - I store these in a gist [found here](https://gist.github.com/ldsands/d3eac90b0b9d2b8613e165cc9e49d4f3)
+    - Paste this code into the file that opens with the command here: `code $nu.config-path`
+
+## Other Rust and Newshell Related Command Line Applications
+
+- Rust/Cargo Command Line Applications
+    - [Bottom](https://github.com/ClementTsang/bottom) - "[C]ross-platform graphical process/system monitor."
+        - See below for a link to a gist that contains my preferred configuration options
+        - use bottom by typing in `btm`
+    - [Starship](https://starship.rs/) - "The minimal, blazing-fast, and infinitely customizable prompt for any shell!"
+        - This requires a [Nerd Font](https://www.nerdfonts.com/) (or similar) to work properly here is a command that installs the Fira Code Nerd Font: `mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v`
+        - See below for a link to a gist that contains my preferred configuration options
+    - [Zoxide](https://github.com/ajeetdsouza/zoxide#installation) - "A smarter cd command."
+        - This also uses (optionally) [fzf](https://github.com/junegunn/fzf) which is, "A command-line fuzzy finder"
+    - [McFly](https://github.com/cantino/mcfly) - "McFly replaces your default `ctrl-r` shell history search with an intelligent search engine that takes into account your working directory and the context of recently executed commands."
+    - [Yazi](https://yazi-rs.github.io/) - "Blazing fast terminal file manager written in Rust, based on async I/O."
 - To connect to 3rd party extensions that help Nushell you will need to run the code below once before they'll work
 
 ```sh
-# to install starship
+# installation of bottom which is a system resource manager (required rust)
+cargo install bottom
+# create bottom and starship config files
+mkdir -p ~/.config && mkdir -p ~/.config/bottom/
+# copy my configuration from my gist to the bottom.toml file
+cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/bottom.toml -N
+
+# to install starship via the recommended way
 curl -sS https://starship.rs/install.sh | sh
+# to uninstall starship if you used the recommended way
+sh -c 'rm "$(command -v 'starship')"'
+
+# to install starship via cargo
+cargo install starship --locked
+# if you install via cargo you need to change the location of the starship bin in this file `~/.cache/starship/init.nu` file from `^/usr/local/bin/starship` to here `^~/.cargo/bin/starship`
+# to install the nerd fonts I use with starship and other programs
+mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "CascadiaCode-2407.24.zip" https://github.com/microsoft/cascadia-code/releases/download/v2407.24/CascadiaCode-2407.24.zip && unzip CascadiaCode-2407.24.zip && sudo fc-cache -f -v
+mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "CascadiaCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip && unzip CascadiaCode.zip && sudo fc-cache -f -v
+mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v
+# copy my configuration from my gist to the starship.toml file
+cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/starship.toml -N
+
 # for starship copy the 4 lines below to the $nu.env-path file
 # for Nushell starting with starship
 # comment out these lines if you see an error with showing "-c" as an "unknown flag" also remove the -c in the init.nu file
@@ -67,7 +119,24 @@ source ~/.zoxide.nu
 
 # for yazi
 # to install yazi you can use cargo
+# for fedora you can install via dnf (using copr) instead
 cargo install --locked yazi-fm yazi-cli
+cargo install yazi-fm --locked
+cargo install yazi-cli --locked
+```
+
+- To allow for Yazi to change the working directory go to [this link](https://yazi-rs.github.io/docs/quick-start#shell-wrapper) and copy the code into `config.nu`
+
+```rust
+def --env y [...args] {
+    let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+    yazi ...$args --cwd-file $tmp
+    let cwd = (open $tmp)
+    if $cwd != "" and $cwd != $env.PWD {
+        cd $cwd
+    }
+    rm -fp $tmp
+}
 ```
 
 - to update the 3rd party extensions shown above you can use the code below
