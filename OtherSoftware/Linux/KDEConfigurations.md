@@ -36,7 +36,7 @@ System Settings to change. Open "System Settings" then you can search or find th
                 - Row 4: `Email`, `CommsMusic` and `Todo`
             - Enable "Navigation wraps around"
             - Enable "Show on-screen display when switching" and change the value to 500 ms
-            - Enable "Show desktop layout indicators"
+                - Enable "Show desktop layout indicators"
 - Under the "Input & Output" category
     - Go to "Mouse & Touchpad"
         - "Screen Edges"
@@ -44,16 +44,18 @@ System Settings to change. Open "System Settings" then you can search or find th
                 - The upper right corner select "Present Windows - Current Desktops"
                 - The lower right corner select "Present Windows - All Desktops"
                 - The lower left select "Grid"
-    - "Shortcuts" (these are in alphabetical order since scrolling through them isn't as useful as searching for each individually)
-        - "KRunner": `meta+space`
-        - "Maximize Window": `meta+home`
-        - "Toggle Grid View": `meta+tab`
-        - "Spectacle"; "Capture Rectangular Region": `meta+shift+s`
-        - "Switch One Desktop Down": `meta+ctrl+down`
-        - "Switch One Desktop Up": `meta+ctrl+up`
-        - "Switch One Desktop to the Left": `meta+ctrl+left`
-        - "Switch One Desktop to the Right": `meta+ctrl+right`
-        - Click the button "Add Application" select Ghostty; Click "Add custom shortcut" `meta+shift+t`
+    - Go to "Keyboard"
+        - "Shortcuts" (these are in alphabetical order since scrolling through them isn't as useful as searching for each individually)
+            - "KRunner": `meta+space`
+            - "Maximize Window": `meta+home`
+            - "Toggle Grid View": `meta+tab`
+            - "Spectacle"; "Capture Rectangular Region": `meta+shift+s`
+            - "Switch One Desktop Down": `meta+ctrl+down`
+            - "Switch One Desktop Up": `meta+ctrl+up`
+            - "Switch One Desktop to the Left": `meta+ctrl+left`
+            - "Switch One Desktop to the Right": `meta+ctrl+right`
+            - Click the button "Add Application" select Ghostty; Click "Add custom shortcut" `meta+shift+t`
+- Under the "Workspace" category
     - "Search"; "Plasma Search": (to modify results that appear in KRunner)
         - Click on "Configure KRunner..."
             - Next to "History:" select "Enabled auto-complete"
@@ -65,7 +67,6 @@ System Settings to change. Open "System Settings" then you can search or find th
             - This may not work so instead go tho the projects GitHub pages and follow the instructions found there
         - Click on "Get New Plugins"; search for "VSCode Workspaces Runner" then install that plugin
             - This may not work so instead go tho the projects GitHub pages and follow the instructions found there'
-- Under the "Workspace" category
     - "Workspace Behavior"
         - "General Behavior"
             - Clicking files or folders; change to "Selects them"

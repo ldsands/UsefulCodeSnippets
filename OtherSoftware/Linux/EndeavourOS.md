@@ -46,6 +46,9 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     - [Enpass](https://www.enpass.io/) (my preferred password manager)
     - [pCloud](https://www.pcloud.com/) (my preferred cloud syncing platform/application)
         - install the AppImage file from their website
+        - Make sure that you create an exemption to not sync anything in `.venv` directories
+            - In the "Settings" tab, then the "Exclusions" tab, then in the textbox called "The following files will be excluded:" enter the following at the end
+                - ".venv;"
     - Microsoft Edge (my preferred web browser)
     - [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) (my preferred text editor and IDE)
         - I also install the [VSCode Projects Runner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
@@ -72,9 +75,8 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
 - Install fonts (mostly for VSCode)
 
     ```sh
-    yay -S zip
-    # the CascadiaCode-2404.23.zip needs to be tested to see if it works
-    https://github.com/microsoft/cascadia-code/releases/download/v2407.24/CascadiaCode-2407.24.zip
+    yay -S ttf-ms-win11-auto # the Microsoft Windows 11 fonts
+    yay -S ttf-aptos # the Microsoft 365 default font adopted in 2023
     mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "CascadiaCode-2407.24.zip" https://github.com/microsoft/cascadia-code/releases/download/v2407.24/CascadiaCode-2407.24.zip && unzip CascadiaCode-2407.24.zip && sudo fc-cache -f -v
     mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "CascadiaCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CascadiaCode.zip && unzip CascadiaCode.zip && sudo fc-cache -f -v
     mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v
@@ -171,23 +173,25 @@ flatpak list --app
 # the list below is in alphabetical order
 flatpak install flathub com.discordapp.Discord # Discord
 flatpak install flathub com.github.tchx84.Flatseal # flatseal for managing flatpak permissions
-flatpak install flathub com.google.Chrome # web browser
-flatpak install flathub com.microsoft.EdgeDev # web browser
-flatpak install flathub com.obsproject.Studio # OBS Studio for virtual meetings/streaming/recording, note you must install v4l2loopback via `yay -S v4l2loopback` to use the virtual camera feature
-flatpak install flathub com.obsproject.Studio.Plugin.BackgroundRemoval # Background Removal for OBS
 flatpak install flathub com.spotify.Client # Spotify for music
 flatpak install flathub com.usebottles.bottles # bottles (for Windows applications)
-flatpak install flathub io.enpass.Enpass # for passwords NOTE: it will not work with browsers
 flatpak install flathub io.github.flattool.Warehouse # Warehouse for flakpak program management
-flatpak install flathub it.mijorus.gearlever # Gear Lever for management of AppImage applications (create desktop files etc.)
 flatpak install flathub io.github.peazip.PeaZip # for extraction and compression
-flatpak install flathub io.github.shiftey.Desktop # github desktop
 flatpak install flathub io.missioncenter.MissionCenter # Monitor system resource usage
-flatpak install flathub org.kde.okular # lightweight pdf viewer NOTE: should remove the pacman version first
+flatpak install flathub it.mijorus.gearlever # Gear Lever for management of AppImage applications (create desktop files etc.)
+flatpak install flathub org.kde.kfind # KFind for searching files
+flatpak install flathub org.kde.okular # lightweight pdf viewer NOTE: should remove the pacman version first `yay -R okular`
+flatpak install flathub org.kde.gwenview # great image viewer NOTE: should remove the pacman version first `yay -R gwenview`
 flatpak install flathub org.libreoffice.LibreOffice # MS Office replacement
 flatpak install flathub org.onlyoffice.desktopeditors # OnlyOffice sometimes better for docx and pptx files
 flatpak install flathub org.telegram.desktop # Telegram Desktop
 flatpak install flathub org.zotero.Zotero # Zotero
+# Below are those that I generally prefer to install via yay
+flatpak install flathub io.enpass.Enpass # for passwords NOTE: using flatpak it will not work with browsers
+flatpak install flathub com.obsproject.Studio # OBS Studio for virtual meetings/streaming/recording, note you must install v4l2loopback via `yay -S v4l2loopback` to use the virtual camera feature
+flatpak install flathub com.obsproject.Studio.Plugin.BackgroundRemoval # Background Removal for OBS
+flatpak install flathub com.microsoft.EdgeDev # web browser
+flatpak install flathub com.google.Chrome # web browser
 ```
 
 - There are a couple of URLs on AUR where you can find other KDE applications that are not listed in the normal AUR database (they're listed under the Extra repository)

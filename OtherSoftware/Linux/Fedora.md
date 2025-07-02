@@ -17,7 +17,21 @@ I used Rufus on Windows to write the Fedora KDE `iso` file to a flash drive. I t
 
 ### Installing Nvidia Drivers
 
-If you are running Fedora on a PC with an Nvidia GPU Video will be really bad until the Nvidia drivers are installed. Good instructions can be found [here](https://www.linuxcapable.com/how-to-install-nvidia-drivers-on-fedora-36-linux/).
+- If you are running Fedora on a PC with an Nvidia GPU there may be some issues.
+    - To install the correct drivers [Nvidia has some instructions prepared](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/index.html#fedora)
+        - Note that as of 2025-05-29 you must install the "cuda-drivers" (also known as the proprietary drivers as opposed to the `nvidia-open` drivers) to use cuda
+            - `sudo dnf install cuda-drivers`
+            - As of 2025-05-29 I had major issues as soon as I installed the drivers only one monitor worked and the screen will turn black every 30 seconds or so for a few seconds
+    - Also to install and use cuda [Nvidia has some instructions prepared](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#fedora-installation).
+    - You can switch between them
+        - `dnf install --allowerasing nvidia-open` or `dnf install --allowerasing cuda-drivers`
+- The above caused issues so instead I tried a simpler series of installations
+    - [A summary of this method can be found at this Reddit post](https://www.reddit.com/r/Fedora/comments/1gg6bsg/comment/lunni37/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+        - `sudo dnf install akmod-nvidia`
+            - make sure that this command gives output before you continue `modinfo -F version nvidia`
+        - `sudo dnf install xorg-x11-drv-nvidia-cuda`
+- The above also caused issues so I tried the instructions contained on this [GitHub Repo](https://github.com/roworu/nvidia-fedora-secureboot)
+    - `sudo dnf install gcc kernel-headers kernel-devel akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-libs.x86_64 libva-nvidia-driver.x86_64 xorg-x11-drv-nvidia-cuda`
 
 ## Installing Programs
 

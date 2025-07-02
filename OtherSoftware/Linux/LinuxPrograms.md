@@ -18,6 +18,7 @@
         - [Flatpak Applications](#flatpak-applications)
         - [Nix Package Manager](#nix-package-manager)
         - [Other Distro Agnostic Applications](#other-distro-agnostic-applications)
+        - [Rust Applications](#rust-applications)
         - [Snap](#snap)
     - [Linux (Distro Agnostic) Settings](#linux-distro-agnostic-settings)
 
@@ -633,6 +634,7 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
         - From "View" select "User Interface"
             - Select "Tabbed"
         - There is an issue with fonts in some flatpak applications (I think only GTK based applications) being very blocky (the antialiasing doesn't work right)
+            - As of 2025-06-05 I no longer think this is an issue at least on EndeavourOS
             - [some details can be found here](https://github.com/flatpak/flatpak/issues/2861)
             - To fix this for Arch Distros you must install a gtk package. Use this command `yay -S xdg-desktop-portal-gtk`
             - Another fix for this is to use Flatseal select LibreOffice then deselect "Wayland windowing system" (sub-label is "socket=wayland")
@@ -743,6 +745,11 @@ nix-env -u --dry-run
 - [Crontab (cron guru for creating cron jobs)](https://crontab.guru)
     - For running commands on Linux on a schedule
     - Good resource for this can be found at [crontab.guru](https://crontab.guru)
+    - Some commands that are useful [from this site](https://www.cyberciti.biz/faq/howto-linux-unix-start-restart-cron/)
+        - Status command `sudo service cron status` or `systemctl status cron`
+    - To make sure that cron starts on boot (for Ubuntu) from this useful article on [Ubuntu startup services](https://www.slingacademy.com/article/ubuntu-how-to-auto-start-service-on-system-boot/)
+        - To enable cron on boot `sudo systemctl enable cron`
+        - To check to see if cron is enabled on boot `sudo systemctl is-enabled cron`
     - To use this with running a uv environment for python you can do the following `00 09 * * * /home/ldsands/TeslaTakedown/.venv/bin/python3 /home/ldsands/TeslaTakedown/0001_scrape_html_file.py >/dev/null 2>&1` ([more about this is in a UV issue here](https://github.com/astral-sh/uv/issues/11991))
         - In the issue linked above they said that this command should work but I couldn't get it to work `uv run --project /root/my_project /root/my_project/task.py` it possibly broke in an update
         - the `>/dev/null 2>&1` at the end to not send an email I think this was causing issues but that may have been because of this error message: "No MTA installed, discarding output" installing an MTA might have solved it (could use this probably but I haven't tested it `sudo apt-get install postfix`)
@@ -751,6 +758,77 @@ nix-env -u --dry-run
             - can check the timezone with this command: `timedatectl`
             - can see possible timezones with this command: `timedatectl list-timezones | grep America`
             - can set the timezone to central with this command: `sudo timedatectl set-timezone America/Chicago`
+- [Systemd Services and Timers](https://wiki.archlinux.org/title/Systemd/Timers) - alternative to cron that is much newer and easier to debug and overall thought of as being better than cron
+    - put a file into this directory `/etc/systemd/system/`
+    - The time formatting is different [this article helps explain how to use it correctly and compares it to cronjob's formatting](https://silentlad.com/systemd-timers-oncalendar-(cron)-format-explained)
+    - Useful commands:
+        - `systemctl list-timers --all # list all running services`
+    - Example below using uv to run a python script
+
+```sh
+# create the TeslaTakedown.service file
+touch /etc/systemd/system/TeslaTakedown.service
+# add the needed content to the TeslaTakedown.service file
+echo '
+[Unit]
+Description=Run TeslaTakedown Python Script
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/home/ldsands/TeslaTakedown/.venv/bin/python3 /home/ldsands/TeslaTakedown/0001_scrape_html_file_selenium.py
+
+[Install]
+WantedBy=multi-user.target
+' >> /etc/systemd/system/TeslaTakedown.service
+
+# create the TeslaTakedown.timer file
+touch /etc/systemd/system/TeslaTakedown.timer
+# add the needed content to the TeslaTakedown.timer file
+echo '
+[Unit]
+Description=Run the TeslaTakedown python script daily at 9AM
+
+[Timer]
+OnCalendar=*-*-* 9:00:00 America/Chicago
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+' >> /etc/systemd/system/TeslaTakedown.timer
+# note that "Persistent=true" means that if it misses a run then it'll do it on boot
+
+# enable the service and the timer
+sudo systemctl enable TeslaTakedown.service
+sudo systemctl enable TeslaTakedown.timer
+# if you modify any of the files you should restart the service/timer
+sudo systemctl restart TeslaTakedown.service
+sudo systemctl restart TeslaTakedown.timer
+# after editing the files you should run the command below to reload th daemon
+systemctl daemon-reload
+# to get the status of the files/services/timers
+systemctl status TeslaTakedown.service
+systemctl status TeslaTakedown.timer
+# to manually start/run a service
+systemctl --user start TeslaTakedown.service
+```
+
+### Rust Applications
+
+- There are many Rust based applications that are distro agnostic and often cross-platform as well
+- Note that most of my notes on Rust based applications are located in the [file devoted to Nushell](../../ProgrammingLanguages/Rust/Nushell.md)
+- [Edit](https://github.com/microsoft/edit) - "A simple editor for simple needs."
+    - for usage you can use the command `ms-edit <filename>`
+    - For Arch based distros: `yay -S ms-edit`
+    - You can [download the binary](https://github.com/microsoft/edit/releases) and use that or you can build it
+    - To download it:
+        - Download the latest release ([example url:](https://github.com/microsoft/edit/releases/download/v1.2.0/edit-1.2.0-x86_64-linux-gnu.tar.zst))
+            - Example command downloading using curl along with decompressing and extracting the tarbell file:
+                - `wget -O edit-1.2.0-x86_64-linux-gnu.tar.zst "https://github.com/microsoft/edit/releases/download/v1.2.0/edit-1.2.0-x86_64-linux-gnu.tar.zst" && tar --zstd -xvf edit-1.2.0-x86_64-linux-gnu.tar.zst && rm edit-1.2.0-x86_64-linux-gnu.tar.zst`
+    - To build it
+        - Make sure rust is installed
+        - clone the repo `git clone https://github.com/microsoft/edit.git` (as of 2025-06-17 there is no crates.io entry and it doesn't look like they want to support that method of installation)
+        - Build the repo `cargo build --config .cargo/release.toml --release`
 
 ### Snap
 

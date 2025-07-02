@@ -18,15 +18,15 @@ I have also created a tutorial on how to use some aspects of Zotero that can be 
 ## Default Zotero Preferences I Change
 
 - Don't download website snapshots to save a lot space
-    1. Under edit, then preferences select the general tab
-    1. In the "file handling" section uncheck the "automatically take snapshots when creating items from web pages"
+    - Under edit, then preferences select the general tab
+    - In the "file handling" section uncheck the "automatically take snapshots when creating items from web pages"
 - Don't share the child notes, links and tags with shared libraries
-    1. Under edit, then preferences select the general tab
-    1. In the "Groups" section uncheck the "child notes", "tags" and "child links" options
+    - Under edit, then preferences select the general tab
+    - In the "Groups" section uncheck the "child notes", "tags" and "child links" options
 - Change the default citation style to ASA 6th edition
-    1. Under edit, then preferences select the cite tab
-    1. In the styles section find the "American Sociological Association 6th Edition"
-    1. If this option is missing you can download the CSL file from [here](https://github.com/citation-style-language/styles/blob/master/american-sociological-association.csl)
+    - Under edit, then preferences select the cite tab
+    - In the styles section find the "American Sociological Association 6th Edition"
+    - If this option is missing you can download the CSL file from [here](https://github.com/citation-style-language/styles/blob/master/american-sociological-association.csl)
 - Sometimes I like to see all of the citations within a folder and all subfolders, the show items from subcollections setting allows for this.
     - Under View select "Show Items from Subcollections"
 
