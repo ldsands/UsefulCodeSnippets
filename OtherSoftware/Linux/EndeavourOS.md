@@ -283,8 +283,10 @@ yay
 ## Pacman and Yay Notes and Useful Commands
 
 - When there are issues after an update there are several things that might help
+    - It can be useful to see the kernel initialization messages (especially since I can't seem to scroll when that output gets stuck)
+        - `sudo dmesg` to search for something without case-sensitivity `sudo dmesg | grep -i error`
     - When there is an issue it might be useful to see the last upgraded packages the command below show the latest 20 packages updated
-        - `expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20`
+        - `expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20` (note this won't work on Nushell use Bash instead)
     - You can use the "downgrade" package (allows you to use cache or internet to specify a package to downgrade)
         - If it isn't already installed `yay -S downgrade`
-        - example use
+        - example use `sudo downgrade ignore=never ostree --prefer-cache`
