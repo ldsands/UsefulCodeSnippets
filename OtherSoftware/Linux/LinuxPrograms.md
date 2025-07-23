@@ -523,12 +523,12 @@ This section consists of applications that are as far as I'm aware largely distr
 - Applications that I install in Bottles
     - Bottle notes for [Balabolka](http://balabolka.site/balabolka.htm)
         - Under "Options", click on "Dependencies"
-            - Click on the "🖫" (disk symbol) next to "dotnet48"
+            - Click on the "🖫" (disk symbol) next to "dotnet481"
             - Click on the "🖫" (disk symbol) next to "msxml6" (not sure if this is needed but it was recommend on WineHQ)
             - Click the back button in the upper left to return to the main bottle page once the installation of dependencies are completed
         - Click on the blue "Run Executable..." button (the order does matter here)
             - First it tis not absolutely needed but it is a good idea to move all the files you need into the bottle "drive"
-                - Click on the thre dots button in the upper right then click on "Browse Files..."
+                - Click on the three dots button in the upper right then click on "Browse Files..."
                 - Copy the `SpeechPlatformRuntime.msi` and `MSSpeech_TTS_en-GB_Hazel.msi` files into the opened "drive"
                     - I put then in a new directory called `InstallationFiles`
             - Install the Microsoft Speech Platform with the `SpeechPlatformRuntime.msi` file ([found here](https://www.microsoft.com/en-us/download/details.aspx?id=27225))

@@ -9,6 +9,7 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     - [App Configurations](#app-configurations)
     - [Other Important Notes](#other-important-notes)
     - [Useful Commands to Use Frequently](#useful-commands-to-use-frequently)
+    - [Pacman and Yay Notes and Useful Commands](#pacman-and-yay-notes-and-useful-commands)
 
 ## Installing EndeavourOS KDE Plasma
 
@@ -278,3 +279,12 @@ snap refresh
 # to update arch based packages (you will need to use your password if there is something to update)
 yay
 ```
+
+## Pacman and Yay Notes and Useful Commands
+
+- When there are issues after an update there are several things that might help
+    - When there is an issue it might be useful to see the last upgraded packages the command below show the latest 20 packages updated
+        - `expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20`
+    - You can use the "downgrade" package (allows you to use cache or internet to specify a package to downgrade)
+        - If it isn't already installed `yay -S downgrade`
+        - example use
