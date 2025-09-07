@@ -290,3 +290,24 @@ yay
     - You can use the "downgrade" package (allows you to use cache or internet to specify a package to downgrade)
         - If it isn't already installed `yay -S downgrade`
         - example use `sudo downgrade ignore=never ostree --prefer-cache`
+    - One issue that has been somewhat common in late August 2025 (due to some attacks on Arch Linux infrastructure) was issues installing packages with yay (pacman)
+        - When you cannot see Linux in the systemd boot menu you can use an ISO to help fix it
+            - Boot into an EndeavourOS ISO then use the commands below to fix your arch distro
+
+```sh
+# some useful sites to help
+# https://discovery.endeavouros.com/system-rescue/arch-chroot/2022/12/
+# https://www.reddit.com/r/EndeavourOS/comments/180iqqw/how_do_i_chroot_into_eos_from_usb/
+# to get a list of partitions
+sudo fdisk -l
+# from the output look for the "Linux filesystem" that has your broken distro main partition in this example nvme1n1p2
+sudo mount /dev/nvme1n1p2 /mnt
+# then you need to mount the "EFI System" partition that is broken on the same drive as the broken distro above
+sudo mount /dev/nvme1n1p1 /mnt/efi
+# to get into the admin profile of the mounted linux distro
+sudo arch-chroot /mnt
+# Get the last 20 arch packages installed
+expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20
+# use downgrade to downgrade the packages that caused issues
+sudo downgrade linux linux-headers systemd systemd-libs eos-bash-shared systemd-resolvconf systemd-sysvcompat --prefer-cache
+```
