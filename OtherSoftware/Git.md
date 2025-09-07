@@ -55,7 +55,7 @@ git gc --prune=now --aggressive
 git reflog expire --all --expire=now
 git maintenance run --task=gc
 # for quick cleaning after a commit
-git status
+git status # must have "nothing to commit, working tree clean" in output
 git gc
 ```
 
