@@ -54,6 +54,9 @@ git gc --prune=now --aggressive
 # the new way of doing it
 git reflog expire --all --expire=now
 git maintenance run --task=gc
+# for quick cleaning after a commit
+git status
+git gc
 ```
 
 ## Removing Unwanted Files From Git History
