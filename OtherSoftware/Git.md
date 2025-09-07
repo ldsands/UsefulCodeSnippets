@@ -54,6 +54,8 @@ git gc --prune=now --aggressive
 # the new way of doing it
 git reflog expire --all --expire=now
 git maintenance run --task=gc
+# or for nushell to run them both
+git reflog expire --all --expire=now; git maintenance run --task=gc
 # for quick cleaning after a commit
 git status # must have "nothing to commit, working tree clean" in output
 git gc
