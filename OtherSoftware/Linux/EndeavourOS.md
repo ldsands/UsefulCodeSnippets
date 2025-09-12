@@ -273,7 +273,9 @@ flatpak install flathub com.google.Chrome # web browser
 - To update most everything I have installed:
 
 ```sh
-flatpak update; rustup update; cargo install-update -a; uv self update; snap refresh --list
+flatpak update; flatpak uninstall --unused; rustup update; cargo install-update -a --locked; uv self update
+# with snap
+flatpak update; flatpak uninstall --unused; rustup update; cargo install-update -a; uv self update; snap refresh --list
 # if there is a snap package to update you must use sudo (see command below)
 snap refresh
 # to update arch based packages (you will need to use your password if there is something to update)

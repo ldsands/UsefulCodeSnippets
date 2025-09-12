@@ -137,6 +137,9 @@ Bash is a command shell for unix systems and is the most popular shell used in L
     - When creating a new partition I used GParted (`yay -S gparted`) I create a small NTFS partition for keeping files I'll use on Windows and for keeping contact info in case the drive is lost. I create a BTRFS partition with the rest of the space. To allow for anyone to access the drive on that computer you need to first mount the drive then use `df -h` find the correct mount point path (under the "Mounted on" column) for the partition in question. Then I use the two commands below substituting the mount point. This also appears to change the permissions for multiple computers/users and allows for any user to modify all of the files on the partition (based on some limited testing I've done I was able to edit file just fine on another computer using and also using another user account also after doing this). More information can be found [here](https://askubuntu.com/a/587277).
     - `sudo chown -R :users /run/media/ldsands/LeviSandsSabrent_2TB_Par_BTFS_0002`
     - `sudo chmod -R g+rw /run/media/ldsands/LeviSandsSabrent_2TB_Par_BTFS_0002`
+- Some useful Linux command line commands for looking at dives and usage percentages
+    - For seeing your drives and how big they are `lsblk`
+    - Similar for seeing which areas of your main partition is using up the most space `df -h`
 
 ### WSL Setup
 
