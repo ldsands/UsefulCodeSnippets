@@ -289,9 +289,9 @@ yay
         - `sudo dmesg` to search for something without case-sensitivity `sudo dmesg | grep -i error`
     - When there is an issue it might be useful to see the last upgraded packages the command below show the latest 20 packages updated
         - `expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20` (note this won't work on Nushell use Bash instead)
-    - You can use the "downgrade" package (allows you to use cache or internet to specify a package to downgrade)
+    - You can use the "[downgrade](https://github.com/archlinux-downgrade/downgrade)" package (allows you to use cache or internet to specify a package to downgrade)
         - If it isn't already installed `yay -S downgrade`
-        - example use `sudo downgrade ignore=never ostree --prefer-cache`
+        - example use `sudo downgrade --ignore never ostree --prefer-cache`
     - One issue that has been somewhat common in late August 2025 (due to some attacks on Arch Linux infrastructure) was issues installing packages with yay (pacman)
         - When you cannot see Linux in the systemd boot menu you can use an ISO to help fix it
             - Boot into an EndeavourOS ISO then use the commands below to fix your arch distro
@@ -311,5 +311,5 @@ sudo arch-chroot /mnt
 # Get the last 20 arch packages installed
 expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20
 # use downgrade to downgrade the packages that caused issues
-sudo downgrade linux linux-headers systemd systemd-libs eos-bash-shared systemd-resolvconf systemd-sysvcompat --prefer-cache
+sudo downgrade --prefer-cache --ignore never linux linux-headers systemd systemd-libs eos-bash-shared systemd-resolvconf systemd-sysvcompat
 ```
