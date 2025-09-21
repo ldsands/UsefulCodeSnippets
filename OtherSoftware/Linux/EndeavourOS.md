@@ -292,6 +292,10 @@ yay
     - You can use the "[downgrade](https://github.com/archlinux-downgrade/downgrade)" package (allows you to use cache or internet to specify a package to downgrade)
         - If it isn't already installed `yay -S downgrade`
         - example use `sudo downgrade --ignore never ostree --prefer-cache`
+    - To list and reinstall all pacman native packages you can use the following
+        - To list all native pacman packages `pacman -Qn` to reinstall all of them: `pacman -Qnq | pacman -S -` or `pacman -S $(pacman -Qnq)`
+        - To list all "forign" pacman packages `pacman -Qm` to reinstall all of them: `pacman -Qmq`
+    - To clear the pacman cache: `yay -Scc`
     - One issue that has been somewhat common in late August 2025 (due to some attacks on Arch Linux infrastructure) was issues installing packages with yay (pacman)
         - When you cannot see Linux in the systemd boot menu you can use an ISO to help fix it
             - Boot into an EndeavourOS ISO then use the commands below to fix your arch distro
