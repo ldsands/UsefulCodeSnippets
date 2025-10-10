@@ -12,6 +12,7 @@ I have also created a tutorial on how to use some aspects of Zotero that can be 
     - [Default Zotero Preferences I Change](#default-zotero-preferences-i-change)
     - [Main Screen Columns](#main-screen-columns)
     - [Zotero Add-ons](#zotero-add-ons)
+        - [Zotero Plugins to Evaluate](#zotero-plugins-to-evaluate)
     - [Links and Account Information](#links-and-account-information)
     - [Zotero Related External Applications and Integrations](#zotero-related-external-applications-and-integrations)
 
@@ -78,6 +79,25 @@ I have also created a tutorial on how to use some aspects of Zotero that can be 
     - You must have Better BibTeX and Zotfile installed to use this
     - A Zotero plugin to export item metadata and notes as markdown files
     - [You download the `.xpi` file for installation here:](https://github.com/argenos/zotero-mdnotes/releases/)
+
+### Zotero Plugins to Evaluate
+
+- There are many other plugins that I would like to try out or at least evaluate to see if they would be worth including into my regular plugins
+    - [A list that someone else uses](https://www.reddit.com/r/zotero/comments/1nokpcj/my_zotero_one_shot/)
+        - Actions & Tags
+        - Better BibTeX
+        - Better Notes
+        - Bionic
+        - sciPDF * Reference
+        - Style
+        - Tara
+        - Translate
+        - Zoplicate
+        - Zotero OCR
+        - zotero-inspire
+        - ZoTTS
+        - Zutilo Utility for Zotero
+        - Chartero
 
 ## Links and Account Information
 

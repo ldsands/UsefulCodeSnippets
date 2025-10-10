@@ -386,9 +386,12 @@ TODO: need to look through my various notes to add here
 
 ## Windows PowerToys and Sysinternals
 
-"[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using [chocolatey](Chocolatey.md) `choco install powertoys`. Here are a few notes I have made about using PowerToys.
+"[Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater productivity.](https://github.com/microsoft/PowerToys#overview)" I install PowerToys using the store or Winget (I used to do this via [chocolatey](Chocolatey.md) `choco install powertoys`). Here are a few notes I have made about using PowerToys.
 
 - To get to the settings for FancyZones go to this location `C:\Users\%username%\AppData\Local\Microsoft\PowerToys\FancyZones\zones-settings.json`.
+- For the Windows Command Palette I use the extension "VisualStudioCodeForCommandPalette" from [GitHub](https://github.com/tanchekwei/VisualStudioCodeForCommandPalette/), However it can installed via the [Microsoft Store (and I usually install it this way)](https://apps.microsoft.com/detail/9mvlfk6tr4d4?hl=en-US&gl=US)
+    - In the extension settings I add under the "Commands" button next to the "Alias" entry a `{` into that text box. This allows me to type in `{` then a `space` then it brings up the VSCode workspaces.
+    - I used to use [this extension](https://github.com/JonahFintzDev/CommandPaletteVSCode) which I liked better but it has been abandoned and the developer suggested the above
 
 [Sysinternals](https://learn.microsoft.com/en-us/sysinternals/) - "[...] you’ll find Sysinternals utilities to help you manage, troubleshoot and diagnose your Windows systems and applications." There are a ton (around 178) of utilities most of which I have never looked at before.
 
