@@ -13,6 +13,7 @@ I have also created a tutorial on how to use some aspects of Zotero that can be 
     - [Main Screen Columns](#main-screen-columns)
     - [Zotero Add-ons](#zotero-add-ons)
         - [Zotero Plugins to Evaluate](#zotero-plugins-to-evaluate)
+        - [Old Zotero Plugins](#old-zotero-plugins)
     - [Links and Account Information](#links-and-account-information)
     - [Zotero Related External Applications and Integrations](#zotero-related-external-applications-and-integrations)
 
@@ -58,7 +59,29 @@ I have also created a tutorial on how to use some aspects of Zotero that can be 
         1. Better BibTeX will then create a new key for all of the citations in your library
         1. When exporting select better BibTeX and that should help with citations using BibTeX or BibLaTeX
     - [You download the `.xpi` file for installation here:](https://github.com/retorquere/zotero-better-bibtex/releases/latest)
-- [Zotero Citation Counts](https://github.com/eschnett/zotero-citationcounts)
+
+### Zotero Plugins to Evaluate
+
+- There are many other plugins that I would like to try out or at least evaluate to see if they would be worth including into my regular plugins
+    - [A list that someone else uses](https://www.reddit.com/r/zotero/comments/1nokpcj/my_zotero_one_shot/) - it looks like a good list
+        - [Actions & Tags](https://github.com/windingwind/zotero-actions-tags) - looks like lots of customizations for tags and other keyboard actions and such
+        - Better BibTeX - Already use this
+        - [Better Notes](https://github.com/windingwind/zotero-better-notes) - lots of zotero notes analyses and exporting functions
+        - [Bionic](https://github.com/windingwind/bionic-for-zotero) - adds bionic reading to pdfs (bolds the first couple letters of each word makes it easier to read)
+        - [sciPDF * Reference]() not sure what this is
+        - [Style]() - [maybe this repo?](https://github.com/MuiseDestiny/zotero-style)
+        - [Tara](https://github.com/l0o0/tara) - "Tara is a Zotero add-on for backup and restore preferences, add-ons, translators, styles. You can keep the same settings between different Zotero or restore history settings from the backup."
+        - [Translate](https://github.com/windingwind/zotero-pdf-translate) - "Translate PDF, EPub, webpage, metadata, annotations, notes to the target language. Support 20+ translate services."
+        - [Zoplicate](https://github.com/ChenglongMa/zoplicate) - "A plugin that does one thing only: Detect and manage duplicate items in Zotero."
+        - [Zotero OCR](https://github.com/UB-Mannheim/zotero-ocr) - "Zotero Plugin for OCR"
+        - [zotero-inspire](https://github.com/fkguo/zotero-inspire) - "Zotero plugin, fetching publication metadata and cite counts (w/ and w/o self citations) from the INSPIRE-HEP database (and CrossRef cite counts for papers in other fields)"
+        - [ZoTTS](https://github.com/ImperialSquid/zotero-zotts) - "A Zotero plugin adding text to speech (TTS) functionality to various screens"
+        - [Zutilo Utility for Zotero](https://github.com/wshanks/Zutilo) - "Zotero plugin providing some additional editing features" - Note that it doesn't appear to be updated very often anymore and maintainer has stated they don't have much time for it anymore
+        - [Chartero](https://github.com/volatile-static/Chartero) - "Chart in Zotero"
+
+### Old Zotero Plugins
+
+- Not updated since 2022-04-04 - [Zotero Citation Counts](https://github.com/eschnett/zotero-citationcounts)
     - To configure I do the following:
         1. Select "Tools"
         1. Select "Citation Counts Manager Preferences..."
@@ -71,33 +94,14 @@ I have also created a tutorial on how to use some aspects of Zotero that can be 
         1. Right click on any item in the main window
         1. Mouse over "Manage Citation Counts"
             1. Select "Get Semantic Scholar citation counts"
-- [Zutilo](https://github.com/wshanks/Zutilo) - "Zotero plugin providing some additional editing features"
+- Not updated very often - [Zutilo](https://github.com/wshanks/Zutilo) - "Zotero plugin providing some additional editing features"
     - I install this mostly for editing tags for many entries at once
     - This does a lot of other things that I haven't explored yet
     - [You download the `.xpi` file for installation here:](https://github.com/wshanks/Zutilo/releases/lastest)
-- [Mdnotes](https://github.com/argenos/zotero-mdnotes)
+- Depreciated as of 2024-10-18 - [Mdnotes](https://github.com/argenos/zotero-mdnotes)
     - You must have Better BibTeX and Zotfile installed to use this
     - A Zotero plugin to export item metadata and notes as markdown files
     - [You download the `.xpi` file for installation here:](https://github.com/argenos/zotero-mdnotes/releases/)
-
-### Zotero Plugins to Evaluate
-
-- There are many other plugins that I would like to try out or at least evaluate to see if they would be worth including into my regular plugins
-    - [A list that someone else uses](https://www.reddit.com/r/zotero/comments/1nokpcj/my_zotero_one_shot/)
-        - Actions & Tags
-        - Better BibTeX
-        - Better Notes
-        - Bionic
-        - sciPDF * Reference
-        - Style
-        - Tara
-        - Translate
-        - Zoplicate
-        - Zotero OCR
-        - zotero-inspire
-        - ZoTTS
-        - Zutilo Utility for Zotero
-        - Chartero
 
 ## Links and Account Information
 
