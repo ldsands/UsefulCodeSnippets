@@ -53,7 +53,7 @@
         - In the Window that pops up after in the "General" tab, select "Run with highest privileges"
             - I haven't gotten this working when the user is not the administrator but I left these extra three steps below in case I figure it out someday
             - If the user is not an administrator you can click on the "Change User..." button under the "Security" section
-            - In the text box labeled "Enter the object name to select" enter the administrator's user account name which is likely the Microsoft account email address (e.g. username@outlook.com)
+            - In the text box labeled "Enter the object name to select" enter the administrator's user account name which is likely the Microsoft account email address (e.g. <username@outlook.com>)
             - Also select the "Run whether the user is logged in or not" option
         - In the "settings" tab and uncheck the "Stop the task if it runs longer than:" option
         - Click on the "OK" button
@@ -144,6 +144,8 @@ Below are Windows programs that are installed using chocolatey or winget
     - a good alternative to 7-zip that includes the zstandard codec
 - [R Studio] I install this using Chocolatey
     - The defacto R programming IDE, I don't really like it much because it is ridiculously slow to use and I can do almost everything that I can in R Studio in VS Code, occasionally however I jump into R.Studio for the variable explorer and other little things
+- [ParquetViewer](https://github.com/mukunku/ParquetViewer) - "Simple Windows desktop application for viewing & querying Apache Parquet files"
+    - Very simple and easy to use despite having more features than I would have guessed
 - [Texlive](https://tug.org/texlive/) I install this using Chocolatey
     - Another LaTeX installer, this one is a bit more comprehensive than MikTeX is
 - [Textify](https://rammichael.com/textify) I install this using winget
@@ -253,7 +255,7 @@ non chocolatey utility programs
 - [Kite](https://kite.com/) this is a utility to help with python autocompletion
 - [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html) For my old keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
 - [Pipx](https://pipxproject.github.io/pipx/) This allows you to use python scripts as though they were programs this does get installed via pip (`pip -m install pipx`) after installing python then add pipx to path by using this command: `python -m pipx ensurepath`. You will have to restart the PowerShell to use pipx.
-- [PowerLine a terminal path  visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
+- [PowerLine a terminal path visual enhancement](https://github.com/Jaykul/PowerLine) oh-my-posh poshgit
 - [PowerLine for PowerShell](../../ProgrammingLanguages/PowerShell/PowerShell.md#powershell-profiles)
 - [Process Hacker](https://processhacker.sourceforge.io/) Is a process manager and viewer that is far more informational than the built in task manager. I use the [nightly builds](https://processhacker.sourceforge.io/nightly.php) since they have not updated the main release in years.
 - [Windows Virtual Desktop Helper](https://github.com/dankrusi/WindowsVirtualDesktopHelper) - "App to help manage Virtual Desktops for Windows 10 and Windows 11"

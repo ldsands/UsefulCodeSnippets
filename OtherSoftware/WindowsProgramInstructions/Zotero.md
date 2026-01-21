@@ -68,8 +68,8 @@ I have also created a tutorial on how to use some aspects of Zotero that can be 
         - Better BibTeX - Already use this
         - [Better Notes](https://github.com/windingwind/zotero-better-notes) - lots of zotero notes analyses and exporting functions
         - [Bionic](https://github.com/windingwind/bionic-for-zotero) - adds bionic reading to pdfs (bolds the first couple letters of each word makes it easier to read)
-        - [sciPDF * Reference]() not sure what this is
-        - [Style]() - [maybe this repo?](https://github.com/MuiseDestiny/zotero-style)
+        - sciPDF * Reference not sure what this is
+        - Style - [maybe this repo?](https://github.com/MuiseDestiny/zotero-style)
         - [Tara](https://github.com/l0o0/tara) - "Tara is a Zotero add-on for backup and restore preferences, add-ons, translators, styles. You can keep the same settings between different Zotero or restore history settings from the backup."
         - [Translate](https://github.com/windingwind/zotero-pdf-translate) - "Translate PDF, EPub, webpage, metadata, annotations, notes to the target language. Support 20+ translate services."
         - [Zoplicate](https://github.com/ChenglongMa/zoplicate) - "A plugin that does one thing only: Detect and manage duplicate items in Zotero."

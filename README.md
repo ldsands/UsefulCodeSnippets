@@ -83,6 +83,7 @@ R is a programming language that was written for statisticians by statisticians.
 
 <!-- - [Installation notes](ProgrammingLanguages/R/RInstall.md) Note: this has not yet been started --> <!-- TODO: -->
 <!-- - [Useful R Resources](ProgrammingLanguages/R/RResources.md) Note: this has not yet been started --> <!-- TODO: -->
+
 - [Useful packages](ProgrammingLanguages/R/RUsefulPackages.md)
 
 ### [RegEx](https://en.wikipedia.org/wiki/Regular_expression)
@@ -139,7 +140,7 @@ GitHub is an online site devoted to hosting files using git based track changes.
 
 Pandoc is software that converts many different kinds of documents into any one of another large number of document types.
 
-- [Useful Pandoc commands](OtherSoftware/PandocCommands.md)
+- [Useful Pandoc commands](ProgrammingLanguages/Markdown/Pandoc/PandocCommands.md)
 
 ### [Powershell](https://docs.microsoft.com/en-us/powershell/)
 
