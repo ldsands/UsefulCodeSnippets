@@ -71,9 +71,12 @@
 <!-- install TextAloud4 (`ta4064.exe`) -->
 <!-- this will only work for Balabolka not TextAloud, install `SpeechPlatformRuntime.msi` and `MSSpeech_TTS_en-GB_Hazel.msi` and/or `MSSpeech_TTS_en-US_ZiraPro.msi` -->
 
-    - To integrate the program with KDE you must create a `.desktop` file and put it here: `/home/ldsands/.local/share/applications/` with the contents below. Some of them have been customized for my use of PDF X-Change Editor
+```text
+- To integrate the program with KDE you must create a `.desktop` file and put it here: `/home/ldsands/.local/share/applications/` with the contents below. Some of them have been customized for my use of PDF X-Change Editor    - To integrate the program with KDE you must create a `.desktop` file and put it here: `/home/ldsands/.local/share/applications/` with the contents below. Some of them have been customized for my use of PDF X-Change Editor
     - You also need to use `winetricks` then select the `winecfg` then select `Add Program` and find the `.exe` file you want to have access too in KDE
     - more info about the exec command can be found [here](https://askubuntu.com/questions/431684/how-can-i-find-the-progid-of-a-windows-program-to-use-in-wine)
+
+```
 
     ```PDFXEdit9.desktop
     [Desktop Entry]
@@ -585,6 +588,19 @@ This section consists of applications that are as far as I'm aware largely distr
     # to see stats use this command
     auto-cpufreq --stats
     ```
+
+- [shpool](https://github.com/shell-pool/shpool) - "shpool is a service that enables session persistence by allowing the creation of named shell sessions owned by shpool so that the session is not lost if the connection drops."
+    - [Installation can be found here](https://github.com/shell-pool/shpool?tab=readme-ov-file#installation) but you should probably use the daemon commands as they will make sure that it runs on startup (I think) (I copied these commands from the link on 2026-03-03)
+
+```bash
+cargo install shpool
+curl -fLo "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.service" --create-dirs <https://raw.githubusercontent.com/shell-pool/shpool/master/systemd/shpool.service>
+sed -i "s|/usr|$HOME/.cargo|" "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.service"
+curl -fLo "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.socket" --create-dirs <https://raw.githubusercontent.com/shell-pool/shpool/master/systemd/shpool.socket>
+systemctl --user enable shpool
+systemctl --user start shpool
+loginctl enable-linger
+```
 
 ### Flatpak Applications
 

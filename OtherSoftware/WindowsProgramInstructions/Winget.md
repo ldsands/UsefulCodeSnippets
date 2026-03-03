@@ -105,6 +105,7 @@ winget install --id=SoftDeluxe.FreeDownloadManager  -e # Free Download Manager
 winget install --id=SpeedCrunch.SpeedCrunch -e
 winget install --id=rammichael.7+TaskbarTweaker -e # https://tweaker.ramensoftware.com/
 winget install --id=rammichael.Textify -e # https://ramensoftware.com/textify
+winget install sxyazi.yazi -e # Yazi terminal file explorer
 
 
 # stuff to evaluate

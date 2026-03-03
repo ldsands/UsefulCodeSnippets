@@ -68,6 +68,10 @@ code $nu.config-path
     - [Bottom](https://github.com/ClementTsang/bottom) - "[C]ross-platform graphical process/system monitor."
         - See below for a link to a gist that contains my preferred configuration options
         - use bottom by typing in `btm`
+    - [shpool](https://github.com/shell-pool/shpool) - "shpool is a service that enables session persistence by allowing the creation of named shell sessions owned by shpool so that the session is not lost if the connection drops."
+        - use by first starting a new instance with `shpool attach <session name>` then you can detach (which just gets you out of than instance) by using `shpool detach`
+        - list all sessions with `shpool list`
+        - kill a session with `shpool kill <session name>`
     - [Starship](https://starship.rs/) - "The minimal, blazing-fast, and infinitely customizable prompt for any shell!"
         - This requires a [Nerd Font](https://www.nerdfonts.com/) (or similar) to work properly here is a command that installs the Fira Code Nerd Font: `mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v`
         - See below for a link to a gist that contains my preferred configuration options
@@ -99,6 +103,15 @@ mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts &
 mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v
 # copy my configuration from my gist to the starship.toml file
 cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/starship.toml -N
+
+# for installing shpool and setting it up with systemd (use bash)
+cargo install shpool
+curl -fLo "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.service" --create-dirs https://raw.githubusercontent.com/shell-pool/shpool/master/systemd/shpool.service
+sed -i "s|/usr|$HOME/.cargo|" "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.service"
+curl -fLo "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.socket" --create-dirs https://raw.githubusercontent.com/shell-pool/shpool/master/systemd/shpool.socket
+systemctl --user enable shpool
+systemctl --user start shpool
+loginctl enable-linger
 
 # for starship copy the 4 lines below to the $nu.env-path file
 # for Nushell starting with starship

@@ -180,6 +180,8 @@ Below are Windows programs that are installed using chocolatey or winget
     - An audio player that allows for variable speed playback
     - It also allows me to pause using bluetooth controls (VLC doesn't do this)
 - [Windows Toolbox](https://www.cttstore.com/windows-toolbox) - "[...] Windows Utility [to help] clean and maintain various windows systems." There is also a free version that you can get [here](https://github.com/ChrisTitusTech/winutil). Most useful for removing a lot of things that Windows has running by default in the background.
+- [Yazi](https://yazi-rs.github.io/) - "Blazing fast terminal file manager written in Rust, based on async I/O."
+    - `winget install sxyazi.yazi`
 
 Below are Windows programs that are not able to be installed via chocolatey that I always install
 
