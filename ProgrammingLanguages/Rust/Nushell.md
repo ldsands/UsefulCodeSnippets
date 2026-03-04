@@ -86,7 +86,7 @@ code $nu.config-path
 cargo install bottom
 # create bottom and starship config files
 mkdir -p ~/.config && mkdir -p ~/.config/bottom/
-# copy my configuration from my gist to the bottom.toml file
+# copy my configuration from my gist to the bottom.toml file (location for Windows: C:\Users\<USER>\AppData\Roaming\bottom\bottom.toml)
 cd ~/.config/bottom/ && wget ‐‐directory-prefix=~/.config/bottom/bottom.toml https://gist.githubusercontent.com/ldsands/93f985822143f9f5f58567803e5787ef/raw/bottom.toml -N
 
 # to install starship via the recommended way
