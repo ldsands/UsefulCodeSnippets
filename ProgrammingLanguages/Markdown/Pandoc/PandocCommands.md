@@ -210,7 +210,7 @@ Markdown text here [@citiation_header1; @citation_header2 pp. 240-320]. @Thoits_
 
 - You can include any raw language (be careful about what you can or want to process)
     - For example you can open xml to modify word documents this example below adds a pagebreak directly to a word document (since it uses open xml)
-    - You can also set these up through [lua filters](#lua-filtershttpsgithubcompandoclua-filters)
+    - You can also set these up through [lua filters](https://pandoc.org/lua-filters.html)
         - This is probably a better option but a bit more complicated
     - Note: with the code below there is a "-" before the three grave accent keys you need you must not use the "-" it is used here due to formatting issues
 

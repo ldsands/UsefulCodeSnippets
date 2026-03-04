@@ -111,7 +111,7 @@ Below are Windows programs that are installed using chocolatey or winget
 - [Git](../Git.md) I install this using Chocolatey
     - This is required for using github it is the source control software on which github is based
     - I don't know much about how to use git without either github and/or vscode
-- [Pandoc](../PandocCommands.md) I install this using Chocolatey
+- [Pandoc](../../ProgrammingLanguages/Markdown/Pandoc/PandocCommands.md) I install this using Chocolatey
     - This can convert just about any document format into any other
     - I use it primarily to write in markdown and then convert to either docx or pdf depending on my need at the time
 - [R](../../ProgrammingLanguages/R/RResources.md) I install this using Chocolatey
