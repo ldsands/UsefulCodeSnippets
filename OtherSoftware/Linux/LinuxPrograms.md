@@ -752,7 +752,6 @@ nix-env -u --dry-run
 
 ### Other Distro Agnostic Applications
 
-- [Ventoy](https://www.ventoy.net/en/index.html) - "Ventoy is an open source tool to create bootable USB drive for ISO/WIM/IMG/VHD(x)/EFI files." You can also install it on Windows.
 - [fprint](https://fprint.freedesktop.org/) - "The fprint project aims to add support for consumer fingerprint reader devices, in Linux, as well as other free Unices."
     - [A list of supported devices can be found here.](https://fprint.freedesktop.org/supported-devices.html) To see if your device is supported you can use the command `lsusb` and then use that information to see if your device is on the supported list.
     - To install you can use [this page](https://forum.kde.org/viewtopic.php?t=175570) as a guide for Ubuntu based distros. For Arch based distros you can go [here](https://wiki.archlinux.org/title/Fprint) and then [here for the Fingerprint GUI.](https://wiki.archlinux.org/title/Fingerprint_GUI)
@@ -774,12 +773,16 @@ nix-env -u --dry-run
             - can check the timezone with this command: `timedatectl`
             - can see possible timezones with this command: `timedatectl list-timezones | grep America`
             - can set the timezone to central with this command: `sudo timedatectl set-timezone America/Chicago`
+- [Open WebUI](https://github.com/open-webui/open-webui)
+    - Open WebUI can use docker to use Ollama and can use other LLM managers as well (I prefer using uv to manage Open WebUI)
+        - Nushell Command: `mkdir ~/Downloads/RandomStuff/OpenWebUI/ cd ~/Downloads/RandomStuff/OpenWebUI/; with-env { DATA_DIR: '~/.open-webui' } { uvx --python 3.11 open-webui@latest serve }`
 - [Systemd Services and Timers](https://wiki.archlinux.org/title/Systemd/Timers) - alternative to cron that is much newer and easier to debug and overall thought of as being better than cron
     - put a file into this directory `/etc/systemd/system/`
     - The time formatting is different [this article helps explain how to use it correctly and compares it to cronjob's formatting](https://silentlad.com/systemd-timers-oncalendar-(cron)-format-explained)
     - Useful commands:
         - `systemctl list-timers --all # list all running services`
     - Example below using uv to run a python script
+- [Ventoy](https://www.ventoy.net/en/index.html) - "Ventoy is an open source tool to create bootable USB drive for ISO/WIM/IMG/VHD(x)/EFI files." You can also install it on Windows.
 
 ```sh
 # create the TeslaTakedown.service file

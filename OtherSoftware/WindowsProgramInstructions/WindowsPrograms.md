@@ -24,7 +24,7 @@
     - The easiest way to do this is to modify the registry to make Windows use UTC (like Linux) rather than local time zones create a `.reg` file and add the code below. Then execute the file to change the registry. I got this code from [here](https://github.com/ShahriarDhruvo/Windows-Universal-Time-Registry/blob/master/Windows%20Universal%20Time%20-%20On.reg).
         - This will NOT change the time that Windows displays instead it assumes that the time recorded on the motherboard is in UTC rather than local time. Windows will still correctly use the local time in Windows but when loading Linux and Windows they will both assume that the time listed on the motherboard is UTC which fixes the time conflict issue.
 
-        ```.reg
+        ```text.reg
         Windows Registry Editor Version 5.00
 
         [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]
@@ -131,15 +131,21 @@ Below are Windows programs that are installed using chocolatey or winget
     - My favorite coding font, much better than the defaults it also hase font ligatures which are useful in programming and supports [PowerLine](https://github.com/Jaykul/PowerLine)
 - CascadiaCode Nerd Font I install this using Chocolatey
     - Another excellent font for coding that included ligatures and glyphs it can be found on GitHub [here](https://github.com/ryanoasis/nerd-fonts/tree/606db3752d4e6d31a2f47258ce86f7bb07511521/patched-fonts/CascadiaCode)
-- [Ollama](https://github.com/ollama/ollama) and [Open WebUI](https://github.com/open-webui/open-webui)
+- [Ollama](https://github.com/ollama/ollama)
     - Ollama is run in the terminal and is very easy to use
-    - Open WebUI ideally uses docker to use Ollama (can use other LLM managers as well)
-        - To use docker install Docker Desktop (using winget `winget install --id=Docker.DockerDesktop  -e`)
-        - You can run it with a GPU or just on CPU
-            - Installation of both Open WebUI and Ollama into one docker container (I installed docker desktop which requires you to start up docker before running the installation commands)
-                - with GPU: `docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
-                - CPU only: `docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
-            - You can use the play and stop button in Docker Desktop to launch and exit the container
+    - Open WebUI is a great way to use Ollama
+- [Open WebUI](https://github.com/open-webui/open-webui)
+    - Open WebUI can use docker to use Ollama and can use other LLM managers as well (I prefer using uv to manage Open WebUI)
+    - To use uv to manage Open WebUI
+        - pwsh `cd 'C:\Users\$env:USERNAME\Downloads\RandomStuff\OpenWebUI\'; $env:DATA_DIR="C:\open-webui\data"; uvx --python 3.11 open-webui@latest serve`
+        - nushell (on Windows) `cd ~\Downloads\RandomStuff\OpenWebUI\; with-env { DATA_DIR: 'C:\open-webui\data\' } { uvx --python 3.11 open-webui@latest serve }`
+            - to use an alias like function to launch Open WebUI using Nushell on Windows put this into the config.nu file: `def openwebui [] {cd ~\Downloads\RandomStuff\OpenWebUI\; with-env { DATA_DIR: 'C:\open-webui\data\' } { uvx --python 3.11 open-webui@latest serve }}`
+    - To use docker install Docker Desktop (using winget `winget install --id=Docker.DockerDesktop  -e`)
+    - You can run it with a GPU or just on CPU
+        - Installation of both Open WebUI and Ollama into one docker container (I installed docker desktop which requires you to start up docker before running the installation commands)
+            - with GPU: `docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
+            - CPU only: `docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
+        - You can use the play and stop button in Docker Desktop to launch and exit the container
 - [PeaZip](https://peazip.github.io/) I install this using Chocolatey
     - a good alternative to 7-zip that includes the zstandard codec
 - [R Studio] I install this using Chocolatey
