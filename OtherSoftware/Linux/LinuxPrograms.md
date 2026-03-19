@@ -776,12 +776,17 @@ nix-env -u --dry-run
 - [Open WebUI](https://github.com/open-webui/open-webui)
     - Open WebUI can use docker to use Ollama and can use other LLM managers as well (I prefer using uv to manage Open WebUI)
         - Nushell Command: `mkdir ~/Downloads/RandomStuff/OpenWebUI/ cd ~/Downloads/RandomStuff/OpenWebUI/; with-env { DATA_DIR: '~/.open-webui' } { uvx --python 3.11 open-webui@latest serve }`
+        - Nushell function for `config.nu` you can type openwebui to run the function `def openwebui [] { mkdir ~/Downloads/RandomStuff/OpenWebUI/; cd ~/Downloads/RandomStuff/OpenWebUI/; with-env { DATA_DIR: ('~/.open-webui' | path expand) } { uvx --python 3.11 open-webui@latest serve } }`
 - [Systemd Services and Timers](https://wiki.archlinux.org/title/Systemd/Timers) - alternative to cron that is much newer and easier to debug and overall thought of as being better than cron
     - put a file into this directory `/etc/systemd/system/`
     - The time formatting is different [this article helps explain how to use it correctly and compares it to cronjob's formatting](https://silentlad.com/systemd-timers-oncalendar-(cron)-format-explained)
     - Useful commands:
         - `systemctl list-timers --all # list all running services`
     - Example below using uv to run a python script
+- [Unsloth Studio](https://unsloth.ai/docs/new/studio) -
+    - linux installation command `curl -fsSL https://raw.githubusercontent.com/unslothai/unsloth/main/install.sh | sh`
+    - to launch Unsloth Studio `mkdir ~/Downloads/RandomStuff/UnslothStudio/; cd ~/Downloads/RandomStuff/UnslothStudio/; source unsloth_studio/bin/activate unsloth studio -H 0.0.0.0 -p 6668`
+    - the config.nu function so that you can easily launch using an alias type command `def UnslothStudio [] { mkdir ~/Downloads/RandomStuff/UnslothStudio/; cd ~/Downloads/RandomStuff/UnslothStudio/; unsloth_studio/bin/unsloth studio -H 0.0.0.0 -p 8888 }`
 - [Ventoy](https://www.ventoy.net/en/index.html) - "Ventoy is an open source tool to create bootable USB drive for ISO/WIM/IMG/VHD(x)/EFI files." You can also install it on Windows.
 
 ```sh
