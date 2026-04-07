@@ -27,49 +27,54 @@
 
     - NEVER use my system python instead use uv managed python (e.g. uv run ...)
 
+    ## Other General Instructions
+
+    - When making commits NEVER put in anything like 'Coauthord by ...' or anything similar
+
     " | save --append ~/.claude/CLAUDE.md
     ```
 
     - Some things to add to the global Claude.md based on some suggestions ([more about this here](https://www.reddit.com/r/ClaudeCode/comments/1sed183/boris_cherny_explains_some_recent_changes_to/))
+        - For linux
 
-    ```pwsh
-    # to add all this to windows version in PWSH
-    $targetDir = "C:\Users\$env:USERNAME\.claude"
-    New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
+        ```nushell
+        mkdir ~/.claude
 
-    $claudeSettings = @"
-    ## Code Quality
-        - Prefer correct, complete implementations over minimal ones.
-        - Use appropriate data structures and algorithms - don't brute-force what has a known better solution.
-        - When fixing a bug, fix the root cause, not the symptom.
-        - If something I asked for requires error handling or validation to work reliably, include it without asking.
+        "## Code Quality
+            - Prefer correct, complete implementations over minimal ones.
+            - Use appropriate data structures and algorithms - don't brute-force what has a known better solution.
+            - When fixing a bug, fix the root cause, not the symptom.
+            - If something I asked for requires error handling or validation to work reliably, include it without asking.
 
-    - "correct, complete over minimal" - directly counters the "simplest approach first" default without saying "write more code." It's a quality signal, not a quantity signal.
-    - "appropriate data structures" - this is the AABB tree vs brute-force issue from the *gist. Nudges toward doing it right when the right way is known.
-    - "root cause not symptom" - prevents band-aid fixes that break again later. Future-proofing in one line.
-    - "include error handling if needed" - the default prompt says "don't add error handling for scenarios that can't happen," which is fine, but for a non-expert dev it's better to err on the side of resilience.
+        - \"correct, complete over minimal\" - directly counters the \"simplest approach first\" default without saying \"write more code.\" It's a quality signal, not a quantity signal.
+        - \"appropriate data structures\" - this is the AABB tree vs brute-force issue from the *gist. Nudges toward doing it right when the right way is known.
+        - \"root cause not symptom\" - prevents band-aid fixes that break again later. Future-proofing in one line.
+        - \"include error handling if needed\" - the default prompt says \"don't add error handling for scenarios that can't happen,\" which is fine, but for a non-expert dev it's better to err on the side of resilience." | save --append ~/.claude/CLAUDE.md
+        ```
 
-    "@
+        - For Windows Powershell
 
-    Add-Content -Path "$targetDir\CLAUDE.md" -Value $claudeSettings -Encoding UTF8
-    ```
+        ```pwsh
+        # to add all this to windows version in PWSH
+        $targetDir = "C:\Users\$env:USERNAME\.claude"
+        New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
 
-    - For linux
+        $claudeSettings = @"
+        ## Code Quality
+            - Prefer correct, complete implementations over minimal ones.
+            - Use appropriate data structures and algorithms - don't brute-force what has a known better solution.
+            - When fixing a bug, fix the root cause, not the symptom.
+            - If something I asked for requires error handling or validation to work reliably, include it without asking.
 
-```nushell
-mkdir ~/.claude
+        - "correct, complete over minimal" - directly counters the "simplest approach first" default without saying "write more code." It's a quality signal, not a quantity signal.
+        - "appropriate data structures" - this is the AABB tree vs brute-force issue from the *gist. Nudges toward doing it right when the right way is known.
+        - "root cause not symptom" - prevents band-aid fixes that break again later. Future-proofing in one line.
+        - "include error handling if needed" - the default prompt says "don't add error handling for scenarios that can't happen," which is fine, but for a non-expert dev it's better to err on the side of resilience.
 
-"## Code Quality
-    - Prefer correct, complete implementations over minimal ones.
-    - Use appropriate data structures and algorithms - don't brute-force what has a known better solution.
-    - When fixing a bug, fix the root cause, not the symptom.
-    - If something I asked for requires error handling or validation to work reliably, include it without asking.
+        "@
 
-- \"correct, complete over minimal\" - directly counters the \"simplest approach first\" default without saying \"write more code.\" It's a quality signal, not a quantity signal.
-- \"appropriate data structures\" - this is the AABB tree vs brute-force issue from the *gist. Nudges toward doing it right when the right way is known.
-- \"root cause not symptom\" - prevents band-aid fixes that break again later. Future-proofing in one line.
-- \"include error handling if needed\" - the default prompt says \"don't add error handling for scenarios that can't happen,\" which is fine, but for a non-expert dev it's better to err on the side of resilience." | save --append ~/.claude/CLAUDE.md
-```
+        Add-Content -Path "$targetDir\CLAUDE.md" -Value $claudeSettings -Encoding UTF8
+        ```
 
 ### Claude Code Plugins
 
