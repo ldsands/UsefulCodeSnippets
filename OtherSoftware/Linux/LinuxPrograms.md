@@ -787,6 +787,13 @@ nix-env -u --dry-run
     - linux installation command `curl -fsSL https://raw.githubusercontent.com/unslothai/unsloth/main/install.sh | sh`
     - to launch Unsloth Studio `mkdir ~/Downloads/RandomStuff/UnslothStudio/; cd ~/Downloads/RandomStuff/UnslothStudio/; source unsloth_studio/bin/activate unsloth studio -H 0.0.0.0 -p 6668`
     - the config.nu function so that you can easily launch using an alias type command `def UnslothStudio [] { mkdir ~/Downloads/RandomStuff/UnslothStudio/; cd ~/Downloads/RandomStuff/UnslothStudio/; unsloth_studio/bin/unsloth studio -H 0.0.0.0 -p 8888 }`
+- [UV Tools (UVX)](https://docs.astral.sh/uv/guides/tools/) - Tools that are self contained and usable across system (many are also cross platform)
+    - [Glances](https://github.com/nicolargo/glances) - "Glances an Eye on your system. A top/htop alternative for GNU/Linux, BSD, Mac OS and Windows operating systems."
+        - Overall I ended up not really liking glances as much as bottom
+        - Install command `uv tool install "glances[gpu]"`
+        - To create and download a config file that I have a gist for `mkdir -p ~/.config && mkdir -p ~/.config/glances/` and then `cd ~/.config/glances/ && wget ‐‐directory-prefix=~/.config/glances/glances.conf https://gist.github.com/ldsands/fdb72c21cda4b395e7a3b8687903b08b/raw/glances.conf`
+    - [nvitop](https://github.com/XuehaiPan/nvitop) - "An interactive NVIDIA-GPU process viewer and beyond, the one-stop solution for GPU process management."
+        - not bad but only for gpu and doesn't show history
 - [Ventoy](https://www.ventoy.net/en/index.html) - "Ventoy is an open source tool to create bootable USB drive for ISO/WIM/IMG/VHD(x)/EFI files." You can also install it on Windows.
 
 ```sh

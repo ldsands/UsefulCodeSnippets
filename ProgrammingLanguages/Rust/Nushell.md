@@ -103,6 +103,11 @@ mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts &
 mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v
 # copy my configuration from my gist to the starship.toml file
 cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gist.githubusercontent.com/ldsands/4e7fc375df318dd90bb44ae9ecbc5863/raw/starship.toml -N
+# for starship copy the 4 lines below to the $nu.env-path file
+# for Nushell starting with starship
+# comment out these lines if you see an error with showing "-c" as an "unknown flag" also remove the -c in the init.nu file
+mkdir ~/.cache/starship
+starship init nu | save ~/.cache/starship/init.nu
 
 # for installing shpool and setting it up with systemd (use bash)
 cargo install shpool
@@ -112,12 +117,6 @@ curl -fLo "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.socket" --creat
 systemctl --user enable shpool
 systemctl --user start shpool
 loginctl enable-linger
-
-# for starship copy the 4 lines below to the $nu.env-path file
-# for Nushell starting with starship
-# comment out these lines if you see an error with showing "-c" as an "unknown flag" also remove the -c in the init.nu file
-mkdir ~/.cache/starship
-starship init nu | save ~/.cache/starship/init.nu
 
 # for zoxide
 # to install zoxide use cargo
@@ -136,6 +135,11 @@ source ~/.zoxide.nu
 cargo install --locked yazi-fm yazi-cli
 cargo install yazi-fm --locked
 cargo install yazi-cli --locked
+# this was printed in a more recent attempt to build Yazi
+cargo install --force yazi-build
+
+# for mcfly
+cargo install mcfly
 ```
 
 - To allow for Yazi to change the working directory go to [this link](https://yazi-rs.github.io/docs/quick-start#shell-wrapper) and copy the code into `config.nu`
