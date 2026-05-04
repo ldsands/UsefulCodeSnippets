@@ -371,7 +371,7 @@ TODO: need to look through my various notes to add here
         ```
 
 - I'm a big fan of PowerShell mostly because it is the shell that I'm most familiar with. It is also usable on all platforms so you can learn PowerShell once and never have to learn much of any other terminal syntax no matter what platform you're using. To get it onto Linux find the instructions on [this site](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux). The instructions to do this on Ubuntu are located [here](../../ProgrammingLanguages/PowerShell/PowerShell.md#using-powershell-on-linux)
-- Install Anaconda on WSL [see this section](../../ProgrammingLanguages/PowerShell/PowerShell.md#Install-anaconda-on-WSL)
+- Install Anaconda on WSL [see this section](../../ProgrammingLanguages/PowerShell/PowerShell.md)
 - Some useful PowerShell commands to use to manage the WSL distros are below [here](https://learn.microsoft.com/en-us/windows/wsl/basic-commands) has a more comprehensive list of WSL commands
 
     ```PowerShell

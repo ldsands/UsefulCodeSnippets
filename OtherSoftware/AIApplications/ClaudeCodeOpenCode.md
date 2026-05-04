@@ -1,5 +1,13 @@
 # Claude and Open Code
 
+## Skills
+
+- [Shape (uses very detailed grilling that creates issues then details a bunch of items needed for creating code/features/upgrades etc.)](https://github.com/TheCraigHewitt/skills/blob/main/coding/shape/SKILL.md) - More about this here: [I Automated My Entire Coding Workflow — Here's What Happened - Craig Hewitt](https://www.youtube.com/watch?v=YIfluAXBr2M)
+    - Note you need to install the skills that you can find here at another skill [called Ralph](https://github.com/TheCraigHewitt/skills/blob/main/coding/ralph/SKILL.md)
+    - Ralph is the more for implementation where as Ralph is more for the implementation but also Shape accepts the defaults that claude prefers so it is the gill-me skill on autopilot
+    - The order is either /grill-me or /shape then a detailed description of what you want. Then use /prd-to-issues 8 (where 8 is the github issue created). Then use /ralph afk 8 or /ralph 8 for the working through each sub issue the afk version crates a docker container in which claude will work thus not doing anything to your computer by accident.
+    - I modified the ralph one to be able to work with docker on linux so instead just use this command `Install the ralph skill from my repo ldsands/CodingLLMSkills` and it should handle it
+
 ## Claude Code
 
 ### Notes, Tips, and Guides
@@ -49,7 +57,8 @@
         - \"correct, complete over minimal\" - directly counters the \"simplest approach first\" default without saying \"write more code.\" It's a quality signal, not a quantity signal.
         - \"appropriate data structures\" - this is the AABB tree vs brute-force issue from the *gist. Nudges toward doing it right when the right way is known.
         - \"root cause not symptom\" - prevents band-aid fixes that break again later. Future-proofing in one line.
-        - \"include error handling if needed\" - the default prompt says \"don't add error handling for scenarios that can't happen,\" which is fine, but for a non-expert dev it's better to err on the side of resilience." | save --append ~/.claude/CLAUDE.md
+        - \"include error handling if needed\" - the default prompt says \"don't add error handling for scenarios that can't happen,\" which is fine, but for a non-expert dev it's better to err on the side of resilience.
+        " | save --append ~/.claude/CLAUDE.md
         ```
 
         - For Windows Powershell
