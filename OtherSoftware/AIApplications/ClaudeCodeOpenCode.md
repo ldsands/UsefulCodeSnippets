@@ -27,63 +27,11 @@
 
 - Add some lines to the global Claude.md
     - the global Claude.md file can be found here: `~/.claude/CLAUDE.md` or here for Windows Powershell: `C:\Users\$env:USERNAME\.claude\CLAUDE.md` (same for Windows using Nushell)
-    - Some things to add to the global Claude.md for my own workflows
-
-    ```nushell
-    mkdir ~/.claude
-    "## Python Project Rules
-
-    - NEVER use my system python instead use uv managed python (e.g. uv run ...)
-
-    ## Other General Instructions
-
-    - When making commits NEVER put in anything like 'Coauthord by ...' or anything similar
-
-    " | save --append ~/.claude/CLAUDE.md
-    ```
-
-    - Some things to add to the global Claude.md based on some suggestions ([more about this here](https://www.reddit.com/r/ClaudeCode/comments/1sed183/boris_cherny_explains_some_recent_changes_to/))
-        - For linux
-
-        ```nushell
-        mkdir ~/.claude
-
-        "## Code Quality
-            - Prefer correct, complete implementations over minimal ones.
-            - Use appropriate data structures and algorithms - don't brute-force what has a known better solution.
-            - When fixing a bug, fix the root cause, not the symptom.
-            - If something I asked for requires error handling or validation to work reliably, include it without asking.
-
-        - \"correct, complete over minimal\" - directly counters the \"simplest approach first\" default without saying \"write more code.\" It's a quality signal, not a quantity signal.
-        - \"appropriate data structures\" - this is the AABB tree vs brute-force issue from the *gist. Nudges toward doing it right when the right way is known.
-        - \"root cause not symptom\" - prevents band-aid fixes that break again later. Future-proofing in one line.
-        - \"include error handling if needed\" - the default prompt says \"don't add error handling for scenarios that can't happen,\" which is fine, but for a non-expert dev it's better to err on the side of resilience.
-        " | save --append ~/.claude/CLAUDE.md
-        ```
-
-        - For Windows Powershell
-
-        ```pwsh
-        # to add all this to windows version in PWSH
-        $targetDir = "C:\Users\$env:USERNAME\.claude"
-        New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
-
-        $claudeSettings = @"
-        ## Code Quality
-            - Prefer correct, complete implementations over minimal ones.
-            - Use appropriate data structures and algorithms - don't brute-force what has a known better solution.
-            - When fixing a bug, fix the root cause, not the symptom.
-            - If something I asked for requires error handling or validation to work reliably, include it without asking.
-
-        - "correct, complete over minimal" - directly counters the "simplest approach first" default without saying "write more code." It's a quality signal, not a quantity signal.
-        - "appropriate data structures" - this is the AABB tree vs brute-force issue from the *gist. Nudges toward doing it right when the right way is known.
-        - "root cause not symptom" - prevents band-aid fixes that break again later. Future-proofing in one line.
-        - "include error handling if needed" - the default prompt says "don't add error handling for scenarios that can't happen," which is fine, but for a non-expert dev it's better to err on the side of resilience.
-
-        "@
-
-        Add-Content -Path "$targetDir\CLAUDE.md" -Value $claudeSettings -Encoding UTF8
-        ```
+    - Some things I added based on some suggestions I have seen and then put this into my [CodingLLMSkills repo (private)](https://github.com/ldsands/CodingLLMSkills)
+        - [I added the text from this repo on 2026-05-04 (SHA: 2c606141936f1eeef17fa3043a72095b4765b9c2)](https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/2c606141936f1eeef17fa3043a72095b4765b9c2/CLAUDE.md)
+        - Some things to add to the global Claude.md based on some suggestions ([more about this here](https://www.reddit.com/r/ClaudeCode/comments/1sed183/boris_cherny_explains_some_recent_changes_to/)) older additions but I added this to the notes above
+        - Linux file location: `~/.claude/CLAUDE.md`
+        - Windows file location: `C:\Users\$env:USERNAME\.claude`
 
 ### Claude Code Plugins
 
