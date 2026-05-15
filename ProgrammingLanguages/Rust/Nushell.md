@@ -75,10 +75,12 @@ code $nu.config-path
     - [Starship](https://starship.rs/) - "The minimal, blazing-fast, and infinitely customizable prompt for any shell!"
         - This requires a [Nerd Font](https://www.nerdfonts.com/) (or similar) to work properly here is a command that installs the Fira Code Nerd Font: `mkdir -p ~/.local/share/fonts/nerd-fonts && cd ~/.local/share/fonts/nerd-fonts && curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip && unzip FiraCode.zip && sudo fc-cache -f -v`
         - See below for a link to a gist that contains my preferred configuration options
+    - [McFly](https://github.com/cantino/mcfly) - "McFly replaces your default `ctrl-r` shell history search with an intelligent search engine that takes into account your working directory and the context of recently executed commands."
+    - [X-CMD](https://www.x-cmd.com/) - "In ONE command: Using 500 Open Source tools Explore the power of AI and Cloud Execute your script with auto provision"
+        - [as of 2026-05-15 the nushell integration script is broken](https://github.com/x-cmd/x-cmd/issues/348) Once this is fixed it'll likely be usable
+    - [Yazi](https://yazi-rs.github.io/) - "Blazing fast terminal file manager written in Rust, based on async I/O."
     - [Zoxide](https://github.com/ajeetdsouza/zoxide#installation) - "A smarter cd command."
         - This also uses (optionally) [fzf](https://github.com/junegunn/fzf) which is, "A command-line fuzzy finder"
-    - [McFly](https://github.com/cantino/mcfly) - "McFly replaces your default `ctrl-r` shell history search with an intelligent search engine that takes into account your working directory and the context of recently executed commands."
-    - [Yazi](https://yazi-rs.github.io/) - "Blazing fast terminal file manager written in Rust, based on async I/O."
 - To connect to 3rd party extensions that help Nushell you will need to run the code below once before they'll work
 
 ```sh
@@ -117,6 +119,14 @@ curl -fLo "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.socket" --creat
 systemctl --user enable shpool
 systemctl --user start shpool
 loginctl enable-linger
+
+# x-cmd
+# to update x-cmd (or use the same installation command)
+x upgrade
+# for linux installation
+eval "$(curl https://get.x-cmd.com)"
+# for Windows installation you must use powershell
+[System.Text.Encoding]::GetEncoding("utf-8").GetString($(Invoke-WebRequest -Uri "https://get.x-cmd.com/x-cmd.ps1").RawContentStream.ToArray()) | Invoke-Expression
 
 # for zoxide
 # to install zoxide use cargo

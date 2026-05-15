@@ -1,5 +1,14 @@
 # DGX OS
 
+- [DGX OS](#dgx-os)
+    - [General DGX OS Information and Resources](#general-dgx-os-information-and-resources)
+    - [Installing DGX OS](#installing-dgx-os)
+    - [Initial Setup Configuration Instructions](#initial-setup-configuration-instructions)
+    - [Installation Instructions](#installation-instructions)
+    - [Bugs and Other Temporary Configurations](#bugs-and-other-temporary-configurations)
+    - [Gnome Configurations](#gnome-configurations)
+    - [Gnome Extensions and Configurations](#gnome-extensions-and-configurations)
+
 ## General DGX OS Information and Resources
 
 - "NVIDIA DGX OS provides a customized installation of Ubuntu Linux with system-specific optimizations and configurations, additional drivers, and diagnostic and monitoring tools." [From the "About DGX OS 7 / Ubuntu 24.04" page](https://docs.nvidia.com/dgx/dgx-os-7-user-guide/index.html)
@@ -92,6 +101,16 @@ def rclone_bisync_all_pcloud [] {
 ```
 
 ## Bugs and Other Temporary Configurations
+
+- There are sometimes some power drawing issues that lead to not using the clock speed it should below is a bash script that shows the clock speed (should be ~2400 if it is doing well). When not working correctly the clock speed is usually < 1000 mhz and the power draw is ~15w
+
+```bash
+while true; do
+  date '+%F %T' | tr -d '\n'; echo -n ',';
+  nvidia-smi --query-gpu=temperature.gpu,utilization.gpu,power.draw,clocks.current.graphics,pstate,clocks_throttle_reasons.active --format=csv,noheader,nounits;
+  sleep 1;
+done
+```
 
 - [Bluetooth audio is broken as of 2025-11-26](https://forums.developer.nvidia.com/t/pairing-headphones/348746) - supposedly a fix is incoming but until then the fix contained in one of the posts at the link here worked for me.
 

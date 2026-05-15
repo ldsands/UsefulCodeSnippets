@@ -2,6 +2,28 @@
 
 ## Skills
 
+- [Matt Pocock's ai skills some real gems here](https://github.com/mattpocock/skills)
+    - Here is a brief summary of each skill from the mattpocock/skills repository:
+    - Engineering Skills
+        - diagnose: Disciplined diagnosis loop for hard bugs and performance regressions (reproduce, minimise, hypothesise, instrument, fix, regression-test).
+        - grill-with-docs: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates CONTEXT.md and ADRs inline.
+        - triage: Triage issues through a state machine of triage roles.
+        - improve-codebase-architecture: Find deepening opportunities in a codebase, informed by the domain language in CONTEXT.md and the decisions in docs/adr/.
+        - setup-matt-pocock-skills: Scaffold the per-repo config (issue tracker, triage label vocabulary, domain doc layout) that the other engineering skills consume.
+        - tdd: Test-driven development with a red-green-refactor loop. Builds features or fixes bugs one vertical slice at a time.
+        - to-issues: Break any plan, spec, or PRD into independently-grabbable GitHub issues using vertical slices.
+        - to-prd: Turn the current conversation context into a PRD and submit it as a GitHub issue. No interview, just synthesizes what you have already discussed.
+        - zoom-out: Tell the agent to zoom out and give broader context or a higher-level perspective on an unfamiliar section of code.
+        - prototype: Build a throwaway prototype to flush out a design, either a runnable terminal app for state/business-logic questions, or several radically different UI variations toggleable from one route.
+    - Productivity Skills
+        - caveman: Ultra-compressed communication mode. Cuts token usage around 75% by dropping filler while keeping full technical accuracy.
+        - grill-me: Get relentlessly interviewed about a plan or design until every branch of the decision tree is resolved.
+        - write-a-skill: Create new skills with proper structure, progressive disclosure, and bundled resources.
+    - Misc Skills
+        - git-guardrails-claude-code: Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, etc.) before they execute.
+        - migrate-to-shoehorn: Migrate test files from as type assertions to @total-typescript/shoehorn.
+        - scaffold-exercises: Create exercise directory structures with sections, problems, solutions, and explainers.
+        - setup-pre-commit: Set up Husky pre-commit hooks with lint-staged, Prettier, type checking, and tests.
 - [Shape (uses very detailed grilling that creates issues then details a bunch of items needed for creating code/features/upgrades etc.)](https://github.com/TheCraigHewitt/skills/blob/main/coding/shape/SKILL.md) - More about this here: [I Automated My Entire Coding Workflow — Here's What Happened - Craig Hewitt](https://www.youtube.com/watch?v=YIfluAXBr2M)
     - Note you need to install the skills that you can find here at another skill [called Ralph](https://github.com/TheCraigHewitt/skills/blob/main/coding/ralph/SKILL.md)
     - Ralph is the more for implementation where as Ralph is more for the implementation but also Shape accepts the defaults that claude prefers so it is the gill-me skill on autopilot
