@@ -3,6 +3,7 @@
 ## Skills
 
 - [Matt Pocock's ai skills some real gems here](https://github.com/mattpocock/skills)
+    - to install use this command `npx skills@latest add mattpocock/skills`
     - Here is a brief summary of each skill from the mattpocock/skills repository:
     - Engineering Skills
         - diagnose: Disciplined diagnosis loop for hard bugs and performance regressions (reproduce, minimise, hypothesise, instrument, fix, regression-test).
