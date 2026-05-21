@@ -5,6 +5,7 @@
     - [Installing DGX OS](#installing-dgx-os)
     - [Initial Setup Configuration Instructions](#initial-setup-configuration-instructions)
     - [Installation Instructions](#installation-instructions)
+    - [Hardware Configuration Options](#hardware-configuration-options)
     - [Bugs and Other Temporary Configurations](#bugs-and-other-temporary-configurations)
     - [Gnome Configurations](#gnome-configurations)
     - [Gnome Extensions and Configurations](#gnome-extensions-and-configurations)
@@ -99,6 +100,46 @@ def rclone_bisync_all_pcloud [] {
     rclone bisync "/home/ldsands/Documents/pCloudLocalGithubRepos" "pCloud:/LeviStuff/pCloudLocalGithubRepos" --progress --filters-file /home/ldsands/rcloneFilter.txt
 }
 ```
+
+## Hardware Configuration Options
+
+- [Issues with temperature, memory issues and crashes have a lot of great discussion here](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/)
+- The spark can have issues with heat one of the ways to deal with this is to cap the gpu clocks so that it doesn't get as high
+    - [Found this here](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/4) [and in this post too](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/23)
+
+    ```sh
+    # from the second link but near the bottom of a long post
+    sudo nvidia-smi -rgc        # reset any previous limits
+    sudo nvidia-smi -lgc 0,2300 # example: cap max graphics clock a bit below default
+    # from the first link
+    sudo nvidia-smi --lock-gpu-clocks 0,2150
+    ```
+
+    - [Again from this post]: Tighten Linux memory accounting so you fail allocations instead of hanging: Set `vm.overcommit_memory=2` and something like `vm.overcommit_ratio=90` in /etc/sysctl.d/ so userspace gets allocation failures before the kernel is out of options.
+
+    ```sh
+
+    ```
+
+- Sometimes freezing happens
+    - [Some great information on this](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/23)
+    - One of the possible causes is have out of memory issues. To help with this you can disable the swap so that instead of freezing when trying to use the swap it'll just kill something (better than freezing in at least some instances).
+        - [I found out about this here](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/11) but note that my ram/vram wasn't nearly as close to the limit but I was having the issues this person described
+        - to turn off the swap use this command `swapoff -a` (you must use sudo) [I found this here](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/11) (to turn it back on `swapon`)
+        - There is also an option to turn off the use of swap only until the ram/vram reaches 100% ([found here](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/14))
+
+        ```sh
+        # turn off swap completely
+        sudo swapoff -a
+        # turn on the swap
+        sudo swapon -a
+        # Check current value:
+        cat /proc/sys/vm/swappiness
+        # Temporarily set to 0: 
+        sudo sysctl vm.swappiness=0
+        # If no issues are found Permanently set: Add
+        vm.swappiness=0 to /etc/sysctl.conf.
+        ```
 
 ## Bugs and Other Temporary Configurations
 
