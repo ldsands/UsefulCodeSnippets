@@ -58,7 +58,7 @@ git clone https://github.com/nushell/nu_scripts.git
 code $nu.config-path
 ```
 
-- I then like to customize my Newshell with various options
+- I then like to customize my Nushell with various options
     - I store these in a gist [found here](https://gist.github.com/ldsands/d3eac90b0b9d2b8613e165cc9e49d4f3)
     - Paste this code into the file that opens with the command here: `code $nu.config-path`
 
@@ -141,15 +141,15 @@ source ~/.zoxide.nu
 
 # for yazi
 # to install yazi you can use cargo
+# this was printed in a more recent attempt to build Yazi it looks like this is the way you actually install Yazi
+cargo install --force yazi-build
 # for fedora you can install via dnf (using copr) instead
 cargo install --locked yazi-fm yazi-cli
 cargo install yazi-fm --locked
 cargo install yazi-cli --locked
-# this was printed in a more recent attempt to build Yazi
-cargo install --force yazi-build
 
 # for mcfly
-cargo install mcfly
+cargo install mcfly --locked
 ```
 
 - To allow for Yazi to change the working directory go to [this link](https://yazi-rs.github.io/docs/quick-start#shell-wrapper) and copy the code into `config.nu`
