@@ -255,6 +255,8 @@ nativefier --name "MS Teams" "https://teams.microsoft.com/" --internal-urls ".*(
 
 non chocolatey utility programs
 
+- [App Control](https://www.appcontrol.com/) - "Historical resource monitoring, powerful controls for managing troublesome apps, and detailed visibility into hidden behavior that impacts your PC’s performance, privacy, and security."
+    - really good task manager type of application
 - [Focus To-Do](https://www.focustodo.cn/) This is a to-do focused Pomodoro timer. I don't really use the to-do aspect of it but I like the timer aspect quite a bit
 - [FreeFileSync](https://freefilesync.org/) - "FreeFileSync is a folder comparison and synchronization software that creates and manages backup copies of all your important files."
     - For backing up file locally to other drives, also available on Linux

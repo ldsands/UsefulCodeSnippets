@@ -29,6 +29,9 @@ cargo install --list
 
 # install Nushell using cargo (this is the same command you can use to update Nushell)
 cargo install nu --locked
+# Append my gist that has my config.nu to the end of the existing config.nu file
+mkdir ~/.config/nushell/
+cd ~/.config/nushell/ && printf "\n\n" >> ~/.config/nushell/config.nu && wget ‐‐directory-prefix=~/.config/nushell/config.nu https://gist.githubusercontent.com/ldsands/d3eac90b0b9d2b8613e165cc9e49d4f3/raw/config.nu -N >> ~/.config/nushell/config.nu
 
 # for debian based systems you may need to install the packages below
 sudo apt install pkg-config libssl-dev
@@ -120,6 +123,11 @@ systemctl --user enable shpool
 systemctl --user start shpool
 loginctl enable-linger
 
+# Install MS Edit a lightweight terminal editor that doesn't require nearly as much memorization of keyboard shortcuts; use edit <filepath> to load the file
+curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/microsoft/edit/main/assets/install.sh | sh
+# add this 
+printf '\n# Add local bin to PATH for MS Edit\nexport PATH="$HOME/.local/bin:$PATH"\n' >> ~/.bashrc
+
 # x-cmd
 # to update x-cmd (or use the same installation command)
 x upgrade
@@ -154,7 +162,9 @@ cargo install mcfly --locked
 
 - To allow for Yazi to change the working directory go to [this link](https://yazi-rs.github.io/docs/quick-start#shell-wrapper) and copy the code into `config.nu`
 
-```rust
+```sh
+cat << 'EOF' >> ~/.config/nushell/config.nu
+
 def --env y [...args] {
     let tmp = (mktemp -t "yazi-cwd.XXXXXX")
     yazi ...$args --cwd-file $tmp
@@ -164,6 +174,7 @@ def --env y [...args] {
     }
     rm -fp $tmp
 }
+EOF
 ```
 
 - to update the 3rd party extensions shown above you can use the code below
