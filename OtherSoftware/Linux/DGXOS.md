@@ -105,14 +105,19 @@ def rclone_bisync_all_pcloud [] {
 
 - [Issues with temperature, memory issues and crashes have a lot of great discussion here](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/)
 - The spark can have issues with heat one of the ways to deal with this is to cap the gpu clocks so that it doesn't get as high
-    - [Found this here](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/4) [and in this post too](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/23)
+    - [Found this here](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/4) [and in this post too](https://forums.developer.nvidia.com/t/dgx-spark-stability-out-of-ram-overheating/368536/23) [and here as well](https://forums.developer.nvidia.com/t/cooler-gb10-temps-almost-no-performance-lost/372662/)
 
     ```sh
     # from the second link but near the bottom of a long post
     sudo nvidia-smi -rgc        # reset any previous limits
-    sudo nvidia-smi -lgc 0,2300 # example: cap max graphics clock a bit below default
-    # from the first link
-    sudo nvidia-smi --lock-gpu-clocks 0,2150
+    # to allow for lower clocks after reboots
+    sudo nvidia-smi -pm 1 # Enable Persistence Mode
+    set the clock min and max
+    sudo nvidia-smi -lgc 0,2100 # Lock GPU Clocks
+    # to get the current clock settings
+    nvidia-smi -q -d CLOCK
+    nvidia-smi -q -d SUPPORTED_CLOCKS
+    nvidia-smi --query-gpu=clocks.gr,clocks.sm,clocks.max.gr --format=csv
     ```
 
     - [Again from this post]: Tighten Linux memory accounting so you fail allocations instead of hanging: Set `vm.overcommit_memory=2` and something like `vm.overcommit_ratio=90` in /etc/sysctl.d/ so userspace gets allocation failures before the kernel is out of options.
