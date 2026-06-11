@@ -76,6 +76,7 @@ winget install --id=RStudio.RStudio -e
 winget install --id=Rust.rustup -e
 winget install --id=SumatraPDF.SumatraPDF -e
 winget install --id=TimKosse.FilezillaClient -e
+winget install --id=Microsoft.Coreutils -e # list of coreutils that are used in linux that are ported to Windows for use in cmd or pwsh (e.g. can use ls) published by Microsoft
 ## Document Apps
 winget install --id=Amazon.Kindle -e
 winget install --id=LibreOffice.LibreOffice -e
