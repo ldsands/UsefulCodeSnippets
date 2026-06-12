@@ -9,6 +9,7 @@
     - [Bugs and Other Temporary Configurations](#bugs-and-other-temporary-configurations)
     - [Gnome Configurations](#gnome-configurations)
     - [Gnome Extensions and Configurations](#gnome-extensions-and-configurations)
+    - [Spark Specific Software](#spark-specific-software)
 
 ## General DGX OS Information and Resources
 
@@ -194,3 +195,46 @@ done
             - Restore window size = True
             - Add snap assistant and auto-tile buttons to window menu = True
             - Add tiled windows to ALT+TAB menu = True
+
+## Spark Specific Software
+
+- [Spark Dashboard](https://github.com/niklasfrick/spark-dashboard) - "About Real-time hardware and LLM inference monitoring — GPU, CPU, memory, and vLLM metrics streamed to a dashboard."
+    - Installation instructions below
+    - Optional overrides live in /etc/spark-dashboard/config.env — set SPARK_DASHBOARD_PORT, SPARK_DASHBOARD_BIND, SPARK_DASHBOARD_POLL_INTERVAL, SPARK_DASHBOARD_GPU_INDEX, SPARK_DASHBOARD_PROVIDER_API_KEY, or RUST_LOG, then sudo systemctl restart spark-dashboard
+        - I decided to set the SPARK_DASHBOARD_PORT to 3066 to make sure it doesn't conflict with other docker containers
+        - I use this command to edit the file `sudo vi /etc/spark-dashboard/config.env`
+
+```sh
+# installation instructions
+cargo install spark-dashboard
+sudo ~/.cargo/bin/spark-dashboard service install
+systemctl status spark-dashboard
+# upgrade the installation
+cargo install --force spark-dashboard && sudo ~/.cargo/bin/spark-dashboard service install
+# uninstall
+sudo spark-dashboard service uninstall         # keep /etc/spark-dashboard
+sudo spark-dashboard service uninstall --purge # remove everything
+# managing the installation
+sudo systemctl {start|stop|restart} spark-dashboard
+journalctl -u spark-dashboard -f          # follow logs
+sudo spark-dashboard service status       # same as `systemctl status`
+# CLI options
+spark-dashboard [OPTIONS]                 run the server (default)
+spark-dashboard service install [--prefix /usr/local]
+spark-dashboard service uninstall [--purge]
+spark-dashboard service status
+
+  -p, --port <PORT>           Listen port [default: 3000] [env: SPARK_DASHBOARD_PORT]
+  -b, --bind <BIND>           Bind address [default: 0.0.0.0] [env: SPARK_DASHBOARD_BIND]
+      --poll-interval <MS>    Polling interval ms [default: 1000] [env: SPARK_DASHBOARD_POLL_INTERVAL]
+      --gpu-index <IDX>       NVML GPU index to monitor [default: 0] [env: SPARK_DASHBOARD_GPU_INDEX]
+      --engine <TYPE>         Manual engine type (e.g. vllm)
+      --engine-url <URL>      Manual engine endpoint (requires --engine)
+      --engine-api-key <KEY>  API key for an endpoint, paired by index with --engine-url
+      --provider-api-key <KEY> Fallback API key for any endpoint [env: SPARK_DASHBOARD_PROVIDER_API_KEY]
+# the cli option I use most often
+spark-dashboard --port 3066 # if you didn't change it in the config file
+sudo systemctl start spark-dashboard
+sudo systemctl stop spark-dashboard
+sudo systemctl restart spark-dashboard
+```

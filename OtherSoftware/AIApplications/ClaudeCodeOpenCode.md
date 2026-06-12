@@ -25,6 +25,8 @@
         - migrate-to-shoehorn: Migrate test files from as type assertions to @total-typescript/shoehorn.
         - scaffold-exercises: Create exercise directory structures with sections, problems, solutions, and explainers.
         - setup-pre-commit: Set up Husky pre-commit hooks with lint-staged, Prettier, type checking, and tests.
+- [graphify](https://github.com/safishamsi/graphify) - "AI coding assistant skill (Claude Code, Codex, OpenCode, Cursor, Gemini CLI, and more). Turn any folder of code, SQL schemas, R scripts, shell scripts, docs, papers, images, or videos into a queryable knowledge graph. App code + database schema + infrastructure in one graph."
+    - Install via uv tool (`uv tool install graphifyy` or to update `uv tool upgrade graphifyy` or to uninstall `uv tool uninstall graphifyy` but note this doesn't remove it from the skills in claude or similar ai coders), then to install the skill into claude (or others) use `graphify install` then to use it you just use `/graphify` in any project should save a lot on context
 - [Shape (uses very detailed grilling that creates issues then details a bunch of items needed for creating code/features/upgrades etc.)](https://github.com/TheCraigHewitt/skills/blob/main/coding/shape/SKILL.md) - More about this here: [I Automated My Entire Coding Workflow — Here's What Happened - Craig Hewitt](https://www.youtube.com/watch?v=YIfluAXBr2M)
     - Note you need to install the skills that you can find here at another skill [called Ralph](https://github.com/TheCraigHewitt/skills/blob/main/coding/ralph/SKILL.md)
     - Ralph is the more for implementation where as Ralph is more for the implementation but also Shape accepts the defaults that claude prefers so it is the gill-me skill on autopilot
@@ -33,6 +35,8 @@
 
 ## General Configurations
 
+- A prompt to have claude never use attribution in commits or PRs
+    - `I want you to change global attribution setting for commits and prs and such so that you never do the co autherd by addition please`
 - To have a status bar that shows the context give this prompt to your LLM (only tested on claude code)
 
     ```md
@@ -69,9 +73,25 @@
 
     Do this:
 
-    1. Create the file ~/.claude/statusline-command.sh with exactly this content:
+    1. Create the file ~/.claude/statusline-command.sh with exactly this content: (shown below)
 
-    ```bash
+    2. Make it executable: chmod +x ~/.claude/statusline-command.sh
+
+    3. Add this to ~/.claude/settings.json (merge into the existing JSON, don't clobber other keys):
+
+        "statusLine": {
+        "type": "command",
+        "command": "bash ~/.claude/statusline-command.sh"
+        }
+
+    4. Verify it works by piping sample JSON through the script and showing me the output:
+
+        echo '{"cwd":"/tmp/proj","context_window":{"used_percentage":75,"total_input_tokens":150000,"context_window_size":200000}}' | bash ~/.claude/statusline-command.sh
+
+    This requires `jq` and `bc` to be installed.
+
+    bash code below
+
     #!/usr/bin/env bash
     # Claude Code status line — derived from ~/.bashrc PS1
     # Context bar uses context_window.used_percentage from the statusline JSON schema
@@ -142,25 +162,6 @@
         printf '%s\n' "$left_ansi"
     fi
     ```
-
-    1. Make it executable: chmod +x ~/.claude/statusline-command.sh
-
-    2. Add this to ~/.claude/settings.json (merge into the existing JSON, don't clobber
-
-  other keys):
-
-        "statusLine": {
-        "type": "command",
-        "command": "bash ~/.claude/statusline-command.sh"
-        }
-
-    3. Verify it works by piping sample JSON through the script and showing me the output:
-
-        echo '{"cwd":"/tmp/proj","context_window":{"used_percentage":75,"total_input_tokens":150000,"context_window_size":200000}}' | bash ~/.claude/statusline-command.sh
-
-    This requires `jq` and `bc` to be installed.
-
-    ```text
 
 ## Claude Code
 
