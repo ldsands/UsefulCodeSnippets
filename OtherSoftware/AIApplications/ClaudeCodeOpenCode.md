@@ -2,6 +2,12 @@
 
 ## Skills
 
+- [Context Mode](https://github.com/mksglu/context-mode) - "Context window optimization for AI coding agents. Sandboxes tool output, 98% reduction. 15 platforms"
+    - for claude code use these two commands
+        - `/plugin marketplace add mksglu/context-mode`
+        - `/plugin install context-mode@context-mode`
+    - for opencode add to opencode.json in your project root (or ~/.config/opencode/opencode.json for global):
+        - `{ "$schema": "<https://opencode.ai/config.json>", "plugin": ["context-mode"] }`
 - [Matt Pocock's ai skills some real gems here](https://github.com/mattpocock/skills)
     - to install use this command `npx skills@latest add mattpocock/skills`
     - Here is a brief summary of each skill from the mattpocock/skills repository:
