@@ -119,7 +119,37 @@ def rclone_bisync_all_pcloud [] {
     nvidia-smi -q -d CLOCK
     nvidia-smi -q -d SUPPORTED_CLOCKS
     nvidia-smi --query-gpu=clocks.gr,clocks.sm,clocks.max.gr --format=csv
+    # to make this rebootable
     ```
+
+    - to make this persist after rebooting
+        - create this file: `touch /etc/systemd/system/nvidia-power-limit.service` with the text shown below
+
+        ```sh
+        [Unit]
+        Description=Set NVIDIA GPU Power Limits
+        After=nvidia-persistenced.service
+        Wants=nvidia-persistenced.service
+
+        [Service]
+        Type=oneshot
+
+        ## Enable persistence mode first, wait for GPU to be ready, then set power limits
+
+        ExecStart=/usr/bin/bash -c 'sleep 5 && nvidia-smi -pm 1 && nvidia-smi -lgc 0,2100 && echo "GPU : Persistence enabled, Clock limit set to 2000MHz"'
+        RemainAfterExit=yes
+
+        [Install]
+        WantedBy=multi-user.target
+        ```
+
+        - Then you need to use these three commands to apply the changes in this file on startup
+
+        ```sh
+        sudo systemctl daemon-reload # reload systemd services
+        sudo systemctl enable nvidia-power-limit.service # enable service
+        sudo systemctl start nvidia-power-limit.service # Start service
+        ```
 
     - [Again from this post]: Tighten Linux memory accounting so you fail allocations instead of hanging: Set `vm.overcommit_memory=2` and something like `vm.overcommit_ratio=90` in /etc/sysctl.d/ so userspace gets allocation failures before the kernel is out of options.
 
