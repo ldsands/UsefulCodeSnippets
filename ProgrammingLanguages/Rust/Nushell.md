@@ -53,12 +53,12 @@ nu
         - Some of those instructions are below
 
 ```sh
-# go to the `~/.config/` directory
-cd ~/.config/
-# use git to clone the repo 
-git clone https://github.com/nushell/nu_scripts.git
+# go to the `~/.config/` directory, then use git to clone the repo 
+cd ~/.config/; git clone https://github.com/nushell/nu_scripts.git
 # open the Nushell config file in VSCode
 code $nu.config-path
+# to update nu_scripts to the lastest version without history and other stuff not really needed
+git -C ~/.config/nu_scripts fetch --depth 1 origin main; git -C ~/.config/nu_scripts reset --hard origin/main
 ```
 
 - I then like to customize my Nushell with various options
@@ -67,10 +67,12 @@ code $nu.config-path
 
 ## Other Rust and Newshell Related Command Line Applications
 
-- Rust/Cargo Command Line Applications
+- Rust/Cargo Command Line Applications (and others)
     - [Bottom](https://github.com/ClementTsang/bottom) - "[C]ross-platform graphical process/system monitor."
         - See below for a link to a gist that contains my preferred configuration options
         - use bottom by typing in `btm`
+    - [Homebrew](https://brew.sh/) - "The Package Manager for Everywhere"
+    - [zmx](https://zmx.sh/) - "Session attach/detach for the terminal"
     - [shpool](https://github.com/shell-pool/shpool) - "shpool is a service that enables session persistence by allowing the creation of named shell sessions owned by shpool so that the session is not lost if the connection drops."
         - use by first starting a new instance with `shpool attach <session name>` then you can detach (which just gets you out of than instance) by using `shpool detach`
         - list all sessions with `shpool list`
@@ -114,6 +116,18 @@ cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gis
 mkdir ~/.cache/starship
 starship init nu | save ~/.cache/starship/init.nu
 
+# Homebrew
+# to install, add to path via bashrc, update homebrew itself, to update all homebrew installed packages, clean up old versions (respectively):
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+brew update
+brew upgrade
+brew cleanup
+
+# for installing zmx
+brew install neurosnap/tap/zmx
+
+# note that zmx had replaced shpool for me as it has features (mostly scrollback history) that will never work perfectly on shpool
 # for installing shpool and setting it up with systemd (use bash)
 cargo install shpool
 curl -fLo "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.service" --create-dirs https://raw.githubusercontent.com/shell-pool/shpool/master/systemd/shpool.service

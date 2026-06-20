@@ -574,8 +574,6 @@ This section consists of applications that are as far as I'm aware largely distr
 
 ### Distro Agnostic Command Line Applications
 
-- [NVTOP](https://github.com/Syllo/nvtop) "Nvtop stands for Neat Videocard TOP, a (h)top like task monitor for AMD and NVIDIA GPUs."
-    - To install using yay `yay -S nvtop`
 - [Auto CPU-Freq](https://github.com/AdnanHodzic/auto-cpufreq) - for saving battery life on laptops
     - At time of writing you cannot install this using aur without issues instead you should use the installer with the code shown below:
 
@@ -589,7 +587,16 @@ This section consists of applications that are as far as I'm aware largely distr
     auto-cpufreq --stats
     ```
 
-- [shpool](https://github.com/shell-pool/shpool) - "shpool is a service that enables session persistence by allowing the creation of named shell sessions owned by shpool so that the session is not lost if the connection drops."
+- [Homebrew](https://brew.sh/) - "The Package Manager for Everywhere"
+    - to install, add to path via bashrc, update homebrew itself, to update all homebrew installed packages, clean up old versions (respectively):
+        - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+        - `echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc`
+        - `brew update`
+        - `brew upgrade`
+        - `brew cleanup`
+- [NVTOP](https://github.com/Syllo/nvtop) "Nvtop stands for Neat Videocard TOP, a (h)top like task monitor for AMD and NVIDIA GPUs."
+    - To install using yay `yay -S nvtop`
+- (Note that I now use zmx rather than shpool)[shpool](https://github.com/shell-pool/shpool) - "shpool is a service that enables session persistence by allowing the creation of named shell sessions owned by shpool so that the session is not lost if the connection drops."
     - [Installation can be found here](https://github.com/shell-pool/shpool?tab=readme-ov-file#installation) but you should probably use the daemon commands as they will make sure that it runs on startup (I think) (I copied these commands from the link on 2026-03-03)
 
 ```bash
@@ -600,6 +607,27 @@ curl -fLo "${XDG_CONFIG_HOME:-$HOME/.config}/systemd/user/shpool.socket" --creat
 systemctl --user enable shpool
 systemctl --user start shpool
 loginctl enable-linger
+```
+
+- [zmx](https://zmx.sh/) - "Session attach/detach for the terminal"
+    - to install it is easiest to have homebrew installed then use this command:
+        - `brew install neurosnap/tap/zmx`
+
+```bash
+echo '
+if command -v zmx &> /dev/null; then
+  eval "$(zmx completions bash)"
+fi
+' >> ~/.bashrc
+# some common commands
+# use by first starting a new instance with
+shpool attach <session name>
+# then you can detach (which just gets you out of than instance) by using 
+shpool detach
+# list all sessions with
+shpool list
+# kill a session with
+shpool kill <session name>
 ```
 
 ### Flatpak Applications
