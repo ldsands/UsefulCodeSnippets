@@ -227,26 +227,31 @@
 
     ```jsonc
     {
-    "$schema": "<https://opencode.ai/config.json>",
+        "$schema": "<https://opencode.ai/config.json>",
         "provider": {
             "vllm": {
                 "npm": "@ai-sdk/openai-compatible",
-                "name": "vLLM",
+                "name": "vLLM_Local",
                 "options": {
                     "baseURL": "<http://localhost:6060/v1>"
                     // curl <http://127.0.0.1:6060/v1/models>
                 },
                 "models": {
-                    "cyankiwi/Qwen3.5-2B-AWQ-4bit": {
-                        "name": "cyankiwi/Qwen3.5-2B-AWQ-4bit",
-                        "options": {
-                            "max_tokens": 262144
-                        }
+                    "google/gemma-4-31B-it": {
+                        "name": "google/gemma-4-31B-it",
                     },
-                    "cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit": {
-                        "name": "cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit",
-                        "options": {
-                            "max_tokens": 256000
+                    "deepseek-ai/DeepSeek-V4-Flash": {
+                        "name": "deepseek-ai/DeepSeek-V4-Flash",
+                        "variants": {
+                            "think_none": {
+                                "reasoningEffort": "none"
+                            },
+                            "think_high": {
+                                "reasoningEffort": "high"
+                            },
+                            "think_max": {
+                                "reasoningEffort": "max"
+                            }
                         }
                     }
                 }
@@ -254,3 +259,18 @@
         }
     }
     ```
+
+### OpenCode AGENTS.md File Notes
+
+- should be located `~/.opencode/AGENTS.md`
+
+### OpenCode Plugins and Skills
+
+- To use and install superpowers you can just add the text below to the file `~/.config/opencode/opencode.json`
+
+```json
+{
+  "$schema": "<https://opencode.ai/config.json>",
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"]
+}
+```

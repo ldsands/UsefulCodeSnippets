@@ -19,7 +19,7 @@
         - [Nix Package Manager](#nix-package-manager)
         - [Other Distro Agnostic Applications](#other-distro-agnostic-applications)
         - [Rust Applications](#rust-applications)
-        - [Snap](#snap)
+    - [Snap](#snap)
     - [Linux (Distro Agnostic) Settings](#linux-distro-agnostic-settings)
 
 ## Arch Based Distros
@@ -880,6 +880,11 @@ systemctl --user start TeslaTakedown.service
     - for usage you can use the command `ms-edit <filename>`
     - For Arch based distros: `yay -S ms-edit`
     - You can [download the binary](https://github.com/microsoft/edit/releases) and use that or you can build it
+    - The easiest way to install and use it is below:
+        - Install MS Edit a lightweight terminal editor that doesn't require nearly as much memorization of keyboard shortcuts; use edit <filepath> to load the file
+            - `curl --proto '=https' --tlsv1.2 -sSf <https://raw.githubusercontent.com/microsoft/edit/main/assets/install.sh> | sh`
+        - run this command to add it to .bashrc so you can use it anywhere
+            - `printf '\n# Add local bin to PATH for MS Edit\nexport PATH="$HOME/.local/bin:$PATH"\n' >> ~/.bashrc`
     - To download it:
         - Download the latest release ([example url:](https://github.com/microsoft/edit/releases/download/v1.2.0/edit-1.2.0-x86_64-linux-gnu.tar.zst))
             - Example command downloading using curl along with decompressing and extracting the tarbell file:
@@ -889,7 +894,7 @@ systemctl --user start TeslaTakedown.service
         - clone the repo `git clone https://github.com/microsoft/edit.git` (as of 2025-06-17 there is no crates.io entry and it doesn't look like they want to support that method of installation)
         - Build the repo `cargo build --config .cargo/release.toml --release`
 
-### Snap
+## Snap
 
 - Snap is very similar to flatpak but has some advantages and disadvantages below are some advantages of both platforms
     - Snap is slower to startup, officially supported by Canonical (a company that also manages Ubuntu), it can be used on linux servers and even IoT devices, it generally takes up less storage space than flatpak packages, slightly better security (on average), easier to build and maintain packages
