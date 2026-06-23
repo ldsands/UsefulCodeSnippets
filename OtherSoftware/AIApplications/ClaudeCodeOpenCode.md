@@ -267,10 +267,21 @@
 ### OpenCode Plugins and Skills
 
 - To use and install superpowers you can just add the text below to the file `~/.config/opencode/opencode.json`
+- Similarly I add some changes to keyboard shortcuts
 
 ```json
 {
-  "$schema": "<https://opencode.ai/config.json>",
-  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"]
+    "$schema": "<https://opencode.ai/config.json>",
+    "keybinds": {
+        "app_exit": "ctrl+q",
+        "input_buffer_end": "ctrl+end",
+        "input_buffer_home": "ctrl+home",
+        "input_line_end": "end,ctrl+e",
+        "input_line_home": "home,ctrl+a",
+        "input_newline": "shift+enter",
+    },
+    "plugin": [
+        "superpowers@git+https://github.com/obra/superpowers.git"
+    ]
 }
 ```

@@ -71,12 +71,13 @@ winget install --id=Docker.DockerDesktop  -e # docker desktop
 winget install --id=Gephi.Gephi -e # graphing networks and flowcharts https://gephi.org/
 winget install --id=Julialang.Julia -e
 winget install --id=LINQPad.LINQPad -e
+winget install --id=Microsoft.Coreutils -e # list of coreutils that are used in linux that are ported to Windows for use in cmd or pwsh (e.g. can use ls) published by Microsoft
+winget install --id=Microsoft.Edit -e # ms edit a simple terminal editing app
 winget install --id=RProject.R -e
 winget install --id=RStudio.RStudio -e
 winget install --id=Rust.rustup -e
 winget install --id=SumatraPDF.SumatraPDF -e
 winget install --id=TimKosse.FilezillaClient -e
-winget install --id=Microsoft.Coreutils -e # list of coreutils that are used in linux that are ported to Windows for use in cmd or pwsh (e.g. can use ls) published by Microsoft
 ## Document Apps
 winget install --id=Amazon.Kindle -e
 winget install --id=LibreOffice.LibreOffice -e
