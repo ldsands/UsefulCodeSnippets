@@ -71,8 +71,9 @@ git -C ~/.config/nu_scripts fetch --depth 1 origin main; git -C ~/.config/nu_scr
     - [Bottom](https://github.com/ClementTsang/bottom) - "[C]ross-platform graphical process/system monitor."
         - See below for a link to a gist that contains my preferred configuration options
         - use bottom by typing in `btm`
+    - [Dust](https://github.com/bootandy/dust) - "A more intuitive version of du in rust"
+    - [Dysk](https://github.com/Canop/dysk) - "A linux utility to get information on filesystems, like df but better"
     - [Homebrew](https://brew.sh/) - "The Package Manager for Everywhere"
-    - [zmx](https://zmx.sh/) - "Session attach/detach for the terminal"
     - [shpool](https://github.com/shell-pool/shpool) - "shpool is a service that enables session persistence by allowing the creation of named shell sessions owned by shpool so that the session is not lost if the connection drops."
         - use by first starting a new instance with `shpool attach <session name>` then you can detach (which just gets you out of than instance) by using `shpool detach`
         - list all sessions with `shpool list`
@@ -84,6 +85,7 @@ git -C ~/.config/nu_scripts fetch --depth 1 origin main; git -C ~/.config/nu_scr
     - [X-CMD](https://www.x-cmd.com/) - "In ONE command: Using 500 Open Source tools Explore the power of AI and Cloud Execute your script with auto provision"
         - [as of 2026-05-15 the nushell integration script is broken](https://github.com/x-cmd/x-cmd/issues/348) Once this is fixed it'll likely be usable
     - [Yazi](https://yazi-rs.github.io/) - "Blazing fast terminal file manager written in Rust, based on async I/O."
+    - [zmx](https://zmx.sh/) - "Session attach/detach for the terminal"
     - [Zoxide](https://github.com/ajeetdsouza/zoxide#installation) - "A smarter cd command."
         - This also uses (optionally) [fzf](https://github.com/junegunn/fzf) which is, "A command-line fuzzy finder"
 - To connect to 3rd party extensions that help Nushell you will need to run the code below once before they'll work
@@ -141,6 +143,14 @@ loginctl enable-linger
 curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/microsoft/edit/main/assets/install.sh | sh
 # add this 
 printf '\n# Add local bin to PATH for MS Edit\nexport PATH="$HOME/.local/bin:$PATH"\n' >> ~/.bashrc
+# you can also make msedit the default editor so applications like yazi will open msedit when editing a file, below is the bash command to do this
+echo -e "\nexport EDITOR=edit" >> ~/.bashrc
+
+# install dust (du alternative)
+cargo install du-dust
+
+# install dysk (df alternative)
+cargo install --locked dysk
 
 # x-cmd
 # to update x-cmd (or use the same installation command)

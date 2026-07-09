@@ -75,7 +75,7 @@ There are three main package managers for Windows. Winget, Chocolaty and Scoop.
 
 ## Win 32
 
-Below are Windows programs that are installed using chocolatey or winget
+Below are Windows programs that are installed using chocolatey or winget or sometimes without any package manager
 
 - [Google Chrome](https://www.google.com/chrome/) I install this using Chocolatey
     - The most popular browser I personally prefer the new version of Edge but old habits die hard

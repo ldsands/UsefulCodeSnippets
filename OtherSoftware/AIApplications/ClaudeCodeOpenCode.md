@@ -1,5 +1,16 @@
 # Claude and Open Code
 
+- [Claude and Open Code](#claude-and-open-code)
+    - [Skills](#skills)
+    - [General Configurations](#general-configurations)
+    - [Claude Code](#claude-code)
+        - [Notes, Tips, and Guides](#notes-tips-and-guides)
+        - [Claude Code Plugins](#claude-code-plugins)
+    - [Open Code](#open-code)
+        - [OpenCode AGENTS.md File Notes](#opencode-agentsmd-file-notes)
+        - [OpenCode Plugins and Skills](#opencode-plugins-and-skills)
+    - [Goose](#goose)
+
 ## Skills
 
 - [Context Mode](https://github.com/mksglu/context-mode) - "Context window optimization for AI coding agents. Sandboxes tool output, 98% reduction. 15 platforms"
@@ -229,16 +240,64 @@
     {
         "$schema": "<https://opencode.ai/config.json>",
         "provider": {
+            "vllmDSpark": {
+                "npm": "@ai-sdk/openai-compatible",
+                "name": "vLLM_dsv4f_DSpark",
+                "options": {
+                    "baseURL": "<http://localhost:6060/v1>"
+                    // example http://127.0.0.1:6060/v1
+                    // curl <http://127.0.0.1:6060/v1/models> to get the models
+                },
+                "models": {
+                    "deepseek-v4-flash-dspark": {
+                        "name": "deepseek-v4-flash-dspark",
+                        "variants": {
+                            "think_none": {
+                                "reasoningEffort": "none"
+                            },
+                            "think_high": {
+                                "reasoningEffort": "high"
+                            },
+                            "think_max": {
+                                "reasoningEffort": "max"
+                            }
+                        }
+                    }
+                }
+            },
             "vllm": {
                 "npm": "@ai-sdk/openai-compatible",
                 "name": "vLLM_Local",
                 "options": {
                     "baseURL": "<http://localhost:6060/v1>"
-                    // curl <http://127.0.0.1:6060/v1/models>
+                    // example http://127.0.0.1:6060/v1
+                    // curl <http://127.0.0.1:6060/v1/models> to get the models
                 },
                 "models": {
                     "google/gemma-4-31B-it": {
                         "name": "google/gemma-4-31B-it",
+                        "variants": {
+                            "thinking_disabled": {
+                                "enable_thinking": "False",
+                            },
+                            "thinking_enabled": {
+                                "enable_thinking": "True",
+                            }
+                        }
+                    },
+                    "deepseek-ai/DeepSeek-V4-Flash-DSpark": {
+                        "name": "deepseek-ai/DeepSeek-V4-Flash-DSpark",
+                        "variants": {
+                            "think_none": {
+                                "reasoningEffort": "none"
+                            },
+                            "think_high": {
+                                "reasoningEffort": "high"
+                            },
+                            "think_max": {
+                                "reasoningEffort": "max"
+                            }
+                        }
                     },
                     "deepseek-ai/DeepSeek-V4-Flash": {
                         "name": "deepseek-ai/DeepSeek-V4-Flash",
@@ -260,6 +319,24 @@
     }
     ```
 
+- I also do not like the default keyboard shortcuts so I changed several of them (change this file `~/.config/opencode/tui.json` to do )
+
+    ```json
+    {
+      "$schema": "https://opencode.ai/tui.json",
+        "keybinds": {
+          "app_exit": "ctrl+q",
+          "input_buffer_end": "ctrl+end",
+          "input_buffer_home": "ctrl+home",
+          "input_line_end": "end,ctrl+e",
+          "input_line_home": "home,ctrl+a",
+          "input_newline": "alt+return,shift+return,ctrl+j",
+          "messages_first": "alt+home,ctrl+g",
+          "messages_last": "alt+end,ctrl+alt+g"
+      }
+    }
+    ```
+
 ### OpenCode AGENTS.md File Notes
 
 - should be located `~/.opencode/AGENTS.md`
@@ -267,21 +344,23 @@
 ### OpenCode Plugins and Skills
 
 - To use and install superpowers you can just add the text below to the file `~/.config/opencode/opencode.json`
-- Similarly I add some changes to keyboard shortcuts
 
-```json
-{
-    "$schema": "<https://opencode.ai/config.json>",
-    "keybinds": {
-        "app_exit": "ctrl+q",
-        "input_buffer_end": "ctrl+end",
-        "input_buffer_home": "ctrl+home",
-        "input_line_end": "end,ctrl+e",
-        "input_line_home": "home,ctrl+a",
-        "input_newline": "shift+enter",
-    },
-    "plugin": [
-        "superpowers@git+https://github.com/obra/superpowers.git"
-    ]
-}
-```
+    ```json
+    {
+      "$schema": "<https://opencode.ai/config.json>",
+      "disabled_providers": ["openai", "gemini"],
+      "lsp": true,
+      "plugin": [
+        "@dietrichgebert/ponytail",
+        "mattpocock-skills@git+<https://github.com/mattpocock/skills.git>",
+        "superpowers@git+<https://github.com/obra/superpowers.git>"
+      ]
+    }
+    ```
+
+- I've tried oh-my-opencode and didn't really like it
+
+## Goose
+
+- [Goose](https://goose-docs.ai/) - "Your native open source AI agent. Desktop app, CLI, and API — for code, workflows, and everything in between."
+    - I think of goose and between Opencode and Pi in terms of stuff being "built in"

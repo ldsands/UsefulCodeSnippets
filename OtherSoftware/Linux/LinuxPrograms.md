@@ -876,6 +876,12 @@ systemctl --user start TeslaTakedown.service
 
 - There are many Rust based applications that are distro agnostic and often cross-platform as well
 - Note that most of my notes on Rust based applications are located in the [file devoted to Nushell](../../ProgrammingLanguages/Rust/Nushell.md)
+- [Dust](https://github.com/bootandy/dust) - "A more intuitive version of du in rust"
+    - to install `cargo install du-dust`
+    - a couple of useful commands: only go one level `dust -d 1`; only show directories: `dust -D`
+- [Dysk](https://github.com/Canop/dysk) - "A linux utility to get information on filesystems, like df but better"
+    - to install: `cargo install --locked dysk`
+    - to use just type `dysk`
 - [Edit](https://github.com/microsoft/edit) - "A simple editor for simple needs."
     - for usage you can use the command `ms-edit <filename>`
     - For Arch based distros: `yay -S ms-edit`
