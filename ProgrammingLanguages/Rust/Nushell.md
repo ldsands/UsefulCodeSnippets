@@ -24,6 +24,9 @@ cargo install cargo-update
 # check for all newer versions of cargo installed packages/applications (also self updates cargo install-update when applicable)
 cargo install-update -a
 
+# install cargo-binstall (this is needed to avoid all the yazi update complexities)
+curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
 # to see all cargo installed packages/applications such as Nushell Bottom or Typst you can use the command below
 cargo install --list
 
@@ -172,13 +175,8 @@ cargo install zoxide --git https://ajeetdsouza/zoxide
 source ~/.zoxide.nu
 
 # for yazi
-# to install yazi you can use cargo
-# this was printed in a more recent attempt to build Yazi it looks like this is the way you actually install Yazi
-cargo install --force yazi-build
-# for fedora you can install via dnf (using copr) instead
-cargo install --locked yazi-fm yazi-cli
-cargo install yazi-fm --locked
-cargo install yazi-cli --locked
+# to install yazi you can use cargo or other ways but using binstall seems to avoid a lot of issues
+cargo binstall yazi-fm
 
 # for mcfly
 cargo install mcfly --locked

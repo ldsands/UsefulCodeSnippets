@@ -899,6 +899,15 @@ systemctl --user start TeslaTakedown.service
         - Make sure rust is installed
         - clone the repo `git clone https://github.com/microsoft/edit.git` (as of 2025-06-17 there is no crates.io entry and it doesn't look like they want to support that method of installation)
         - Build the repo `cargo build --config .cargo/release.toml --release`
+- [Yazi](https://yazi-rs.github.io/) - "Blazing fast terminal file manager written in Rust, based on async I/O."
+    - The best install option is to first install cargo-binstall otherwise installing and updating Yazi becomes more complicated (the binstall works with cargo-update)
+    - Installation instructions
+        - To install cargo-binstall:`curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash`
+        - To install Yazi using cargo-binstall: `cargo binstall yazi-fm`
+        - Otherwise you have to use `cargo install --force yazi-build` to install and update yazi which doesn't work well with cargo-update
+    - Useful shell options and integrations
+        - You can integrate yazi so that when you start it with `y` then the dir you quit out of yazi moves your pwd to that same dir on exit see [this link](https://yazi-rs.github.io/docs/quick-start/#shell-wrapper) for instructions
+        - You can set the default editor for yazi by setting the default terminal editor (easiest way is changing the env var for that in .bashrc or config.nu). Example setting the default to us MSEdit in `.bashrc` using one bash command: `echo -e "\nexport EDITOR=edit" >> ~/.bashrc`
 
 ## Snap
 

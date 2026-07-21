@@ -15,7 +15,12 @@
         "titleBar.inactiveBackground": "#0063b199",
         "titleBar.inactiveForeground": "#e7e7e799",
         "tab.activeBorder": "#0080e4",
-        "commandCenter.border": "#e7e7e799"
+        "commandCenter.border": "#e7e7e799",
+        "activityBarTop.activeBackground": "#0080e4",
+        "activityBarTop.background": "#0080e4",
+        "activityBarTop.foreground": "#e7e7e7",
+        "activityBarTop.inactiveForeground": "#e7e7e799",
+        "commandCenter.foreground": "#e7e7e7"
     },
     "peacock.color": "#0063B1",
     "kanban": {
