@@ -261,6 +261,8 @@ non chocolatey utility programs
 - [FreeFileSync](https://freefilesync.org/) - "FreeFileSync is a folder comparison and synchronization software that creates and manages backup copies of all your important files."
     - For backing up file locally to other drives, also available on Linux
 - [Gephi](https://gephi.org/) this is network visualization software that is open source. This can be installed using winget: `winget install --id=Gephi.Gephi -e`. To install it you must download it along with the java 8 sdk and apache maven. The code to install those two are as follows: `jdk8` and `choco install maven`
+- [Herdr](https://github.com/ogulcancelik/herdr) - "agent multiplexer that lives in your terminal."
+    - to install using powershell: `irm https://herdr.dev/install.ps1 | iex`
 - [Kite](https://kite.com/) this is a utility to help with python autocompletion
 - [Logitech Gaming Software](https://www.logitechg.com/en-us/innovation/g-hub.html) For my old keyboard because apparently the "gaming" keyboard needs different software the from the other logitech products
 - [Pipx](https://pipxproject.github.io/pipx/) This allows you to use python scripts as though they were programs this does get installed via pip (`pip -m install pipx`) after installing python then add pipx to path by using this command: `python -m pipx ensurepath`. You will have to restart the PowerShell to use pipx.

@@ -76,6 +76,7 @@ git -C ~/.config/nu_scripts fetch --depth 1 origin main; git -C ~/.config/nu_scr
         - use bottom by typing in `btm`
     - [Dust](https://github.com/bootandy/dust) - "A more intuitive version of du in rust"
     - [Dysk](https://github.com/Canop/dysk) - "A linux utility to get information on filesystems, like df but better"
+    - [Herdr](https://github.com/ogulcancelik/herdr) - "agent multiplexer that lives in your terminal."
     - [Homebrew](https://brew.sh/) - "The Package Manager for Everywhere"
     - [shpool](https://github.com/shell-pool/shpool) - "shpool is a service that enables session persistence by allowing the creation of named shell sessions owned by shpool so that the session is not lost if the connection drops."
         - use by first starting a new instance with `shpool attach <session name>` then you can detach (which just gets you out of than instance) by using `shpool detach`
@@ -121,6 +122,9 @@ cd ~/.config/ && wget ‐‐directory-prefix=~/.config/starship.toml https://gis
 mkdir ~/.cache/starship
 starship init nu | save ~/.cache/starship/init.nu
 
+# install Herdr
+curl -fsSL https://herdr.dev/install.sh | sh
+
 # Homebrew
 # to install, add to path via bashrc, update homebrew itself, to update all homebrew installed packages, clean up old versions (respectively):
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -129,6 +133,7 @@ brew update
 brew upgrade
 brew cleanup
 
+# Note I've replaced zmx with Herdr
 # for installing zmx
 brew install neurosnap/tap/zmx
 

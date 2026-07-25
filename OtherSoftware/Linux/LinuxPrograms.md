@@ -10,11 +10,6 @@
         - [Nativefier](#nativefier)
     - [Ubuntu/Debian Based Distros](#ubuntudebian-based-distros)
         - [Command Line Programs (On Ubuntu)](#command-line-programs-on-ubuntu)
-        - [OBS Extensions (On Ubuntu)](#obs-extensions-on-ubuntu)
-    - [Other Useful Applications (Distro Agnostic)](#other-useful-applications-distro-agnostic)
-        - [AppImage Applications](#appimage-applications)
-        - [Bottles (For using Windows Applications)](#bottles-for-using-windows-applications)
-        - [Distro Agnostic Command Line Applications](#distro-agnostic-command-line-applications)
         - [Flatpak Applications](#flatpak-applications)
         - [Nix Package Manager](#nix-package-manager)
         - [Other Distro Agnostic Applications](#other-distro-agnostic-applications)
@@ -364,13 +359,17 @@ X-KDE-Username=
     sudo apt-get -y update
     sudo apt-get -y install \
         ghostscript \
-        icc-profiles-free \
-        liblept5 \
-        libxml2 \
-        pngquant \
-        python3-pip \
-        tesseract-ocr \
-        zlib1g
+  ```
+
+  icc-profiles-free \
+  liblept5 \
+  libxml2 \
+  pngquant \
+  python3-pip \
+  tesseract-ocr \
+  zlib1g
+
+  ```text
     # install ocr
     pip3 install OCRmyPDF
     # install JBIG2 which allows for much smaller pdf sizes
@@ -636,7 +635,6 @@ Flatpak allows for applications to "be easily installed on any Linux distributio
 
 - To uninstall any Flatpak app use uninstall instead of install such as seen here: `flatpak uninstall flathub org.inkscape.Inkscape -y`
 - To clean up unused flakpak applications and dependencies: `flatpak uninstall --unused`
-
 - AppImage Pool - A simple, modern AppImageHub Client.
     - Installation command `flatpak install flathub io.github.prateekmedia.appimagepool -y`
 - Caprine - Elegant Facebook Messenger desktop app
@@ -899,6 +897,9 @@ systemctl --user start TeslaTakedown.service
         - Make sure rust is installed
         - clone the repo `git clone https://github.com/microsoft/edit.git` (as of 2025-06-17 there is no crates.io entry and it doesn't look like they want to support that method of installation)
         - Build the repo `cargo build --config .cargo/release.toml --release`
+- [Herdr](https://github.com/ogulcancelik/herdr) - "agent multiplexer that lives in your terminal."
+    - to install: `curl -fsSL https://herdr.dev/install.sh | sh` to update `herdr update`
+    - This has replaced zmx which I used to replace shpool
 - [Yazi](https://yazi-rs.github.io/) - "Blazing fast terminal file manager written in Rust, based on async I/O."
     - The best install option is to first install cargo-binstall otherwise installing and updating Yazi becomes more complicated (the binstall works with cargo-update)
     - Installation instructions
