@@ -177,6 +177,13 @@ Below are Windows programs that are installed using chocolatey or winget or some
     - I don't use this much either but it is very good and showing hardware resource usage, its useful for tracking down hardware problems or if you happen to be using a ton of CPU on something it can help you track down whats using it
 - [VLC](https://www.videolan.org/vlc/) I install this using Chocolatey
     - A video (and audio) player that plays pretty much anything you throw at it
+- [Voicemeeter Banana or Potato](https://vb-audio.com/Voicemeeter/banana.htm) - " Advanced Audio Mixer Application endowed with Virtual Audio Device used as Virtual I/O to mix and manage any audio sources from or to any audio devices or applications"
+    - Very good for preventing the mic from picking up background noises (like if someone is talking in a nearby room not for removing noise that the mic picks up)
+    - Good for adding EQ to a mic/input or even a speaker/output
+    - Tutorials
+        - [Pretty comprehensive setup instructions](https://www.youtube.com/watch?v=jhpBJb56itc) - [more comprehensive but probably not needed as often, explains the inputs and outputs much better](https://www.youtube.com/watch?v=t4C6lP9j93E) - [more basic setup and output/input routing](https://www.youtube.com/watch?v=pEd7jw0uNE4)
+        - For mic improvements [Voicemeeter Banana](https://www.youtube.com/watch?v=vA3atBhSYhU), [Voicemeeter Potato](https://www.youtube.com/watch?v=d69QSXqsdDw)
+    - Also good replacement for Windows old built in "Loudness Equalization"
 - [Krita](https://krita.org/en/) - [Krita documentation](https://docs.krita.org/en/)
     - This is kind of like a PhotoShop but quite a bit simpler (or so I'm told). I use it primarily for modifying svg type images since doing so in Krita is pretty simple but also able to do everything I want to do with it.
 - [PDF-XChange Editor Plus](https://www.tracker-software.com/product/pdf-xchange-editor) I use a portable version of this application

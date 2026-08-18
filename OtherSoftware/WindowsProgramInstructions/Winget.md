@@ -105,6 +105,7 @@ winget install --id=MiniTool.PartitionWizard.Free  -e # MiniTool Partition for m
 winget install --id=QL-Win.QuickLook -e # https://github.com/QL-Win/QuickLook
 winget install --id=SoftDeluxe.FreeDownloadManager  -e # Free Download Manager
 winget install --id=SpeedCrunch.SpeedCrunch -e
+winget install --id=VB-Audio.Voicemeeter.Banana -e # voicemeeter banana for mic improvements
 winget install --id=rammichael.7+TaskbarTweaker -e # https://tweaker.ramensoftware.com/
 winget install --id=rammichael.Textify -e # https://ramensoftware.com/textify
 winget install sxyazi.yazi -e # Yazi terminal file explorer

@@ -1,11 +1,12 @@
-# Claude and Open Code
+# AI Harness Settings Configs
 
-- [Claude and Open Code](#claude-and-open-code)
+- [AI Harness Settings Configs](#ai-harness-settings-configs)
     - [Skills](#skills)
     - [General Configurations](#general-configurations)
     - [Claude Code](#claude-code)
         - [Notes, Tips, and Guides](#notes-tips-and-guides)
         - [Claude Code Plugins](#claude-code-plugins)
+    - [Codex](#codex)
     - [Open Code](#open-code)
         - [OpenCode AGENTS.md File Notes](#opencode-agentsmd-file-notes)
         - [OpenCode Plugins and Skills](#opencode-plugins-and-skills)
@@ -213,6 +214,10 @@
     - [code-simplifier](https://claude.com/plugins/code-simplifier) "Code clarity agent: simplifies and refines recently modified code while preserving functionality and consistency."
     - [sequential thinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking) "An MCP server implementation that provides a tool for dynamic and reflective problem-solving through a structured thinking process." (install using a prompt to claude "please install the sequential thinking mcp server")
 
+## Codex
+
+I have set this up very similarly to Claude Code.
+
 ## Open Code
 
 - Should ideally use from within WSL rather than directly from within Windows
@@ -234,7 +239,7 @@
     ```
 
     - Now go to this file which will likely need to be created: `~/.config/opencode/opencode.jsonc` you can use jsonc for comments
-    - add the code below
+    - add the code below (Note that you need to replace the localhost with the ip of the server)
 
     ```jsonc
     {
@@ -282,6 +287,20 @@
                             },
                             "thinking_enabled": {
                                 "enable_thinking": "True",
+                            }
+                        }
+                    },
+                    "deepseek-ai/DeepSeek-V4-Flash-0731": {
+                        "name": "deepseek-ai/DeepSeek-V4-Flash-0731",
+                        "variants": {
+                            "think_none": {
+                                "reasoningEffort": "none"
+                            },
+                            "think_high": {
+                                "reasoningEffort": "high"
+                            },
+                            "think_max": {
+                                "reasoningEffort": "max"
                             }
                         }
                     },
