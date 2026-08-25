@@ -7,6 +7,7 @@
         - [Notes, Tips, and Guides](#notes-tips-and-guides)
         - [Claude Code Plugins](#claude-code-plugins)
     - [Codex](#codex)
+    - [deepseek-harness](#deepseek-harness)
     - [Open Code](#open-code)
         - [OpenCode AGENTS.md File Notes](#opencode-agentsmd-file-notes)
         - [OpenCode Plugins and Skills](#opencode-plugins-and-skills)
@@ -20,6 +21,9 @@
         - `/plugin install context-mode@context-mode`
     - for opencode add to opencode.json in your project root (or ~/.config/opencode/opencode.json for global):
         - `{ "$schema": "<https://opencode.ai/config.json>", "plugin": ["context-mode"] }`
+- Unslop tells models to talk more like a human and be more concise below is a prompt that will install it globally
+    - `"Please fetch the raw text from [https://raw.githubusercontent.com/cursor/plugins/main/pstack/skills/unslop/SKILL.md](https://raw.githubusercontent.com/cursor/plugins/main/pstack/skills/unslop/SKILL.md) and save it to your global skills directory under a folder named unslop. Create the directory first if it doesn't exist. If you aren't sure where your global skills directory is, check your documentation or standard configuration paths."`
+    - There are other skills here I need to evaluate in the future (TODO:)
 - [Matt Pocock's ai skills some real gems here](https://github.com/mattpocock/skills)
     - to install use this command `npx skills@latest add mattpocock/skills`
     - Here is a brief summary of each skill from the mattpocock/skills repository:
@@ -218,6 +222,61 @@
 
 I have set this up very similarly to Claude Code.
 
+## deepseek-harness
+
+- [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) - "DeepSeek Harness: Everything is a Plugin."
+    - To install: `npx @deepseek-ai/dsh web`
+    - For now you have to also use this command `ssh -L 3080:127.0.0.1:3080 your_user@your_server_ip` on the computer you want to use it on (this will not be needed in the future but during prerelease this is required)
+- Location of setting: `~/.dsh/settings.yaml`
+
+```yaml
+ui-onboarding:
+  welcomeNoticeVersion: 2026-08-13.1
+agent-loop:
+  maxParallelToolCalls: 4
+llm-pi-ai:
+  providers:
+    vllm:
+      displayName: vllm
+      api: openai-completions
+      baseURL: <http://localhost/v1>
+      # Private gateway: pi-ai cannot recognize this URL and would otherwise
+      # detect it as OpenAI itself; state explicitly that the endpoint accepts
+      # a top-level reasoning_effort field (OpenAI dialect).
+      compat:
+        supportsReasoningEffort: true
+      # Thinking level applied when no effort is selected in the model picker
+      # (mirrors the opencode "think_max // default for model" note). Applies
+      # only to models that offer the level; DeepSeek-V4-Flash does not offer
+      # xhigh, so it keeps the endpoint's own default.
+      reasoning: xhigh
+      models:
+        - id: unsloth/Qwen3.8-27B-NVFP4
+          name: unsloth/Qwen3.8-27B-NVFP4
+          reasoningEfforts:
+            off: "none"
+            low: "low"
+            medium: "medium"
+            xhigh: "xhigh"
+        - id: deepseek-ai/DeepSeek-V4-Flash-0731
+          name: deepseek-ai/DeepSeek-V4-Flash-0731
+          reasoningEfforts:
+            off: "none"
+            high: "high"
+            max: "max"
+        - id: Qwen/Qwen3.8-27B-FP8
+          name: Qwen/Qwen3.8-27B-FP8
+          reasoningEfforts:
+            off: "none"
+            low: "low"
+            medium: "medium"
+            xhigh: "xhigh"
+      apiKeyEnv: VLLM_API_KEY
+agent-default-model:
+  provider: vllm
+  model: Qwen/Qwen3.8-27B-FP8
+```
+
 ## Open Code
 
 - Should ideally use from within WSL rather than directly from within Windows
@@ -287,6 +346,104 @@ I have set this up very similarly to Claude Code.
                             },
                             "thinking_enabled": {
                                 "enable_thinking": "True",
+                            }
+                        }
+                    },
+                    "Qwen/Qwen3.8-27B-FP8": {
+                        "name": "Qwen/Qwen3.8-27B-FP8",
+                        "variants": {
+                            "think_none": {
+                                "temperature": 0.7,
+                                "top_p": 0.8,
+                                "presence_penalty": 1.5,
+                                "extra_body": {
+                                    "reasoning_effort": "none",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_low": {
+                                "temperature": 0.7,
+                                "top_p": 0.8,
+                                "presence_penalty": 1.5,
+                                "extra_body": {
+                                    "reasoning_effort": "low",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_high": {
+                                "temperature": 1.0,
+                                "top_p": 0.95,
+                                "presence_penalty": 0.0,
+                                "extra_body": {
+                                    "reasoning_effort": "medium",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_max": {
+                                "temperature": 1.0,
+                                "top_p": 0.95,
+                                "presence_penalty": 0.0,
+                                "extra_body": {
+                                    "reasoning_effort": "xhigh", // default for model
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            }
+                        }
+                    },
+                    "unsloth/Qwen3.8-27B-NVFP4": {
+                        "name": "unsloth/Qwen3.8-27B-NVFP4",
+                        "variants": {
+                            "think_none": {
+                                "temperature": 0.7,
+                                "top_p": 0.8,
+                                "presence_penalty": 1.5,
+                                "extra_body": {
+                                    "reasoning_effort": "none",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_low": {
+                                "temperature": 0.7,
+                                "top_p": 0.8,
+                                "presence_penalty": 1.5,
+                                "extra_body": {
+                                    "reasoning_effort": "low",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_high": {
+                                "temperature": 1.0,
+                                "top_p": 0.95,
+                                "presence_penalty": 0.0,
+                                "extra_body": {
+                                    "reasoning_effort": "medium",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_max": {
+                                "temperature": 1.0,
+                                "top_p": 0.95,
+                                "presence_penalty": 0.0,
+                                "extra_body": {
+                                    "reasoning_effort": "xhigh", // default for model
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
                             }
                         }
                     },
