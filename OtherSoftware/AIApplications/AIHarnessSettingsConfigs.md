@@ -225,8 +225,11 @@ I have set this up very similarly to Claude Code.
 ## deepseek-harness
 
 - [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) - "DeepSeek Harness: Everything is a Plugin."
+    - Note that this is in very active development and many things are changing very quickly as of Sep 2026
     - To install: `npx @deepseek-ai/dsh web`
+    - To run: `npx @deepseek-ai/dsh web` (same as install)
     - For now you have to also use this command `ssh -L 3080:127.0.0.1:3080 your_user@your_server_ip` on the computer you want to use it on (this will not be needed in the future but during prerelease this is required)
+        - Then once you have that running you must use [this link](http://127.0.0.1:3080) on the computer you ran the command above, you must leave open the shell/terminal that you used the command above as long as you want access to the harness
 - Location of setting: `~/.dsh/settings.yaml`
 
 ```yaml

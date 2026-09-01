@@ -71,7 +71,7 @@ TODO:
             - Gives stats every 30 seconds during a sync `--stats 30s` (not sure but doesn't seem to work?)
         - [exclusions/filtering to make sure you're not uploading files that you don't want synced](https://rclone.org/bisync/#filtering):
             - use the `--filters-file` option
-            - pCloud's exclusions including my own .venv addition: ".ds_store;.ds_store?;.appledouble;._*;.spotlight-v100;.documentrevisions-v100;.temporaryitems;.trashes;.fseventsd;.~lock.*;ehthumbs.db;thumbs.db;hiberfil.sys;pagefile.sys;$recycle.bin;*.part;.pcloud;.venv"
+            - pCloud's exclusions including my own .venv and .uv-cache addition: ".ds_store;.ds_store?;.appledouble;._*;.spotlight-v100;.documentrevisions-v100;.temporaryitems;.trashes;.fseventsd;.~lock.*;ehthumbs.db;thumbs.db;hiberfil.sys;pagefile.sys;$recycle.bin;*.part;.pcloud;.venv;.uv-cache;"
             - Note that if the filter file is ever changed then the md5 will change and to avoid suddenly having a lot of uploading/downloading conflicts
 
 ```sh
@@ -113,7 +113,7 @@ def rclone_bisync_all_pcloud [] {
     sudo nvidia-smi -rgc        # reset any previous limits
     # to allow for lower clocks after reboots
     sudo nvidia-smi -pm 1 # Enable Persistence Mode
-    set the clock min and max
+    # set the clock min and max
     sudo nvidia-smi -lgc 0,2100 # Lock GPU Clocks
     # to get the current clock settings
     nvidia-smi -q -d CLOCK

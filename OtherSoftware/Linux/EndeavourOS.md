@@ -47,9 +47,9 @@ EndeavourOS is an arch Linux based distro that has become known for being fairly
     - [Enpass](https://www.enpass.io/) (my preferred password manager)
     - [pCloud](https://www.pcloud.com/) (my preferred cloud syncing platform/application)
         - install the AppImage file from their website
-        - Make sure that you create an exemption to not sync anything in `.venv` directories
+        - Make sure that you create an exemption to not sync anything in `.venv` or `.uv-cache` directories
             - In the "Settings" tab, then the "Exclusions" tab, then in the textbox called "The following files will be excluded:" enter the following at the end
-                - ".venv;"
+                - ".venv;.uv-cache;"
     - Microsoft Edge (my preferred web browser)
     - [Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions) (my preferred text editor and IDE)
         - I also install the [VSCode Projects Runner for KRunner](https://github.com/alex1701c/krunner-vscodeprojects) plugin for KRunner which allows you to open VSCode projects directly from KRunner. You also need to set up the [Project Manager](https://github.com/alefragnani/vscode-project-manager) extension to use it. You may have to reboot to have it start working after the installation.
