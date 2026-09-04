@@ -222,6 +222,9 @@
 
 I have set this up very similarly to Claude Code.
 
+- Tips
+    - To copy a response (and thus avoid gutter issues) you can use `/copy` or `ctrl+o` or use `alt+r` to show "raw mode" which removed all formatting including removing the gutter
+
 ## deepseek-harness
 
 - [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) - "DeepSeek Harness: Everything is a Plugin."
