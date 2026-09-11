@@ -2,6 +2,9 @@
 
 - [AI Harness Settings Configs](#ai-harness-settings-configs)
     - [Skills](#skills)
+        - [Preferred Skills](#preferred-skills)
+        - [Old Skills I No Longer Use](#old-skills-i-no-longer-use)
+        - [Skills I Would Like to Try and Evaluate](#skills-i-would-like-to-try-and-evaluate)
     - [General Configurations](#general-configurations)
     - [Claude Code](#claude-code)
         - [Notes, Tips, and Guides](#notes-tips-and-guides)
@@ -14,6 +17,8 @@
     - [Goose](#goose)
 
 ## Skills
+
+### Preferred Skills
 
 - [Context Mode](https://github.com/mksglu/context-mode) - "Context window optimization for AI coding agents. Sandboxes tool output, 98% reduction. 15 platforms"
     - for claude code use these two commands
@@ -47,13 +52,33 @@
         - migrate-to-shoehorn: Migrate test files from as type assertions to @total-typescript/shoehorn.
         - scaffold-exercises: Create exercise directory structures with sections, problems, solutions, and explainers.
         - setup-pre-commit: Set up Husky pre-commit hooks with lint-staged, Prettier, type checking, and tests.
+- [CodeGraph](https://colbymchenry.github.io/codegraph/) - "A local-first code-intelligence tool that turns any codebase into a queryable knowledge graph for AI coding agents."
+    - very similar to graphify but based on feedback from many most seem to prefer CodeGraph
+    - To install: `curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh` and `sudo npm install -g @colbymchenry/codegraph` then `codegraph install`
+    - To update: `codegraph upgrade`
+    - To start the graph use `codegraph init`
+    - Use `codegraph index` to re-index or `codegraph sync` to update
+
+### Old Skills I No Longer Use
+
+For skills that I have evaluated, used and determined that I either don't need them or I've found something better.
+
 - [graphify](https://github.com/safishamsi/graphify) - "AI coding assistant skill (Claude Code, Codex, OpenCode, Cursor, Gemini CLI, and more). Turn any folder of code, SQL schemas, R scripts, shell scripts, docs, papers, images, or videos into a queryable knowledge graph. App code + database schema + infrastructure in one graph."
+    - NOTE: I use CodeGraph instead
     - Install via uv tool (`uv tool install graphifyy` or to update `uv tool upgrade graphifyy` or to uninstall `uv tool uninstall graphifyy` but note this doesn't remove it from the skills in claude or similar ai coders), then to install the skill into claude (or others) use `graphify install` then to use it you just use `/graphify` in any project should save a lot on context
 - [Shape (uses very detailed grilling that creates issues then details a bunch of items needed for creating code/features/upgrades etc.)](https://github.com/TheCraigHewitt/skills/blob/main/coding/shape/SKILL.md) - More about this here: [I Automated My Entire Coding Workflow — Here's What Happened - Craig Hewitt](https://www.youtube.com/watch?v=YIfluAXBr2M)
+    - NOTE: I moved on from this mostly due to the fact that harnesses and/or the models handle stuff like this much better than they used to and so I don't find that I need this as much anymore.
     - Note you need to install the skills that you can find here at another skill [called Ralph](https://github.com/TheCraigHewitt/skills/blob/main/coding/ralph/SKILL.md)
     - Ralph is the more for implementation where as Ralph is more for the implementation but also Shape accepts the defaults that claude prefers so it is the gill-me skill on autopilot
     - The order is either /grill-me or /shape then a detailed description of what you want. Then use /prd-to-issues 8 (where 8 is the github issue created). Then use /ralph afk 8 or /ralph 8 for the working through each sub issue the afk version crates a docker container in which claude will work thus not doing anything to your computer by accident.
     - I modified the ralph one to be able to work with docker on linux so instead just use this command `Install the ralph skill from my repo ldsands/CodingLLMSkills` and it should handle it
+
+### Skills I Would Like to Try and Evaluate
+
+Skills I think I would like and/or find useful but I have not yet tried or evaluated them.
+
+- [babysit-pr](https://github.com/doudouOUC/babysit-pr) - "Autonomous PR babysitter skill for AI coding agents (Claude Code + Codex)"
+    - I learned about this from [this video](https://www.youtube.com/watch?v=q1D90-uGvBg) sounds useful for any repos that have automated pr code review bots.
 
 ## General Configurations
 
@@ -229,8 +254,9 @@ I have set this up very similarly to Claude Code.
 
 - [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) - "DeepSeek Harness: Everything is a Plugin."
     - Note that this is in very active development and many things are changing very quickly as of Sep 2026
-    - To install: `npx @deepseek-ai/dsh web`
-    - To run: `npx @deepseek-ai/dsh web` (same as install)
+    - To install/update/run: `npx @deepseek-ai/dsh@latest web`
+    - To get installed version: `npx @deepseek-ai/dsh --version` another version that uses latest `npx @deepseek-ai/dsh@latest --version`
+    - To run (without updating): `npx @deepseek-ai/dsh web`
     - For now you have to also use this command `ssh -L 3080:127.0.0.1:3080 your_user@your_server_ip` on the computer you want to use it on (this will not be needed in the future but during prerelease this is required)
         - Then once you have that running you must use [this link](http://127.0.0.1:3080) on the computer you ran the command above, you must leave open the shell/terminal that you used the command above as long as you want access to the harness
 - Location of setting: `~/.dsh/settings.yaml`

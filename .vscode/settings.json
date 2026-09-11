@@ -3,7 +3,7 @@
         "sash.hoverBorder": "#0080e4",
         "panel.border": "#0080e4",
         "activityBar.activeBackground": "#0080e4",
-        "activityBar.activeBorder": "#ff9fd5",
+        "activityBar.activeBorder": "#e7e7e7",
         "activityBar.background": "#0080e4",
         "activityBar.foreground": "#e7e7e7",
         "activityBar.inactiveForeground": "#e7e7e799",
@@ -20,7 +20,8 @@
         "activityBarTop.background": "#0080e4",
         "activityBarTop.foreground": "#e7e7e7",
         "activityBarTop.inactiveForeground": "#e7e7e799",
-        "commandCenter.foreground": "#e7e7e7"
+        "commandCenter.foreground": "#e7e7e7",
+        "activityBarTop.activeBorder": "#e7e7e7"
     },
     "peacock.color": "#0063B1",
     "kanban": {
