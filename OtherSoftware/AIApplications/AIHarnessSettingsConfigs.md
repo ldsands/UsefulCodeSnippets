@@ -281,7 +281,6 @@ llm-pi-ai:
       # (mirrors the opencode "think_max // default for model" note). Applies
       # only to models that offer the level; DeepSeek-V4-Flash does not offer
       # xhigh, so it keeps the endpoint's own default.
-      reasoning: xhigh
       models:
         - id: unsloth/Qwen3.8-27B-NVFP4
           name: unsloth/Qwen3.8-27B-NVFP4
@@ -290,6 +289,19 @@ llm-pi-ai:
             low: "low"
             medium: "medium"
             xhigh: "xhigh"
+        - id: nvidia/Qwen3.8-27B-NVFP4
+          name: nvidia/Qwen3.8-27B-NVFP4
+          reasoningEfforts:
+            off: "none"
+            low: "low"
+            medium: "medium"
+            xhigh: "xhigh"
+        - id: deepseek-ai/DeepSeek-V4-Flash-Vision-Exp
+          name: deepseek-ai/DeepSeek-V4-Flash-Vision-Exp
+          reasoningEfforts:
+            off: "none"
+            high: "high"
+            max: "max"
         - id: deepseek-ai/DeepSeek-V4-Flash-0731
           name: deepseek-ai/DeepSeek-V4-Flash-0731
           reasoningEfforts:
@@ -303,6 +315,13 @@ llm-pi-ai:
             low: "low"
             medium: "medium"
             xhigh: "xhigh"
+        - id: local-inference-lab/Qwen3.8-Flash-Next-NVFP4
+          name: local-inference-lab/Qwen3.8-Flash-Next-NVFP4
+          reasoningEfforts:
+            off: none
+            low: low
+            medium: medium
+            xhigh: xhigh
       apiKeyEnv: VLLM_API_KEY
 agent-default-model:
   provider: vllm
@@ -430,6 +449,55 @@ agent-default-model:
                             }
                         }
                     },
+                    "local-inference-lab/Qwen3.8-Flash-Next-NVFP4": {
+                        "name": "local-inference-lab/Qwen3.8-Flash-Next-NVFP4",
+                        "variants": {
+                            "think_none": {
+                                "temperature": 0.7,
+                                "top_p": 0.8,
+                                "presence_penalty": 1.5,
+                                "extra_body": {
+                                    "reasoning_effort": "none",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_low": {
+                                "temperature": 0.7,
+                                "top_p": 0.8,
+                                "presence_penalty": 1.5,
+                                "extra_body": {
+                                    "reasoning_effort": "low",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_high": {
+                                "temperature": 1.0,
+                                "top_p": 0.95,
+                                "presence_penalty": 0.0,
+                                "extra_body": {
+                                    "reasoning_effort": "medium",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_xhigh": {
+                                "temperature": 1.0,
+                                "top_p": 0.95,
+                                "presence_penalty": 0.0,
+                                "extra_body": {
+                                    "reasoning_effort": "xhigh", // default for model
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            }
+                        }
+                    },
                     "unsloth/Qwen3.8-27B-NVFP4": {
                         "name": "unsloth/Qwen3.8-27B-NVFP4",
                         "variants": {
@@ -479,8 +547,71 @@ agent-default-model:
                             }
                         }
                     },
+                    "nvidia/Qwen3.8-27B-NVFP4": {
+                        "name": "nvidia/Qwen3.8-27B-NVFP4",
+                        "variants": {
+                            "think_none": {
+                                "temperature": 0.7,
+                                "top_p": 0.8,
+                                "presence_penalty": 1.5,
+                                "extra_body": {
+                                    "reasoning_effort": "none",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_low": {
+                                "temperature": 0.7,
+                                "top_p": 0.8,
+                                "presence_penalty": 1.5,
+                                "extra_body": {
+                                    "reasoning_effort": "low",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_high": {
+                                "temperature": 1.0,
+                                "top_p": 0.95,
+                                "presence_penalty": 0.0,
+                                "extra_body": {
+                                    "reasoning_effort": "medium",
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            },
+                            "think_max": {
+                                "temperature": 1.0,
+                                "top_p": 0.95,
+                                "presence_penalty": 0.0,
+                                "extra_body": {
+                                    "reasoning_effort": "xhigh", // default for model
+                                    "top_k": 20,
+                                    "min_p": 0.0,
+                                    "repetition_penalty": 1.0
+                                }
+                            }
+                        }
+                    },
                     "deepseek-ai/DeepSeek-V4-Flash-0731": {
                         "name": "deepseek-ai/DeepSeek-V4-Flash-0731",
+                        "variants": {
+                            "think_none": {
+                                "reasoningEffort": "none"
+                            },
+                            "think_high": {
+                                "reasoningEffort": "high"
+                            },
+                            "think_max": {
+                                "reasoningEffort": "max"
+                            }
+                        }
+                    },
+                    "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp": {
+                        "name": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
                         "variants": {
                             "think_none": {
                                 "reasoningEffort": "none"

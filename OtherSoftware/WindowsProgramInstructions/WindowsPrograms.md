@@ -181,7 +181,13 @@ Below are Windows programs that are installed using chocolatey or winget or some
     - Very good for preventing the mic from picking up background noises (like if someone is talking in a nearby room not for removing noise that the mic picks up)
     - Good for adding EQ to a mic/input or even a speaker/output
     - Tutorials
-        - [Pretty comprehensive setup instructions](https://www.youtube.com/watch?v=jhpBJb56itc) - [more comprehensive but probably not needed as often, explains the inputs and outputs much better](https://www.youtube.com/watch?v=t4C6lP9j93E) - [more basic setup and output/input routing](https://www.youtube.com/watch?v=pEd7jw0uNE4)
+        - [Pretty comprehensive setup instructions](https://www.youtube.com/watch?v=jhpBJb56itc) - [more comprehensive but probably not needed as often, explains the inputs and outputs much better](https://www.youtube.com/watch?v=t4C6lP9j93E)
+        - [more basic setup and output/input routing](https://www.youtube.com/watch?v=pEd7jw0uNE4)
+            - you should set the "Voicemeeter Input" as: "Is default for audio"
+            - you should set the "Voicemeeter AUX Input" as: "Is default for communications"
+            - You can disable all other output devices from Voicemeeter that show up in Windows setting "System" then "Sound" interface
+            - If you use B1 for your mic then set the default mic to be "Voicemeeter Out B1"
+            - You can disable all other input devices from Voicemeeter that show up in Windows setting "System" then "Sound" interface
         - For mic improvements [Voicemeeter Banana](https://www.youtube.com/watch?v=vA3atBhSYhU), [Voicemeeter Potato](https://www.youtube.com/watch?v=d69QSXqsdDw)
     - Also good replacement for Windows old built in "Loudness Equalization"
 - [Krita](https://krita.org/en/) - [Krita documentation](https://docs.krita.org/en/)
