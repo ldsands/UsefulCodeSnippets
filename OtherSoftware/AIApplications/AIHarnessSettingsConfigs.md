@@ -596,6 +596,20 @@ agent-default-model:
                             }
                         }
                     },
+                    "Mia-AiLab/GLM-5.3-Flash-EXL3-4bpw-TensorFold": {
+                        "name": "Mia-AiLab/GLM-5.3-Flash-EXL3-4bpw-TensorFold",
+                        "variants": {
+                            "think_low": {
+                                "reasoningEffort": "low"
+                            },
+                            "think_high": {
+                                "reasoningEffort": "high"
+                            },
+                            "think_max": {
+                                "reasoningEffort": "max"
+                            }
+                        }
+                    },
                     "deepseek-ai/DeepSeek-V4-Flash-0731": {
                         "name": "deepseek-ai/DeepSeek-V4-Flash-0731",
                         "variants": {
