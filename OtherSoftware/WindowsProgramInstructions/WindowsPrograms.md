@@ -111,6 +111,10 @@ Below are Windows programs that are installed using chocolatey or winget or some
 - [Git](../Git.md) I install this using Chocolatey
     - This is required for using github it is the source control software on which github is based
     - I don't know much about how to use git without either github and/or vscode
+- [Handy](https://github.com/cjpais/handy) - "A free, open source, and extensible speech-to-text application that works completely offline."
+    - great ASR application only uses cpu but still fast and good a bit less resources needed to run than Hex
+- [Hex](https://github.com/anomalyco/hex) - "Local voice dictation for mac, windows and linux"
+    - as of 2026-11-03 must install using the binary download uses a bit more resources than handy but has gpu option
 - [Pandoc](../../ProgrammingLanguages/Markdown/Pandoc/PandocCommands.md) I install this using Chocolatey
     - This can convert just about any document format into any other
     - I use it primarily to write in markdown and then convert to either docx or pdf depending on my need at the time

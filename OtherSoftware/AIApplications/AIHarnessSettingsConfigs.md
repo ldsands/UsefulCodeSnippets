@@ -259,73 +259,103 @@ I have set this up very similarly to Claude Code.
     - To run (without updating): `npx @deepseek-ai/dsh web`
     - For now you have to also use this command `ssh -L 3080:127.0.0.1:3080 your_user@your_server_ip` on the computer you want to use it on (this will not be needed in the future but during prerelease this is required)
         - Then once you have that running you must use [this link](http://127.0.0.1:3080) on the computer you ran the command above, you must leave open the shell/terminal that you used the command above as long as you want access to the harness
-- Location of setting: `~/.dsh/settings.yaml`
+    - to use with T3 code use this install/update/run using ash mode (e.g. for T3 Code support): `npm install -g @deepseek-ai/dsh`
+        - Note that if you want to use -g (which is probably needed for use with T3 Code) you'll need to do some minor setup of the npm global packages
+
+        ```sh
+        mkdir -p ~/.local/npm
+        npm config set prefix ~/.local/npm
+        # Then add the npm binary directory to your PATH:
+        echo 'export PATH="$HOME/.local/npm/bin:$PATH"' >> ~/.bashrc
+        # reload bash to use updated .bashrc file
+        source ~/.bashrc
+        # now install dsh (or latest using the other command below)
+        npm install -g @deepseek-ai/dsh
+        npm install -g @deepseek-ai/dsh@latest
+        # verify
+        dsh --version
+        command -v dsh
+        ```
+
+        - After you run the commands below you must also: Open your T3 Code web interface. Go to Settings → Providers. Click Add provider → Show more → Local ACP command. Enter the following:
+
+          |Field|Value|
+          |-|-|
+          |Executable|/home/ldsands/.local/npm/bin/dsh|
+          |Argument 1|--profile|
+          |Argument 2|acp|
+          |Display Name|DeepSeek Harness|
+
+        - to add a new model to dsh for T3 to use you must add it to both the dsh profile `/home/$USERNAME/.dsh/profiles/acp/cordis.patch.yml` and to the T3 settings: `/home/$USERNAME/.t3/userdata/settings.json`
+
+- Location of settings file for acp: `/home/ldsands/.dsh/profiles/acp/cordis.patch.yml`; location of settings file for web: `/home/ldsands/.dsh/profiles/web/cordis.patch.yml`; (Location of old settings file: `~/.dsh/settings.yaml`)
 
 ```yaml
-ui-onboarding:
-  welcomeNoticeVersion: 2026-08-13.1
-agent-loop:
-  maxParallelToolCalls: 4
-llm-pi-ai:
-  providers:
-    vllm:
-      displayName: vllm
-      api: openai-completions
-      baseURL: <http://localhost/v1>
-      # Private gateway: pi-ai cannot recognize this URL and would otherwise
-      # detect it as OpenAI itself; state explicitly that the endpoint accepts
-      # a top-level reasoning_effort field (OpenAI dialect).
-      compat:
-        supportsReasoningEffort: true
-      # Thinking level applied when no effort is selected in the model picker
-      # (mirrors the opencode "think_max // default for model" note). Applies
-      # only to models that offer the level; DeepSeek-V4-Flash does not offer
-      # xhigh, so it keeps the endpoint's own default.
-      models:
-        - id: unsloth/Qwen3.8-27B-NVFP4
-          name: unsloth/Qwen3.8-27B-NVFP4
-          reasoningEfforts:
-            off: "none"
-            low: "low"
-            medium: "medium"
-            xhigh: "xhigh"
-        - id: nvidia/Qwen3.8-27B-NVFP4
-          name: nvidia/Qwen3.8-27B-NVFP4
-          reasoningEfforts:
-            off: "none"
-            low: "low"
-            medium: "medium"
-            xhigh: "xhigh"
-        - id: deepseek-ai/DeepSeek-V4-Flash-Vision-Exp
-          name: deepseek-ai/DeepSeek-V4-Flash-Vision-Exp
-          reasoningEfforts:
-            off: "none"
-            high: "high"
-            max: "max"
-        - id: deepseek-ai/DeepSeek-V4-Flash-0731
-          name: deepseek-ai/DeepSeek-V4-Flash-0731
-          reasoningEfforts:
-            off: "none"
-            high: "high"
-            max: "max"
-        - id: Qwen/Qwen3.8-27B-FP8
-          name: Qwen/Qwen3.8-27B-FP8
-          reasoningEfforts:
-            off: "none"
-            low: "low"
-            medium: "medium"
-            xhigh: "xhigh"
-        - id: local-inference-lab/Qwen3.8-Flash-Next-NVFP4
-          name: local-inference-lab/Qwen3.8-Flash-Next-NVFP4
-          reasoningEfforts:
-            off: none
-            low: low
-            medium: medium
-            xhigh: xhigh
-      apiKeyEnv: VLLM_API_KEY
-agent-default-model:
-  provider: vllm
-  model: Qwen/Qwen3.8-27B-FP8
+- id: llm-pi-ai
+  name: "@deepseek-ai/dsh-llm-pi-ai"
+  config:
+    providers:
+      vllm:
+        displayName: vllm
+        api: openai-completions
+        baseURL: http://XXX.XXX.XX.XX:XXXX/v1
+        compat:
+          supportsReasoningEffort: true
+        models:
+          - id: unsloth/Qwen3.8-27B-NVFP4
+            name: unsloth/Qwen3.8-27B-NVFP4
+            reasoningEfforts:
+              off: none
+              low: low
+              medium: medium
+              xhigh: xhigh
+          - id: deepseek-ai/DeepSeek-V4-Flash-0731
+            name: deepseek-ai/DeepSeek-V4-Flash-0731
+            reasoningEfforts:
+              off: none
+              high: high
+              max: max
+          - id: Qwen/Qwen3.8-27B-FP8
+            name: Qwen/Qwen3.8-27B-FP8
+            reasoningEfforts:
+              off: none
+              low: low
+              medium: medium
+              xhigh: xhigh
+          - id: nvidia/Qwen3.8-27B-NVFP4
+            name: nvidia/Qwen3.8-27B-NVFP4
+            reasoningEfforts:
+              off: none
+              low: low
+              medium: medium
+              xhigh: xhigh
+          - id: local-inference-lab/Qwen3.8-Flash-Next-NVFP4
+            name: local-inference-lab/Qwen3.8-Flash-Next-NVFP4
+            reasoningEfforts:
+              off: none
+              low: low
+              medium: medium
+              xhigh: xhigh
+          - id: Mia-AiLab/GLM-5.3-Flash-EXL3-4bpw-TensorFold
+            name: Mia-AiLab/GLM-5.3-Flash-EXL3-4bpw-TensorFold
+            reasoningEfforts:
+              off: null
+              low: low
+              high: high
+              max: max
+        apiKeyEnv: VLLM_API_KEY
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: vllm
+    model: Mia-AiLab/GLM-5.3-Flash-EXL3-4bpw-TensorFold
+    reasoningEffort: high
+
+- id: acp
+  name: "@deepseek-ai/dsh-acp"
+  config:
+    provider: vllm
+    model: Mia-AiLab/GLM-5.3-Flash-EXL3-4bpw-TensorFold
 ```
 
 ## Open Code
