@@ -18,6 +18,7 @@ The changelog is located [here](https://www.tracker-software.com/product/pdf-xch
         - Enable: Page Display - "Forbid the change of current Zoom factor, during execution of [...]"
     - Page Text:
         - Deselect: Add line breaks after every text line to match the visual layout of what was copied
+            - This keeps copied PDF text together as a single, continuous paragraph instead of inserting line breaks wherever the text wraps on the page (have to change this one back and forth depending on the document).
     - Registration:
         - Select: "Add New License Key..." paste in the serial key which can be found [here](https://www.tracker-software.com/myaccount) (after logging in)
     - Speech:
